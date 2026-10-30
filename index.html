@@ -1696,6 +1696,7 @@ body.intro-on{overflow:hidden}
 .dzb-mav .dz-face{width:22px;height:22px}
 .dzb-b{padding:10px 12px;font-size:14px;line-height:1.75;max-width:calc(100% - 40px);word-wrap:break-word}
 .bot .dzb-b{background:var(--surface-2);border:1px solid var(--line);border-inline-start:2px solid var(--red)}
+.dzb-wa{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;padding:11px 14px;background:#25d366;color:#06120a;font-weight:800;font-size:14px;text-decoration:none;border-radius:2px;box-shadow:0 6px 18px -8px rgba(37,211,102,.7)}.dzb-wa svg{width:19px;height:19px}.dzb-wa:active{transform:scale(.98)}
 .me .dzb-b{background:linear-gradient(135deg,#f0414d,var(--red) 50%,#a3121c);color:#fff;max-width:80%}
 .dzb-b b{color:var(--ink)}.me .dzb-b b{color:#fff}
 .dzb-typing{display:inline-flex;gap:4px;padding:4px 2px}
@@ -1960,7 +1961,7 @@ function readFeed(){
 }
 function applyFeed(f){
   DATA.cat=f.cat;DATA.at=N(f.at);
-  const c=f.cfg;if(c){['bag','oth','free'].forEach(k=>{if(c[k]!=null&&c[k]!=='')CFG[k]=Math.max(0,N(c[k]))});if(c.ann!=null)CFG.ann=String(c.ann).slice(0,140);if(/^9647\d{9}$/.test(String(c.wa||'')))CFG.wa=String(c.wa)}
+  const c=f.cfg;if(c){['bag','oth','free'].forEach(k=>{if(c[k]!=null&&c[k]!=='')CFG[k]=Math.max(0,N(c[k]))});if(c.ann!=null)CFG.ann=String(c.ann).slice(0,140);if(/^9647\d{9}$/.test(String(c.wa||'')))CFG.wa=String(c.wa);CFG.coach=/^9647\d{9}$/.test(String(c.coach||''))?String(c.coach):'';if(c.coachN)CFG.coachN=String(c.coachN).slice(0,30)}
   LIVE=true;
 }
 {const f=readFeed();if(f&&N(f.at)>N(DATA.at))applyFeed(f)}
@@ -2584,6 +2585,27 @@ const pk=a=>a[Math.floor(Math.random()*a.length)];
 const OPEN=['إي كابتن فهمتك، خلي نبسّطها 💪','هلا حبيبي كابتن! اسمع الزبدة:','تدلل كابتن، خذها مني:','سؤال وحوش! 🔥 اسمع:','عاشت إيدك على السؤال يا بطل 👊','حاضر كابتن، ركّز وياي:'];
 const CLOSE=['يلا كابتن، شد حيلك 🔥','والاستمرار هو السر يا بطل 💪','وأي شي ثاني آني حاضر يا وحش 👊','وكلّي إذا تحتاج شي ثاني كابتن 😉',''];
 const vibe=r=>{r.t=pk(OPEN)+'\n\n'+r.t;const c=pk(CLOSE);if(c)r.t+='\n\n'+c;return r};
+/* detailed workout programs -> referred to the gym coach on WhatsApp */
+const PLAN=['نظام تمرين','برنامج تمرين','جدول تمرين','خطه تمرين','روتين تمرين','نظام','برنامج','جدول','خطه','روتين','بلان','plan','program','سبلت','split'];
+const PLAND=['بالتفصيل','تفصيل','مفصل','تكرار','عدات','جولات','اجهزه','جهاز','تمارين','اكتبلي','اكتب لي','سويلي','سوي لي','سوولي','نظملي','رتبلي','خاص','مخصص','كامل','اسبوع','كورس','اريد','ابي','انطيني','عطيني','ممكن','دزلي','اشتغل عليه','امشي عليه'];
+const PLANX=['غذايي','غذا','اكل','دايت','diet','وجبات','رجيم'];
+const DEEP=['بالتفصيل','مفصل','تكرارات','التكرارات','عدات','العدات','اجهزه','الاجهزه','الجهاز','نوع الجهاز'];
+const ASKW=['اكتبلي','اكتب لي','سويلي','سوي لي','سوولي','انطيني','عطيني','رتبلي','نظملي','دزلي','بالتفصيل'];
+function isPlanReq(q){
+  if(has(q,PLANX)&&!q.includes('تمرين'))return false;
+  const mus=[W.chest,W.arms,W.legs,W.back,W.shoulder,W.abs].some(g=>has(q,g));
+  if(has(q,PLAN)&&has(q,PLAND))return true;
+  if(has(q,DEEP)&&(has(q,W.train)||mus||q.includes('تمارين')||q.includes('تمرين')))return true;
+  if(mus&&q.includes('تمارين')&&has(q,ASKW))return true;
+  return false;
+}
+function coachLink(){const n=CFG.coachN||'كابتن أحمد';const w=String(CFG.coach||CFG.wa||'').replace(/\D/g,'');
+  return w?{n,href:`https://wa.me/${w}?text=${encodeURIComponent(`هلا ${n} 👋 أريد نظام تمرين مفصّل (التمارين والتكرارات والأجهزة). وصلتلك من كابتن دوزي بمتجر الدزاز جم 💪`)}`}:null}
+function coachReply(){const n=CFG.coachN||'كابتن أحمد';const l=coachLink();
+  return {t:pk([`إي كابتن فهمتك 💪 تريد نظام تمرين مفصّل: التمارين، التكرارات، ونوع الأجهزة.`,`هلا حبيبي كابتن 🔥 طلبك واضح، تريد برنامج تمرين كامل بالتفصيل.`])+
+   `\n\nبس البرنامج المفصّل يحتاج واحد يعرف **مستواك وهدفك وجسمك** حتى ما تتعب على الفاضي أو تتصاب. وهنا يجي دور **${n}** 🏋️، هو المسؤول عن البرامج ويرتبلك نظام على مقاسك بالضبط.`+
+   (l?`\n\nاضغط الزر وراسله على واتساب، وكلّه:\n• شكد صارلك تتمرن\n• كم يوم بالأسبوع تكدر تجي\n• شنو هدفك (تضخيم، تنشيف، لياقة)\n\nوهو يوصلك ويرتب كلشي 👊`:`\n\nكلّم المحل وهم يوصلوك ويه ${n} 👊`),
+   wa:l,chips:['شكد احتاج بروتين؟','اريد اضخم','شنو عدكم؟']}}
 const KB=[
  {g:[W.roids],t:'الهرمونات والإبر ما نبيعها ولا ننصح بيها. أضرارها حقيقية على القلب والكبد والهرمونات الطبيعية بالجسم. الأكل الصح والتمرين والنوم ويه المكملات الآمنة يوصلوك، بس يحتاجن صبر.'},
  {g:[W.prot,W.need],f:q=>{const w=num(q);return w>=35&&w<=200?{t:`حسب وزنك **${w} كغ**:\n• إذا تتمرن حديد: تحتاج تقريباً **${Math.round(w*1.6)} إلى ${Math.round(w*2.2)} غرام بروتين** باليوم.\n• إذا ما تتمرن: حوالي ${Math.round(w*.8)} غرام.\n\nقسّمها على 3 إلى 5 وجبات (20 إلى 40 غرام بالوجبة). الأكل أولاً (دجاج، لحم، بيض، سمك، لبن)، والبروتين باودر يكمّل الناقص.`,sug:['بروتين']}:{t:'اللي يتمرن حديد يحتاج تقريباً **1.6 إلى 2.2 غرام بروتين لكل كيلو** من وزنه باليوم. يعني إذا وزنك 80 كغ تحتاج 130 إلى 175 غرام.\n\nكلي شكد وزنك وأحسبلك بالضبط.',chips:['وزني 70','وزني 85'],sug:['بروتين']}}},
@@ -2597,7 +2619,7 @@ const KB=[
  {g:[W.prot,W.harm],t:'البروتين باودر هو أكل (حليب مركّز)، وبالكميات الطبيعية آمن للأشخاص الأصحاء. اللي عنده مرض بالكلى أو الكبد لازم يراجع طبيبه قبل ما يزيد البروتين. واشرب ماي كافي.',sug:['بروتين']},
  {g:[W.prot,W.how],t:'**طريقة البروتين:**\n• سكوب وحدة (20 إلى 30 غرام بروتين) بعد التمرين، أو بأي وقت يكون أكلك بي بروتين قليل.\n• المهم مجموع البروتين باليوم، مو الوقت بالدقيقة.\n• اخلطه ويه ماي (أخف) أو حليب (سعرات أكثر للتضخيم).\n• تكدر تاخذ سكوب ثاني بيوم الراحة إذا أكلك ناقص.',sug:['بروتين'],chips:['شكد احتاج بروتين؟']},
  {g:[W.prot,W.why],t:'البروتين باودر طريقة سهلة توصّل بيها احتياجك اليومي من البروتين، وهو اللي يبني العضل ويرمّمه بعد التمرين. مو سحر، هو أكل مركز، فالنتيجة تجي من التمرين والأكل والنوم ويه.',sug:['بروتين'],chips:['شلون استخدم البروتين؟','شكد احتاج بروتين؟']},
- {g:[W.train],t:'**جدول حسب أيامك:**\n• **3 أيام** (مبتدئ): جسم كامل كل يوم، مثلاً سبت، اثنين، أربعاء.\n• **4 أيام**: علوي / سفلي / علوي / سفلي.\n• **5 أيام**: صدر وتراي، ظهر وباي، رجل، أكتاف، ذراع وبطن.\n\nلكل عضلة **3 إلى 4 تمارين**، و**3 إلى 4 جولات** من **8 إلى 12 عدة**. وزيد الوزن لما تكدر تكمل العدات بسهولة.'},
+ {g:[W.train],t:'**جدول حسب أيامك:**\n• **3 أيام** (مبتدئ): جسم كامل كل يوم، مثلاً سبت، اثنين، أربعاء.\n• **4 أيام**: علوي / سفلي / علوي / سفلي.\n• **5 أيام**: صدر وتراي، ظهر وباي، رجل، أكتاف، ذراع وبطن.\n\nلكل عضلة **3 إلى 4 تمارين**، و**3 إلى 4 جولات** من **8 إلى 12 عدة**. وزيد الوزن لما تكدر تكمل العدات بسهولة.\n\nوإذا تريد **نظام مفصّل على مقاسك** (تمارين، تكرارات، أجهزة) راسل كابتن المدرب على واتساب 👇',wa:1},
  {g:[W.chest],t:'**للصدر:**\n• بنش بريس (بار أو دمبل)\n• بنش عالي (Incline) حتى يطلع الصدر العلوي\n• تفتيح دمبل أو كيبل كروس\n• ضغط أرضي أو متوازي بالأخير\n\n3 إلى 4 جولات من 8 إلى 12 عدة، ومرتين بالأسبوع أفضل من مرة.',sug:['بروتين','كرياتين']},
  {g:[W.arms],t:'**للذراع:**\n• **باي:** بار كيرل، دمبل هامر، كيرل على البنش المائل.\n• **تراي:** كيبل بوش داون، تراي فوك الراس، ديبس.\n\nالتراي ثلثين حجم الذراع، فلا تهمله! ونفّذ التمرين ببطء وتحكم، مو بالمرجحة.',sug:['بروتين']},
  {g:[W.legs],t:'**يوم الرجل، يوم الوحوش 🦵:**\n• سكوات\n• ليج بريس\n• رومانيان ديدلفت للخلفية\n• ليج اكستنشن وليج كيرل\n• سمانة واقف\n\nلا تهرب من يوم الرجل، لأنه يرفع الهرمونات ويقوّي كل جسمك.'},
@@ -2733,6 +2755,7 @@ function reply(raw){
   if(q.includes('عرض السله')||q==='السله'){setTimeout(()=>{closePanel();openCart()},300);return {t:'فتحتلك السلة.'}}
   /* safety topics first */
   for(const g of [W.roids,W.preg,W.teen])if(has(q,g)){const e=KB.find(x=>x.g[0]===g);return {t:e.t}}
+  if(isPlanReq(q))return coachReply();
   /* calculators first */
   const nutritionQ=has(q,W.need)||has(q,W.how)||has(q,W.why)||has(q,W.harm)||has(q,W.rec)||has(q,W.diff);
   if(/وزني\s*\d/.test(q)&&!has(q,W.water)&&!has(q,W.cal)){return KB[1].f(q)}
@@ -2752,7 +2775,7 @@ function reply(raw){
   /* nutrition knowledge */
   let best=null,bs=0;
   for(const e of KB){const n=e.g.filter(g=>has(q,g)).length;if(n===e.g.length&&n>bs){best=e;bs=n}}
-  if(best){const r=best.f?best.f(q):{t:best.t,chips:best.chips};const sg=best.sug?suggest(best.sug):[];if(sg.length&&!r.cards){r.cards=sg;r.t+='\n\n**من المتوفر عدنا:**'}if(!r.chips)r.chips=best.chips||[];return vibe(r)}
+  if(best){const r=best.f?best.f(q):{t:best.wa?best.t.replace('كابتن المدرب','**'+(CFG.coachN||'كابتن أحمد')+'**'):best.t,chips:best.chips,wa:best.wa?coachLink():null};const sg=best.sug?suggest(best.sug):[];if(sg.length&&!r.cards){r.cards=sg;r.t+='\n\n**من المتوفر عدنا:**'}if(!r.chips)r.chips=best.chips||[];return vibe(r)}
   if(has(q,W.rec)){return {t:'أكيد كابتن! 💪 بس كلّي، شنو هدفك؟',chips:['تضخيم وبناء عضل','تنشيف ونزول دهون','زيادة وزن (نحيف)','قوة وطاقة بالتمرين','مبتدئ شنو اخذ؟']}}
   if(c)return catAnswer(c);
   if(ps.length)return productAnswer(ps,q);
@@ -2870,7 +2893,7 @@ function chips(list){$('#dzbChips').innerHTML=(list||[]).map(c=>`<button type="b
 function say(r){
   busy=true;chips([]);
   const t=push('bot','<span class="dzb-typing"><i></i><i></i><i></i></span>');
-  setTimeout(()=>{t.querySelector('.dzb-b').innerHTML=md(r.t)+(r.cards&&r.cards.length?`<div class="dzb-cards">${r.cards.map(card).join('')}</div>`:'');const box=$('#dzbMsgs');box.scrollTop=box.scrollHeight;chips(r.chips);busy=false;speak(r.t,()=>{if(voiceMode&&FLOW&&SR&&open)setTimeout(()=>{if(!listening&&open)listen()},350)})},Math.min(1300,450+r.t.length*4));
+  setTimeout(()=>{t.querySelector('.dzb-b').innerHTML=md(r.t)+(r.wa&&r.wa.href?`<a class="dzb-wa" href="${esc(r.wa.href)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>راسل ${esc(r.wa.n)} على واتساب</a>`:'')+(r.cards&&r.cards.length?`<div class="dzb-cards">${r.cards.map(card).join('')}</div>`:'');const box=$('#dzbMsgs');box.scrollTop=box.scrollHeight;chips(r.chips);busy=false;speak(r.t,()=>{if(voiceMode&&FLOW&&SR&&open)setTimeout(()=>{if(!listening&&open)listen()},350)})},Math.min(1300,450+r.t.length*4));
 }
 function ask(v){push('me',esc(v));let r;try{r=reply(v)}catch(e){r={t:'صار خلل بسيط، جرّب تسأل بطريقة ثانية.'}}say(r)}
 /* choreography */
@@ -2920,7 +2943,7 @@ Dozy.start();
 /* live updates from the system page (online database on hosting) */
 window.addEventListener('message',e=>{if(e.source!==parent||!e.data||e.data.dz!=='data')return;const d=e.data.data||{};
   DATA.cat=Array.isArray(d.cat)?d.cat:DATA.cat;DATA.ads=Array.isArray(d.ads)?d.ads:DATA.ads;DATA.at=d.at||DATA.at;
-  if(d.cfg){['wa','ann','bag','oth','free'].forEach(k=>{if(d.cfg[k]!==undefined)CFG[k]=d.cfg[k]})}
+  if(d.cfg){['wa','ann','bag','oth','free','coach','coachN'].forEach(k=>{if(d.cfg[k]!==undefined)CFG[k]=d.cfg[k]})}
   cart=cart.filter(l=>P(l.id)&&maxQ(P(l.id))>0).map(l=>({id:l.id,qty:Math.min(l.qty,maxQ(P(l.id)))}));save();render();});
 })();
 </scr¤ipt>
@@ -3958,10 +3981,10 @@ ui.oFilter='open';
 function b64e(str){const b=new TextEncoder().encode(str);let s='';b.forEach(x=>s+=String.fromCharCode(x));return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
 function b64d(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';const bin=atob(s);return new TextDecoder().decode(Uint8Array.from(bin,c=>c.charCodeAt(0)))}
 /* STORE CONTROL — manager edits the store from inside the system, then pushes one update */
-const STORE_DEF={wa:'9647804505005',ann:'',bag:3000,oth:8000,free:3};
+const STORE_DEF={wa:'9647804505005',ann:'',bag:3000,oth:8000,free:3,coach:'',coachN:'كابتن أحمد'};
 ui.oTab=(RESUME&&RESUME.oTab)||'orders';ui.stDraft={};
 const stMeta=()=>S.meta.find(r=>r.id==='store')||{};
-const cfgOut=c=>({wa:String(c.wa||'').replace(/\D/g,''),ann:String(c.ann||'').trim().slice(0,140),bag:Math.max(0,N(c.bag)),oth:Math.max(0,N(c.oth)),free:Math.max(0,N(c.free))});
+const cfgOut=c=>({wa:String(c.wa||'').replace(/\D/g,''),ann:String(c.ann||'').trim().slice(0,140),bag:Math.max(0,N(c.bag)),oth:Math.max(0,N(c.oth)),free:Math.max(0,N(c.free)),coach:String(c.coach||'').replace(/\D/g,''),coachN:String(c.coachN||'').trim().slice(0,30)||'كابتن أحمد'});
 const stCfg=()=>cfgOut(Object.assign({},STORE_DEF,stMeta().cfg||{},ui.stDraft));
 async function setMeta(id,data){
   const row=Object.assign({},S.meta.find(r=>r.id===id)||{},data);delete row.id;
@@ -3978,11 +4001,12 @@ function catalogCode(){
 function relTime(t){const s=(Date.now()-t)/1000;if(s<60)return 'قبل لحظات';if(s<3600)return `قبل ${Math.floor(s/60)} دقيقة`;if(s<86400)return `قبل ${Math.floor(s/3600)} ساعة`;return `قبل ${Math.floor(s/86400)} يوم`}
 let stT=0;
 document.addEventListener('input',e=>{const el=e.target.closest('[data-st]');if(!el)return;
-  let v=el.value;if(el.dataset.st==='wa'){const p=normPhoneIQ(v);v=p?'964'+p.slice(1):(v.trim()?'x':'')}
+  let v=el.value;if(el.dataset.st==='coach'){const p=normPhoneIQ(v);v=p?'964'+p.slice(1):(v.trim()?'x':'')}if(el.dataset.st==='wa'){const p=normPhoneIQ(v);v=p?'964'+p.slice(1):(v.trim()?'x':'')}
   ui.stDraft[el.dataset.st]=v;clearTimeout(stT);stT=setTimeout(()=>{const pv=$('.stc-prev');if(!pv)return;const c=stCfg();pv.innerHTML=`<span class="stc-k">PREVIEW</span>${c.ann?`<div class="stc-ann">${esc(c.ann)}</div>`:''}<div>واتساب <b class="tel">${c.wa?'+'+esc(c.wa):'غير مضاف'}</b></div><div>المثنى <b>${moneyT(c.bag)}</b> • المحافظات <b>${moneyT(c.oth)}</b>${c.free?` • مجاني فوق <b>${moneyT(c.free)}</b>`:''}</div>`},120)});
 function normPhoneIQ(v){let d=String(v||'').replace(/\D/g,'');if(d.startsWith('964'))d='0'+d.slice(3);if(d.length===10&&d[0]==='7')d='0'+d;return /^07\d{9}$/.test(d)?d:''}
 async function saveStoreCfg(loud){
   if(ui.stDraft.wa==='x'){if(loud)toast('رقم الواتساب لازم يكون عراقي يبدي بـ 07 ومن 11 رقم','bad');return false}
+  if(ui.stDraft.coach==='x'){if(loud)toast('رقم واتساب المدرب لازم يكون عراقي يبدي بـ 07 ومن 11 رقم','bad');return false}
   if(!Object.keys(ui.stDraft).length)return true;
   const cfg=stCfg();
   try{await setMeta('store',{cfg});ui.stDraft={};if(loud!==false&&loud)toast('انحفظت إعدادات المتجر');return true}catch(e){dbErr(e);return false}
@@ -4322,6 +4346,8 @@ function viewStoreCtl(){
        ${fld('stOth','باقي المحافظات (د.ع)',`<input id="stOth" data-st="oth" type="number" inputmode="numeric" value="${c.oth}">`)}
        ${fld('stFree','توصيل مجاني فوق (د.ع)',`<input id="stFree" data-st="free" type="number" inputmode="numeric" value="${c.free||''}" placeholder="فارغ = ماكو">`,'full')}
        ${fld('stAnn','الشريط الأحمر بأعلى المتجر',`<input id="stAnn" data-st="ann" value="${esc(c.ann)}" placeholder="مثلاً: خصم 10% على البروتين">`,'full')}
+       ${fld('stCoachN','اسم المدرب (كابتن دوزي يحوّل عليه)',`<input id="stCoachN" data-st="coachN" value="${esc(c.coachN||'كابتن أحمد')}" placeholder="كابتن أحمد">`)}
+       ${fld('stCoach','واتساب المدرب',`<input id="stCoach" data-st="coach" type="tel" dir="ltr" style="text-align:right" value="${c.coach?'0'+esc(String(c.coach).replace(/^964/,'')):''}" placeholder="فارغ = رقم المحل">`)}
       </div>
       <div class="stc-prev"><span class="stc-k">PREVIEW</span>${c.ann?`<div class="stc-ann">${esc(c.ann)}</div>`:''}<div>واتساب <b class="tel">${c.wa?'+'+esc(c.wa):'غير مضاف'}</b></div><div>المثنى <b>${moneyT(c.bag)}</b> • المحافظات <b>${moneyT(c.oth)}</b>${c.free?` • مجاني فوق <b>${moneyT(c.free)}</b>`:''}</div></div>
       <div class="sheet-actions" style="margin-top:12px"><button class="btn primary" data-act="st-save">حفظ الإعدادات</button></div>
