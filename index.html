@@ -3991,8 +3991,22 @@ async function setMeta(id,data){
   if(mode==='db')await db.collection('meta').doc(id).set(row);
   else{S.meta=S.meta.filter(r=>r.id!==id);S.meta.push({id,...row});saveLocal();render()}
 }
-function storeCat(){return activeProducts().filter(p=>p.online!==false).map(p=>({id:p.id,n:dn(p),b:p.brand||'',c:p.category||'أخرى',f:p.flavor||'',s:p.size||'',p:N(p.sellPrice),q:Math.max(0,Math.min(stockOf(p.id),20)),m:N(p.minStock??3),d:p.desc||'',i:p.img||''}))}
-const catSig=x=>[x.n,x.b,x.c,x.f,x.s,x.m,x.d.length,x.i.length,x.i.slice(-24)].join('¦');
+/* image fingerprint: lets the store compare/cache images without moving the picture itself */
+const IMGH=new Map();
+function imgH(s){s=String(s||'');if(!s)return '';let v=IMGH.get(s);if(v)return v;let a=0x811c9dc5,b=0x1b873593;for(let i=0;i<s.length;i++){const c=s.charCodeAt(i);a=Math.imul(a^c,16777619);b=Math.imul(b^c,0x5bd1e995)}v=(a>>>0).toString(36)+(b>>>0).toString(36)+s.length.toString(36);if(IMGH.size>800)IMGH.clear();IMGH.set(s,v);return v}
+/* lighter copies of product pictures for the store (smaller download for customers) */
+const THUMB=new Map();
+function thumbOf(src){
+  src=String(src||'');if(!src.startsWith('data:image'))return Promise.resolve(src);
+  const k=imgH(src);if(THUMB.has(k))return Promise.resolve(THUMB.get(k));
+  return new Promise(res=>{const im=new Image();im.onload=()=>{try{
+      const M=300,s=Math.min(1,M/Math.max(im.width,im.height));const w=Math.max(1,Math.round(im.width*s)),hh=Math.max(1,Math.round(im.height*s));
+      const cv=document.createElement('canvas');cv.width=w;cv.height=hh;const x=cv.getContext('2d');x.drawImage(im,0,0,w,hh);
+      let u=cv.toDataURL('image/webp',.7);if(!u.startsWith('data:image/webp')){x.globalCompositeOperation='destination-over';x.fillStyle='#fff';x.fillRect(0,0,w,hh);u=cv.toDataURL('image/jpeg',.72)}
+      if(u.length>=src.length)u=src;THUMB.set(k,u);res(u)}catch(e){res(src)}};im.onerror=()=>res(src);im.src=src})}
+async function thumbify(d){const cat=await Promise.all((d.cat||[]).map(async x=>x.i?Object.assign({},x,{i:await thumbOf(x.i)}):x));return Object.assign({},d,{cat})}
+function storeCat(){return activeProducts().filter(p=>p.online!==false).map(p=>({id:p.id,n:dn(p),b:p.brand||'',c:p.category||'أخرى',f:p.flavor||'',s:p.size||'',p:N(p.sellPrice),q:Math.max(0,Math.min(stockOf(p.id),20)),m:N(p.minStock??3),d:p.desc||'',i:p.img||'',ih:imgH(p.img)}))}
+const catSig=x=>[x.n,x.b,x.c,x.f,x.s,x.m,x.d.length,x.ih||imgH(x.i||'')].join('¦');
 function catalogCode(){
   const m=stMeta();const o={at:Date.now(),cat:storeCat()};
   if(isAdmin()||m.cfg)o.cfg=isAdmin()?stCfg():cfgOut(Object.assign({},STORE_DEF,m.cfg));
@@ -4120,7 +4134,7 @@ function recolor(src,c){
     .replace(/rgba\((255,80,90|255,70,80),/g,()=>{const [a,bb,cc]=hx(L2);return `rgba(${a},${bb},${cc},`});
 }
 const pubNow=()=>({cfg:stCfgSaved(),cat:storeCat(),ads:stAds(),tx:stTx(),th:stTheme()});
-const pubSig=o=>JSON.stringify([cfgOut(o.cfg||{}),o.cat||[],(o.ads||[]).filter(a=>a.on!==false),o.tx||{},o.th||{}]);
+const pubSig=o=>JSON.stringify([cfgOut(o.cfg||{}),(o.cat||[]).map(x=>{const y=Object.assign({},x);if(!y.ih)y.ih=imgH(x.i||'');else{delete y.ih;y.ih=x.ih}delete y.i;return y}),(o.ads||[]).filter(a=>a.on!==false),o.tx||{},o.th||{}]);
 const PUB_SIG=pubSig(PUB);
 const dataReady=()=>mode==='local'||(mode==='db'&&COLLS.every(c=>loaded[c]));
 function storeDiff(){
@@ -4222,7 +4236,7 @@ async function tryPub(force){
   if(!(await artReady())){pubState.st='noperm';refreshPubBox();return}
   lastTry=Date.now();pubState.st='pub';refreshPubBox();
   try{sessionStorage.setItem('dz-resume',JSON.stringify({uid:CUR.id,ph:CUR.ph,view:ui.view,oTab:ui.oTab,exp:Date.now()+120000}))}catch(e){}
-  try{await ART.publish(buildHTML(Object.assign(data,{at:Date.now()})));pubState.st='done';refreshPubBox()}
+  try{await ART.publish(buildHTML(Object.assign(await thumbify(data),{at:Date.now()})));pubState.st='done';refreshPubBox()}
   catch(e){
     try{sessionStorage.removeItem('dz-resume')}catch(x){}
     const c=e&&e.code;
@@ -4543,40 +4557,85 @@ document.addEventListener('submit',async e=>{
 });
 /* storefront sync (replaces republishing the page) */
 function fbSchedule(){if(BACKEND!=='firebase'||!CUR||!dataReady())return;clearTimeout(fbSyncT);fbSyncT=setTimeout(fbSync,2500)}
-async function fbStoreRead(){const m={};const s=await FB.fs.collection('storefront').get();s.docs.forEach(d=>{const x=Object.assign({},d.data());delete x.at;m[d.id]=JSON.stringify(x)});return m}
+/* storefront layout on Firestore (cheap for customers):
+   _cfg  {k:'m', cfg, ads(no pictures), tx, th, n, packs:{packId:ver}}
+   c_N   {k:'m', o, items:[products without pictures, with ih]}
+   i_N   {k:'i', im:{ih:picture}}   pictures packed ~700KB per doc, cached on the customer's phone */
+const SF_PACK=700000,SF_CHUNK=250;
+async function fbStoreRead(){const m={};const s=await FB.fs.collection('storefront').get();s.docs.forEach(d=>{const x=Object.assign({},d.data());delete x.at;m[d.id]=x.k==='i'?{k:'i',keys:Object.keys(x.im||{}).sort()}:JSON.stringify(x)});return m}
+const sfVer=keys=>imgH(keys.slice().sort().join(','));
 async function fbSync(){
   if(BACKEND!=='firebase'||!CUR)return;
   try{
     fbState.st='sync';refreshPubBox();
-    const d=pubNow(),docs={_cfg:{cfg:d.cfg,ads:d.ads,tx:d.tx,th:d.th,n:d.cat.length}};
-    d.cat.forEach((p,i)=>{docs['p_'+p.id]=Object.assign({},p,{o:i})});
-    const prev=fbLast||await fbStoreRead();const next={};let n=0;
-    for(const [id,x] of Object.entries(docs)){const s=JSON.stringify(x);next[id]=s;if(prev[id]!==s){await FB.fs.collection('storefront').doc(id).set(Object.assign({},x,{at:Date.now()}));n++}}
-    for(const id of Object.keys(prev))if(!(id in docs)){await FB.fs.collection('storefront').doc(id).delete();n++}
-    fbLast=next;fbState.st='ok';fbState.at=n?Date.now():(fbState.at||Date.now());fbState.err='';refreshPubBox();
+    const d=await thumbify(pubNow());const IM={};
+    const cat=d.cat.map(p=>{const x=Object.assign({},p);if(x.i&&x.ih)IM[x.ih]=x.i;delete x.i;return x});
+    const ads=d.ads.map(a0=>{const a=Object.assign({},a0);if(a.img){const k=imgH(a.img);IM[k]=a.img;a.ih=k}delete a.img;return a});
+    const prev=fbLast||await fbStoreRead();
+    /* keep each picture in the pack it already lives in, so unchanged packs stay cached on phones */
+    const packs={};Object.entries(prev).forEach(([id,v])=>{if(v&&typeof v==='object'&&v.k==='i')packs[id]=v.keys.filter(k=>k in IM)});
+    const placed=new Set();Object.values(packs).forEach(ks=>ks.forEach(k=>placed.add(k)));
+    const size=ks=>ks.reduce((s,k)=>s+IM[k].length+20,0);
+    let nid=0;const freeId=()=>{while(('i_'+nid) in packs)nid++;return 'i_'+nid};
+    for(const k of Object.keys(IM)){if(placed.has(k))continue;const L=IM[k].length+20;
+      let id=Object.keys(packs).find(p=>size(packs[p])+L<=SF_PACK);if(!id){id=freeId();packs[id]=[]}packs[id].push(k);placed.add(k)}
+    const docs={},pv={};
+    Object.entries(packs).forEach(([id,ks])=>{if(!ks.length)return;ks.sort();pv[id]=sfVer(ks);docs[id]={k:'i',keys:ks}});
+    docs._cfg=JSON.stringify({k:'m',cfg:d.cfg,ads,tx:d.tx,th:d.th,n:cat.length,packs:pv});
+    for(let i=0;i*SF_CHUNK<Math.max(1,cat.length);i++)docs['c_'+i]=JSON.stringify({k:'m',o:i,items:cat.slice(i*SF_CHUNK,(i+1)*SF_CHUNK)});
+    const col=FB.fs.collection('storefront');let n=0;const same=(a,b)=>typeof a==='object'?(b&&typeof b==='object'&&a.keys.join()===b.keys.join()):a===b;
+    /* pictures first, then the lists that point at them */
+    for(const [id,x] of Object.entries(docs))if(x.k==='i'&&!same(x,prev[id])){const im={};x.keys.forEach(k=>im[k]=IM[k]);await col.doc(id).set({k:'i',im,at:Date.now()});n++}
+    for(const [id,x] of Object.entries(docs))if(typeof x==='string'&&x!==prev[id]){await col.doc(id).set(Object.assign(JSON.parse(x),{at:Date.now()}));n++}
+    for(const id of Object.keys(prev))if(!(id in docs)){await col.doc(id).delete();n++}
+    fbLast=docs;fbState.st='ok';fbState.at=n?Date.now():(fbState.at||Date.now());fbState.err='';refreshPubBox();
   }catch(e){fbState.st='err';fbState.err=fbMsg(e);refreshPubBox();clearTimeout(fbSyncT);fbSyncT=setTimeout(fbSync,20000)}
 }
-/* customers on hosting: read the storefront live */
+/* customers on hosting: read the storefront live, pictures from the phone's cache */
 let FBSTORE=null,fbStoreSub=false,fbEmpty=false;
-function fbStoreBuild(docs){
+const sfDB=(()=>{let p=null;const open=()=>p||(p=new Promise((res,rej)=>{try{const r=indexedDB.open('dz-sf',1);r.onupgradeneeded=()=>r.result.createObjectStore('packs');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}catch(e){rej(e)}}));
+  const tx=async(m,f)=>{const db=await open();return new Promise((res,rej)=>{const t=db.transaction('packs',m);const r=f(t.objectStore('packs'));t.oncomplete=()=>res(r&&r.result);t.onerror=()=>rej(t.error)})};
+  return {get:k=>tx('readonly',s=>s.get(k)).catch(()=>null),put:(k,v)=>tx('readwrite',s=>s.put(v,k)).catch(()=>null),keys:()=>tx('readonly',s=>s.getAllKeys()).catch(()=>[]),del:k=>tx('readwrite',s=>s.delete(k)).catch(()=>null)}})();
+const SFMEM={};
+async function sfPack(id,ver){
+  if(SFMEM[id]&&SFMEM[id].v===ver)return SFMEM[id].im;
+  const c=await sfDB.get(id);if(c&&c.v===ver){SFMEM[id]=c;return c.im}
+  const s=await FB.fs.collection('storefront').doc(id).get();const im=(s.exists&&s.data().im)||{};
+  const o={v:ver,im};SFMEM[id]=o;sfDB.put(id,o);return im;
+}
+async function fbStoreBuild(docs){
   const c=docs.find(d=>d.id==='_cfg');const cd=c?c.data():{};
-  const cat=docs.filter(d=>d.id.startsWith('p_')).map(d=>{const x=Object.assign({},d.data());delete x.at;return x}).sort((a,b)=>N(a.o)-N(b.o)).map(x=>{delete x.o;return x});
-  const at=Math.max(0,...docs.map(d=>N(d.data().at)));
-  return {cfg:cd.cfg||{},cat,ads:cd.ads||[],tx:cd.tx||{},th:cd.th||{},at};
+  if(!cd.packs){/* older layout: one document per product */
+    const cat=docs.filter(d=>d.id.startsWith('p_')).map(d=>{const x=Object.assign({},d.data());delete x.at;return x}).sort((a,b)=>N(a.o)-N(b.o)).map(x=>{delete x.o;return x});
+    return {cfg:cd.cfg||{},cat,ads:cd.ads||[],tx:cd.tx||{},th:cd.th||{},at:Math.max(0,...docs.map(d=>N(d.data().at)))}}
+  const IM={};const pk=cd.packs||{};
+  (await Promise.all(Object.entries(pk).map(([id,v])=>sfPack(id,v).catch(()=>({}))))).forEach(m=>Object.assign(IM,m));
+  sfDB.keys().then(ks=>(ks||[]).forEach(k=>{if(!(k in pk))sfDB.del(k)}));
+  const cat=[].concat(...docs.filter(d=>d.id.startsWith('c_')).map(d=>d.data()).sort((a,b)=>N(a.o)-N(b.o)).map(x=>x.items||[])).map(x=>Object.assign({},x,{i:IM[x.ih]||''}));
+  const ads=(cd.ads||[]).map(a=>Object.assign({},a,{img:IM[a.ih]||''}));
+  return {cfg:cd.cfg||{},cat,ads,tx:cd.tx||{},th:cd.th||{},at:Math.max(0,...docs.map(d=>N(d.data().at)))};
+}
+function fbStoreApply(d){
+  const first=!FBSTORE,look=JSON.stringify([d.tx,d.th]);
+  const oldLook=FBSTORE?JSON.stringify([FBSTORE.tx,FBSTORE.th]):'';FBSTORE=d;
+  if(!document.body.classList.contains('store-on')||adminBooted)return;
+  const f=document.getElementById('dzStore');
+  if(first||!f||look!==oldLook)showStore();
+  else try{f.contentWindow.postMessage({dz:'data',data:d},'*')}catch(e){}
 }
 async function fbStoreStart(){
   if(fbStoreSub)return;fbStoreSub=true;
   const cfg=fbCfg();if(!cfg)return;
   try{await fbStart(cfg)}catch(e){return}
-  FB.fs.collection('storefront').onSnapshot(s=>{
-    if(!s.docs.length){fbEmpty=true;return}
-    const d=fbStoreBuild(s.docs),first=!FBSTORE,look=JSON.stringify([d.tx,d.th]);
-    const oldLook=FBSTORE?JSON.stringify([FBSTORE.tx,FBSTORE.th]):'';FBSTORE=d;
-    if(!document.body.classList.contains('store-on')||adminBooted)return;
-    const f=document.getElementById('dzStore');
-    if(first||!f||look!==oldLook)showStore();
-    else try{f.contentWindow.postMessage({dz:'data',data:d},'*')}catch(e){}
-  },()=>{});
+  let seq=0,legacy=false;
+  FB.fs.collection('storefront').where('k','==','m').onSnapshot(async s=>{
+    const my=++seq;
+    if(!s.docs.length){
+      if(legacy)return;legacy=true;/* not moved to the new layout yet: read the old one once */
+      try{const all=await FB.fs.collection('storefront').get();if(!all.docs.length){fbEmpty=true;return}const d=await fbStoreBuild(all.docs);if(my===seq)fbStoreApply(d)}catch(e){fbEmpty=true}
+      return}
+    try{const d=await fbStoreBuild(s.docs);if(my===seq)fbStoreApply(d)}catch(e){}
+  },()=>{fbEmpty=true});
 }
 /* setup wizard + guide */
 const FB_RULES=`rules_version = '2';
