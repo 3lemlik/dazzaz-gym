@@ -2906,7 +2906,7 @@ async function aiReply(v,fb){
   const host=aiHost();
   const t=push('bot','<span class="dzb-typing"><i></i><i></i><i></i></span>');busy=true;chips([]);
   let txt='';
-  try{txt=await Promise.race([host({sys:aiSys(),turns:aiTurns(),key:CFG.aiKey,model:CFG.aiModel}),new Promise((_,rj)=>setTimeout(()=>rj(new Error('timeout')),25000))])}
+  try{txt=await Promise.race([host({sys:aiSys(),turns:aiTurns(),key:CFG.aiKey,model:CFG.aiModel}),new Promise((_,rj)=>setTimeout(()=>rj(new Error('timeout')),45000))])}
   catch(e){const m=String(e&&(e.code||e.message)||e||'');try{console.warn('[Dozy AI]',e);window.__dzAIerr=m}catch(x){}AIDOWN=Date.now()+(/nocfg/.test(m)?864e5:45000);txt=''}
   t.remove();busy=false;
   if(!txt||!txt.trim()){HIST.push({r:'m',t:plain(fb.t)});return say(fb)}
@@ -4839,14 +4839,20 @@ async function aiCore(key){
   }
   throw err||{code:'sdk'};
 }
+const AI_MODELS=['gemini-flash-latest','gemini-2.5-flash','gemini-flash-lite-latest','gemini-2.5-flash-lite','gemini-3.8-flash'];
+const aiLim=(p,ms)=>Promise.race([p,new Promise((_,rj)=>setTimeout(()=>rj({code:'model-timeout',message:'ما رد خلال '+(ms/1000)+' ثانية'}),ms))]);
+async function aiOnce(G,ai,m,sys,turns,ms){
+  const model=G.getGenerativeModel(ai,{model:m,systemInstruction:sys,generationConfig:{temperature:.9,maxOutputTokens:1200}},{timeout:ms});
+  const r=await aiLim(model.generateContent({contents:turns}),ms);
+  const t=r&&r.response&&r.response.text?r.response.text():'';if(!t)throw {code:'empty',message:'رجع جواب فارغ'};return t;
+}
 window.dzAI=async function(p){
   const {G,ai}=await aiCore(String(p.key||''));
-  const list=AIGOOD?[AIGOOD]:[...new Set([p.model,'gemini-3.8-flash','gemini-2.5-flash','gemini-flash-latest'].filter(Boolean))];
+  const list=AIGOOD?[AIGOOD]:[...new Set([p.model,...AI_MODELS].filter(Boolean))];
   let last;
   for(const m of list){
-    try{const model=G.getGenerativeModel(ai,{model:m,systemInstruction:p.sys,generationConfig:{temperature:.9,maxOutputTokens:800}});
-      const r=await model.generateContent({contents:p.turns});AIGOOD=m;return r.response.text()}
-    catch(e){last=e;if(!/not.?found|404|not supported|unsupported|is not available/i.test(String(e&&e.message||'')))throw e}
+    try{const t=await aiOnce(G,ai,m,p.sys,p.turns,18000);AIGOOD=m;return t}
+    catch(e){last=e;if(AIGOOD===m)AIGOOD='';if(!/not.?found|404|not supported|unsupported|is not available|model-timeout|empty|deprecated|retired/i.test(String((e&&e.code||'')+' '+(e&&e.message||''))))throw e}
   }
   throw last;
 };
@@ -4867,17 +4873,15 @@ async function aiTest(){
   set('ac','⏳ جاري…');
   try{const t=await lim(M.C.getToken(M.ac,false),15000,'appcheck-timeout');if(!t||!t.token)throw {code:'appcheck-empty',message:'ما رجع توكن'};set('ac','✅ تمام')}
   catch(e){set('ac','❌ فشل',msgOf(e));AIM=null;return res(`<p class="sub"><b>المشكلة بالحماية.</b> تأكد من هاي الشغلات:</p><ol class="fb-steps"><li><span>الـ Site key ملصوق صح (يبدي بـ <span dir="ltr">6LdHtwku</span>) وبدون فراغات.</span></li><li><span>بصفحة reCAPTCHA ← <b>GO TO SETTINGS</b> ← Domains: موجود <span dir="ltr">3lemlik.github.io</span>.</span></li><li><span>فعّل الخدمة: افتح <span dir="ltr">console.cloud.google.com/apis/library/recaptchaenterprise.googleapis.com</span> ← اختار مشروع dazzaz-gym ← <b>Enable</b>.</span></li><li><span>Firebase ← App Check ← Apps: تطبيق الويب <b>Registered</b> ويه Fraud Defense بنفس الـ Site key.</span></li></ol>`)}
-  set('ai','⏳ جاري…');const t0=Date.now();
-  try{const t=await lim(window.dzAI({sys:'انت كابتن دوزي، جاوب بجملة وحدة قصيرة باللهجة العراقية.',turns:[{role:'user',parts:[{text:'هلا كابتن، شلونك؟'}]}],key:c.aiKey,model:c.aiModel}),40000,'ai-timeout');
-    set('ai','✅ تمام ('+((Date.now()-t0)/1000).toFixed(1)+' ث • '+(AIGOOD||'-')+')');
-    res(`<div class="note" style="font-size:15px">🤖 «${esc(t)}»</div><p class="sub">${c.aiOn?'✅ العقل شغّال والزبائن يحچون وياه هسه.':'⚠️ الحالة بعدها <b>مطفي</b>، خليها شغّال واحفظ.'}</p>`)}
-  catch(e){const m=msgOf(e);set('ai','❌ فشل',m);
-    let why='صوّر هاي الشاشة وابعثها حتى نصلحه.';
-    if(/api-not-enabled|not been used|disabled|SERVICE_DISABLED/i.test(m))why='الخدمة مو مفعّلة: Firebase ← AI Logic ← كمّل التفعيل (Enable API).';
-    else if(/not.?found|404|not supported/i.test(m))why='اسم الموديل غلط: امسح خانة الموديل وخليها فارغة واحفظ.';
-    else if(/quota|429|exhausted|rate/i.test(m))why='انتهت الحدود المجانية مؤقتاً، جرّب بعد شوية.';
-    else if(/app.?check|401|unauthenticated|403|permission/i.test(m))why='Google رفض الطلب بسبب الحماية: تأكد إن Firebase AI Logic بتبويب App Check ← APIs حالته Enforced أو Monitoring، وإن التطبيق Registered.';
-    res('<p class="sub">'+why+'</p>')}
+  set('ai','⏳ جاري… (نجرّب الموديلات وحدة وحدة)');
+  const models=[...new Set([c.aiModel,...AI_MODELS].filter(Boolean))];const rows=[];let ok=null;
+  for(const m of models){const t0=Date.now();
+    try{const t=await aiOnce(M.G,M.ai,m,'انت كابتن دوزي، جاوب بجملة وحدة قصيرة باللهجة العراقية.',[{role:'user',parts:[{text:'هلا كابتن، شلونك؟'}]}],20000);
+      rows.push(`<li><span dir="ltr"><b>${esc(m)}</b> ✅ ${((Date.now()-t0)/1000).toFixed(1)}s</span></li>`);ok={m,t};break}
+    catch(e){rows.push(`<li><span dir="ltr"><b>${esc(m)}</b> ❌ ${esc(msgOf(e).slice(0,220))}</span></li>`)}
+    res('<ol class="fb-steps" style="font-size:12px">'+rows.join('')+'</ol>')}
+  res('<ol class="fb-steps" style="font-size:12px">'+rows.join('')+'</ol>'+(ok?`<div class="note" style="font-size:15px">🤖 «${esc(ok.t)}»</div><p class="sub">✅ لكينا موديل شغّال وحفظناه بالإعدادات.${c.aiOn?' الزبائن يحچون ويه العقل هسه.':' ⚠️ الحالة بعدها <b>مطفي</b>، خليها شغّال واحفظ.'}</p>`:'<p class="sub">ولا موديل اشتغل. صوّر هاي الشاشة وابعثها.</p>'));
+  if(ok){set('ai','✅ تمام');AIGOOD=ok.m;if(c.aiModel!==ok.m){ui.stDraft.aiModel=ok.m;saveStoreCfg(false);const i=document.getElementById('stAiModel');if(i)i.value=ok.m}}else set('ai','❌ فشل')
 }
 function aiGuide(){
   openSheet(`<h3>تشغيل عقل كابتن دوزي</h3><p class="sub">مرة وحدة بس، وبعدها دوزي يسولف بكل المواضيع.</p>
