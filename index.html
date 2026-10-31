@@ -1195,7 +1195,7 @@ body.store-on .app,body.store-on #sheetRoot,body.store-on .toasts{display:none!i
     <div class="sfoot">
       <button class="gear bell" data-act="notif" aria-label="الإشعارات" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="bl">الإشعارات</span><b class="nbadge" hidden></b></button>
       <button class="gear" data-go="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>الإعدادات</span></button>
-      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 56</small></div>
+      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 57</small></div>
       <div class="sync" id="sync"><i></i><span>جاري الاتصال</span></div>
       <div class="who" id="who"></div>
     </div>
@@ -2202,7 +2202,7 @@ function renderTop(){
   $('#ann').innerHTML=CFG.ann?`<div class="wrap">${esc(CFG.ann)}</div>`:'';
   document.querySelectorAll('.perkDel').forEach(e=>e.textContent=`المثنى ${CFG.bag?fmt(CFG.bag)+' د.ع':''} • باقي المحافظات ${CFG.oth?fmt(CFG.oth)+' د.ع':''}`);
   $('#footWa').innerHTML=CFG.wa?`واتساب: <span class="tel">+${esc(CFG.wa)}</span>`:'';
-  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 56${hasOrd?' • sync':''}</small>`)}
+  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 57${hasOrd?' • sync':''}</small>`)}
   $('#catAt').textContent=DATA.at?'UPDATED '+new Date(DATA.at).toISOString().slice(0,10).replaceAll('-','.'):'';
   const ha=$('#heroArt');if(ha&&!ha.firstChild)ha.innerHTML=dzEmblem();
 }
@@ -5374,12 +5374,13 @@ function dzNotify(ph,key,text){try{const u=`https://api.callmebot.com/whatsapp.p
 window.dzOrder=async function(o){
   if(!CAN_FB||!fbCfg())throw {code:'nocfg'};
   await fbStart(fbCfg());
-  const cat=(FBSTORE&&FBSTORE.cat)||[];const nm=id=>{const p=cat.find(x=>x.id===id);return p?(p.n+(p.f?' ('+p.f+')':'')):''};
+  const src=(!adminBooted&&FBSTORE)?FBSTORE:(()=>{try{return storeData()}catch(e){return FBSTORE||PUB}})();
+  const cat=(src&&src.cat)||[];const nm=id=>{const p=cat.find(x=>x.id===id);return p?(p.n+(p.f?' ('+p.f+')':'')):''};
   const p=JSON.parse(JSON.stringify(o.payload||{}));/* the store lives in an iframe: rebuild its arrays/objects in this window or Firestore rejects them (invalid-argument) */
   const doc={no:String(p.no),customer:String(p.c||'').slice(0,80),phone:String(p.ph||'').slice(0,20),prov:String(p.g||'').slice(0,30),addr:String(p.a||'').slice(0,200),note:String(p.m||'').slice(0,300),delivery:Math.max(0,N(p.d)),placedAt:N(p.t)||Date.now(),status:'new',src:'store',createdAt:Date.now(),
     items:(p.i||[]).slice(0,30).map(([pid,qty,price])=>({productId:String(pid),qty:Math.max(1,Math.floor(N(qty))),price:N(price),name:nm(String(pid)).slice(0,120)}))};
   await FB.fs.collection('orders').doc(doc.no).set(doc);
-  try{const c=(FBSTORE&&FBSTORE.cfg)||{};if(c.tgTok&&c.tgChat)dzTg(c.tgTok,c.tgChat,'🛒 '+String(o.msg||'').split('\nرمز الطلب')[0].replace(/^طلب جديد من متجر الدزاز جم 🛒\n?/,'طلب جديد من المتجر\n'))}catch(e){}
+  try{let c=(src&&src.cfg)||{};if(!c.tgTok&&adminBooted)try{c=stCfgSaved()}catch(e){}if(c.tgTok&&c.tgChat)dzTg(c.tgTok,c.tgChat,'🛒 '+String(o.msg||'').split('\nرمز الطلب')[0].replace(/^طلب جديد من متجر الدزاز جم 🛒\n?/,'طلب جديد من المتجر\n'))}catch(e){}
   return doc.no;
 };
 /* Captain Dozy's real brain: Gemini through Firebase AI Logic, protected by App Check (reCAPTCHA v3) */
