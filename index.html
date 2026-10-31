@@ -1842,6 +1842,7 @@ body.intro-on .dzb{display:none}
 @keyframes bars{50%{height:20px}}
 .dzb-spk{margin-inline-start:auto;width:36px;height:36px;border:1px solid var(--line-2);background:var(--surface-2);color:var(--muted);cursor:pointer;display:grid;place-items:center}
 
+.dzr .r-aura{animation:rAura 3s ease-in-out infinite;transform-origin:60px 80px}@keyframes rAura{50%{opacity:.55;transform:scale(.94)}}
 /* avatar v2 motion */
 .dz-face .fx-blink,.dzr .fx-blink{transform-box:fill-box;transform-origin:center;animation:dzBlink2 5s infinite}
 @keyframes dzBlink2{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
@@ -3262,7 +3263,7 @@ const FACE=(k={})=>`<g class="${k.ant||'fx-ant'}"><path d="M32 10.5V5.5" stroke=
  <path d="M32 9.2c12.6 0 20.2 6.6 20.2 18.6v5.8C52.2 46.2 44.2 53.4 32 53.4S11.8 46.2 11.8 33.6v-5.8C11.8 15.8 19.4 9.2 32 9.2z" fill="url(#dzf2m)" stroke="url(#dzf2r)" stroke-width="1.7"/>
  <path d="M18.6 17.6c3.6-3.8 8.2-5.5 13.4-5.5s9.8 1.7 13.4 5.5" fill="none" stroke="#fff" stroke-opacity=".24" stroke-width="1.4" stroke-linecap="round"/>
  <path d="M14.8 41.5c3.6 6.4 9.6 9.6 17.2 9.6s13.6-3.2 17.2-9.6" fill="none" stroke="#ed1c24" stroke-opacity=".35" stroke-width="1"/>
- <path d="M33.7 12.8h-3.5l-1.7 4.6h2.4l-1.2 3.7 4.6-5.5h-2.5z" fill="url(#dzf2r)"/>
+ <g fill="url(#dzf2r)" transform="translate(27.3 12.6) scale(.0345)">${DZLOGO}</g>
  <rect x="15.2" y="22.6" width="33.6" height="17.6" rx="8.8" fill="url(#dzf2v)" stroke="#ed1c24" stroke-opacity=".6" stroke-width="1"/>
  <rect x="15.2" y="22.6" width="33.6" height="17.6" rx="8.8" fill="none" stroke="#fff" stroke-opacity=".06" stroke-width="2.4"/>
  <g class="${k.eyes||'fx-eyes'}"><g class="fx-blink"><ellipse cx="25" cy="31.4" rx="5.6" ry="5.2" fill="url(#dzf2e)"/><ellipse cx="39" cy="31.4" rx="5.6" ry="5.2" fill="url(#dzf2e)"/>
@@ -3273,30 +3274,51 @@ const FACE=(k={})=>`<g class="${k.ant||'fx-ant'}"><path d="M32 10.5V5.5" stroke=
 const face=(cls='')=>`<svg class="dz-face ${cls}" viewBox="0 0 64 64" aria-hidden="true"><defs>${FDEF}</defs>${FACE()}
  <path d="M22.4 53.2h19.2l2.6 7H19.8z" fill="url(#dzf2m)" stroke="#ed1c24" stroke-width="1.1"/><rect x="29" y="55.6" width="6" height="2.1" rx="1.05" fill="#ff3b45"/></svg>`;
 /* full-body robot: articulated arms/legs, jetpack, dumbbells */
-const bot=(cls='')=>{const M='url(#dzrM)',R='url(#dzrR)';
- const arm=(s)=>{const L=s==='L',x=L?27:82,cx=L?32.5:87.5;return `<g class="r-arm${s}"><rect x="${x}" y="62" width="11" height="22" rx="5.5" fill="${M}" stroke="#ed1c24" stroke-width="1.2"/>
-  <g class="r-fore${s}"><rect x="${x+.5}" y="82" width="10" height="19" rx="5" fill="${M}" stroke="rgba(255,255,255,.22)"/><circle cx="${cx}" cy="104" r="5.6" fill="#e9e9ee"/>
-  <g class="r-db"><rect x="${cx-11}" y="102.6" width="22" height="2.8" rx="1.4" fill="#c9c9cf"/><rect x="${cx-14}" y="98" width="5" height="12" rx="1.5" fill="#ed1c24"/><rect x="${cx+9}" y="98" width="5" height="12" rx="1.5" fill="#ed1c24"/></g></g>
-  <circle cx="${cx}" cy="64" r="6.4" fill="${R}"/></g>`};
- const leg=(s)=>{const L=s==='L',x=L?45:63;return `<g class="r-leg${s}"><rect x="${x}" y="98" width="12" height="23" rx="5" fill="${M}" stroke="rgba(255,255,255,.2)"/>
-  <g class="r-shin${s}"><rect x="${x+.5}" y="119" width="11" height="20" rx="5" fill="${M}" stroke="#ed1c24" stroke-width="1.2"/><path d="${L?'M42 140a3 3 0 0 1 3-3h14v7H42z':'M61 137h14a3 3 0 0 1 3 3v4H61z'}" fill="${R}"/></g></g>`};
+/* full-body Captain Dozy v2: armored athlete robot with the gym logo on the chest */
+const DZLOGO='<path d="M50 5H168L98 88H142L95 175H25L91 53L5 86Z"/><path d="M186 5A84 85 0 0 1 186 175H115L213 68H162Z"/>';
+const bot=(cls='')=>{const M='url(#dzrM)',R='url(#dzrR)',A='url(#dzrA)';
+ const arm=(s)=>{const L=s==='L',cx=L?32.5:87.5;return `<g class="r-arm${s}">
+  <rect x="${cx-5.2}" y="62" width="10.4" height="23" rx="5.2" fill="${M}" stroke="rgba(255,255,255,.14)"/>
+  <rect x="${cx-5.6}" y="70" width="11.2" height="3" rx="1.5" fill="#ed1c24" opacity=".85"/>
+  <g class="r-fore${s}"><circle cx="${cx}" cy="84" r="4.4" fill="#121218" stroke="#ed1c24" stroke-width=".9"/>
+   <path d="M${cx-5.2} 86h10.4l-1 13a2 2 0 0 1-2 2h-4.4a2 2 0 0 1-2-2z" fill="${A}" stroke="#ed1c24" stroke-width="1"/>
+   <rect x="${cx-5.6}" y="90" width="11.2" height="3.4" rx="1.7" fill="${R}"/><circle cx="${cx}" cy="96.5" r=".9" fill="#ff8a90"/>
+   <circle cx="${cx}" cy="104.2" r="5.6" fill="url(#dzrK)" stroke="rgba(0,0,0,.4)" stroke-width=".6"/>
+   <g class="r-db"><rect x="${cx-11}" y="102.8" width="22" height="2.8" rx="1.4" fill="#d6d6dc"/><rect x="${cx-14.5}" y="97.5" width="5.2" height="13" rx="1.6" fill="${R}"/><rect x="${cx+9.3}" y="97.5" width="5.2" height="13" rx="1.6" fill="${R}"/><rect x="${cx-16.6}" y="100" width="2.4" height="8" rx="1" fill="#a3121c"/><rect x="${cx+14.2}" y="100" width="2.4" height="8" rx="1" fill="#a3121c"/></g></g>
+  <ellipse cx="${cx}" cy="62.5" rx="8.6" ry="7.2" fill="${R}" stroke="#a3121c" stroke-width=".8"/><ellipse cx="${cx-(L?2:-2)}" cy="59.8" rx="4" ry="2" fill="#fff" opacity=".35"/></g>`};
+ const leg=(s)=>{const L=s==='L',c=L?51:69;return `<g class="r-leg${s}">
+  <rect x="${c-6.6}" y="97" width="13.2" height="25" rx="6.2" fill="${M}" stroke="rgba(255,255,255,.16)"/>
+  <rect x="${c-4}" y="103" width="2" height="12" rx="1" fill="#ed1c24" opacity=".55"/>
+  <g class="r-shin${s}"><path d="M${c-6.2} 121h12.4l-1.4 17h-9.6z" fill="${A}" stroke="#ed1c24" stroke-width="1.1"/>
+   <circle cx="${c}" cy="121.5" r="5" fill="${R}" stroke="#a3121c" stroke-width=".7"/><circle cx="${c-1.4}" cy="120.1" r="1.4" fill="#fff" opacity=".45"/>
+   <path d="${L?'M40.5 144.5a5 5 0 0 1 5-6.5h11v6.5z':'M63.5 138h11a5 5 0 0 1 5 6.5h-16z'}" fill="${M}" stroke="#ed1c24" stroke-width="1"/>
+   <rect x="${L?40.5:63.5}" y="144.2" width="16" height="2.8" rx="1.4" fill="${R}"/>
+   <circle cx="${L?44:76}" cy="141.6" r="1" fill="#ff8a90"/></g></g>`};
  return `<svg class="dzr ${cls}" viewBox="0 0 120 172" aria-hidden="true"><defs>
- <linearGradient id="dzrM" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a3a46"/><stop offset="1" stop-color="#0f0f15"/></linearGradient>
+ <linearGradient id="dzrM" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a4a58"/><stop offset=".5" stop-color="#22222b"/><stop offset="1" stop-color="#0c0c12"/></linearGradient>
+ <linearGradient id="dzrA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a5a68"/><stop offset=".35" stop-color="#2a2a34"/><stop offset="1" stop-color="#101016"/></linearGradient>
  <linearGradient id="dzrR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff5a62"/><stop offset="1" stop-color="#a3121c"/></linearGradient>
+ <radialGradient id="dzrK" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#9a9aa6"/></radialGradient>
+ <radialGradient id="dzrAura" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ed1c24" stop-opacity=".28"/><stop offset="1" stop-color="#ed1c24" stop-opacity="0"/></radialGradient>
  ${FDEF}<radialGradient id="dzrE"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#ff4b55"/><stop offset="1" stop-color="#ed1c24" stop-opacity="0"/></radialGradient>
  <linearGradient id="dzrF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="#ffc061"/><stop offset=".65" stop-color="#ff3b45"/><stop offset="1" stop-color="#ed1c24" stop-opacity="0"/></linearGradient></defs>
+ <ellipse cx="60" cy="80" rx="52" ry="62" fill="url(#dzrAura)" class="r-aura"/>
  <ellipse class="r-shadow" cx="60" cy="166" rx="26" ry="4.5" fill="rgba(0,0,0,.6)"/>
  <g class="r-all">
   ${leg('L')}${leg('R')}
   <g class="r-up">
-   <g class="r-jet"><rect x="44" y="58" width="10" height="32" rx="4.5" fill="#1b1b22" stroke="#ed1c24" stroke-width="1.2"/><rect x="66" y="58" width="10" height="32" rx="4.5" fill="#1b1b22" stroke="#ed1c24" stroke-width="1.2"/>
-    <g class="r-flame"><path d="M44.5 90Q49 118 53.5 90Z" fill="url(#dzrF)"/><path d="M66.5 90Q71 118 75.5 90Z" fill="url(#dzrF)"/></g></g>
+   <g class="r-jet"><rect x="43" y="57" width="11" height="33" rx="5" fill="#16161d" stroke="#ed1c24" stroke-width="1.2"/><rect x="66" y="57" width="11" height="33" rx="5" fill="#16161d" stroke="#ed1c24" stroke-width="1.2"/><rect x="45" y="86" width="7" height="4" rx="1.5" fill="#2a2a34"/><rect x="68" y="86" width="7" height="4" rx="1.5" fill="#2a2a34"/>
+    <g class="r-flame"><path d="M44.5 90Q49 120 53.5 90Z" fill="url(#dzrF)"/><path d="M66.5 90Q71 120 75.5 90Z" fill="url(#dzrF)"/></g></g>
+   <path d="M40 57Q60 51.5 80 57Q84.5 58.5 84 64.5L79.4 92Q78.4 98.5 72 98.5H48Q41.6 98.5 40.6 92L36 64.5Q35.5 58.5 40 57Z" fill="${M}" stroke="url(#dzf2r)" stroke-width="1.6"/>
+   <path d="M44.5 61.5Q60 57.6 75.5 61.5L72.8 80.5Q60 86 47.2 80.5Z" fill="#06060a" stroke="#ed1c24" stroke-opacity=".7" stroke-width=".9"/>
+   <path d="M47 62.6Q60 59.6 73 62.6" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="1"/>
+   <ellipse cx="60" cy="71.5" rx="14" ry="10" fill="url(#dzf2h)"/>
+   <g class="r-core" fill="#ed1c24" transform="translate(46.6 63.2) scale(.0985)">${DZLOGO}</g>
+   <path d="M52.5 85.6h15M53.6 88.6h12.8" stroke="#fff" stroke-opacity=".12" stroke-width="1" stroke-linecap="round"/>
+   <path d="M38.6 70l2.4 12M81.4 70l-2.4 12" stroke="#ed1c24" stroke-opacity=".6" stroke-width="1.2" stroke-linecap="round"/>
+   <rect x="41.5" y="91.2" width="37" height="6.2" rx="3.1" fill="${R}"/><rect x="55.6" y="91.2" width="8.8" height="6.2" rx="1.2" fill="#fff" opacity=".9"/><g fill="#ed1c24" transform="translate(56.8 92.1) scale(.024)">${DZLOGO}</g>
    ${arm('L')}${arm('R')}
-   <rect x="38" y="56" width="44" height="45" rx="12" fill="${M}" stroke="#ed1c24" stroke-width="1.6"/>
-   <rect x="45" y="63" width="30" height="21" rx="6" fill="#060609" stroke="rgba(255,255,255,.14)"/>
-   <path class="r-core" d="M62.6 65.5h-6l-3.4 8.8h4.6l-2.4 7.2 8.8-10.6h-4.7z" fill="#ed1c24"/>
-   <rect x="40" y="91" width="40" height="6" rx="3" fill="#ed1c24"/><rect x="56" y="91" width="8" height="6" fill="#fff" opacity=".85"/>
-   <g class="r-head"><rect x="56.5" y="47" width="7" height="11" fill="#22222a"/><g transform="translate(23.2 -2.4) scale(1.15)">${FACE({ant:'r-ant',eyes:'r-eyes',mouth:'r-mouth'})}</g></g>
+   <g class="r-head"><rect x="55.5" y="46" width="9" height="12" rx="2" fill="#1c1c24" stroke="#ed1c24" stroke-opacity=".5" stroke-width=".7"/><g transform="translate(23.2 -2.4) scale(1.15)">${FACE({ant:'r-ant',eyes:'r-eyes',mouth:'r-mouth'})}</g></g>
   </g>
  </g></svg>`};
 /* ---------- voice: speech-to-text (browser built-in) + spoken replies ---------- */
