@@ -4833,8 +4833,8 @@ async function aiCore(key){
     try{const B=`https://www.gstatic.com/firebasejs/${v}/`;
       const [A,C,G]=await Promise.all([import(B+'firebase-app.js'),import(B+'firebase-app-check.js'),import(B+'firebase-ai.js')]);
       const app=A.getApps().find(a=>a.name==='dz-ai')||A.initializeApp(cfg,'dz-ai');
-      try{C.initializeAppCheck(app,{provider:new C.ReCaptchaEnterpriseProvider(key),isTokenAutoRefreshEnabled:true})}catch(e){}
-      AIM={key,G,ai:G.getAI(app,{backend:new G.GoogleAIBackend()})};return AIM}
+      let ac=null;try{ac=C.initializeAppCheck(app,{provider:new C.ReCaptchaEnterpriseProvider(key),isTokenAutoRefreshEnabled:true})}catch(e){}
+      AIM={key,G,C,ac,v,ai:G.getAI(app,{backend:new G.GoogleAIBackend()})};return AIM}
     catch(e){err=e}
   }
   throw err||{code:'sdk'};
@@ -4854,18 +4854,30 @@ async function aiTest(){
   const c=stCfg();
   if(!CAN_FB||!fbCfg())return openSheet('<h3>العقل يشتغل بس بالموقع المنشور</h3><p class="sub">افتح النظام من <span dir="ltr">3lemlik.github.io/dazzaz-gym</span> وجرّب من هناك.</p>');
   if(!c.aiKey)return toast('الصق مفتاح reCAPTCHA (Site key) أول','bad');
-  toast('جاري تجربة العقل… انتظر ثواني');
-  const t0=Date.now();
-  try{const t=await Promise.race([window.dzAI({sys:'انت كابتن دوزي، جاوب بجملة وحدة قصيرة باللهجة العراقية.',turns:[{role:'user',parts:[{text:'هلا كابتن، شلونك؟'}]}],key:c.aiKey,model:c.aiModel}),new Promise((_,rj)=>setTimeout(()=>rj({code:'timeout',message:'ما رد خلال 30 ثانية'}),30000))]);
-    openSheet(`<h3>✅ عقل دوزي شغّال</h3><p class="sub">الموديل: <b dir="ltr">${esc(AIGOOD||'-')}</b> • ${((Date.now()-t0)/1000).toFixed(1)} ثانية</p><div class="note" style="font-size:15px">«${esc(t)}»</div><p class="sub">${c.aiOn?'الحالة شغّال، والزبائن يحچون ويه العقل هسه.':'⚠️ الحالة بعدها <b>مطفي</b>، خليها شغّال واحفظ.'}</p>`)}
-  catch(e){const code=String(e&&e.code||''),msg=String(e&&e.message||e||'');
-    let why='';
-    if(/app-check|appCheck|recaptcha|attestation|fetch-status-error|throttled/i.test(code+msg))why='مشكلة بالحماية (App Check): تأكد إن Site key صحيح، وإن الدومين <span dir="ltr">3lemlik.github.io</span> مضاف بإعدادات المفتاح، وإن Fraud Defense مسجّل بـ App Check. أحياناً تحتاج 10 دقايق حتى تتفعل.';
-    else if(/api-not-enabled|not been used|disabled|SERVICE_DISABLED/i.test(code+msg))why='الخدمة مو مفعّلة: روح Firebase ← AI Logic وكمّل التفعيل (Enable API).';
-    else if(/not.?found|404|not supported/i.test(msg))why='اسم الموديل غلط: امسح خانة الموديل وخليها فارغة.';
-    else if(/quota|429|exhausted|rate/i.test(code+msg))why='انتهت الحدود المجانية مؤقتاً، جرّب بعد شوية.';
-    else if(/failed to fetch|import|dynamically|module/i.test(msg))why='ما كدر يحمّل مكتبة الذكاء الاصطناعي. تأكد من الإنترنت وحدّث الصفحة.';
-    openSheet(`<h3>❌ العقل ما اشتغل</h3><p class="sub">${why||'صار خطأ. صوّر هاي الرسالة وابعثها حتى نصلحه.'}</p><div class="note" dir="ltr" style="text-align:left;font-family:var(--tech);font-size:12px;word-break:break-all">${esc((code?code+' — ':'')+msg).slice(0,600)}</div>`)}
+  const S=[['lib','تحميل مكتبة الذكاء الاصطناعي'],['ac','الحماية (App Check)'],['ai','سؤال الموديل']];
+  openSheet(`<h3>🧪 تجربة عقل دوزي</h3><p class="sub">كل خطوة تتجرب لحالها حتى نعرف وين المشكلة بالضبط.</p><ol class="fb-steps" id="aiSteps">${S.map(([k,t])=>`<li data-k="${k}"><span><b>${t}</b> <i class="ais">⏳ ينتظر</i><div class="aie note" dir="ltr" hidden style="text-align:left;font-family:var(--tech);font-size:12px;word-break:break-all;margin-top:6px"></div></span></li>`).join('')}</ol><div id="aiRes"></div>`);
+  const set=(k,st,err)=>{const li=document.querySelector(`#aiSteps [data-k="${k}"]`);if(!li)return;li.querySelector('.ais').textContent=st;const e=li.querySelector('.aie');if(err){e.hidden=false;e.textContent=String(err).slice(0,700)}};
+  const lim=(p,ms,code)=>Promise.race([p,new Promise((_,rj)=>setTimeout(()=>rj({code,message:'ما رد خلال '+(ms/1000)+' ثانية'}),ms))]);
+  const msgOf=e=>String((e&&e.code?e.code+' — ':'')+(e&&e.message||e||''));
+  const res=html=>{const r=document.getElementById('aiRes');if(r)r.innerHTML=html};
+  let M;
+  set('lib','⏳ جاري…');
+  try{M=await lim(aiCore(c.aiKey),20000,'lib-timeout');set('lib','✅ تمام (نسخة '+M.v+')')}
+  catch(e){set('lib','❌ فشل',msgOf(e));return res('<p class="sub">ما كدر يحمّل المكتبة من Google. تأكد من الإنترنت، أو جرّب من متصفح ثاني (Chrome)، وحدّث الصفحة.</p>')}
+  set('ac','⏳ جاري…');
+  try{const t=await lim(M.C.getToken(M.ac,false),15000,'appcheck-timeout');if(!t||!t.token)throw {code:'appcheck-empty',message:'ما رجع توكن'};set('ac','✅ تمام')}
+  catch(e){set('ac','❌ فشل',msgOf(e));AIM=null;return res(`<p class="sub"><b>المشكلة بالحماية.</b> تأكد من هاي الشغلات:</p><ol class="fb-steps"><li><span>الـ Site key ملصوق صح (يبدي بـ <span dir="ltr">6LdHtwku</span>) وبدون فراغات.</span></li><li><span>بصفحة reCAPTCHA ← <b>GO TO SETTINGS</b> ← Domains: موجود <span dir="ltr">3lemlik.github.io</span>.</span></li><li><span>فعّل الخدمة: افتح <span dir="ltr">console.cloud.google.com/apis/library/recaptchaenterprise.googleapis.com</span> ← اختار مشروع dazzaz-gym ← <b>Enable</b>.</span></li><li><span>Firebase ← App Check ← Apps: تطبيق الويب <b>Registered</b> ويه Fraud Defense بنفس الـ Site key.</span></li></ol>`)}
+  set('ai','⏳ جاري…');const t0=Date.now();
+  try{const t=await lim(window.dzAI({sys:'انت كابتن دوزي، جاوب بجملة وحدة قصيرة باللهجة العراقية.',turns:[{role:'user',parts:[{text:'هلا كابتن، شلونك؟'}]}],key:c.aiKey,model:c.aiModel}),40000,'ai-timeout');
+    set('ai','✅ تمام ('+((Date.now()-t0)/1000).toFixed(1)+' ث • '+(AIGOOD||'-')+')');
+    res(`<div class="note" style="font-size:15px">🤖 «${esc(t)}»</div><p class="sub">${c.aiOn?'✅ العقل شغّال والزبائن يحچون وياه هسه.':'⚠️ الحالة بعدها <b>مطفي</b>، خليها شغّال واحفظ.'}</p>`)}
+  catch(e){const m=msgOf(e);set('ai','❌ فشل',m);
+    let why='صوّر هاي الشاشة وابعثها حتى نصلحه.';
+    if(/api-not-enabled|not been used|disabled|SERVICE_DISABLED/i.test(m))why='الخدمة مو مفعّلة: Firebase ← AI Logic ← كمّل التفعيل (Enable API).';
+    else if(/not.?found|404|not supported/i.test(m))why='اسم الموديل غلط: امسح خانة الموديل وخليها فارغة واحفظ.';
+    else if(/quota|429|exhausted|rate/i.test(m))why='انتهت الحدود المجانية مؤقتاً، جرّب بعد شوية.';
+    else if(/app.?check|401|unauthenticated|403|permission/i.test(m))why='Google رفض الطلب بسبب الحماية: تأكد إن Firebase AI Logic بتبويب App Check ← APIs حالته Enforced أو Monitoring، وإن التطبيق Registered.';
+    res('<p class="sub">'+why+'</p>')}
 }
 function aiGuide(){
   openSheet(`<h3>تشغيل عقل كابتن دوزي</h3><p class="sub">مرة وحدة بس، وبعدها دوزي يسولف بكل المواضيع.</p>
