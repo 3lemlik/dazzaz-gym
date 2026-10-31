@@ -2864,8 +2864,8 @@ function moodR(){return {t:pk(MOODR),chips:['شكراً كابتن','حفزني'
 /* ---------- real AI brain (Gemini through the shop's Firebase) ---------- */
 let HIST=[];
 const aiHost=()=>{try{return window.parent!==window&&typeof window.parent.dzAI==='function'?window.parent.dzAI:null}catch(e){return null}};
-const aiOn=()=>!!(CFG.aiOn&&CFG.aiKey&&aiHost()&&navigator.onLine!==false&&!AIDOWN);
-let AIDOWN=false;
+let AIDOWN=0;
+const aiOn=()=>!!(CFG.aiOn&&CFG.aiKey&&aiHost()&&navigator.onLine!==false&&Date.now()>AIDOWN);
 const AIW=r=>aiOn()?{ai:true,fb:r}:r;
 function aiSys(){
   const cat=(DATA.cat||[]).map(p=>`- ${p.n}${p.b?' | '+p.b:''}${p.f?' | نكهة: '+p.f:''}${p.s?' | '+p.s:''} | ${money(N(p.p))} | ${maxQ(p)>0?'متوفر':'نافد'} | القسم: ${p.c}`).join('\n');
@@ -2907,7 +2907,7 @@ async function aiReply(v,fb){
   const t=push('bot','<span class="dzb-typing"><i></i><i></i><i></i></span>');busy=true;chips([]);
   let txt='';
   try{txt=await Promise.race([host({sys:aiSys(),turns:aiTurns(),key:CFG.aiKey,model:CFG.aiModel}),new Promise((_,rj)=>setTimeout(()=>rj(new Error('timeout')),25000))])}
-  catch(e){const m=String(e&&(e.code||e.message)||'');if(/nocfg|app-check|appcheck|permission|api-not-enabled|403|PERMISSION|billing|key/i.test(m))AIDOWN=true;txt=''}
+  catch(e){const m=String(e&&(e.code||e.message)||e||'');try{console.warn('[Dozy AI]',e);window.__dzAIerr=m}catch(x){}AIDOWN=Date.now()+(/nocfg/.test(m)?864e5:45000);txt=''}
   t.remove();busy=false;
   if(!txt||!txt.trim()){HIST.push({r:'m',t:plain(fb.t)});return say(fb)}
   let wa=null;txt=txt.trim();
@@ -3043,7 +3043,7 @@ function mount(){
     <div class="dzb-hello" id="dzbHello" hidden><button class="dzb-hx" aria-label="إغلاق">×</button><b>كابتن دوزي <small>CAPTAIN DOZY</small></b><p id="dzbHelloTxt"></p><div class="dzb-hb"><button class="dzb-go">احچي ويّاي</button><button class="dzb-gomic" aria-label="اطلب بصوتك"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div></div>
    </div>
    <section class="dzb-panel" id="dzbPanel" hidden role="dialog" aria-label="كابتن دوزي">
-    <header><div class="dzb-av">${face()}</div><div><b>كابتن دوزي</b><small><i></i>مساعد الدزاز جم • يشتغل بدون إنترنت</small></div><button class="dzb-spk" id="dzbSpk" aria-pressed="true" title="كابتن دوزي يحچي بصوته" aria-label="صوت كابتن دوزي"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="w" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></button><button class="dzb-x" aria-label="إغلاق">×</button></header>
+    <header><div class="dzb-av">${face()}</div><div><b>كابتن دوزي</b><small><i></i>مساعد الدزاز جم • <span id="dzbMode">${CFG.aiOn&&CFG.aiKey?'عقل ذكي 🧠':'جاهز يساعدك'}</span></small></div><button class="dzb-spk" id="dzbSpk" aria-pressed="true" title="كابتن دوزي يحچي بصوته" aria-label="صوت كابتن دوزي"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="w" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></button><button class="dzb-x" aria-label="إغلاق">×</button></header>
     <div class="dzb-msgs" id="dzbMsgs" aria-live="polite"></div>
     <div class="dzb-chips" id="dzbChips"></div>
     <div class="dzb-live" id="dzbLive" hidden><span class="dzb-bars"><i></i><i></i><i></i><i></i><i></i></span><span id="dzbLiveT">كابتن دوزي يسمعك… احچي</span><button type="button" id="dzbStop">إيقاف</button></div>
@@ -3769,6 +3769,7 @@ document.addEventListener('click',e=>{
     'fb-copyrules':async()=>{try{await navigator.clipboard.writeText(FB_RULES);toast('انتسخت القواعد')}catch(e){const t=$('#fbRules');if(t){t.focus();t.select()}}},
     'ai-guide':()=>aiGuide(),
     'ai-close':closeSheet,
+    'ai-test':()=>aiTest(),
     'fb-dl':()=>{if(isAdmin()&&FB)fbDownloadSite(FB.cfg)},
     'fb-unlink':()=>{if(isAdmin())confirmSheet('فصل هذا الجهاز','هذا الجهاز ما يوصل لقاعدة البيانات لحد ما تربطه من جديد بإيميل وباسورد حساب المحل.','افصل الجهاز',async()=>{try{await FB.auth.signOut()}catch(e){}try{localStorage.removeItem('dz-fb')}catch(e){}location.reload()})},
     'bk-restore':()=>{if(isAdmin()||!S.users.length)bkPick();else toast('الاسترداد للمدير فقط','bad')},
@@ -4546,6 +4547,7 @@ function viewStoreCtl(){
        ${fld('stAiOn','الحالة',`<select id="stAiOn" data-st="aiOn"><option value="">مطفي</option><option value="1" ${c.aiOn?'selected':''}>شغّال</option></select>`)}
        ${fld('stAiModel','الموديل',`<input id="stAiModel" data-st="aiModel" dir="ltr" value="${esc(c.aiModel||'')}" placeholder="تلقائي">`)}
        ${fld('stAiKey','مفتاح reCAPTCHA (Site key)',`<input id="stAiKey" data-st="aiKey" dir="ltr" value="${esc(c.aiKey||'')}" placeholder="6Lc…">`,'full')}
+       <div class="fld full"><button type="button" class="btn ghost" data-act="ai-test">🧪 جرّب عقل دوزي</button><div class="hint">احفظ الإعدادات أول، وبعدين جرّب من الموقع المنشور.</div></div>
       </div>
       <div class="stc-prev"><span class="stc-k">PREVIEW</span>${c.ann?`<div class="stc-ann">${esc(c.ann)}</div>`:''}<div>واتساب <b class="tel">${c.wa?'+'+esc(c.wa):'غير مضاف'}</b></div><div>المثنى <b>${moneyT(c.bag)}</b> • المحافظات <b>${moneyT(c.oth)}</b>${c.free?` • مجاني فوق <b>${moneyT(c.free)}</b>`:''}</div></div>
       <div class="sheet-actions" style="margin-top:12px"><button class="btn primary" data-act="st-save">حفظ الإعدادات</button></div>
@@ -4848,6 +4850,23 @@ window.dzAI=async function(p){
   }
   throw last;
 };
+async function aiTest(){
+  const c=stCfg();
+  if(!CAN_FB||!fbCfg())return openSheet('<h3>العقل يشتغل بس بالموقع المنشور</h3><p class="sub">افتح النظام من <span dir="ltr">3lemlik.github.io/dazzaz-gym</span> وجرّب من هناك.</p>');
+  if(!c.aiKey)return toast('الصق مفتاح reCAPTCHA (Site key) أول','bad');
+  toast('جاري تجربة العقل… انتظر ثواني');
+  const t0=Date.now();
+  try{const t=await Promise.race([window.dzAI({sys:'انت كابتن دوزي، جاوب بجملة وحدة قصيرة باللهجة العراقية.',turns:[{role:'user',parts:[{text:'هلا كابتن، شلونك؟'}]}],key:c.aiKey,model:c.aiModel}),new Promise((_,rj)=>setTimeout(()=>rj({code:'timeout',message:'ما رد خلال 30 ثانية'}),30000))]);
+    openSheet(`<h3>✅ عقل دوزي شغّال</h3><p class="sub">الموديل: <b dir="ltr">${esc(AIGOOD||'-')}</b> • ${((Date.now()-t0)/1000).toFixed(1)} ثانية</p><div class="note" style="font-size:15px">«${esc(t)}»</div><p class="sub">${c.aiOn?'الحالة شغّال، والزبائن يحچون ويه العقل هسه.':'⚠️ الحالة بعدها <b>مطفي</b>، خليها شغّال واحفظ.'}</p>`)}
+  catch(e){const code=String(e&&e.code||''),msg=String(e&&e.message||e||'');
+    let why='';
+    if(/app-check|appCheck|recaptcha|attestation|fetch-status-error|throttled/i.test(code+msg))why='مشكلة بالحماية (App Check): تأكد إن Site key صحيح، وإن الدومين <span dir="ltr">3lemlik.github.io</span> مضاف بإعدادات المفتاح، وإن Fraud Defense مسجّل بـ App Check. أحياناً تحتاج 10 دقايق حتى تتفعل.';
+    else if(/api-not-enabled|not been used|disabled|SERVICE_DISABLED/i.test(code+msg))why='الخدمة مو مفعّلة: روح Firebase ← AI Logic وكمّل التفعيل (Enable API).';
+    else if(/not.?found|404|not supported/i.test(msg))why='اسم الموديل غلط: امسح خانة الموديل وخليها فارغة.';
+    else if(/quota|429|exhausted|rate/i.test(code+msg))why='انتهت الحدود المجانية مؤقتاً، جرّب بعد شوية.';
+    else if(/failed to fetch|import|dynamically|module/i.test(msg))why='ما كدر يحمّل مكتبة الذكاء الاصطناعي. تأكد من الإنترنت وحدّث الصفحة.';
+    openSheet(`<h3>❌ العقل ما اشتغل</h3><p class="sub">${why||'صار خطأ. صوّر هاي الرسالة وابعثها حتى نصلحه.'}</p><div class="note" dir="ltr" style="text-align:left;font-family:var(--tech);font-size:12px;word-break:break-all">${esc((code?code+' — ':'')+msg).slice(0,600)}</div>`)}
+}
 function aiGuide(){
   openSheet(`<h3>تشغيل عقل كابتن دوزي</h3><p class="sub">مرة وحدة بس، وبعدها دوزي يسولف بكل المواضيع.</p>
   <ol class="fb-steps">
