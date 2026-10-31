@@ -3373,6 +3373,14 @@ const hhmm=()=>{const d=new Date();return String(d.getHours()).padStart(2,'0')+'
 let UNREAD=0,REPLY=null,TAP={el:null,t:0},LP=0,CTX=null,CTXT=0;
 const nearBottom=()=>{const b=$('#dzbMsgs');return b.scrollHeight-b.scrollTop-b.clientHeight<160};
 function toBottom(){const b=$('#dzbMsgs');b.scrollTop=b.scrollHeight;UNREAD=0;$('#dzbUnread').textContent='';$('#dzbDown').hidden=true}
+/* after a reply: show the reply from its first line (and the question above it when it fits), not its end */
+function revealBot(m){const box=$('#dzbMsgs');if(!box||!m||!m.isConnected)return;
+  const prev=m.previousElementSibling,ch=box.clientHeight,botTop=m.offsetTop-10,botBottom=m.offsetTop+m.offsetHeight;
+  let top=botTop;if(prev&&prev.classList.contains('me')&&botBottom-(prev.offsetTop-10)<=ch)top=prev.offsetTop-10;
+  if(botBottom-top<=ch)top=Math.max(top,botBottom-ch+16);
+  top=Math.max(0,Math.min(top,box.scrollHeight-ch));
+  box.scrollTo({top,behavior:'smooth'});UNREAD=0;$('#dzbUnread').textContent='';
+  setTimeout(()=>{$('#dzbDown').hidden=nearBottom()},450)}
 function smart(who){if(who==='me'||nearBottom())toBottom();else{UNREAD++;$('#dzbUnread').textContent=UNREAD;$('#dzbDown').hidden=false}}
 const modeTxt=()=>CFG.aiOn&&CFG.aiKey?'متصل الآن • عقل ذكي 🧠':'متصل الآن';
 function setMode(t){const m=$('#dzbMode');if(!m)return;m.classList.toggle('typing',!!t);m.innerHTML=t?'يكتب<span class="dzb-dots"><i></i><i></i><i></i></span>':modeTxt()}
@@ -3434,7 +3442,7 @@ function chips(list){$('#dzbChips').innerHTML=(list||[]).map(c=>`<button type="b
 function say(r){
   busy=true;chips([]);
   const t=push('bot','<span class="dzb-typing"><i></i><i></i><i></i></span>');
-  setTimeout(()=>{t.classList.remove('typing');t.classList.remove('in');void t.offsetWidth;t.classList.add('in');t.querySelector('.dzb-t').innerHTML=md(r.t)+(r.wa&&r.wa.href?`<a class="dzb-wa" href="${esc(r.wa.href)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>راسل ${esc(r.wa.n)} على واتساب</a>`:'')+(r.cards&&r.cards.length?`<div class="dzb-cards">${r.cards.map(card).join('')}</div>`:'');smart('bot');setMode(0);sfx('receive');document.querySelectorAll('#dzbMsgs .me .tk:not(.seen)').forEach(x=>x.classList.add('seen'));saveChat();chips(r.chips);busy=false;speak(r.t,()=>{if(voiceMode&&FLOW&&SR&&open)setTimeout(()=>{if(!listening&&open)listen()},350)})},r.fast?120:Math.min(1300,450+r.t.length*4));
+  setTimeout(()=>{t.classList.remove('typing');t.classList.remove('in');void t.offsetWidth;t.classList.add('in');t.querySelector('.dzb-t').innerHTML=md(r.t)+(r.wa&&r.wa.href?`<a class="dzb-wa" href="${esc(r.wa.href)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>راسل ${esc(r.wa.n)} على واتساب</a>`:'')+(r.cards&&r.cards.length?`<div class="dzb-cards">${r.cards.map(card).join('')}</div>`:'');setMode(0);sfx('receive');document.querySelectorAll('#dzbMsgs .me .tk:not(.seen)').forEach(x=>x.classList.add('seen'));saveChat();chips(r.chips);busy=false;requestAnimationFrame(()=>revealBot(t));speak(r.t,()=>{if(voiceMode&&FLOW&&SR&&open)setTimeout(()=>{if(!listening&&open)listen()},350)})},r.fast?120:Math.min(1300,450+r.t.length*4));
 }
 function ask(v){sfx('send');const qt=REPLY;REPLY=null;if($('#dzbReply'))$('#dzbReply').hidden=true;const mm=push('me',esc(v).replace(/\n/g,'<br>'),{quote:qt});if(qt)mm.dataset.q=JSON.stringify(qt);if(qt)v=v;let r;try{r=reply(v)}catch(e){r={t:'صار خلل بسيط، جرّب تسأل بطريقة ثانية.'}}HIST.push({r:'u',t:(qt?`(رداً على: «${qt.t.slice(0,100)}») `:'')+String(v).slice(0,600)});if(HIST.length>30)HIST=HIST.slice(-30);if(r&&r.ai){aiReply(v,r.fb);return}if(r&&!r.wa&&fitTopic(AR(v),r))r=coachTail(r);HIST.push({r:'m',t:plain(r.t)});say(r)}
 /* choreography */
