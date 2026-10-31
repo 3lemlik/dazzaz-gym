@@ -2086,7 +2086,7 @@ function readFeed(){
 }
 function applyFeed(f){
   DATA.cat=f.cat;DATA.at=N(f.at);
-  const c=f.cfg;if(c){['bag','oth','free'].forEach(k=>{if(c[k]!=null&&c[k]!=='')CFG[k]=Math.max(0,N(c[k]))});if(c.ann!=null)CFG.ann=String(c.ann).slice(0,140);if(/^9647\d{9}$/.test(String(c.wa||'')))CFG.wa=String(c.wa);CFG.coach=/^9647\d{9}$/.test(String(c.coach||''))?String(c.coach):'';if(c.coachN)CFG.coachN=String(c.coachN).slice(0,30);CFG.aiOn=!!c.aiOn;CFG.aiKey=String(c.aiKey||'');CFG.aiModel=String(c.aiModel||'');if(c.snd)CFG.snd=String(c.snd);if(c.sndVol!=null&&c.sndVol!=='')CFG.sndVol=N(c.sndVol)}
+  const c=f.cfg;if(c){['bag','oth','free'].forEach(k=>{if(c[k]!=null&&c[k]!=='')CFG[k]=Math.max(0,N(c[k]))});if(c.ann!=null)CFG.ann=String(c.ann).slice(0,140);if(/^9647\d{9}$/.test(String(c.wa||'')))CFG.wa=String(c.wa);CFG.coach=/^9647\d{9}$/.test(String(c.coach||''))?String(c.coach):'';if(c.coachN)CFG.coachN=String(c.coachN).slice(0,30);CFG.aiOn=!!c.aiOn;CFG.aiKey=String(c.aiKey||'');CFG.aiModel=String(c.aiModel||'');if(c.snd)CFG.snd=String(c.snd);if(c.sndVol!=null&&c.sndVol!=='')CFG.sndVol=N(c.sndVol);CFG.autoOrd=!(c.autoOrd===0||c.autoOrd==='0')}
   LIVE=true;
 }
 {const f=readFeed();if(f&&N(f.at)>N(DATA.at))applyFeed(f)}
@@ -2320,7 +2320,19 @@ function place(){
     ...t.lines.map(({l,p})=>`• ${l.qty} × ${p.n}${p.f?' ('+p.f+')':''} = ${money(l.qty*p.p)}`),`—`,
     `المنتجات: ${money(t.sub)}`,`التوصيل: ${t.del?money(t.del):'مجاني'}`,`الإجمالي: ${money(t.total)}`,form.note?`ملاحظات: ${form.note}`:null,``,`رمز الطلب للنظام (لا تعدّله):`,code].filter(x=>x!==null).join('\n');
   const last={no,msg,total:t.total,at:Date.now()};try{localStorage.setItem('dzs-last',JSON.stringify(last))}catch(e){}
+  /* the order also lands in the shop system automatically (WhatsApp flow stays the same) */
+  try{const host=CFG.autoOrd!==false&&window.parent!==window&&typeof window.parent.dzOrder==='function'?window.parent.dzOrder:null;if(host&&!last.saved){host({payload,msg}).then(()=>{last.saved=1;try{localStorage.setItem('dzs-last',JSON.stringify(last))}catch(e){}}).catch(()=>{})}}catch(e){}
   showDone(last);
+}
+function showSent(last){
+  const wa=String(CFG.wa||'').replace(/\D/g,'');
+  openSheet(`<div class="done"><div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div>
+   <div class="eyebrow" style="justify-content:center"><b>ORDER RECEIVED</b><i></i></div>
+   <h3 style="padding:0">وصلنا طلبك ✅</h3>
+   <div class="ono">${esc(last.no)}</div>
+   <div class="steps"><div><i>1</i><span>طلبك انرسل للمحل تلقائياً، ما تحتاج تسوي شي.</span></div><div><i>2</i><span>راح نتصل بيك على رقمك حتى نثبّت الطلب.</span></div><div><i>3</i><span>يوصلك المندوب، وتدفع عند الاستلام.</span></div></div>
+   ${wa?`<a class="btn block" href="https://wa.me/${esc(wa)}?text=${encodeURIComponent('مرحبا، بخصوص طلبي رقم '+last.no)}" target="_blank" rel="noopener">عندك استفسار؟ راسلنا على واتساب</a>`:''}
+   <div class="actions"><button class="btn block" data-act="close">تمام</button></div></div>`);
 }
 function showDone(last){
   const wa=String(CFG.wa||'').replace(/\D/g,'');
@@ -3492,7 +3504,7 @@ Dozy.start();
 /* live updates from the system page (online database on hosting) */
 window.addEventListener('message',e=>{if(e.source!==parent||!e.data||e.data.dz!=='data')return;const d=e.data.data||{};
   DATA.cat=Array.isArray(d.cat)?d.cat:DATA.cat;DATA.ads=Array.isArray(d.ads)?d.ads:DATA.ads;DATA.at=d.at||DATA.at;
-  if(d.cfg){['wa','ann','bag','oth','free','coach','coachN','aiOn','aiKey','aiModel','snd','sndVol'].forEach(k=>{if(d.cfg[k]!==undefined)CFG[k]=d.cfg[k]})}
+  if(d.cfg){['wa','ann','bag','oth','free','coach','coachN','aiOn','aiKey','aiModel','snd','sndVol','autoOrd'].forEach(k=>{if(d.cfg[k]!==undefined)CFG[k]=d.cfg[k]})}
   cart=cart.filter(l=>P(l.id)&&maxQ(P(l.id))>0).map(l=>({id:l.id,qty:Math.min(l.qty,maxQ(P(l.id)))}));save();render();});
 })();
 </scr¤ipt>
@@ -4537,7 +4549,7 @@ function b64d(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='='
 const STORE_DEF={wa:'9647804505005',ann:'',bag:3000,oth:8000,free:3,coach:'',coachN:'كابتن أحمد'};
 ui.oTab=(RESUME&&RESUME.oTab)||'orders';ui.stDraft={};
 const stMeta=()=>S.meta.find(r=>r.id==='store')||{};
-const cfgOut=c=>({wa:String(c.wa||'').replace(/\D/g,''),ann:String(c.ann||'').trim().slice(0,140),bag:Math.max(0,N(c.bag)),oth:Math.max(0,N(c.oth)),free:Math.max(0,N(c.free)),coach:String(c.coach||'').replace(/\D/g,''),coachN:String(c.coachN||'').trim().slice(0,30)||'كابتن أحمد',aiOn:c.aiOn?1:0,aiKey:String(c.aiKey||'').replace(/[^\w-]/g,'').slice(0,80),aiModel:String(c.aiModel||'').replace(/[^\w.\-]/g,'').slice(0,60),snd:['discord','cyber','bubble','retro','glass','off'].includes(c.snd)?c.snd:'discord',sndVol:(c.sndVol===undefined||c.sndVol===null||c.sndVol==='')?60:Math.max(0,Math.min(100,N(c.sndVol)))});
+const cfgOut=c=>({wa:String(c.wa||'').replace(/\D/g,''),ann:String(c.ann||'').trim().slice(0,140),bag:Math.max(0,N(c.bag)),oth:Math.max(0,N(c.oth)),free:Math.max(0,N(c.free)),coach:String(c.coach||'').replace(/\D/g,''),coachN:String(c.coachN||'').trim().slice(0,30)||'كابتن أحمد',aiOn:c.aiOn?1:0,aiKey:String(c.aiKey||'').replace(/[^\w-]/g,'').slice(0,80),aiModel:String(c.aiModel||'').replace(/[^\w.\-]/g,'').slice(0,60),snd:['discord','cyber','bubble','retro','glass','off'].includes(c.snd)?c.snd:'discord',sndVol:(c.sndVol===undefined||c.sndVol===null||c.sndVol==='')?60:Math.max(0,Math.min(100,N(c.sndVol))),autoOrd:(c.autoOrd===0||c.autoOrd==='0')?0:1,cmbPh:String(c.cmbPh||'').replace(/\D/g,''),cmbKey:String(c.cmbKey||'').replace(/[^\w-]/g,'').slice(0,40)});
 const stCfg=()=>cfgOut(Object.assign({},STORE_DEF,stMeta().cfg||{},ui.stDraft));
 async function setMeta(id,data){
   const row=Object.assign({},S.meta.find(r=>r.id===id)||{},data);delete row.id;
@@ -4568,11 +4580,12 @@ function catalogCode(){
 function relTime(t){const s=(Date.now()-t)/1000;if(s<60)return 'قبل لحظات';if(s<3600)return `قبل ${Math.floor(s/60)} دقيقة`;if(s<86400)return `قبل ${Math.floor(s/3600)} ساعة`;return `قبل ${Math.floor(s/86400)} يوم`}
 let stT=0;
 document.addEventListener('input',e=>{const el=e.target.closest('[data-st]');if(!el)return;
-  let v=el.value;if(el.dataset.st==='coach'){const p=normPhoneIQ(v);v=p?'964'+p.slice(1):(v.trim()?'x':'')}if(el.dataset.st==='wa'){const p=normPhoneIQ(v);v=p?'964'+p.slice(1):(v.trim()?'x':'')}
+  let v=el.value;if(el.dataset.st==='cmbPh'){const p=normPhoneIQ(v);v=p?'964'+p.slice(1):(v.trim()?'x':'')}if(el.dataset.st==='coach'){const p=normPhoneIQ(v);v=p?'964'+p.slice(1):(v.trim()?'x':'')}if(el.dataset.st==='wa'){const p=normPhoneIQ(v);v=p?'964'+p.slice(1):(v.trim()?'x':'')}
   ui.stDraft[el.dataset.st]=v;clearTimeout(stT);stT=setTimeout(()=>{const pv=$('.stc-prev');if(!pv)return;const c=stCfg();pv.innerHTML=`<span class="stc-k">PREVIEW</span>${c.ann?`<div class="stc-ann">${esc(c.ann)}</div>`:''}<div>واتساب <b class="tel">${c.wa?'+'+esc(c.wa):'غير مضاف'}</b></div><div>المثنى <b>${moneyT(c.bag)}</b> • المحافظات <b>${moneyT(c.oth)}</b>${c.free?` • مجاني فوق <b>${moneyT(c.free)}</b>`:''}</div>`},120)});
 function normPhoneIQ(v){let d=String(v||'').replace(/\D/g,'');if(d.startsWith('964'))d='0'+d.slice(3);if(d.length===10&&d[0]==='7')d='0'+d;return /^07\d{9}$/.test(d)?d:''}
 async function saveStoreCfg(loud){
   if(ui.stDraft.wa==='x'){if(loud)toast('رقم الواتساب لازم يكون عراقي يبدي بـ 07 ومن 11 رقم','bad');return false}
+  if(ui.stDraft.cmbPh==='x'){if(loud)toast('رقم استلام الإشعار لازم يكون عراقي يبدي بـ 07','bad');return false}
   if(ui.stDraft.coach==='x'){if(loud)toast('رقم واتساب المدرب لازم يكون عراقي يبدي بـ 07 ومن 11 رقم','bad');return false}
   if(!Object.keys(ui.stDraft).length)return true;
   const cfg=stCfg();
@@ -4915,6 +4928,8 @@ function viewStoreCtl(){
        ${fld('stAnn','الشريط الأحمر بأعلى المتجر',`<input id="stAnn" data-st="ann" value="${esc(c.ann)}" placeholder="مثلاً: خصم 10% على البروتين">`,'full')}
        ${fld('stCoachN','اسم المدرب (كابتن دوزي يحوّل عليه)',`<input id="stCoachN" data-st="coachN" value="${esc(c.coachN||'كابتن أحمد')}" placeholder="كابتن أحمد">`)}
        ${fld('stCoach','واتساب المدرب',`<input id="stCoach" data-st="coach" type="tel" dir="ltr" style="text-align:right" value="${c.coach?'0'+esc(String(c.coach).replace(/^964/,'')):''}" placeholder="فارغ = رقم المحل">`)}
+       <div class="fld full" style="margin-top:6px;padding-top:12px;border-top:1px solid var(--line)"><label>⚡ الطلبات تنزل بالنظام تلقائياً</label></div>
+       ${fld('stAutoOrd','الحالة',`<select id="stAutoOrd" data-st="autoOrd"><option value="1" ${c.autoOrd!==0?'selected':''}>شغّال: كل طلب ينزل بالنظام ويطلع إشعار</option><option value="0" ${c.autoOrd===0?'selected':''}>مطفي: بس رسالة الواتساب</option></select>`,'full')}
        <div class="fld full" style="margin-top:6px;padding-top:12px;border-top:1px solid var(--line)"><label>🔔 أصوات الدردشة</label></div>
        ${fld('stSnd','نمط الأصوات',`<select id="stSnd" data-st="snd">${[['discord','ديسكورد 🎮'],['cyber','سايبر / خيال علمي 🛸'],['bubble','فقاعات ناعمة 🫧'],['retro','ريترو 8-بت 👾'],['glass','كريستال 💎'],['off','بدون أصوات 🔕']].map(([k,l])=>`<option value="${k}" ${(c.snd||'discord')===k?'selected':''}>${l}</option>`).join('')}</select>`)}
        ${fld('stSndVol','مستوى الصوت',`<div style="display:flex;align-items:center;gap:10px"><input id="stSndVol" data-st="sndVol" type="range" min="0" max="100" step="5" value="${c.sndVol==null?60:c.sndVol}" style="flex:1;accent-color:var(--red)"><button type="button" class="btn ghost" data-act="snd-test" style="min-height:40px;padding:0 12px">▶︎ جرّب</button></div>`)}
@@ -5082,7 +5097,7 @@ const FB_ERR={'auth/invalid-credential':'الإيميل أو الباسورد غ
 const fbMsg=e=>FB_ERR[(e&&e.code)||'']||((e&&e.message)?('خطأ: '+e.message):'صار خطأ غير معروف.');
 function listen(){
   COLLS.forEach(c=>{
-    db.collection(c).onSnapshot(snap=>{S[c]=snap.docs.map(x=>({id:x.id,...x.data()}));loaded[c]=true;schedule()},
+    db.collection(c).onSnapshot(snap=>{if(c==='orders'&&loaded[c]){try{snap.docChanges().forEach(ch=>{const d=ch.doc.data();if(ch.type==='added'&&d.src==='store'&&d.status==='new')alertNewOrder(d)})}catch(e){}}S[c]=snap.docs.map(x=>({id:x.id,...x.data()}));loaded[c]=true;schedule()},
       err=>{if(err&&err.code==='revoked')return;if(BACKEND==='firebase'&&err&&err.code==='permission-denied'){FBERR=fbMsg(err);mode='fberr';lastGate='';render();return}toast('انقطع الاتصال بالبيانات، حدّث الصفحة','bad')});
   });
 }
@@ -5217,6 +5232,31 @@ function sfxPlay(theme,ev,vol){
     let node=o;if(lp){const fl=c.createBiquadFilter();fl.type='lowpass';fl.frequency.value=lp;o.connect(fl);node=fl}node.connect(e);e.connect(master);o.start(now+t);o.stop(now+t+d+.03)});
 }
 
+/* system alert for a new store order: toast + sound + tab title + phone/desktop notification */
+let NEWORD=0;const BASE_TITLE=document.title;
+function alertNewOrder(d){NEWORD++;
+  toast(`🛒 طلب جديد من المتجر: ${d.no} • ${d.customer||''}`);
+  try{sfxPlay('discord','receive',85);setTimeout(()=>sfxPlay('discord','receive',85),350);setTimeout(()=>sfxPlay('discord','receive',85),700)}catch(e){}
+  try{navigator.vibrate&&navigator.vibrate([150,80,150])}catch(e){}
+  document.title=`🔔 (${NEWORD}) طلب جديد • ${BASE_TITLE}`;
+  try{if('Notification' in window&&Notification.permission==='granted'){const t=`🛒 طلب جديد ${d.no}`,o={body:`${d.customer||''} • ${(d.items||[]).reduce((s,i)=>s+N(i.qty),0)} قطعة • ${d.prov||''}`,tag:d.no,icon:'icon-192.png',badge:'icon-192.png'};
+    const plain=()=>{try{new Notification(t,o)}catch(e){}};
+    if(navigator.serviceWorker&&navigator.serviceWorker.getRegistration)navigator.serviceWorker.getRegistration().then(r=>r&&r.showNotification?r.showNotification(t,o):plain()).catch(plain);else plain()}}catch(e){}
+}
+setInterval(()=>{if(NEWORD&&typeof ui!=='undefined'&&ui.view==='orders'&&document.visibilityState==='visible'){NEWORD=0;document.title=BASE_TITLE}},1500);
+document.addEventListener('pointerdown',()=>{try{if(CUR&&'Notification' in window&&Notification.permission==='default'&&!sessionStorage.getItem('dz-np')){sessionStorage.setItem('dz-np','1');Notification.requestPermission()}}catch(e){}});
+/* orders straight from the store: saved in the system + WhatsApp alert to the shop (CallMeBot) */
+function dzNotify(ph,key,text){try{const u=`https://api.callmebot.com/whatsapp.php?phone=%2B${String(ph).replace(/\D/g,'')}&text=${encodeURIComponent(text)}&apikey=${encodeURIComponent(key)}`;fetch(u,{mode:'no-cors'}).catch(()=>{const i=new Image();i.src=u})}catch(e){}}
+window.dzOrder=async function(o){
+  if(!CAN_FB||!fbCfg())throw {code:'nocfg'};
+  await fbStart(fbCfg());
+  const cat=(FBSTORE&&FBSTORE.cat)||[];const nm=id=>{const p=cat.find(x=>x.id===id);return p?(p.n+(p.f?' ('+p.f+')':'')):''};
+  const p=o.payload;
+  const doc={no:String(p.no),customer:String(p.c||'').slice(0,80),phone:String(p.ph||'').slice(0,20),prov:String(p.g||'').slice(0,30),addr:String(p.a||'').slice(0,200),note:String(p.m||'').slice(0,300),delivery:Math.max(0,N(p.d)),placedAt:N(p.t)||Date.now(),status:'new',src:'store',createdAt:Date.now(),
+    items:(p.i||[]).slice(0,30).map(([pid,qty,price])=>({productId:String(pid),qty:Math.max(1,Math.floor(N(qty))),price:N(price),name:nm(String(pid)).slice(0,120)}))};
+  await FB.fs.collection('orders').doc(doc.no).set(doc);
+  return doc.no;
+};
 /* Captain Dozy's real brain: Gemini through Firebase AI Logic, protected by App Check (reCAPTCHA v3) */
 let AIM=null,AIGOOD='';
 async function aiCore(key){
@@ -5296,6 +5336,16 @@ service cloud.firestore {
     match /storefront/{doc} {
       allow read: if true;
       allow write: if request.auth != null;
+    }
+    match /orders/{id} {
+      allow create: if request.resource.data.src == 'store'
+        && request.resource.data.status == 'new'
+        && request.resource.data.no == id
+        && request.resource.data.items is list
+        && request.resource.data.items.size() > 0
+        && request.resource.data.items.size() <= 30
+        && request.resource.data.customer is string
+        && request.resource.data.customer.size() <= 80;
     }
     match /{coll}/{doc} {
       allow read, write: if request.auth != null;
