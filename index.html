@@ -1195,7 +1195,7 @@ body.store-on .app,body.store-on #sheetRoot,body.store-on .toasts{display:none!i
     <div class="sfoot">
       <button class="gear bell" data-act="notif" aria-label="الإشعارات" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="bl">الإشعارات</span><b class="nbadge" hidden></b></button>
       <button class="gear" data-go="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>الإعدادات</span></button>
-      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 55</small></div>
+      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 56</small></div>
       <div class="sync" id="sync"><i></i><span>جاري الاتصال</span></div>
       <div class="who" id="who"></div>
     </div>
@@ -2202,7 +2202,7 @@ function renderTop(){
   $('#ann').innerHTML=CFG.ann?`<div class="wrap">${esc(CFG.ann)}</div>`:'';
   document.querySelectorAll('.perkDel').forEach(e=>e.textContent=`المثنى ${CFG.bag?fmt(CFG.bag)+' د.ع':''} • باقي المحافظات ${CFG.oth?fmt(CFG.oth)+' د.ع':''}`);
   $('#footWa').innerHTML=CFG.wa?`واتساب: <span class="tel">+${esc(CFG.wa)}</span>`:'';
-  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 55${hasOrd?' • sync':''}</small>`)}
+  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 56${hasOrd?' • sync':''}</small>`)}
   $('#catAt').textContent=DATA.at?'UPDATED '+new Date(DATA.at).toISOString().slice(0,10).replaceAll('-','.'):'';
   const ha=$('#heroArt');if(ha&&!ha.firstChild)ha.innerHTML=dzEmblem();
 }
@@ -4229,6 +4229,19 @@ document.addEventListener('click',e=>{
     'fb-copyrules':async()=>{try{await navigator.clipboard.writeText(FB_RULES);toast('انتسخت القواعد')}catch(e){const t=$('#fbRules');if(t){t.focus();t.select()}}},
     'ai-guide':()=>aiGuide(),
     'ai-close':closeSheet,
+    'tg-guide':()=>openSheet(`<h3>📲 إشعار الطلبات على تيليگرام</h3><p class="sub">مرة وحدة بس، ودقيقتين:</p><ol class="fb-steps">
+      <li><span>افتح تيليگرام وابحث عن <b dir="ltr">@BotFather</b> (عليه علامة توثيق زرقاء) واضغط <b>Start</b>.</span></li>
+      <li><span>اكتب <b dir="ltr">/newbot</b>، وبعدين اكتب اسم للبوت (مثلاً <b>طلبات الدزاز جم</b>)، وبعدين اسم مستخدم ينتهي بـ <b dir="ltr">bot</b> (مثلاً <span dir="ltr">dazzaz_orders_bot</span>).</span></li>
+      <li><span>BotFather يرجعلك <b>توكن</b> طويل مثل <span dir="ltr">123456789:AAH...</span>. انسخه والصقه بخانة «توكن البوت».</span></li>
+      <li><span>اضغط على رابط البوت اللي سويته (<span dir="ltr">t.me/...</span>) واضغط <b>Start</b> أو دزله أي رسالة.</span></li>
+      <li><span>ارجع هنا واضغط <b>🔗 جيبه تلقائياً</b> حتى ينكتب رقم المحادثة، وبعدين <b>حفظ الإعدادات</b> و<b>📨 جرّب الإشعار</b>.</span></li></ol>
+      <p class="note">كل طلب جديد يوصلك برسالة تيليگرام بتفاصيله، حتى لو المتصفح والموبايل مسدودين. تأكد إن إشعارات تيليگرام مفتوحة بموبايلك.</p>`),
+    'tg-chat':async()=>{const tok=String(($('#stTgTok')||{}).value||'').trim();if(!/^\d{5,}:[\w-]{20,}$/.test(tok))return toast('الصق توكن البوت الصحيح أول','bad');
+      try{const r=await fetch(`https://api.telegram.org/bot${tok}/getUpdates`);const j=await r.json();if(!j.ok)throw j;const m=(j.result||[]).map(u=>u.message||u.channel_post||u.my_chat_member).filter(Boolean).pop();
+        if(!m||!m.chat)return toast('ما لكيت رسالة. افتح البوت بتيليگرام، اضغط Start ودزله رسالة، وبعدين جرّب مرة ثانية','bad');
+        const i=$('#stTgChat');i.value=String(m.chat.id);i.dispatchEvent(new Event('input',{bubbles:true}));toast('تم ✓ انكتب رقم المحادثة، اضغط حفظ الإعدادات')}
+      catch(e){toast(e&&e.description?('تيليگرام: '+e.description):'ما كدرت أوصل لتيليگرام، تأكد من التوكن والإنترنت','bad')}},
+    'tg-test':()=>{const c=stCfg();if(!c.tgTok||!c.tgChat)return toast('اكتب التوكن ورقم المحادثة أول','bad');dzTg(c.tgTok,c.tgChat,'✅ تجربة إشعار من نظام الدزاز جم.\nإذا وصلتك هاي الرسالة، إشعارات الطلبات شغّالة 💪');toast('انرسلت التجربة، شيّك تيليگرام')},
     'notif':()=>openNotif(),
     'notif-go':()=>{closeSheet();ui.oFilter='open';go('orders')},
     'notif-test':()=>notifTest(),
@@ -4630,7 +4643,7 @@ function b64d(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='='
 const STORE_DEF={wa:'9647804505005',ann:'',bag:3000,oth:8000,free:3,coach:'',coachN:'كابتن أحمد'};
 ui.oTab=(RESUME&&RESUME.oTab)||'orders';ui.stDraft={};
 const stMeta=()=>S.meta.find(r=>r.id==='store')||{};
-const cfgOut=c=>({wa:String(c.wa||'').replace(/\D/g,''),ann:String(c.ann||'').trim().slice(0,140),bag:Math.max(0,N(c.bag)),oth:Math.max(0,N(c.oth)),free:Math.max(0,N(c.free)),coach:String(c.coach||'').replace(/\D/g,''),coachN:String(c.coachN||'').trim().slice(0,30)||'كابتن أحمد',aiOn:c.aiOn?1:0,aiKey:String(c.aiKey||'').replace(/[^\w-]/g,'').slice(0,80),aiModel:String(c.aiModel||'').replace(/[^\w.\-]/g,'').slice(0,60),snd:['discord','cyber','bubble','retro','glass','off'].includes(c.snd)?c.snd:'discord',sndVol:(c.sndVol===undefined||c.sndVol===null||c.sndVol==='')?60:Math.max(0,Math.min(100,N(c.sndVol))),autoOrd:(c.autoOrd===0||c.autoOrd==='0')?0:1,cmbPh:String(c.cmbPh||'').replace(/\D/g,''),cmbKey:String(c.cmbKey||'').replace(/[^\w-]/g,'').slice(0,40)});
+const cfgOut=c=>({wa:String(c.wa||'').replace(/\D/g,''),ann:String(c.ann||'').trim().slice(0,140),bag:Math.max(0,N(c.bag)),oth:Math.max(0,N(c.oth)),free:Math.max(0,N(c.free)),coach:String(c.coach||'').replace(/\D/g,''),coachN:String(c.coachN||'').trim().slice(0,30)||'كابتن أحمد',aiOn:c.aiOn?1:0,aiKey:String(c.aiKey||'').replace(/[^\w-]/g,'').slice(0,80),aiModel:String(c.aiModel||'').replace(/[^\w.\-]/g,'').slice(0,60),snd:['discord','cyber','bubble','retro','glass','off'].includes(c.snd)?c.snd:'discord',sndVol:(c.sndVol===undefined||c.sndVol===null||c.sndVol==='')?60:Math.max(0,Math.min(100,N(c.sndVol))),autoOrd:(c.autoOrd===0||c.autoOrd==='0')?0:1,cmbPh:String(c.cmbPh||'').replace(/\D/g,''),cmbKey:String(c.cmbKey||'').replace(/[^\w-]/g,'').slice(0,40),tgTok:/^\d{5,}:[\w-]{20,}$/.test(String(c.tgTok||'').trim())?String(c.tgTok).trim():'',tgChat:/^-?\d{3,}$/.test(String(c.tgChat||'').trim())?String(c.tgChat).trim():''});
 const stCfg=()=>cfgOut(Object.assign({},STORE_DEF,stMeta().cfg||{},ui.stDraft));
 async function setMeta(id,data){
   const row=Object.assign({},S.meta.find(r=>r.id===id)||{},data);delete row.id;
@@ -5011,6 +5024,10 @@ function viewStoreCtl(){
        ${fld('stCoach','واتساب المدرب',`<input id="stCoach" data-st="coach" type="tel" dir="ltr" style="text-align:right" value="${c.coach?'0'+esc(String(c.coach).replace(/^964/,'')):''}" placeholder="فارغ = رقم المحل">`)}
        <div class="fld full" style="margin-top:6px;padding-top:12px;border-top:1px solid var(--line)"><label>⚡ الطلبات تنزل بالنظام تلقائياً</label></div>
        ${fld('stAutoOrd','الحالة',`<select id="stAutoOrd" data-st="autoOrd"><option value="1" ${c.autoOrd!==0?'selected':''}>شغّال: كل طلب ينزل بالنظام ويطلع إشعار</option><option value="0" ${c.autoOrd===0?'selected':''}>مطفي: بس رسالة الواتساب</option></select>`,'full')}
+       <div class="fld full" style="margin-top:6px;padding-top:12px;border-top:1px solid var(--line)"><label>📲 إشعار تيليگرام (يوصلك حتى لو الموبايل مسدود)</label></div>
+       ${fld('stTgTok','توكن البوت (Bot Token)',`<input id="stTgTok" data-st="tgTok" dir="ltr" value="${esc(c.tgTok||'')}" placeholder="123456789:AA...">`,'full')}
+       ${fld('stTgChat','رقم المحادثة (Chat ID)',`<div style="display:flex;gap:8px"><input id="stTgChat" data-st="tgChat" dir="ltr" value="${esc(c.tgChat||'')}" placeholder="123456789" style="flex:1"><button type="button" class="btn ghost" data-act="tg-chat" style="min-height:44px;padding:0 12px">🔗 جيبه تلقائياً</button></div>`,'full')}
+       <div class="fld full"><div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn ghost" data-act="tg-guide">شلون أسوي البوت؟</button><button type="button" class="btn ghost" data-act="tg-test">📨 جرّب الإشعار</button></div></div>
        <div class="fld full" style="margin-top:6px;padding-top:12px;border-top:1px solid var(--line)"><label>🔔 أصوات الدردشة</label></div>
        ${fld('stSnd','نمط الأصوات',`<select id="stSnd" data-st="snd">${[['discord','ديسكورد 🎮'],['cyber','سايبر / خيال علمي 🛸'],['bubble','فقاعات ناعمة 🫧'],['retro','ريترو 8-بت 👾'],['glass','كريستال 💎'],['off','بدون أصوات 🔕']].map(([k,l])=>`<option value="${k}" ${(c.snd||'discord')===k?'selected':''}>${l}</option>`).join('')}</select>`)}
        ${fld('stSndVol','مستوى الصوت',`<div style="display:flex;align-items:center;gap:10px"><input id="stSndVol" data-st="sndVol" type="range" min="0" max="100" step="5" value="${c.sndVol==null?60:c.sndVol}" style="flex:1;accent-color:var(--red)"><button type="button" class="btn ghost" data-act="snd-test" style="min-height:40px;padding:0 12px">▶︎ جرّب</button></div>`)}
@@ -5352,6 +5369,7 @@ function alertNewOrder(d){NEWORD++;setTimeout(()=>{updateBell();document.querySe
 setInterval(()=>{if(NEWORD&&typeof ui!=='undefined'&&ui.view==='orders'&&document.visibilityState==='visible'){NEWORD=0;document.title=BASE_TITLE}},1500);
 document.addEventListener('pointerdown',()=>{try{if(CUR&&'Notification' in window&&Notification.permission==='default'&&!sessionStorage.getItem('dz-np')){sessionStorage.setItem('dz-np','1');Notification.requestPermission()}}catch(e){}});
 /* orders straight from the store: saved in the system + WhatsApp alert to the shop (CallMeBot) */
+function dzTg(tok,chat,text){try{const b=new URLSearchParams({chat_id:String(chat),text:String(text).slice(0,3900),disable_web_page_preview:'true'});fetch(`https://api.telegram.org/bot${tok}/sendMessage`,{method:'POST',mode:'no-cors',body:b}).catch(()=>{const i=new Image();i.src=`https://api.telegram.org/bot${tok}/sendMessage?${b}`})}catch(e){}}
 function dzNotify(ph,key,text){try{const u=`https://api.callmebot.com/whatsapp.php?phone=%2B${String(ph).replace(/\D/g,'')}&text=${encodeURIComponent(text)}&apikey=${encodeURIComponent(key)}`;fetch(u,{mode:'no-cors'}).catch(()=>{const i=new Image();i.src=u})}catch(e){}}
 window.dzOrder=async function(o){
   if(!CAN_FB||!fbCfg())throw {code:'nocfg'};
@@ -5361,6 +5379,7 @@ window.dzOrder=async function(o){
   const doc={no:String(p.no),customer:String(p.c||'').slice(0,80),phone:String(p.ph||'').slice(0,20),prov:String(p.g||'').slice(0,30),addr:String(p.a||'').slice(0,200),note:String(p.m||'').slice(0,300),delivery:Math.max(0,N(p.d)),placedAt:N(p.t)||Date.now(),status:'new',src:'store',createdAt:Date.now(),
     items:(p.i||[]).slice(0,30).map(([pid,qty,price])=>({productId:String(pid),qty:Math.max(1,Math.floor(N(qty))),price:N(price),name:nm(String(pid)).slice(0,120)}))};
   await FB.fs.collection('orders').doc(doc.no).set(doc);
+  try{const c=(FBSTORE&&FBSTORE.cfg)||{};if(c.tgTok&&c.tgChat)dzTg(c.tgTok,c.tgChat,'🛒 '+String(o.msg||'').split('\nرمز الطلب')[0].replace(/^طلب جديد من متجر الدزاز جم 🛒\n?/,'طلب جديد من المتجر\n'))}catch(e){}
   return doc.no;
 };
 /* Captain Dozy's real brain: Gemini through Firebase AI Logic, protected by App Check (reCAPTCHA v3) */
