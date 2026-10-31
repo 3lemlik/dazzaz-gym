@@ -1157,6 +1157,21 @@ body.store-on .app,body.store-on #sheetRoot,body.store-on .toasts{display:none!i
 .orej{display:inline-flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px;color:var(--muted)}
 @media(max-width:560px){.or-rr{grid-template-columns:110px minmax(0,1fr) 28px}.or-oh .or-tot{margin-inline-start:0}}
 
+/* notification bell + center */
+.bell{position:relative}
+.bell .nbadge{position:absolute;top:2px;inset-inline-start:22px;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:#ed1c24;color:#fff;font:700 11px/19px var(--tech,monospace);text-align:center;box-shadow:0 0 0 2px var(--side,#0a0a0d),0 0 12px rgba(237,28,36,.7);animation:nbPop .4s cubic-bezier(.3,1.8,.5,1)}
+.sfoot .bell .nbadge{inset-inline-start:auto;inset-inline-end:12px;top:50%;margin-top:-9.5px}
+.bell.ring svg{animation:bRing 1s ease-in-out 3;transform-origin:50% 10%}
+@keyframes bRing{0%,100%{transform:rotate(0)}20%{transform:rotate(16deg)}40%{transform:rotate(-14deg)}60%{transform:rotate(9deg)}80%{transform:rotate(-5deg)}}
+@keyframes nbPop{from{transform:scale(0)}}
+.nlist{display:grid;gap:8px;margin:12px 0}
+.nitem{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.03);cursor:pointer;text-align:start;color:inherit;font:inherit;width:100%}
+.nitem.unread{border-color:rgba(237,28,36,.55);background:linear-gradient(90deg,rgba(237,28,36,.12),transparent)}
+.nitem .ni{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(237,28,36,.14);font-size:18px}
+.nitem b{display:block;font-size:14px}.nitem small{display:block;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nitem .nt{font-size:11.5px;color:var(--muted);white-space:nowrap}
+.ndiag{margin-top:8px;padding:10px 12px;border-radius:12px;border:1px dashed var(--line-2);font-size:13px;line-height:1.8}
+
 /* login / setup gate on phones: stack brand above the card, never overlap or clip */
 @media (max-width:899px){
  .gate{grid-auto-rows:max-content;align-content:start;-webkit-overflow-scrolling:touch}
@@ -1178,6 +1193,7 @@ body.store-on .app,body.store-on #sheetRoot,body.store-on .toasts{display:none!i
     <span class="dzlock live"><svg class="dzmark" viewBox="0 0 272 180" aria-hidden="true"><path d="M50 5H168L98 88H142L95 175H25L91 53L5 86Z"/><path d="M186 5A84 85 0 0 1 186 175H115L213 68H162Z"/></svg><span class="dzw"><h1 class="dzname">AL<svg class="dzmini" viewBox="0 0 272 180" aria-hidden="true"><path d="M50 5H168L98 88H142L95 175H25L91 53L5 86Z"/><path d="M186 5A84 85 0 0 1 186 175H115L213 68H162Z"/></svg>ZAZ <em>GYM</em></h1><small>الدزاز جم · نظام الإدارة</small></span></span>
     <nav class="snav" id="tabs" aria-label="الأقسام"></nav>
     <div class="sfoot">
+      <button class="gear bell" data-act="notif" aria-label="الإشعارات" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="bl">الإشعارات</span><b class="nbadge" hidden></b></button>
       <button class="gear" data-go="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>الإعدادات</span></button>
       <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3</small></div>
       <div class="sync" id="sync"><i></i><span>جاري الاتصال</span></div>
@@ -1187,6 +1203,7 @@ body.store-on .app,body.store-on #sheetRoot,body.store-on .toasts{display:none!i
   <header class="mtop">
     <span class="dzlock live"><svg class="dzmark" viewBox="0 0 272 180" aria-hidden="true"><path d="M50 5H168L98 88H142L95 175H25L91 53L5 86Z"/><path d="M186 5A84 85 0 0 1 186 175H115L213 68H162Z"/></svg><span class="dzw"><h1 class="dzname">AL<svg class="dzmini" viewBox="0 0 272 180" aria-hidden="true"><path d="M50 5H168L98 88H142L95 175H25L91 53L5 86Z"/><path d="M186 5A84 85 0 0 1 186 175H115L213 68H162Z"/></svg>ZAZ <em>GYM</em></h1></span></span>
     <div class="who" id="whoM"></div>
+<button class="gear bell" data-act="notif" aria-label="الإشعارات" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><b class="nbadge" hidden></b></button>
     <button class="gear repBtn" data-go="reports" aria-label="التقارير" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 17v-3M12 17v-6M16 17v-2"/></svg></button>
     <button class="gear" data-go="settings" aria-label="الإعدادات"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
   </header>
@@ -1843,6 +1860,12 @@ body.intro-on .dzb{display:none}
 .dzb-spk{margin-inline-start:auto;width:36px;height:36px;border:1px solid var(--line-2);background:var(--surface-2);color:var(--muted);cursor:pointer;display:grid;place-items:center}
 
 .dzr .r-aura{animation:rAura 3s ease-in-out infinite;transform-origin:60px 80px}@keyframes rAura{50%{opacity:.55;transform:scale(.94)}}
+.dz-finish{margin-top:10px;min-height:56px;font-size:17px;font-weight:800;color:#fff;border:0;background:linear-gradient(135deg,#ff5a62,#ed1c24 55%,#a3121c);box-shadow:0 10px 26px rgba(237,28,36,.45),inset 0 1px 0 rgba(255,255,255,.25);clip-path:var(--cut)}
+.dz-finish svg{width:22px;height:22px}
+.dz-finish.pulse{animation:dzFin 1.1s ease-in-out 3}
+@keyframes dzFin{50%{transform:scale(1.04);box-shadow:0 0 0 6px rgba(237,28,36,.25),0 12px 30px rgba(237,28,36,.6)}}
+.dz-finhint{text-align:center;margin:6px 0 0!important;font-size:12.5px}
+.done .ok.big{width:84px;height:84px;animation:dzPop .45s cubic-bezier(.3,1.7,.5,1)}
 /* avatar v2 motion */
 .dz-face .fx-blink,.dzr .fx-blink{transform-box:fill-box;transform-origin:center;animation:dzBlink2 5s infinite}
 @keyframes dzBlink2{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
@@ -2322,7 +2345,7 @@ function place(){
     `المنتجات: ${money(t.sub)}`,`التوصيل: ${t.del?money(t.del):'مجاني'}`,`الإجمالي: ${money(t.total)}`,form.note?`ملاحظات: ${form.note}`:null,``,`رمز الطلب للنظام (لا تعدّله):`,code].filter(x=>x!==null).join('\n');
   const last={no,msg,total:t.total,at:Date.now()};try{localStorage.setItem('dzs-last',JSON.stringify(last))}catch(e){}
   /* the order also lands in the shop system automatically (WhatsApp flow stays the same) */
-  try{const host=CFG.autoOrd!==false&&window.parent!==window&&typeof window.parent.dzOrder==='function'?window.parent.dzOrder:null;if(host&&!last.saved){host({payload,msg}).then(()=>{last.saved=1;try{localStorage.setItem('dzs-last',JSON.stringify(last))}catch(e){}}).catch(()=>{})}}catch(e){}
+  try{const host=CFG.autoOrd!==false&&window.parent!==window&&typeof window.parent.dzOrder==='function'?window.parent.dzOrder:null;if(host&&!last.saved){const go=n=>host({payload,msg}).then(()=>{last.saved=1;try{localStorage.setItem('dzs-last',JSON.stringify(last));localStorage.removeItem('dzs-ord-err')}catch(e){}}).catch(e=>{const m=String(e&&(e.code||e.message)||e);try{console.warn('[order save]',e);localStorage.setItem('dzs-ord-err',m)}catch(x){}if(n<2)setTimeout(()=>go(n+1),2500)});go(0)}}catch(e){}
   showDone(last);
 }
 function showSent(last){
@@ -2344,11 +2367,21 @@ function showDone(last){
    <div class="ono">${esc(last.no)}</div>
    <div class="steps"><div><i>1</i><span>اضغط زر واتساب، وتنفتح محادثة المحل والطلب مكتوب.</span></div><div><i>2</i><span>اضغط <b>إرسال</b> بواتساب. الطلب يوصلنا بس بعد ما ترسل الرسالة.</span></div><div><i>3</i><span>نأكد وياك ونوصلك الطلب، وتدفع عند الاستلام.</span></div></div>
    ${href?`<a class="btn wa block" href="${esc(href)}" target="_blank" rel="noopener" data-act="sent"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg> أرسل الطلب على واتساب</a>
+     <button class="btn block dz-finish" data-act="finished"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>أكملت الطلب</button><p class="sub dz-finhint">اضغطه بعد ما ترسل الرسالة بواتساب</p>
      <p class="sub" style="margin:10px 0 0">إذا ما انفتح واتساب، انسخ الطلب وأرسله للرقم <span class="tel">+${esc(wa)}</span></p>`
    :`<div class="err">المحل بعد ما ضاف رقم الواتساب. انسخ الطلب وأرسله للمحل.</div>`}
    <div class="actions"><button class="btn block" data-act="copy">نسخ نص الطلب</button></div>
    <div class="msg" id="msgText">${esc(last.msg)}</div>
-   <div class="actions"><button class="btn ghost block" data-act="newOrder">أرسلت الطلب، ابدأ طلب جديد</button></div></div>`,'done',false);
+   </div>`,'done',false);
+}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){const b=document.querySelector('.dz-finish');if(b){b.classList.remove('pulse');void b.offsetWidth;b.classList.add('pulse')}}});
+function showThanks(no){
+  openSheet(`<div class="done dz-thanks"><div class="ok big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div>
+   <div class="eyebrow" style="justify-content:center"><b>ORDER SENT</b><i></i></div>
+   <h3 style="padding:0">شكراً إلك! طلبك وصلنا 💪</h3>
+   <div class="ono">${esc(no||'')}</div>
+   <div class="steps"><div><i>1</i><span>نراجع طلبك ونتواصل وياك على رقمك.</span></div><div><i>2</i><span>يوصلك المندوب لباب البيت.</span></div><div><i>3</i><span>تفحص طلبك وتدفع عند الاستلام.</span></div></div>
+   <div class="actions"><button class="btn primary block" data-act="newOrder">رجوع للمتجر</button></div></div>`,'done',false);
 }
 
 /* owner tools */
@@ -2461,6 +2494,7 @@ document.addEventListener('click',async e=>{
     case 'close':close();break;
     case 'copy':{const txt=$('#msgText')?.textContent||'';try{await navigator.clipboard.writeText(txt);toast('انتسخ نص الطلب','ok')}catch(x){const r=document.createRange();r.selectNodeContents($('#msgText'));const s=getSelection();s.removeAllRanges();s.addRange(r);toast('حدد النص وانسخه')}break}
     case 'sent':setTimeout(()=>{cart=[];save();renderGrid();renderCartBits()},400);break;
+    case 'finished':{let no='';try{no=(JSON.parse(localStorage.getItem('dzs-last')||'{}')).no||''}catch(x){}cart=[];save();try{localStorage.removeItem('dzs-last')}catch(x){}renderGrid();renderCartBits();showThanks(no);try{sfx&&0}catch(x){}break}
     case 'newOrder':cart=[];save();try{localStorage.removeItem('dzs-last')}catch(x){}close();render();break;
     case 'owner':openOwner();break;
     case 'publish':publish();break;
@@ -4174,6 +4208,10 @@ document.addEventListener('click',e=>{
     'fb-copyrules':async()=>{try{await navigator.clipboard.writeText(FB_RULES);toast('انتسخت القواعد')}catch(e){const t=$('#fbRules');if(t){t.focus();t.select()}}},
     'ai-guide':()=>aiGuide(),
     'ai-close':closeSheet,
+    'notif':()=>openNotif(),
+    'notif-go':()=>{closeSheet();ui.oFilter='open';go('orders')},
+    'notif-test':()=>notifTest(),
+    'notif-perm':()=>{try{Notification.requestPermission().then(p=>toast(p==='granted'?'تفعّلت إشعارات الجهاز ✅':'ما تفعّلت. اسمح بالإشعارات من إعدادات المتصفح',p==='granted'?'':'bad'))}catch(e){toast('المتصفح ما يدعم الإشعارات','bad')}},
     'snd-test':()=>{const c=stCfg();if(c.snd==='off')return toast('الأصوات مطفية');sfxPlay(c.snd,'send',c.sndVol);setTimeout(()=>sfxPlay(c.snd,'receive',c.sndVol),450);setTimeout(()=>sfxPlay(c.snd,'like',c.sndVol),1000)},
     'ai-test':()=>aiTest(),
     'fb-dl':()=>{if(isAdmin()&&FB)fbDownloadSite(FB.cfg)},
@@ -4263,7 +4301,7 @@ document.addEventListener('input',e=>{
 
 /* ---------- render ---------- */
 function render(){
-  computeInventory();resolveUser();renderNav();setSync();renderWho();
+  computeInventory();resolveUser();renderNav();setSync();renderWho();try{updateBell();if(mode!=='db'||loaded.orders)bellOnLoad()}catch(e){}
   const active=document.activeElement&&document.activeElement.id;
   let caret=null;try{caret=active?document.activeElement.selectionStart:null}catch(e){}
   const v=$('#view');
@@ -5254,9 +5292,34 @@ function sfxPlay(theme,ev,vol){
     let node=o;if(lp){const fl=c.createBiquadFilter();fl.type='lowpass';fl.frequency.value=lp;o.connect(fl);node=fl}node.connect(e);e.connect(master);o.start(now+t);o.stop(now+t+d+.03)});
 }
 
+/* notification center: store orders that arrived (works even if the system was closed when they came) */
+const nSeen=()=>{try{return N(localStorage.getItem('dz-nseen'))}catch(e){return 0}};
+const storeOrders=()=>(S.orders||[]).filter(o=>o.src==='store').sort((a,b)=>N(b.placedAt)-N(a.placedAt));
+function updateBell(){const show=!!CUR&&can('orders');const un=show?storeOrders().filter(o=>N(o.placedAt)>nSeen()).length:0;
+  document.querySelectorAll('.bell').forEach(b=>{b.hidden=!show;const s=b.querySelector('.nbadge');if(s){s.hidden=!un;s.textContent=un>99?'99+':un}})}
+let BELL_FIRST=true;
+function bellOnLoad(){if(!BELL_FIRST||!CUR)return;BELL_FIRST=false;const un=storeOrders().filter(o=>N(o.placedAt)>nSeen()).length;if(un){setTimeout(()=>{toast(`🔔 عندك ${un} طلب جديد من المتجر`);document.querySelectorAll('.bell').forEach(b=>{b.classList.remove('ring');void b.offsetWidth;b.classList.add('ring')})},900)}}
+function openNotif(){const L=storeOrders().slice(0,30),seen=nSeen();
+  const st={new:'جديد',prep:'قيد التجهيز',done:'تم التسليم',cancel:'مرفوض'};
+  openSheet(`<h3>🔔 الإشعارات</h3><p class="sub">الطلبات اللي توصل من المتجر تنزل هنا وبقسم الطلبات تلقائياً.</p>
+   <div class="nlist">${L.length?L.map(o=>{const q=(o.items||[]).reduce((s,i)=>s+N(i.qty),0),tot=(o.items||[]).reduce((s,i)=>s+N(i.qty)*N(i.price),0)+N(o.delivery);
+     return `<button type="button" class="nitem${N(o.placedAt)>seen?' unread':''}" data-act="notif-go" data-id="${esc(o.id)}"><span class="ni">🛒</span><span><b>طلب ${esc(o.no||'')} • ${esc(o.customer||'')}</b><small>${q} قطعة • ${moneyT(tot)} • ${esc(o.prov||'')} • ${st[o.status]||o.status||''}</small></span><span class="nt">${relTime(N(o.placedAt)||Date.now())}</span></button>`}).join(''):'<div class="panel empty" style="padding:18px"><b>ماكو إشعارات بعد</b><span>أول ما يطلب زبون من المتجر يطلع هنا.</span></div>'}</div>
+   <div class="ndiag" id="nDiag">ما وصلتك طلبات؟ <button type="button" class="btn ghost" data-act="notif-test" style="min-height:36px;margin-inline-start:6px">🧪 فحص استلام الطلبات</button></div>
+   ${'Notification' in window&&Notification.permission!=='granted'?`<div class="ndiag">📱 حتى توصلك الإشعارات على الجهاز حتى لو التبويب مو قدامك: <button type="button" class="btn ghost" data-act="notif-perm" style="min-height:36px;margin-inline-start:6px">تفعيل إشعارات الجهاز</button></div>`:''}`);
+  try{localStorage.setItem('dz-nseen',String(Date.now()))}catch(e){}NEWORD=0;document.title=BASE_TITLE;setTimeout(updateBell,50)}
+async function notifTest(){const box=$('#nDiag');const say=t=>{if(box)box.innerHTML=t};
+  if(!CAN_FB||!fbCfg()||BACKEND!=='firebase')return say('⚠️ الفحص يشتغل بس بالموقع المنشور ويه Firebase.');
+  say('⏳ جاري الفحص… نسوي طلب تجريبي كأنه زبون');
+  const no='DZ-TEST'+Math.random().toString(36).slice(2,6).toUpperCase();
+  try{const app2=(window.firebase.apps||[]).find(a=>a.name==='dz-anon')||window.firebase.initializeApp(fbCfg(),'dz-anon');
+    await window.firebase.firestore(app2).collection('orders').doc(no).set({no,customer:'تجربة',phone:'',prov:'',addr:'',note:'طلب تجريبي من فحص الإشعارات',delivery:0,placedAt:Date.now(),status:'new',src:'store',createdAt:Date.now(),items:[{productId:'test',qty:1,price:0,name:'منتج تجريبي'}]});
+    say('✅ <b>الاستلام شغّال!</b> القواعد صحيحة والطلبات تكدر توصل للنظام. راح نمسح الطلب التجريبي.');
+    setTimeout(async()=>{try{await db.collection('orders').doc(no).delete()}catch(e){}},4000);
+  }catch(e){const c=String(e&&(e.code||e.message)||e);
+    say(/permission/i.test(c)?'❌ <b>Firebase رفض الطلب.</b> قواعد Firestore بعدها القديمة أو ناقصة. روح Firestore ← Rules والصق القواعد الجديدة اللي بيها <span dir="ltr">match /orders/{id}</span> واضغط Publish.':'❌ صار خطأ: <span dir="ltr">'+esc(c)+'</span>')}}
 /* system alert for a new store order: toast + sound + tab title + phone/desktop notification */
 let NEWORD=0;const BASE_TITLE=document.title;
-function alertNewOrder(d){NEWORD++;
+function alertNewOrder(d){NEWORD++;setTimeout(()=>{updateBell();document.querySelectorAll('.bell').forEach(b=>{b.classList.remove('ring');void b.offsetWidth;b.classList.add('ring')})},300);
   toast(`🛒 طلب جديد من المتجر: ${d.no} • ${d.customer||''}`);
   try{sfxPlay('discord','receive',85);setTimeout(()=>sfxPlay('discord','receive',85),350);setTimeout(()=>sfxPlay('discord','receive',85),700)}catch(e){}
   try{navigator.vibrate&&navigator.vibrate([150,80,150])}catch(e){}
