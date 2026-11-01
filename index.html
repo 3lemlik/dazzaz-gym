@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
 <meta charset="utf-8">
-<meta name="dz-build" content="75">
+<meta name="dz-build" content="76">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -1495,7 +1495,7 @@ body.store-on .dzi-fab,body.store-on .dzi-panel{display:none!important}
     <div class="sfoot">
       <button class="gear bell" data-act="notif" aria-label="الإشعارات" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="bl">الإشعارات</span><b class="nbadge" hidden></b></button>
       <button class="gear" data-go="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>الإعدادات</span></button>
-      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 75</small></div>
+      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 76</small></div>
       <div class="sync" id="sync"><i></i><span>جاري الاتصال</span></div>
       <div class="who" id="who"></div>
     </div>
@@ -2330,7 +2330,7 @@ body.intro-on .dzb{display:none}
 @media (max-width:420px){.hdr .dzlock{min-width:0;gap:6px}.hdr .dzmark{width:36px!important}.hdr .dzname{font-size:13px!important;letter-spacing:1px!important}.hdr .dzw small{display:none}.hdr .hbtn{padding-inline:10px}}
 @media (max-width:380px){.crs-btn .cart-lbl{display:none}}
 .hdr .dzw{flex:none}
-/* fixes: build 75 */
+/* fixes: build 76 */
 .dzmini{width:1.39em!important;height:.92em!important;flex:none;display:inline-block}
 #q,#sort,input[type=search]{font-size:16px!important}
 .sheet .qs button{width:38px!important;height:38px!important;font-size:19px!important}
@@ -2523,7 +2523,7 @@ function renderTop(){
   $('#ann').innerHTML=CFG.ann?`<div class="wrap">${esc(CFG.ann)}</div>`:'';
   document.querySelectorAll('.perkDel').forEach(e=>e.textContent=`المثنى ${CFG.bag?fmt(CFG.bag)+' د.ع':''} • باقي المحافظات ${CFG.oth?fmt(CFG.oth)+' د.ع':''}`);
   $('#footWa').innerHTML=CFG.wa?`واتساب: <span class="tel">+${esc(CFG.wa)}</span>`:'';
-  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 75${hasOrd?' • sync':''}</small>`)}
+  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 76${hasOrd?' • sync':''}</small>`)}
   $('#catAt').textContent=DATA.at?'UPDATED '+new Date(DATA.at).toISOString().slice(0,10).replaceAll('-','.'):'';
   const ha=$('#heroArt');if(ha&&!ha.firstChild)ha.innerHTML=dzEmblem();
 }
@@ -2821,6 +2821,9 @@ async function doPublish(next,btn,show,label){
 
 
 
+
+/* in-page links (#shop…): the store lives in an iframe, so a plain #link would reload the whole site. Scroll instead. */
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a||a.closest('.hdr .dzlock'))return;e.preventDefault();const id=decodeURIComponent(a.getAttribute('href').slice(1));const t=id&&document.getElementById(id);if(t){const y=t.getBoundingClientRect().top+scrollY-((document.querySelector('.hdr')||{}).offsetHeight||0)-8;scrollTo({top:Math.max(0,y),behavior:'smooth'})}},true);
 /* smoother scrolling: pause the hero animations while the hero is off screen */
 try{const hb=document.querySelector('.hero');if(hb&&'IntersectionObserver' in window)new IntersectionObserver(es=>{es.forEach(e=>document.body.classList.toggle('hero-off',!e.isIntersecting))},{rootMargin:'80px'}).observe(hb)}catch(e){}
 /* ---------- كورسي: اللاعب يستلم كورسه من الكابتن ---------- */
@@ -6828,7 +6831,7 @@ async function dziSend(v){v=String(v||'').trim();if(!v||DZI.busy||!CUR)return;
 const A_MAXTOK=()=>C()?2600:1500;
 
 /* ---------- التحديث التلقائي: يفحص اذا نزلت نسخة جديدة على الموقع (حتى لو مضاف للشاشة الرئيسية) ---------- */
-const DZ_BUILD=75;
+const DZ_BUILD=76;
 const UPD={last:0,shown:0};
 try{if(/[?&]u=\d+/.test(location.search))history.replaceState(null,'',location.pathname+location.hash)}catch(e){}
 const updLive=()=>location.protocol==='https:'&&!/claude/i.test(location.hostname);
