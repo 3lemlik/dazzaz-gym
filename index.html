@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
 <meta charset="utf-8">
-<meta name="dz-build" content="72">
+<meta name="dz-build" content="73">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -1371,6 +1371,35 @@ body.store-on .app,body.store-on #sheetRoot,body.store-on .toasts{display:none!i
 .nt-x{width:30px;height:30px;flex:none;border:0;background:transparent;color:var(--muted);font-size:20px;cursor:pointer}.nt-x:hover{color:var(--ink)}
 .nt-list{display:grid;gap:10px}.nt-list .icon-btn{flex:none}
 body.store-on .dzi-fab,body.store-on .dzi-panel{display:none!important}
+/* مكتبة التمارين + الاختيار السريع + خريطة العضلات */
+.bmap .bm-base>*{fill:color-mix(in srgb,var(--ink) 14%,transparent)}.bmap .bm-mus>*,.bmap .bm-mus g>*{fill:color-mix(in srgb,var(--ink) 22%,transparent)}.bmap .bm-mus .bm-on,.bmap .bm-mus g.bm-on>*{fill:var(--cy);filter:drop-shadow(0 0 3px color-mix(in srgb,var(--cy) 80%,transparent))}.bmap .bm-heart path{fill:var(--cy)}
+.co-dtop{display:flex;gap:14px;align-items:flex-start;margin-bottom:10px}
+.co-dmap{width:150px;flex:none;padding:6px;background:color-mix(in srgb,var(--ink) 4%,transparent);border:1px solid var(--line)}.co-dmap svg{width:100%;display:block}
+.co-dmain{flex:1;min-width:0}
+.co-mus{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}.co-mus button{border:1px solid var(--line-2);background:transparent;color:var(--muted);padding:5px 10px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
+.co-mus button[aria-pressed="true"]{background:color-mix(in srgb,var(--cy) 20%,transparent);border-color:var(--cy);color:var(--ink)}
+.co-mh{display:block;margin-top:6px;color:var(--muted);font-size:12px}.co-lnk{border:0;background:none;color:var(--cy);font:inherit;font-weight:700;cursor:pointer;padding:0;text-decoration:underline}
+.co-empty-ex{padding:16px;text-align:center;color:var(--muted);border:1px dashed var(--line-2);font-size:13.5px}
+.co-row.tight{margin:10px 0 0}.co-row.tight .btn{margin:0}
+.co-mtxt{min-height:96px;line-height:1.8}
+.pk-sheet{max-width:760px!important}
+.pk-hd h3{margin-bottom:2px}.pk-note{padding:10px 12px;border:1px dashed color-mix(in srgb,var(--cy) 50%,transparent);background:color-mix(in srgb,var(--cy) 7%,transparent);font-size:13px;line-height:1.8;margin:8px 0}.pk-note .btn{margin:0 6px}
+.pk-s{position:relative;display:flex;align-items:center;gap:8px;padding:0 12px;border:1px solid var(--line-2);background:var(--surface-2,var(--surface));margin:10px 0 8px}.pk-s svg{width:18px;height:18px;color:var(--muted)}.pk-s input{flex:1;border:0;background:transparent;color:var(--ink);padding:11px 0;font:inherit;font-size:16px;outline:none}
+.pk-m{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}.pk-m::-webkit-scrollbar{display:none}
+.pk-m button{flex:none;border:1px solid var(--line-2);background:transparent;color:var(--ink);padding:7px 13px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}.pk-m button[aria-pressed="true"]{background:var(--cy);border-color:var(--cy);color:#fff}
+.pk-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;max-height:min(46vh,420px);overflow:auto;padding:4px 2px}
+.pk-t{position:relative;display:grid;gap:3px;align-content:start;text-align:start;min-height:84px;padding:10px;border:1px solid var(--line-2);background:var(--surface-2,var(--surface));color:var(--ink);font:inherit;cursor:pointer;transition:transform .12s,border-color .12s}
+.pk-t:active,.pk-t.pop{transform:scale(.95)}.pk-t.on{border-color:var(--cy);background:color-mix(in srgb,var(--cy) 10%,var(--surface))}
+.pk-t b{font-size:13.5px;line-height:1.45}.pk-t small{color:var(--muted);font-size:11.5px;font-family:var(--tech)}.pk-tm{font-size:10.5px;font-weight:800;color:var(--cy)}
+.pk-t>i{position:absolute;top:6px;left:6px;min-width:22px;height:22px;display:grid;place-items:center;font:700 12px var(--tech);font-style:normal;background:var(--cy);color:#fff;border-radius:999px}
+.pk-cart{margin-top:10px;border:1px solid var(--line);background:color-mix(in srgb,var(--ink) 3%,transparent)}.pk-ch{display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid var(--line);font-size:13px}.pk-ch span{color:var(--cy);font-weight:700}
+.pk-cl{max-height:150px;overflow:auto}.pk-li{display:flex;align-items:center;gap:8px;padding:6px 12px;border-bottom:1px dashed var(--line);font-size:13px}.pk-li span{font:700 12px var(--tech);color:var(--cy);width:18px}.pk-li b{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pk-li small{color:var(--muted);font-family:var(--tech)}.pk-li button{border:0;background:none;color:var(--muted);cursor:pointer;font-size:14px;padding:4px}
+.pk-e{display:block;padding:10px 12px;color:var(--muted)}
+.ex-form{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) 70px 90px 90px;gap:8px}.ex-form input,.ex-form select{min-width:0;padding:10px;font:inherit;font-size:16px;background:var(--surface-2,var(--surface));border:1px solid var(--line-2);color:var(--ink)}
+.ex-form .ex-note{grid-column:1/4}.ex-form .btn{margin:0;grid-column:4/-1}
+.ex-list{display:grid;gap:6px}.ex-it{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--line)}.ex-m{flex:none;min-width:74px;text-align:center;padding:3px 6px;font-size:11.5px;font-weight:800;color:var(--cy);border:1px solid color-mix(in srgb,var(--cy) 45%,transparent)}
+.ex-i{flex:1;min-width:0}.ex-i b{display:block;font-size:14px}.ex-i small{color:var(--muted);font-size:12px}
+@media (max-width:760px){.co-dtop{flex-direction:column-reverse}.co-dmap{width:100%;max-width:260px;align-self:center}.ex-form{grid-template-columns:1fr 1fr 1fr}.ex-form #exN,.ex-form #exM,.ex-form .ex-note,.ex-form .btn{grid-column:1/-1}.pk-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* performance dashboard */
 .app>*{min-width:0}
 .os.rate{padding-inline-end:46px}
@@ -1466,7 +1495,7 @@ body.store-on .dzi-fab,body.store-on .dzi-panel{display:none!important}
     <div class="sfoot">
       <button class="gear bell" data-act="notif" aria-label="الإشعارات" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="bl">الإشعارات</span><b class="nbadge" hidden></b></button>
       <button class="gear" data-go="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>الإعدادات</span></button>
-      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 72</small></div>
+      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 73</small></div>
       <div class="sync" id="sync"><i></i><span>جاري الاتصال</span></div>
       <div class="who" id="who"></div>
     </div>
@@ -2484,7 +2513,7 @@ function renderTop(){
   $('#ann').innerHTML=CFG.ann?`<div class="wrap">${esc(CFG.ann)}</div>`:'';
   document.querySelectorAll('.perkDel').forEach(e=>e.textContent=`المثنى ${CFG.bag?fmt(CFG.bag)+' د.ع':''} • باقي المحافظات ${CFG.oth?fmt(CFG.oth)+' د.ع':''}`);
   $('#footWa').innerHTML=CFG.wa?`واتساب: <span class="tel">+${esc(CFG.wa)}</span>`:'';
-  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 72${hasOrd?' • sync':''}</small>`)}
+  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 73${hasOrd?' • sync':''}</small>`)}
   $('#catAt').textContent=DATA.at?'UPDATED '+new Date(DATA.at).toISOString().slice(0,10).replaceAll('-','.'):'';
   const ha=$('#heroArt');if(ha&&!ha.firstChild)ha.innerHTML=dzEmblem();
 }
@@ -3936,7 +3965,7 @@ const PAY=['نقد','تحويل','آجل'];
 const ADJ_REASONS=['عدّ فعلي','تالف','مفقود','عينة / هدية','انتهت صلاحيته','تصحيح خطأ'];
 
 /* ---------- state ---------- */
-const S={products:[],purchases:[],sales:[],adjustments:[],users:[],orders:[],audit:[],meta:[],clients:[],programs:[],cpub:[],creminders:[],notices:[]};
+const S={products:[],purchases:[],sales:[],adjustments:[],users:[],orders:[],audit:[],meta:[],clients:[],programs:[],cpub:[],creminders:[],notices:[],exlib:[]};
 const COLLS=Object.keys(S);
 let db=null, mode='loading', loaded={}, navAnim=true;
 const THEMES=[
@@ -6123,7 +6152,7 @@ function wireImg(s,st){
 const pthumb=p=>p&&p.img?`<img class="pthumb" src="${esc(p.img)}" alt="">`:`<span class="pthumb ph" style="--c:${catColor(p?.category)}">${initial(dn(p))}</span>`;
 
 /* --- audit log --- */
-const ENT={products:'منتج',purchases:'فاتورة شراء',sales:'عملية بيع',adjustments:'تعديل جرد',orders:'طلب أونلاين',users:'مستخدم',clients:'لاعب',programs:'برنامج تدريبي',notices:'تبليغ',creminders:'تذكير كورس',cpub:'كورس منشور'};
+const ENT={products:'منتج',purchases:'فاتورة شراء',sales:'عملية بيع',adjustments:'تعديل جرد',orders:'طلب أونلاين',users:'مستخدم',clients:'لاعب',programs:'برنامج تدريبي',notices:'تبليغ',exlib:'تمرين بالمكتبة',creminders:'تذكير كورس',cpub:'كورس منشور'};
 const FLD={name:'الاسم',brand:'الماركة',category:'الصنف',flavor:'النكهة',size:'الحجم',sellPrice:'سعر البيع',minStock:'الحد الأدنى',barcode:'الباركود',desc:'الوصف',online:'يظهر بالمتجر',archived:'مخفي',img:'الصورة',status:'الحالة',role:'الدور',perms:'الصلاحيات',active:'فعّال',ph:'الباسورد',qty:'العدد',unitPrice:'السعر',unitCost:'الكلفة',discount:'الخصم',payment:'الدفع',customer:'الزبون',supplier:'المورّد',expiry:'الانتهاء',note:'الملاحظة',delivery:'التوصيل'};
 const AUD_SKIP=new Set(['salt','soldIds','doneAt','doneDate','doneBy','prepBy','cancelBy','updatedAt','createdAt','by','byId']);
 function recLabel(c,r){
@@ -6784,7 +6813,7 @@ async function dziSend(v){v=String(v||'').trim();if(!v||DZI.busy||!CUR)return;
 const A_MAXTOK=()=>C()?2600:1500;
 
 /* ---------- التحديث التلقائي: يفحص اذا نزلت نسخة جديدة على الموقع (حتى لو مضاف للشاشة الرئيسية) ---------- */
-const DZ_BUILD=72;
+const DZ_BUILD=73;
 const UPD={last:0,shown:0};
 try{if(/[?&]u=\d+/.test(location.search))history.replaceState(null,'',location.pathname+location.hash)}catch(e){}
 const updLive=()=>location.protocol==='https:'&&!/claude/i.test(location.hostname);
@@ -6817,6 +6846,36 @@ if(updLive()){
   window.addEventListener('pageshow',e=>{if(e.persisted){UPD.last=0;updCheck(true)}});
   setInterval(()=>updCheck(false),5*60*1000);
 }
+/* ---------- العضلات: خريطة جسم احترافية تبين عضلات كل يوم (تدعم الدمج) ---------- */
+const MUS={chest:'صدر',back:'ظهر',traps:'ترابيس',sh:'أكتاف',bi:'بايسبس',tri:'ترايسبس',fa:'ساعد',abs:'بطن',quad:'أرجل أمامي',ham:'أرجل خلفي',glu:'أرداف',calf:'سمانة',cardio:'كارديو'};
+const MUS_ORDER=Object.keys(MUS);
+function bodyMap(sel,opt){const on=new Set(sel||[]);opt=opt||{};const A=k=>on.has(k)?'bm-on':'';
+  const F=(x,y)=>`translate(${x} ${y})`;
+  const fig=(back)=>{const k=back?['traps','sh','back','tri','fa','glu','ham','calf']:['sh','chest','bi','fa','abs','quad','calf'];
+    return `<g class="bm-base"><circle cx="50" cy="15" r="10"/><rect x="45" y="24" width="10" height="7" rx="3"/><path d="M27 33Q50 26 73 33L76 92Q50 100 24 92Z"/>
+     <rect x="14" y="34" width="12" height="34" rx="6"/><rect x="74" y="34" width="12" height="34" rx="6"/><rect x="11" y="66" width="11" height="34" rx="5.5"/><rect x="78" y="66" width="11" height="34" rx="5.5"/>
+     <path d="M26 92Q50 100 74 92L72 112Q50 118 28 112Z"/><rect x="29" y="110" width="19" height="52" rx="9"/><rect x="52" y="110" width="19" height="52" rx="9"/><rect x="31" y="160" width="15" height="38" rx="7"/><rect x="54" y="160" width="15" height="38" rx="7"/></g>
+     <g class="bm-mus">${back?`
+      <path class="${A('traps')}" d="M38 31Q50 25 62 31L56 46Q50 49 44 46Z"/>
+      <ellipse class="${A('sh')}" cx="24" cy="38" rx="8" ry="7"/><ellipse class="${A('sh')}" cx="76" cy="38" rx="8" ry="7"/>
+      <path class="${A('back')}" d="M33 44Q50 50 67 44L70 80Q50 90 30 80Z"/>
+      <ellipse class="${A('tri')}" cx="19" cy="54" rx="5.5" ry="11"/><ellipse class="${A('tri')}" cx="81" cy="54" rx="5.5" ry="11"/>
+      <ellipse class="${A('fa')}" cx="16.5" cy="80" rx="5" ry="11"/><ellipse class="${A('fa')}" cx="83.5" cy="80" rx="5" ry="11"/>
+      <ellipse class="${A('glu')}" cx="40" cy="104" rx="10" ry="9"/><ellipse class="${A('glu')}" cx="60" cy="104" rx="10" ry="9"/>
+      <ellipse class="${A('ham')}" cx="38.5" cy="134" rx="8" ry="20"/><ellipse class="${A('ham')}" cx="61.5" cy="134" rx="8" ry="20"/>
+      <ellipse class="${A('calf')}" cx="38.5" cy="174" rx="6.5" ry="13"/><ellipse class="${A('calf')}" cx="61.5" cy="174" rx="6.5" ry="13"/>`:`
+      <ellipse class="${A('sh')}" cx="24" cy="38" rx="8" ry="7"/><ellipse class="${A('sh')}" cx="76" cy="38" rx="8" ry="7"/>
+      <path class="${A('chest')}" d="M31 40Q40 35 49 39L49 55Q39 60 31 53Z"/><path class="${A('chest')}" d="M69 40Q60 35 51 39L51 55Q61 60 69 53Z"/>
+      <ellipse class="${A('bi')}" cx="20" cy="53" rx="5.5" ry="11"/><ellipse class="${A('bi')}" cx="80" cy="53" rx="5.5" ry="11"/>
+      <ellipse class="${A('fa')}" cx="16.5" cy="80" rx="5" ry="11"/><ellipse class="${A('fa')}" cx="83.5" cy="80" rx="5" ry="11"/>
+      <g class="${A('abs')}"><rect x="42" y="60" width="7" height="8" rx="2"/><rect x="51" y="60" width="7" height="8" rx="2"/><rect x="42" y="70" width="7" height="8" rx="2"/><rect x="51" y="70" width="7" height="8" rx="2"/><rect x="42" y="80" width="7" height="9" rx="2"/><rect x="51" y="80" width="7" height="9" rx="2"/></g>
+      <ellipse class="${A('quad')}" cx="38.5" cy="134" rx="8.5" ry="21"/><ellipse class="${A('quad')}" cx="61.5" cy="134" rx="8.5" ry="21"/>
+      <ellipse class="${A('calf')}" cx="38.5" cy="176" rx="5" ry="12"/><ellipse class="${A('calf')}" cx="61.5" cy="176" rx="5" ry="12"/>`}</g>`};
+  const heart=on.has('cardio')?`<g class="bm-heart" transform="translate(88 2)"><path d="M12 21s-9-5.6-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.4-9 12-9 12z"/></g>`:'';
+  return `<svg class="bmap ${opt.cls||''}" viewBox="0 0 210 204" aria-hidden="true"><g transform="${F(0,2)}">${fig(false)}</g><g transform="${F(110,2)}">${fig(true)}</g>${heart}</svg>`}
+const BMAP_CSS=`.bmap .bm-base>*{fill:#2a2a33}.bmap .bm-mus>*,.bmap .bm-mus g>*{fill:#3a3a45}.bmap .bm-mus .bm-on,.bmap .bm-mus g.bm-on>*{fill:#ed1c24;filter:drop-shadow(0 0 3px rgba(237,28,36,.8))}.bmap .bm-heart path{fill:#ed1c24}
+.bmap.lt .bm-base>*{fill:#e7e7ea}.bmap.lt .bm-mus>*,.bmap.lt .bm-mus g>*{fill:#d4d4d8}.bmap.lt .bm-mus .bm-on,.bmap.lt .bm-mus g.bm-on>*{fill:#ed1c24;filter:none}`;
+const musChips=(m,cls)=>(m||[]).filter(k=>MUS[k]).sort((a,b)=>MUS_ORDER.indexOf(a)-MUS_ORDER.indexOf(b)).map(k=>`<span class="${cls||'mchip'}">${MUS[k]}</span>`).join('');
 /* ===================== البرامج التدريبية: لاعبين + كورس تمارين + كورس تغذية + PDF ===================== */
 const CO={draft:null,pid:null,dirty:false,saving:false};
 ui.co=ui.co||{cid:'',pid:'',tab:'w',q:''};
@@ -6849,8 +6908,7 @@ function coTpl(k){const E=(n,s,r,t)=>({n,s:String(s),r:String(r),t:t||'90 ث',x:
          {n:'اليوم 3 — أكتاف',ex:[E('ضغط أكتاف بار (Military Press)',4,'8-10','120 ث'),E('رفرفة جانبي (Lateral Raise)',4,'12-15','60 ث'),E('رفرفة أمامي (Front Raise)',3,'12','60 ث'),E('رفرفة خلفي (Rear Delt Fly)',3,'15','60 ث'),E('شرغ (Shrugs)',4,'12','60 ث')]},
          {n:'اليوم 4 — أرجل',ex:[E('سكوات بار (Back Squat)',4,'8-10','150 ث'),E('ليغ بريس (Leg Press)',4,'10-12'),E('رفرفة أمامي رجل (Leg Extension)',3,'15','60 ث'),E('رفرفة خلفي رجل (Leg Curl)',3,'12','60 ث'),E('سمانة واقف (Standing Calf)',4,'15','60 ث')]},
          {n:'اليوم 5 — ذراع + بطن',ex:[E('بايسبس بار (Barbell Curl)',4,'10','60 ث'),E('فرنش بريس (Skull Crusher)',4,'10','60 ث'),E('هامر (Hammer Curl)',3,'12','60 ث'),E('ترايسبس كيبل (Pushdown)',3,'12','60 ث'),E('رفع رجلين معلق (Hanging Leg Raise)',3,'15','45 ث'),E('بلانك (Plank)',3,'60 ث','45 ث')]}]};
-  return JSON.parse(JSON.stringify(T[k]||[{n:'اليوم 1',ex:[E('',3,'10-12')]}]))}
-const coMeals=()=>[{n:'الفطور',time:'8:00',items:[{n:'بيض كامل',q:'3 حبات'},{n:'شوفان',q:'60 غ'},{n:'موز',q:'1'}]},{n:'الغداء',time:'2:00',items:[{n:'صدر دجاج',q:'200 غ'},{n:'رز أبيض',q:'150 غ مطبوخ'},{n:'سلطة',q:'صحن'}]},{n:'قبل التمرين',time:'5:30',items:[{n:'تمر',q:'3 حبات'},{n:'خبز أسمر',q:'1'}]},{n:'بعد التمرين',time:'8:00',items:[{n:'بروتين واي',q:'1 سكوب'},{n:'موز',q:'1'}]},{n:'العشاء',time:'10:00',items:[{n:'جبن قريش',q:'150 غ'},{n:'خضروات مشكلة',q:'صحن'}]}];
+  const out=JSON.parse(JSON.stringify(T[k]||[{n:'اليوم 1',ex:[]}]));out.forEach(d=>{d.m=[];d.ex.forEach(e=>{e.m=exMus(e.n)})});return out}
 function coCalc(c){const w=N(c.weight),h=N(c.height),a=N(c.age)||25;if(!(w>0&&h>0))return null;
   const bmr=10*w+6.25*h-5*a+(c.gender==='أنثى'?-161:5);const af={low:1.375,mid:1.55,high:1.725}[c.activity||'mid']||1.55;
   const g=c.goal||'';const adj=/تنشيف|خسارة/.test(g)?-.2:/تضخيم|زيادة/.test(g)?.12:0;
@@ -6865,11 +6923,11 @@ async function coPut(c,id,data){data.updatedAt=Date.now();
 async function coDel(c,id){if(mode==='db')await db.collection(c).doc(id).delete();else{S[c]=(S[c]||[]).filter(r=>r.id!==id);saveLocal();render()}}
 const coAge=c=>c.age?c.age+' سنة':'—';
 function viewCoach(){const U=ui.co;
-  if(U.pid&&CO.pid!==U.pid){const p=(S.programs||[]).find(x=>x.id===U.pid);if(p){CO.draft=JSON.parse(JSON.stringify(p));CO.pid=p.id;CO.dirty=false}else{U.pid='';CO.pid=null}}
+  if(U.pid&&CO.pid!==U.pid){const p=(S.programs||[]).find(x=>x.id===U.pid);if(p){CO.draft=JSON.parse(JSON.stringify(p));coFixMeals(CO.draft.f||(CO.draft.f={meals:[]}));CO.pid=p.id;CO.dirty=false}else{U.pid='';CO.pid=null}}
   if(U.pid&&CO.draft)return coEditor();
   if(U.cid&&coClient(U.cid))return coClientView(coClient(U.cid));
-  U.cid='';return coSpaceHead()+(U.sec==='notices'?coNoticesView():coList())}
-function coSpaceHead(){const n=ntActive().length;return `${head('مساحة المدرب','اللاعبين والكورسات، والتبليغات اللي تطلع لكل الموظفين.',ui.co.sec==='notices'?'':`<button class="btn primary" data-co="c-new">${I.plus||'+'} لاعب جديد</button>`)}<div class="seg big co-tabs">${[['players','👥 اللاعبين والكورسات'],['notices','📢 التبليغات'+(n?` <span class="cnt">${n}</span>`:'')]].map(([k,l])=>`<button type="button" data-co="sec" data-id="${k}" aria-pressed="${(ui.co.sec||'players')===k}" class="${(ui.co.sec||'players')===k?'on':''}">${l}</button>`).join('')}</div>`}
+  U.cid='';return coSpaceHead()+(U.sec==='notices'?coNoticesView():U.sec==='ex'?coExView():coList())}
+function coSpaceHead(){const n=ntActive().length;return `${head('مساحة المدرب','اللاعبين والكورسات، ومكتبة تمارينك، والتبليغات اللي تطلع لكل الموظفين.',(ui.co.sec||'players')!=='players'?'':`<button class="btn primary" data-co="c-new">${I.plus||'+'} لاعب جديد</button>`)}<div class="seg big co-tabs">${[['players','👥 اللاعبين والكورسات'],['ex','🏋️ التمارين'+((S.exlib||[]).length?` <span class="cnt">${(S.exlib||[]).length}</span>`:'')],['notices','📢 التبليغات'+(n?` <span class="cnt">${n}</span>`:'')]].map(([k,l])=>`<button type="button" data-co="sec" data-id="${k}" aria-pressed="${(ui.co.sec||'players')===k}" class="${(ui.co.sec||'players')===k?'on':''}">${l}</button>`).join('')}</div>`}
 function coList(){const L=coMine(),q=dzN(ui.co.q||'');const F=q?L.filter(c=>dzN([c.name,c.phone,c.goal].join(' ')).includes(q)):L;
   const act=(S.programs||[]).filter(p=>p.status!=='old'&&L.some(c=>c.id===p.clientId)).length;
   return `<div class="co-kpis"><div class="co-k"><span>اللاعبين</span><b>${L.length}</b></div><div class="co-k"><span>برامج فعّالة</span><b>${act}</b></div><div class="co-k"><span>كل البرامج</span><b>${(S.programs||[]).filter(p=>L.some(c=>c.id===p.clientId)).length}</b></div></div>
@@ -6886,7 +6944,7 @@ function coClientView(c){const ps=coProgs(c.id);const st=(l,v)=>`<div class="co-
     ${c.injuries?`<div class="co-warn">⚠️ إصابات / حالات صحية: ${esc(c.injuries)}</div>`:''}${c.notes?`<p class="co-note">${esc(c.notes)}</p>`:''}</div>
    <div class="panel"><h3>البرامج <span>${ps.length}</span></h3>
     ${ps.length?`<div class="co-plist">${ps.map(p=>`<div class="co-p${p.status==='old'?' old':''}"><div class="co-pi"><b>${esc(p.title||'برنامج')}</b><small>${(p.w&&p.w.days||[]).length} أيام تمرين • ${(p.f&&p.f.meals||[]).length} وجبات${p.weeks?' • '+p.weeks+' أسابيع':''} • ${p.startDate?fmtDate(p.startDate):''}</small><small>آخر تعديل ${relTime(N(p.updatedAt||p.createdAt))}${p.status==='old'?' • منتهي':' • <b class="co-on">فعّال</b>'}</small>${p.status==='old'?'':coDeliv(c,p)}</div>
-      <div class="co-pa"><button class="btn sm primary" data-co="p-open" data-id="${esc(p.id)}">فتح وتعديل</button>${p.ready&&p.status!=='old'&&coPhone(c.phone)?`<a class="btn sm wa" href="${esc(coWaLink(c,p))}" target="_blank" rel="noopener">💬 واتساب</a>`:''}<button class="btn sm" data-co="p-pdf" data-id="${esc(p.id)}">📄 PDF</button><button class="btn sm ghost" data-co="p-dup" data-id="${esc(p.id)}">نسخة جديدة</button><button class="btn sm ghost" data-co="p-old" data-id="${esc(p.id)}">${p.status==='old'?'تفعيل':'إنهاء'}</button><button class="icon-btn del" data-co="p-del" data-id="${esc(p.id)}" aria-label="حذف">${I.trash}</button></div></div>`).join('')}</div>`
+      <div class="co-pa"><button class="btn sm primary" data-co="p-open" data-id="${esc(p.id)}">فتح وتعديل</button>${p.ready&&p.status!=='old'&&coPhone(c.phone)?`<a class="btn sm wa" href="${esc(coWaLink(c,p))}" target="_blank" rel="noopener">💬 واتساب</a>`:''}<button class="btn sm" data-co="p-pdf" data-k="w" data-id="${esc(p.id)}">📄 تمارين</button><button class="btn sm" data-co="p-pdf" data-k="f" data-id="${esc(p.id)}">📄 تغذية</button><button class="btn sm ghost" data-co="p-dup" data-id="${esc(p.id)}">نسخة جديدة</button><button class="btn sm ghost" data-co="p-old" data-id="${esc(p.id)}">${p.status==='old'?'تفعيل':'إنهاء'}</button><button class="icon-btn del" data-co="p-del" data-id="${esc(p.id)}" aria-label="حذف">${I.trash}</button></div></div>`).join('')}</div>`
       :`<div class="empty sm"><b>ما عنده برنامج بعد</b><span>اضغط «برنامج جديد» واختار قالب جاهز أو ابدأ من الصفر.</span></div>`}</div>
    <div class="co-danger"><button class="btn sm ghost" data-co="c-del" data-id="${esc(c.id)}">حذف اللاعب وكل برامجه</button></div>`}
 const coI=(id,path,val,ph,cls,type)=>`<input id="${id}" class="${cls||''}" data-cf="${path}" value="${esc(val==null?'':val)}" ${ph?`placeholder="${esc(ph)}"`:''} ${type?`type="${type}"`:''} autocomplete="off">`;
@@ -6894,42 +6952,18 @@ function coEditor(){const d=CO.draft,c=coClient(d.clientId)||{},T=ui.co.tab||'w'
   const tabs=[['w','🏋️ التمارين'],['f','🥗 التغذية'],['n','📝 ملاحظات وإعدادات']];
   return `<div class="co-back"><button type="button" class="btn ghost sm" data-co="p-close">→ رجوع لـ ${esc(c.name||'اللاعب')}</button></div>
    <div class="co-ed-h"><div class="co-ed-t">${coI('cpTitle','title',d.title,'اسم البرنامج','co-title')}<small>${esc(c.name||'')} • ${esc(c.goal||'')}</small></div>
-    <div class="co-ed-a"><span class="co-dirty ${CO.dirty?'on':''}" id="coDirty">${CO.dirty?'● تغييرات ما انحفظت':'✓ محفوظ'}</span><button class="btn primary" data-co="p-save" ${CO.saving?'disabled':''}>💾 حفظ</button><button class="btn" data-co="p-pdf" data-id="${esc(CO.pid)}">📄 PDF</button></div></div>
+    <div class="co-ed-a"><span class="co-dirty ${CO.dirty?'on':''}" id="coDirty">${CO.dirty?'● تغييرات ما انحفظت':'✓ محفوظ'}</span><button class="btn primary" data-co="p-save" ${CO.saving?'disabled':''}>💾 حفظ</button><button class="btn" data-co="p-pdf" data-k="w" data-id="${esc(CO.pid)}">📄 PDF التمارين</button><button class="btn" data-co="p-pdf" data-k="f" data-id="${esc(CO.pid)}">📄 PDF التغذية</button></div></div>
    <div class="co-ready ${d.ready?'on':''}"><button type="button" class="co-rt" data-co="p-ready" aria-pressed="${!!d.ready}"><i></i><span><b>${d.ready?'✅ الكورس جاهز للتسليم':'✍️ الكورس قيد الكتابة'}</b><small>${d.ready?'اللاعب يكدر يحمله من المتجر بقسم «كورسي»':'لما تخلص فعّلها، وإذا اللاعب يسأل يطلعله «بعده ما كمله المدرب»'}</small></span></button>
     ${d.ready&&!CO.dirty&&coPhone(c.phone)?`<a class="btn wa" href="${esc(coWaLink(c,d))}" target="_blank" rel="noopener">💬 إرسال للاعب عبر واتساب</a>`:d.ready&&!coPhone(c.phone)?'<small class="co-nph">⚠️ ما مسجل رقم موبايل للاعب، ضيفه حتى ترسل واتساب ويكدر يحمل كورسه</small>':d.ready&&CO.dirty?'<small class="co-nph">احفظ حتى يطلع زر الواتساب</small>':''}${coDeliv(c,d)}</div>
    <div class="seg big co-tabs">${tabs.map(([k,l])=>`<button type="button" data-co="tab" data-id="${k}" aria-pressed="${T===k}" class="${T===k?'on':''}">${l}</button>`).join('')}</div>
    ${T==='w'?coWork(d):T==='f'?coFood(d,c):coNotes(d)}
-   <datalist id="coExL">${CO_EX.map(x=>`<option value="${esc(x)}">`).join('')}</datalist><datalist id="coFoodL">${CO_FOOD.map(x=>`<option value="${esc(x)}">`).join('')}</datalist>`}
-function coWork(d){const days=d.w.days;
-  return `<div class="co-days">${days.map((dy,i)=>`<div class="panel co-day"><div class="co-dh"><span class="co-dn">${i+1}</span>${coI(`cd${i}`,`w.days.${i}.n`,dy.n,'اسم اليوم مثل: صدر وترايسبس','co-dname')}
-      <div class="co-dact"><button type="button" class="icon-btn" data-co="d-up" data-i="${i}" aria-label="لفوك" ${i?'':'disabled'}>▲</button><button type="button" class="icon-btn" data-co="d-down" data-i="${i}" aria-label="لجوه" ${i<days.length-1?'':'disabled'}>▼</button><button type="button" class="icon-btn" data-co="d-dup" data-i="${i}" title="نسخ اليوم" aria-label="نسخ اليوم">⧉</button><button type="button" class="icon-btn del" data-co="d-del" data-i="${i}" aria-label="حذف اليوم">${I.trash}</button></div></div>
-     <div class="co-exh"><span>#</span><span>التمرين</span><span>مجاميع</span><span>تكرار</span><span>راحة</span><span></span></div>
-     ${dy.ex.map((e,j)=>`<div class="co-ex"><span class="co-en">${j+1}</span>
-       <input id="ce${i}_${j}_n" class="co-exn" list="coExL" data-cf="w.days.${i}.ex.${j}.n" value="${esc(e.n)}" placeholder="اسم التمرين" autocomplete="off">
-       <label class="co-sml"><i>مجاميع</i>${coI(`ce${i}_${j}_s`,`w.days.${i}.ex.${j}.s`,e.s,'4','co-sm','text')}</label><label class="co-sml"><i>تكرار</i>${coI(`ce${i}_${j}_r`,`w.days.${i}.ex.${j}.r`,e.r,'8-12','co-sm')}</label><label class="co-sml"><i>راحة</i>${coI(`ce${i}_${j}_t`,`w.days.${i}.ex.${j}.t`,e.t,'90 ث','co-sm')}</label>
-       <span class="co-exa"><button type="button" class="icon-btn" data-co="e-up" data-i="${i}" data-j="${j}" aria-label="لفوك" ${j?'':'disabled'}>▲</button><button type="button" class="icon-btn del" data-co="e-del" data-i="${i}" data-j="${j}" aria-label="حذف">✕</button></span>
-       ${coI(`ce${i}_${j}_x`,`w.days.${i}.ex.${j}.x`,e.x,'ملاحظة (اختياري): تمبو، دروب سيت، سوبر سيت…','co-exx')}</div>`).join('')}
-     <button type="button" class="btn sm co-add" data-co="e-add" data-i="${i}">+ تمرين</button></div>`).join('')}</div>
-   <div class="co-row"><button type="button" class="btn primary" data-co="d-add">+ يوم تمرين</button><select id="coTplSel" class="co-tpl"><option value="">📚 قالب جاهز…</option><option value="full3">جسم كامل — 3 أيام</option><option value="ul4">علوي / سفلي — 4 أيام</option><option value="ppl">دفع / سحب / أرجل — 3 أيام</option><option value="bro5">تقسيم عضلة لكل يوم — 5 أيام</option></select></div>
-   <div class="panel"><h3>الكارديو</h3>${coI('cpCardio','w.cardio',d.w.cardio,'مثلاً: 20 دقيقة مشي سريع بعد كل تمرين، أو HIIT يومين بالأسبوع','co-wide')}</div>`}
-function coFood(d,c){const f=d.f;const calc=coCalc(c);const sum=N(f.p)*4+N(f.c)*4+N(f.fa)*9;
-  const pc=k=>sum?Math.round(N(f[k])*(k==='fa'?9:4)/sum*100):0;
-  return `<div class="panel co-macros"><h3>الأهداف اليومية ${calc?`<button type="button" class="btn sm" data-co="f-calc">🧮 احسب تلقائياً من بيانات اللاعب</button>`:'<span>أضف الوزن والطول للاعب حتى نحسب تلقائياً</span>'}</h3>
-    <div class="co-mg">${[['kcal','السعرات','kcal'],['p','بروتين','غ'],['c','كاربوهيدرات','غ'],['fa','دهون','غ'],['water','ماء','لتر']].map(([k,l,u])=>`<label class="co-m"><span>${l}</span>${coI('cf_'+k,'f.'+k,f[k],'0','','text')}<small>${u}${['p','c','fa'].includes(k)&&sum?' • '+pc(k)+'%':''}</small></label>`).join('')}</div>
-    ${sum?`<div class="co-mbar"><i style="width:${pc('p')}%" class="p"></i><i style="width:${pc('c')}%" class="c"></i><i style="width:${pc('fa')}%" class="f"></i></div><small class="co-msum">مجموع الماكروز ≈ ${Math.round(sum).toLocaleString('en-US')} سعرة</small>`:''}</div>
-   <div class="co-meals">${f.meals.map((m,i)=>`<div class="panel co-meal"><div class="co-dh"><span class="co-dn">${i+1}</span>${coI(`cm${i}`,`f.meals.${i}.n`,m.n,'اسم الوجبة','co-dname')}${coI(`cmt${i}`,`f.meals.${i}.time`,m.time,'الوقت','co-time')}
-      <div class="co-dact"><button type="button" class="icon-btn" data-co="m-up" data-i="${i}" ${i?'':'disabled'} aria-label="لفوك">▲</button><button type="button" class="icon-btn" data-co="m-dup" data-i="${i}" aria-label="نسخ">⧉</button><button type="button" class="icon-btn del" data-co="m-del" data-i="${i}" aria-label="حذف">${I.trash}</button></div></div>
-     ${m.items.map((it,j)=>`<div class="co-fi"><input id="cmi${i}_${j}" list="coFoodL" data-cf="f.meals.${i}.items.${j}.n" value="${esc(it.n)}" placeholder="الأكل" autocomplete="off">${coI(`cmq${i}_${j}`,`f.meals.${i}.items.${j}.q`,it.q,'الكمية')}<button type="button" class="icon-btn del" data-co="i-del" data-i="${i}" data-j="${j}" aria-label="حذف">✕</button></div>`).join('')}
-     <button type="button" class="btn sm co-add" data-co="i-add" data-i="${i}">+ صنف</button></div>`).join('')}</div>
-   <div class="co-row"><button type="button" class="btn primary" data-co="m-add">+ وجبة</button></div>
-   <div class="panel"><h3>المكملات</h3>${(f.supps||[]).map((s,i)=>`<div class="co-fi three">${coI(`cs${i}`,`f.supps.${i}.n`,s.n,'المكمل')}${coI(`csd${i}`,`f.supps.${i}.d`,s.d,'الجرعة')}${coI(`cst${i}`,`f.supps.${i}.t`,s.t,'الوقت')}<button type="button" class="icon-btn del" data-co="s-del" data-i="${i}" aria-label="حذف">✕</button></div>`).join('')}
-    <button type="button" class="btn sm co-add" data-co="s-add">+ مكمل</button></div>`}
+   <datalist id="coExL">${exAll().map(x=>`<option value="${esc(x.n)}">`).join('')}</datalist>`}
 function coNotes(d){return `<div class="panel"><h3>إعدادات البرنامج</h3><div class="co-set">
    <label><span>تاريخ البداية</span>${coI('cpStart','startDate',d.startDate,'','','date')}</label><label><span>المدة (أسابيع)</span>${coI('cpWeeks','weeks',d.weeks,'8','','text')}</label><label><span>اسم المدرب</span>${coI('cpCoach','coachName',d.coachName,'اسم المدرب')}</label></div></div>
    <div class="panel"><h3>ملاحظات وتعليمات للاعب</h3><textarea id="cpNotes" data-cf="notes" class="co-ta" placeholder="مثلاً: نوم 8 ساعات، ماء 4 لتر، زيد الأوزان تدريجياً كل أسبوع، يوم راحة بعد كل يومين…">${esc(d.notes||'')}</textarea></div>
    <div class="panel"><h3>ملاحظات التغذية</h3><textarea id="cpFNotes" data-cf="f.notes" class="co-ta" placeholder="مثلاً: يوم الراحة قلل الرز للنص، وجبة حرة مرة بالأسبوع…">${esc(d.f.notes||'')}</textarea></div>`}
 function coNewProgram(c,base){const n={clientId:c.id,title:base?base.title+' (نسخة)':'برنامج '+(coProgs(c.id).length+1),status:'active',startDate:todayStr(),weeks:'8',coachName:CUR.name,coachId:CUR.id,notes:base?base.notes||'':'',
-   w:base?JSON.parse(JSON.stringify(base.w)):{days:[],cardio:''},f:base?JSON.parse(JSON.stringify(base.f)):Object.assign({kcal:'',p:'',c:'',fa:'',water:'',meals:coMeals(),supps:[{n:'بروتين واي',d:'1 سكوب',t:'بعد التمرين'},{n:'كرياتين',d:'5 غ',t:'يومياً'}],notes:''},coCalc(c)||{}),createdAt:Date.now()};
+   w:base?JSON.parse(JSON.stringify(base.w)):{days:[],cardio:''},f:base?coFixMeals(JSON.parse(JSON.stringify(base.f))):Object.assign({kcal:'',p:'',c:'',fa:'',water:'',meals:coMeals(),supps:[{n:'بروتين واي',d:'1 سكوب',t:'بعد التمرين'},{n:'كرياتين',d:'5 غ',t:'يومياً'}],notes:''},coCalc(c)||{}),createdAt:Date.now()};
   return n}
 function coPick(){const c=coClient(ui.co.cid);if(!c)return;
   openSheet(`<h3>برنامج جديد لـ ${esc(c.name)}</h3><p class="sub">اختار نقطة البداية، وبعدين تعدل كلشي براحتك.</p>
@@ -6996,19 +7030,26 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-co]');if(!
    case 'p-open':ui.co.pid=id;CO.pid=null;ui.co.tab='w';render();return window.scrollTo({top:0});
    case 'p-close':return coLeave(()=>{ui.co.pid='';CO.pid=null;CO.draft=null;CO.dirty=false;render();window.scrollTo({top:0})});
    case 'p-save':return coSave();
-   case 'p-pdf':{const run=()=>coPdf(id||CO.pid);if(CO.pid===id&&CO.dirty)return coSave(true).then(run);return run()}
+   case 'p-pdf':{const run=()=>coPdf(id||CO.pid,b.dataset.k||'w');if(CO.pid===id&&CO.dirty)return coSave(true).then(run);return run()}
    case 'p-dup':{const p=(S.programs||[]).find(x=>x.id===id),c=coClient(p&&p.clientId);if(!p||!c)return;const n=coNewProgram(c,p);n.ready=false;return coPut('programs',null,n).then(nid=>{toast('انعملت نسخة جديدة');ui.co.pid=nid;CO.pid=null;render();coPub(c.id)}).catch(dbErr)}
    case 'p-old':{const p=(S.programs||[]).find(x=>x.id===id);if(!p)return;const n=Object.assign({},p,{status:p.status==='old'?'active':'old'});delete n.id;return coPut('programs',id,n).then(()=>coPub(p.clientId)).catch(dbErr)}
    case 'p-del':{const cid=((S.programs||[]).find(x=>x.id===id)||{}).clientId;return confirmSheet('حذف البرنامج','راح ينحذف البرنامج نهائياً.','احذف',async()=>{await coDel('programs',id);await coPub(cid)})}
    case 'p-ready':if(!d)return;d.ready=!d.ready;coMark();render();return coSave(true).then(()=>toast(d.ready?'✅ صار الكورس جاهز، اللاعب يكدر يحمله':'رجع الكورس قيد الكتابة'));
    case 'sec':ui.co.sec=id;render();return;
    case 'n-post':return ntPost();
+   case 'x-add':return exAdd();
+   case 'x-import':return exImport();
+   case 'x-edit':return exSheet((S.exlib||[]).find(x=>x.id===id)||{});
+   case 'x-del':return confirmSheet('حذف التمرين','راح ينحذف من مكتبتك (البرامج المكتوبة ما تتأثر).','احذف',()=>coDel('exlib',id));
    case 'n-del':return confirmSheet('حذف التبليغ','راح ينحذف التبليغ من عند الكل.','احذف',()=>coDel('notices',id));
    case 'tab':ui.co.tab=id;render();return;
   }
   if(!d)return;const D=d.w.days,M=d.f.meals;
   switch(k){
-   case 'd-add':D.push({n:'اليوم '+(D.length+1),ex:[{n:'',s:'3',r:'10-12',t:'90 ث',x:''}]});return re();
+   case 'd-add':D.push({n:'اليوم '+(D.length+1),m:[],ex:[]});re();return setTimeout(()=>coPicker(D.length-1),60);
+   case 'e-pick':return coPicker(i);
+   case 'd-mus':{const dy=D[i];const cur=dayMus(dy).slice();const k2=b.dataset.k;const x=cur.indexOf(k2);if(x>=0)cur.splice(x,1);else cur.push(k2);dy.m=cur;return re()}
+   case 'd-mauto':D[i].m=[];return re();
    case 'd-del':return confirmSheet('حذف اليوم',`راح ينحذف "${esc(D[i].n||'اليوم')}" وتماريـنه.`,'احذف',async()=>{D.splice(i,1);re()});
    case 'd-dup':D.splice(i+1,0,JSON.parse(JSON.stringify(D[i])));D[i+1].n+=' (نسخة)';return re();
    case 'd-up':mv(D,i,i-1);return re();
@@ -7027,42 +7068,147 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-co]');if(!
    case 'f-calc':{const r=coCalc(coClient(d.clientId)||{});if(r){Object.assign(d.f,r);re();toast('انحسبت الأهداف حسب وزن وطول وعمر وهدف اللاعب')}return}
   }});
 window.addEventListener('beforeunload',e=>{if(CO.dirty){e.preventDefault();e.returnValue=''}});
+/* ---------- مكتبة التمارين (يكتبها المدرب) + اختيار سريع مثل فاتورة البيع ---------- */
+const CO_EXM_IDX=i=>i<=9?'chest':i<=18?'back':i===19?'traps':i<=27?'sh':i<=33?'bi':i<=38?'tri':i<=45?'quad':i<=47?'ham':i===48||i===51?'glu':i<=50?'calf':i===52?'quad':i<=58?'abs':'cardio';
+const exLib=()=>[...(S.exlib||[])].sort((a,b)=>MUS_ORDER.indexOf(a.m)-MUS_ORDER.indexOf(b.m)||String(a.n).localeCompare(String(b.n),'ar'));
+const exBuiltin=()=>CO_EX.map((n,i)=>({id:'b'+i,n,m:CO_EXM_IDX(i),s:'3',r:'10-12',t:'90 ث'}));
+const exAll=()=>{const L=exLib();return L.length?L:exBuiltin()};
+function exMus(n){if(!n)return '';const k=dzN(n);const f=x=>dzN(x.n)===k;const a=(S.exlib||[]).find(f)||exBuiltin().find(f);return a?a.m:''}
+function dayMus(d){if(d.m&&d.m.length)return d.m;const s=new Set();(d.ex||[]).forEach(e=>{const m=e.m||exMus(e.n);if(m)s.add(m)});return [...s]}
+function coWork(d){const days=d.w.days;
+  return `<div class="co-days">${days.map((dy,i)=>{const mus=dayMus(dy);const auto=!(dy.m&&dy.m.length);return `<div class="panel co-day">
+    <div class="co-dtop"><div class="co-dmap">${bodyMap(mus)}</div><div class="co-dmain">
+     <div class="co-dh"><span class="co-dn">${i+1}</span>${coI(`cd${i}`,`w.days.${i}.n`,dy.n,'اسم اليوم مثل: صدر وترايسبس','co-dname')}
+      <div class="co-dact"><button type="button" class="icon-btn" data-co="d-up" data-i="${i}" aria-label="لفوك" ${i?'':'disabled'}>▲</button><button type="button" class="icon-btn" data-co="d-down" data-i="${i}" aria-label="لجوه" ${i<days.length-1?'':'disabled'}>▼</button><button type="button" class="icon-btn" data-co="d-dup" data-i="${i}" title="نسخ اليوم" aria-label="نسخ اليوم">⧉</button><button type="button" class="icon-btn del" data-co="d-del" data-i="${i}" aria-label="حذف اليوم">${I.trash}</button></div></div>
+     <div class="co-mus">${MUS_ORDER.map(k=>`<button type="button" data-co="d-mus" data-i="${i}" data-k="${k}" aria-pressed="${mus.includes(k)}">${MUS[k]}</button>`).join('')}</div>
+     <small class="co-mh">${auto?'🪄 العضلات تتحدد تلقائياً من التمارين — اضغط على أي عضلة حتى تختار بنفسك':'✋ اختيار يدوي • <button type="button" class="co-lnk" data-co="d-mauto" data-i="'+i+'">رجّعها تلقائي</button>'}</small></div></div>
+    <div class="co-exh"><span>#</span><span>التمرين</span><span>مجاميع</span><span>تكرار</span><span>راحة</span><span></span></div>
+    ${dy.ex.map((e,j)=>`<div class="co-ex"><span class="co-en">${j+1}</span>
+      <input id="ce${i}_${j}_n" class="co-exn" list="coExL" data-cf="w.days.${i}.ex.${j}.n" value="${esc(e.n)}" placeholder="اسم التمرين" autocomplete="off">
+      <label class="co-sml"><i>مجاميع</i>${coI(`ce${i}_${j}_s`,`w.days.${i}.ex.${j}.s`,e.s,'4','co-sm','text')}</label><label class="co-sml"><i>تكرار</i>${coI(`ce${i}_${j}_r`,`w.days.${i}.ex.${j}.r`,e.r,'8-12','co-sm')}</label><label class="co-sml"><i>راحة</i>${coI(`ce${i}_${j}_t`,`w.days.${i}.ex.${j}.t`,e.t,'90 ث','co-sm')}</label>
+      <span class="co-exa"><button type="button" class="icon-btn" data-co="e-up" data-i="${i}" data-j="${j}" aria-label="لفوك" ${j?'':'disabled'}>▲</button><button type="button" class="icon-btn del" data-co="e-del" data-i="${i}" data-j="${j}" aria-label="حذف">✕</button></span>
+      ${coI(`ce${i}_${j}_x`,`w.days.${i}.ex.${j}.x`,e.x,'ملاحظة (اختياري): تمبو، دروب سيت، سوبر سيت…','co-exx')}</div>`).join('')||'<div class="co-empty-ex">ماكو تمارين بعد — اضغط «إضافة تمارين» واختار مثل ما تسوي فاتورة 👇</div>'}
+    <div class="co-row tight"><button type="button" class="btn primary sm" data-co="e-pick" data-i="${i}">➕ إضافة تمارين</button><button type="button" class="btn sm ghost" data-co="e-add" data-i="${i}">+ تمرين يدوي</button></div></div>`}).join('')}</div>
+   <div class="co-row"><button type="button" class="btn primary" data-co="d-add">+ يوم تمرين</button><select id="coTplSel" class="co-tpl"><option value="">📚 قالب جاهز…</option><option value="full3">جسم كامل — 3 أيام</option><option value="ul4">علوي / سفلي — 4 أيام</option><option value="ppl">دفع / سحب / أرجل — 3 أيام</option><option value="bro5">تقسيم عضلة لكل يوم — 5 أيام</option></select></div>
+   <div class="panel"><h3>الكارديو</h3>${coI('cpCardio','w.cardio',d.w.cardio,'مثلاً: 20 دقيقة مشي سريع بعد كل تمرين، أو HIIT يومين بالأسبوع','co-wide')}</div>`}
+/* نافذة الاختيار: مثل نقطة البيع، تضغط على التمرين وينضاف لليوم */
+function coPicker(i){const d=CO.draft;if(!d)return;const dy=d.w.days[i];if(!dy)return;const st={m:(dayMus(dy)[0])||'',q:''};const lib=exLib();
+  openSheet(`<div class="pk"><div class="pk-hd"><h3>إضافة تمارين — ${esc(dy.n||'اليوم '+(i+1))}</h3><p class="sub">اضغط على التمرين وينضاف. اضغط مرة ثانية حتى تضيفه مرة ثانية.</p>
+    ${lib.length?'':'<div class="pk-note">💡 هذي القائمة الجاهزة. تكدر تكتب تمارينك الخاصة من تبويب <b>«🏋️ التمارين»</b> بمساحة المدرب وتصير هي القائمة.</div>'}
+    <div class="pk-s">${I.search}<input id="pkQ" type="search" placeholder="ابحث عن تمرين…" autocomplete="off"></div>
+    <div class="pk-m" id="pkM"></div></div><div class="pk-g" id="pkG"></div>
+    <div class="pk-cart"><div class="pk-ch"><b>تمارين اليوم</b><span id="pkN"></span></div><div class="pk-cl" id="pkL"></div></div>
+    <div class="sheet-actions"><button type="button" class="btn primary" id="pkDone">تم ✓</button></div>`,s=>{s.classList.add('pk-sheet');
+    const draw=()=>{const all=exAll();const q=dzN(st.q);const cnt={};dy.ex.forEach(e=>{const k=dzN(e.n);cnt[k]=(cnt[k]||0)+1});
+      const ms=MUS_ORDER.filter(k=>all.some(x=>x.m===k));
+      s.querySelector('#pkM').innerHTML=`<button type="button" data-m="" aria-pressed="${!st.m}">الكل</button>`+ms.map(k=>`<button type="button" data-m="${k}" aria-pressed="${st.m===k}">${MUS[k]}</button>`).join('');
+      const L=all.filter(x=>(!st.m||x.m===st.m)&&(!q||dzN(x.n).includes(q)));
+      s.querySelector('#pkG').innerHTML=L.length?L.map(x=>{const c=cnt[dzN(x.n)]||0;return `<button type="button" class="pk-t${c?' on':''}" data-x="${esc(x.id)}"><span class="pk-tm">${MUS[x.m]||''}</span><b>${esc(x.n)}</b><small>${esc(x.s||'3')} × ${esc(x.r||'10-12')}</small>${c?`<i>${c}</i>`:''}</button>`}).join(''):'<div class="empty sm"><b>ماكو تمارين</b><span>جرّب عضلة ثانية أو اكتب اسم ثاني.</span></div>';
+      s.querySelector('#pkN').textContent=dy.ex.length+' تمرين';
+      s.querySelector('#pkL').innerHTML=dy.ex.length?dy.ex.map((e,j)=>`<div class="pk-li"><span>${j+1}</span><b>${esc(e.n||'—')}</b><small>${esc(e.s||'')}×${esc(e.r||'')}</small><button type="button" data-rm="${j}" aria-label="شيل">✕</button></div>`).join(''):'<small class="pk-e">ما اخترت شي بعد</small>'};
+    s.addEventListener('click',e=>{const m=e.target.closest('[data-m]');if(m){st.m=m.dataset.m;return draw()}
+      const t=e.target.closest('[data-x]');if(t){const x=exAll().find(y=>y.id===t.dataset.x);if(!x)return;dy.ex.push({n:x.n,s:String(x.s||'3'),r:String(x.r||'10-12'),t:String(x.t||'90 ث'),x:x.note||'',m:x.m});coMark();draw();t.classList.add('pop');setTimeout(()=>t.classList.remove('pop'),300);const L=s.querySelector('#pkL');L.scrollTop=L.scrollHeight;return}
+      const r=e.target.closest('[data-rm]');if(r){dy.ex.splice(+r.dataset.rm,1);coMark();draw()}});
+    s.querySelector('#pkQ').addEventListener('input',e=>{st.q=e.target.value;draw()});
+    s.querySelector('#pkDone').onclick=()=>{closeSheet();render()};draw()});
+  const x=$('#scrim');if(x)x.addEventListener('click',e=>{if(e.target.id==='scrim')setTimeout(render,0)})}
+/* تبويب التمارين: المدرب يكتب تمارينه */
+function coExView(){const L=exLib();const q=dzN(ui.co.eq||'');const F=L.filter(x=>(!ui.co.em||x.m===ui.co.em)&&(!q||dzN(x.n).includes(q)));
+  return `<div class="panel"><h3>➕ تمرين جديد</h3><div class="ex-form">
+    <input id="exN" placeholder="اسم التمرين، مثلاً: بنج بريس بار" maxlength="80"><select id="exM">${MUS_ORDER.map(k=>`<option value="${k}">${MUS[k]}</option>`).join('')}</select>
+    <input id="exS" placeholder="مجاميع" value="3" maxlength="10"><input id="exR" placeholder="تكرار" value="10-12" maxlength="16"><input id="exT" placeholder="راحة" value="90 ث" maxlength="12">
+    <input id="exX" class="ex-note" placeholder="ملاحظة تطلع ويه التمرين (اختياري)" maxlength="120"><button type="button" class="btn primary" data-co="x-add">إضافة</button></div>
+    ${L.length?'':`<div class="pk-note" style="margin-top:12px">مكتبتك فارغة، فحالياً يطلع للمدربين القائمة الجاهزة (${CO_EX.length} تمرين). تكدر تبدي منها وتعدلها: <button type="button" class="btn sm" data-co="x-import">📥 استيراد القائمة الجاهزة</button></div>`}</div>
+   <div class="panel"><h3>تماريني <span>${L.length}</span>${L.length?'<button type="button" class="btn sm ghost" data-co="x-import" style="margin:0;margin-inline-start:auto">📥 أضف القائمة الجاهزة</button>':''}</h3>
+    ${L.length?`<div class="bar"><div class="search">${I.search}<input id="exQ" type="search" placeholder="ابحث…" value="${esc(ui.co.eq||'')}" autocomplete="off"></div><select id="exF"><option value="">كل العضلات</option>${MUS_ORDER.map(k=>`<option value="${k}" ${ui.co.em===k?'selected':''}>${MUS[k]}</option>`).join('')}</select></div>
+     <div class="ex-list">${F.map(x=>`<div class="ex-it"><span class="ex-m">${MUS[x.m]||''}</span><div class="ex-i"><b>${esc(x.n)}</b><small>${esc(x.s||'')} × ${esc(x.r||'')} • راحة ${esc(x.t||'')}${x.note?' • '+esc(x.note):''}</small></div><button type="button" class="icon-btn" data-co="x-edit" data-id="${esc(x.id)}" aria-label="تعديل">${I.edit}</button><button type="button" class="icon-btn del" data-co="x-del" data-id="${esc(x.id)}" aria-label="حذف">${I.trash}</button></div>`).join('')||'<div class="empty sm"><b>ماكو نتائج</b></div>'}</div>`
+     :'<div class="empty sm"><b>ما كتبت تمارين بعد</b><span>ضيف تمارينك من فوك، وكل تمرين حدد عضلته حتى تطلع صح على خريطة الجسم.</span></div>'}</div>`}
+function exSheet(x){openSheet(`<h3>تعديل التمرين</h3><form class="form" novalidate>
+   ${fld('eN','الاسم',inp('eN','text',x.n||''),'full')}${fld('eM','العضلة',`<select id="eM">${MUS_ORDER.map(k=>`<option value="${k}" ${x.m===k?'selected':''}>${MUS[k]}</option>`).join('')}</select>`)}
+   ${fld('eS','مجاميع',inp('eS','text',x.s||''))}${fld('eR','تكرار',inp('eR','text',x.r||''))}${fld('eT','راحة',inp('eT','text',x.t||''))}${fld('eX','ملاحظة',inp('eX','text',x.note||''),'full')}</form>
+   <div class="sheet-actions"><button class="btn primary" id="eSave">حفظ</button><button class="btn ghost" id="eNo">إلغاء</button></div>`,s=>{s.querySelector('#eNo').onclick=closeSheet;
+   s.querySelector('#eSave').onclick=async()=>{const v=k=>s.querySelector('#'+k).value.trim();if(!v('eN'))return;const n={n:v('eN'),m:v('eM'),s:v('eS'),r:v('eR'),t:v('eT'),note:v('eX'),by:x.by||CUR.name,createdAt:x.createdAt||Date.now()};
+     try{await coPut('exlib',x.id,n);closeSheet();toast('انحفظ التمرين')}catch(e){dbErr(e)}}})}
+async function exAdd(){const v=k=>($('#'+k)||{}).value?.trim()||'';const n=v('exN');if(!n)return toast('اكتب اسم التمرين','bad');
+  if((S.exlib||[]).some(x=>dzN(x.n)===dzN(n)))return toast('هذا التمرين موجود بمكتبتك','bad');
+  try{await coPut('exlib',null,{n,m:v('exM')||'chest',s:v('exS'),r:v('exR'),t:v('exT'),note:v('exX'),by:CUR.name,createdAt:Date.now()});toast('انضاف «'+n+'» ✅');const e=$('#exN');if(e){e.value='';e.focus()}const x=$('#exX');if(x)x.value=''}catch(e){dbErr(e)}}
+async function exImport(){const have=new Set((S.exlib||[]).map(x=>dzN(x.n)));const L=exBuiltin().filter(x=>!have.has(dzN(x.n)));
+  toast('جاري الاستيراد…');try{for(const x of L){await coPut('exlib',null,{n:x.n,m:x.m,s:x.s,r:x.r,t:x.t,note:'',by:CUR.name,createdAt:Date.now()})}toast(`انضافت ${L.length} تمرين لمكتبتك ✅ عدلها براحتك`)}catch(e){dbErr(e)}}
+document.addEventListener('input',e=>{if(e.target.id==='exQ'){ui.co.eq=e.target.value;render()}});
+document.addEventListener('change',e=>{if(e.target.id==='exF'){ui.co.em=e.target.value;render()}});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&['exN','exR','exS','exT','exX'].includes(e.target.id)){e.preventDefault();exAdd()}});
+/* الوجبات صارت كتابة: نحول الصيغة القديمة */
+function coFixMeals(f){(f.meals||[]).forEach(m=>{if(m.txt==null){m.txt=(m.items||[]).filter(x=>x.n).map(x=>x.n+(x.q?' — '+x.q:'')).join('\n')}delete m.items});return f}
+function coFood(d,c){const f=coFixMeals(d.f);const calc=coCalc(c);const sum=N(f.p)*4+N(f.c)*4+N(f.fa)*9;
+  const pc=k=>sum?Math.round(N(f[k])*(k==='fa'?9:4)/sum*100):0;
+  return `<div class="panel co-macros"><h3>الأهداف اليومية ${calc?`<button type="button" class="btn sm" data-co="f-calc">🧮 احسب تلقائياً من بيانات اللاعب</button>`:'<span>أضف الوزن والطول للاعب حتى نحسب تلقائياً</span>'}</h3>
+    <div class="co-mg">${[['kcal','السعرات','kcal'],['p','بروتين','غ'],['c','كاربوهيدرات','غ'],['fa','دهون','غ'],['water','ماء','لتر']].map(([k,l,u])=>`<label class="co-m"><span>${l}</span>${coI('cf_'+k,'f.'+k,f[k],'0','','text')}<small>${u}${['p','c','fa'].includes(k)&&sum?' • '+pc(k)+'%':''}</small></label>`).join('')}</div>
+    ${sum?`<div class="co-mbar"><i style="width:${pc('p')}%" class="p"></i><i style="width:${pc('c')}%" class="c"></i><i style="width:${pc('fa')}%" class="f"></i></div><small class="co-msum">مجموع الماكروز ≈ ${Math.round(sum).toLocaleString('en-US')} سعرة</small>`:''}</div>
+   <div class="co-meals">${f.meals.map((m,i)=>`<div class="panel co-meal"><div class="co-dh"><span class="co-dn">${i+1}</span>${coI(`cm${i}`,`f.meals.${i}.n`,m.n,'اسم الوجبة','co-dname')}${coI(`cmt${i}`,`f.meals.${i}.time`,m.time,'الوقت','co-time')}
+      <div class="co-dact"><button type="button" class="icon-btn" data-co="m-up" data-i="${i}" ${i?'':'disabled'} aria-label="لفوك">▲</button><button type="button" class="icon-btn" data-co="m-dup" data-i="${i}" aria-label="نسخ">⧉</button><button type="button" class="icon-btn del" data-co="m-del" data-i="${i}" aria-label="حذف">${I.trash}</button></div></div>
+     <textarea id="cmx${i}" class="co-ta co-mtxt" data-cf="f.meals.${i}.txt" placeholder="اكتب الوجبة مثل ما تريدها تطلع للاعب، مثلاً:&#10;3 بيضات مسلوقة&#10;60 غ شوفان ويه حليب&#10;موزة وحدة">${esc(m.txt||'')}</textarea></div>`).join('')}</div>
+   <div class="co-row"><button type="button" class="btn primary" data-co="m-add">+ وجبة</button></div>
+   <div class="panel"><h3>المكملات</h3>${(f.supps||[]).map((s,i)=>`<div class="co-fi three">${coI(`cs${i}`,`f.supps.${i}.n`,s.n,'المكمل')}${coI(`csd${i}`,`f.supps.${i}.d`,s.d,'الجرعة')}${coI(`cst${i}`,`f.supps.${i}.t`,s.t,'الوقت')}<button type="button" class="icon-btn del" data-co="s-del" data-i="${i}" aria-label="حذف">✕</button></div>`).join('')}
+    <button type="button" class="btn sm co-add" data-co="s-add">+ مكمل</button></div>`}
+const coMeals=()=>[{n:'الفطور',time:'8:00',txt:'3 بيضات مسلوقة\n60 غ شوفان ويه حليب\nموزة وحدة'},{n:'الغداء',time:'2:00',txt:'200 غ صدر دجاج مشوي\n150 غ رز (مطبوخ)\nصحن سلطة'},{n:'قبل التمرين',time:'5:30',txt:'3 تمرات\nخبز أسمر'},{n:'بعد التمرين',time:'8:00',txt:'سكوب بروتين واي\nموزة'},{n:'العشاء',time:'10:00',txt:'150 غ جبن قريش\nخضروات مشكلة'}];
 /* ---------- PDF احترافي للكورس ---------- */
 let CO_LIBS=null;
 function coLoad(src){return new Promise((res,rej)=>{const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=()=>rej(new Error('lib'));document.head.appendChild(s)})}
 function coLibs(){if(CO_LIBS)return CO_LIBS;CO_LIBS=Promise.all([window.html2canvas?1:coLoad('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js'),window.jspdf?1:coLoad('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js')]).catch(e=>{CO_LIBS=null;throw e});return CO_LIBS}
 const PDZ='<svg viewBox="0 0 272 180"><path d="M50 5H168L98 88H142L95 175H25L91 53L5 86Z"/><path d="M186 5A84 85 0 0 1 186 175H115L213 68H162Z"/></svg>';
-function coPdfHTML(p,c){const e=esc,days=(p.w&&p.w.days)||[],f=p.f||{},meals=f.meals||[],sup=(f.supps||[]).filter(s=>s.n);
+const coDayStat=d=>{const L=(d.ex||[]).filter(x=>x.n);return {n:L.length,sets:L.reduce((s,x)=>s+(parseInt(x.s)||0),0)}};
+const coLines=t=>String(t||'').split(/\n+/).map(x=>x.replace(/^[-•*\s]+/,'').trim()).filter(Boolean);
+function coCoverTop(p,kind){return `<div class="qcv-bg">${PDZ}</div><div class="qcv-stripe"></div>
+  <div class="qcv-top"><span class="qcv-logo">${PDZ}</span><div><b>AL<i>DZ</i>AZ GYM</b><small>الدزاز جم · ${kind==='f'?'قسم التغذية':'قسم التدريب'}</small></div><span class="qcv-no">№ ${esc(String(p.id||'').slice(-6).toUpperCase())}</span></div>`}
+function coCoverFoot(p){return `<div class="qcv-foot"><div><span>المدرب</span><b>${esc(p.coachName||'—')}</b></div><div><span>تاريخ البداية</span><b>${p.startDate?fmtDate(p.startDate):'—'}</b></div><div><span>المدة</span><b>${p.weeks?esc(String(p.weeks))+' أسابيع':'—'}</b></div></div>`}
+/* ===== نموذج التمارين ===== */
+function coPdfW(p,c){const e=esc,days=((p.w&&p.w.days)||[]).filter(d=>d.n||(d.ex||[]).some(x=>x.n));
   const bmi=N(c.weight)&&N(c.height)?(N(c.weight)/Math.pow(N(c.height)/100,2)).toFixed(1):'—';
-  const tot=days.reduce((s,d)=>s+d.ex.filter(x=>x.n).length,0);
-  const cover=`<div class="qpp qcov"><div class="qcv-bg">${PDZ}</div><div class="qcv-stripe"></div>
-    <div class="qcv-top"><span class="qcv-logo">${PDZ}</span><div><b>AL<i>DZ</i>AZ GYM</b><small>الدزاز جم · قسم التدريب</small></div><span class="qcv-no">№ ${e(String(p.id||'').slice(-6).toUpperCase())}</span></div>
-    <div class="qcv-mid"><small class="qcv-k">PERSONAL TRAINING & NUTRITION PLAN</small><h1>البرنامج التدريبي<br><em>والغذائي</em></h1><div class="qcv-name"><span>مُعدّ خصيصاً لـ</span><b>${e(c.name||'')}</b></div>
-     <div class="qcv-chips">${[c.goal,c.level,p.weeks?p.weeks+' أسابيع':'',days.length+' أيام تمرين بالأسبوع'].filter(Boolean).map(x=>`<span>${e(x)}</span>`).join('')}</div></div>
-    <div class="qcv-stats">${[['العمر',c.age?c.age:'—','سنة'],['الطول',c.height||'—','سم'],['الوزن',c.weight||'—','كغ'],['BMI',bmi,''],['السعرات',f.kcal||'—','kcal'],['البروتين',f.p||'—','غ']].map(([l,v,u])=>`<div><span>${l}</span><b>${e(String(v))}<small>${u}</small></b></div>`).join('')}</div>
-    <div class="qcv-foot"><div><span>المدرب</span><b>${e(p.coachName||'')}</b></div><div><span>تاريخ البداية</span><b>${p.startDate?fmtDate(p.startDate):'—'}</b></div><div><span>عدد التمارين</span><b>${tot}</b></div></div></div>`;
-  const blocks=[];
-  blocks.push({sec:'w',html:`<div class="qsec-h"><span>01</span><div><b>البرنامج التدريبي</b><small>WORKOUT PROGRAM</small></div></div>`});
+  const tot=days.reduce((s,d)=>s+coDayStat(d).n,0);
+  const cover=`<div class="qpp qcov">${coCoverTop(p,'w')}
+   <div class="qcv-mid"><small class="qcv-k">PERSONAL TRAINING PROGRAM</small><h1>البرنامج <em>التدريبي</em></h1>
+    <div class="qcv-name"><span>مُعدّ خصيصاً لـ</span><b>${e(c.name||'')}</b></div>
+    <div class="qcv-chips">${[c.goal,c.level,days.length+' أيام تمرين'].filter(Boolean).map(x=>`<span>${e(x)}</span>`).join('')}</div></div>
+   <div class="qwk"><div class="qwk-h"><b>خطة الأسبوع</b><i></i><small>WEEKLY SPLIT</small></div><div class="qwk-g n${Math.min(days.length,6)}">${days.map((d,i)=>{const m=dayMus(d);return `<div class="qwd"><div class="qwd-map">${bodyMap(m)}</div><div class="qwd-t"><span>DAY ${String(i+1).padStart(2,'0')}</span><b>${e(d.n||'اليوم '+(i+1))}</b><small>${m.map(k=>MUS[k]).join(' • ')||'—'}</small></div></div>`}).join('')}</div></div>
+   <div class="qcv-stats">${[['العمر',c.age||'—','سنة'],['الطول',c.height||'—','سم'],['الوزن',c.weight||'—','كغ'],['BMI',bmi,''],['أيام التمرين',days.length,''],['التمارين',tot,'']].map(([l,v,u])=>`<div><span>${l}</span><b>${e(String(v))}<small>${u}</small></b></div>`).join('')}</div>
+   ${coCoverFoot(p)}</div>`;
+  const blocks=[{sec:'w',html:`<div class="qsec-h"><span>01</span><div><b>أيام التمرين</b><small>TRAINING DAYS</small></div></div>`}];
   if(c.injuries)blocks.push({sec:'w',html:`<div class="qwarn">⚠️ <b>تنبيه صحي:</b> ${e(c.injuries)} — انتبه بالتمارين اللي تضغط على هالمنطقة وبلّغ المدرب عن أي ألم.</div>`});
-  days.forEach((d,i)=>blocks.push({sec:'w',html:`<div class="qday"><div class="qday-h"><span class="qdn">DAY ${String(i+1).padStart(2,'0')}</span><b>${e(d.n||'اليوم '+(i+1))}</b><small>${d.ex.filter(x=>x.n).length} تمارين</small></div>
-    <table><thead><tr><th class="qc1">#</th><th>التمرين</th><th>المجاميع</th><th>التكرار</th><th>الراحة</th></tr></thead><tbody>${d.ex.filter(x=>x.n).map((x,j)=>`<tr><td class="qc1">${j+1}</td><td class="qexn"><b>${e(x.n)}</b>${x.x?`<small>${e(x.x)}</small>`:''}</td><td class="qnum">${e(x.s||'')}</td><td class="qnum">${e(x.r||'')}</td><td class="qnum">${e(x.t||'')}</td></tr>`).join('')}</tbody></table></div>`}));
+  days.forEach((d,i)=>{const m=dayMus(d),st=coDayStat(d);blocks.push({sec:'w',html:`<div class="qday">
+    <div class="qday-h"><div class="qday-no"><small>DAY</small><b>${String(i+1).padStart(2,'0')}</b></div>
+     <div class="qday-t"><b>${e(d.n||'اليوم '+(i+1))}</b><div class="qday-m">${musChips(m,'qmc')||'<span class="qmc">تمرين</span>'}</div><small>${st.n} تمارين • ${st.sets} مجموعة</small></div>
+     <div class="qday-map">${bodyMap(m)}</div></div>
+    <table><thead><tr><th class="qc1">#</th><th>التمرين</th><th>المجاميع</th><th>التكرار</th><th>الراحة</th></tr></thead><tbody>${(d.ex||[]).filter(x=>x.n).map((x,j)=>`<tr><td class="qc1">${String(j+1).padStart(2,'0')}</td><td class="qexn"><b>${e(x.n)}</b>${x.x?`<small>📝 ${e(x.x)}</small>`:''}</td><td class="qnum"><span class="qset">${e(x.s||'')}</span></td><td class="qnum">${e(x.r||'')}</td><td class="qnum qrest">${e(x.t||'')}</td></tr>`).join('')}</tbody></table></div>`})});
   if(p.w&&p.w.cardio)blocks.push({sec:'w',html:`<div class="qbox"><b>🏃 الكارديو</b><p>${e(p.w.cardio)}</p></div>`});
-  blocks.push({sec:'f',brk:true,html:`<div class="qsec-h"><span>02</span><div><b>البرنامج الغذائي اليومي</b><small>DAILY NUTRITION PLAN</small></div></div>`});
-  const sum=N(f.p)*4+N(f.c)*4+N(f.fa)*9,pc=k=>sum?Math.round(N(f[k])*(k==='fa'?9:4)/sum*100):0;
-  if(f.kcal||sum)blocks.push({sec:'f',html:`<div class="qmac"><div class="qkc"><span>السعرات اليومية</span><b>${N(f.kcal)?N(f.kcal).toLocaleString('en-US'):Math.round(sum).toLocaleString('en-US')}</b><small>kcal / يوم</small></div>
-    <div class="qmm">${[['p','البروتين','#ed1c24'],['c','الكاربوهيدرات','#111'],['fa','الدهون','#9ca3af']].map(([k,l,col])=>`<div class="qmi"><div class="qml"><span>${l}</span><b>${e(String(f[k]||0))} غ</b><small>${pc(k)}%</small></div><div class="qmt"><i style="width:${pc(k)}%;background:${col}"></i></div></div>`).join('')}
-    ${f.water?`<div class="qmw">💧 الماء: <b>${e(String(f.water))} لتر</b> يومياً</div>`:''}</div></div>`});
-  meals.forEach((m,i)=>blocks.push({sec:'f',html:`<div class="qmeal"><div class="qmeal-h"><span class="qmt2">${e(m.time||'—')}</span><b>${e(m.n||'وجبة '+(i+1))}</b><small>الوجبة ${i+1}</small></div>
-    <div class="qitems">${(m.items||[]).filter(x=>x.n).map(x=>`<div><span>${e(x.n)}</span><b>${e(x.q||'')}</b></div>`).join('')}</div></div>`}));
+  if(p.notes)blocks.push({sec:'w',html:`<div class="qbox qred"><b>📌 تعليمات المدرب</b><p>${e(p.notes)}</p></div>`});
+  blocks.push({sec:'w',html:coSign(p,c)});return {cover,blocks}}
+const coSign=(p,c)=>`<div class="qsign"><div><span>توقيع المدرب</span><i></i><b>${esc(p.coachName||'')}</b></div><div><span>توقيع اللاعب</span><i></i><b>${esc(c.name||'')}</b></div></div>`;
+/* ===== نموذج التغذية ===== */
+function coDonut(f){const P=N(f.p)*4,C=N(f.c)*4,F=N(f.fa)*9,T=P+C+F;const R=88,L=2*Math.PI*R;let off=0;
+  const seg=(v,col)=>{if(!T||!v)return '';const len=v/T*L;const s=`<circle cx="110" cy="110" r="${R}" fill="none" stroke="${col}" stroke-width="22" stroke-dasharray="${len.toFixed(1)} ${(L-len).toFixed(1)}" stroke-dashoffset="${(-off).toFixed(1)}" transform="rotate(-90 110 110)"/>`;off+=len;return s};
+  const kc=N(f.kcal)||Math.round(T);
+  return `<svg class="qdonut" viewBox="0 0 220 220"><circle cx="110" cy="110" r="${R}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="22"/>${seg(P,'#ed1c24')}${seg(C,'#f4f4f5')}${seg(F,'#71717a')}
+   <text x="110" y="104" text-anchor="middle" class="qd-v">${kc?kc.toLocaleString('en-US'):'—'}</text><text x="110" y="132" text-anchor="middle" class="qd-u">سعرة / يوم</text></svg>`}
+function coPdfF(p,c){const e=esc,f=coFixMeals(JSON.parse(JSON.stringify(p.f||{}))),meals=(f.meals||[]).filter(m=>m.n||m.txt),sup=(f.supps||[]).filter(s=>s.n);
+  const T=N(f.p)*4+N(f.c)*4+N(f.fa)*9,pc=k=>T?Math.round(N(f[k])*(k==='fa'?9:4)/T*100):0;
+  const cover=`<div class="qpp qcov">${coCoverTop(p,'f')}
+   <div class="qcv-mid sm"><small class="qcv-k">PERSONAL NUTRITION PLAN</small><h1>البرنامج <em>الغذائي</em></h1>
+    <div class="qcv-name"><span>مُعدّ خصيصاً لـ</span><b>${e(c.name||'')}</b></div>
+    <div class="qcv-chips">${[c.goal,meals.length+' وجبات يومياً',f.water?'💧 '+f.water+' لتر ماء':''].filter(Boolean).map(x=>`<span>${e(x)}</span>`).join('')}</div></div>
+   <div class="qmac"><div class="qmac-d">${coDonut(f)}</div><div class="qmac-l">${[['p','البروتين','PROTEIN','#ed1c24'],['c','الكاربوهيدرات','CARBS','#f4f4f5'],['fa','الدهون','FATS','#71717a']].map(([k,l,en,col])=>`<div class="qmk"><i style="background:${col}"></i><div><small>${en}</small><b>${l}</b></div><strong>${e(String(f[k]||0))}<small>غ</small></strong><em>${pc(k)}%</em></div>`).join('')}
+    ${f.water?`<div class="qmk w"><i>💧</i><div><small>WATER</small><b>الماء</b></div><strong>${e(String(f.water))}<small>لتر</small></strong><em>يومياً</em></div>`:''}</div></div>
+   <div class="qcv-stats">${[['الوزن',c.weight||'—','كغ'],['الهدف',c.goal||'—',''],['الوجبات',meals.length,''],['المكملات',sup.length,'']].map(([l,v,u])=>`<div><span>${l}</span><b class="${String(v).length>6?'sm':''}">${e(String(v))}<small>${u}</small></b></div>`).join('')}</div>
+   ${coCoverFoot(p)}</div>`;
+  const blocks=[{sec:'f',html:`<div class="qsec-h"><span>01</span><div><b>الوجبات اليومية</b><small>DAILY MEALS</small></div></div>`}];
+  meals.forEach((m,i)=>blocks.push({sec:'f',html:`<div class="qml${i===meals.length-1?' qlast':''}"><div class="qml-t"><b>${e(m.time||'—')}</b><span>الوجبة ${i+1}</span></div><div class="qml-c"><h4>${e(m.n||'وجبة '+(i+1))}</h4><ul>${coLines(m.txt).map(l=>`<li>${e(l)}</li>`).join('')||'<li>—</li>'}</ul></div></div>`}));
   if(sup.length)blocks.push({sec:'f',html:`<div class="qbox"><b>💊 المكملات الغذائية</b><table class="qst"><thead><tr><th>المكمل</th><th>الجرعة</th><th>الوقت</th></tr></thead><tbody>${sup.map(s=>`<tr><td><b>${e(s.n)}</b></td><td>${e(s.d||'')}</td><td>${e(s.t||'')}</td></tr>`).join('')}</tbody></table></div>`});
-  if(f.notes)blocks.push({sec:'f',html:`<div class="qbox"><b>🥗 ملاحظات التغذية</b><p>${e(f.notes)}</p></div>`});
-  if(p.notes)blocks.push({sec:'n',html:`<div class="qbox qred"><b>📌 تعليمات المدرب</b><p>${e(p.notes)}</p></div>`});
-  blocks.push({sec:'n',html:`<div class="qsign"><div><span>توقيع المدرب</span><i></i><b>${e(p.coachName||'')}</b></div><div><span>توقيع اللاعب</span><i></i><b>${e(c.name||'')}</b></div></div>`});
-  return {cover,blocks}}
+  if(f.notes)blocks.push({sec:'f',html:`<div class="qbox qred"><b>🥗 تعليمات التغذية</b><p>${e(f.notes)}</p></div>`});
+  blocks.push({sec:'f',html:coSign(p,c)});return {cover,blocks}}
 const CO_PDF_CSS=`
 #coPrev{position:fixed;inset:0;z-index:96;background:#16161b;overflow:auto;direction:rtl;padding-top:env(safe-area-inset-top,0px)}
 #coPrev .cpdf{position:static;left:auto}
 .cpv-bar{position:sticky;top:0;z-index:2;display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 14px;background:#07070a;border-bottom:2px solid #ed1c24;color:#fff}.cpv-bar .btn{margin:0}.cpv-bar small{color:#a1a1aa}.cpv-sp{flex:1}
+.cpv-tabs{display:flex;gap:6px}.cpv-tabs button{border:1px solid rgba(255,255,255,.2);background:transparent;color:#d4d4d8;padding:8px 14px;font:inherit;font-weight:700;cursor:pointer}.cpv-tabs button[aria-pressed="true"]{background:#ed1c24;border-color:#ed1c24;color:#fff}
 .cpv-tip{margin:10px 14px 0;color:#d4d4d8;font-size:13px}
 .cpv-pages{display:grid;justify-items:center;gap:16px;padding:16px 8px 40px}
 .cpv-pw{position:relative;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.5)}.cpv-pw>.qpp{position:absolute;top:0;right:0;transform-origin:top right;margin:0}
@@ -7072,53 +7218,108 @@ const CO_PDF_CSS=`
  #coPrev .cpv-pw>.qpp{position:relative!important;transform:none!important;margin:0!important}
  .qpp{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 .cpdf{position:fixed;left:-20000px;top:0;direction:rtl;font-family:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;color:#111;-webkit-font-smoothing:antialiased}
-.cpdf .qpg{color:#111}.cpdf td,.cpdf th,.cpdf p,.cpdf span,.cpdf b,.cpdf small,.cpdf i,.cpdf em,.cpdf h1{color:inherit;text-shadow:none}.cpdf td,.cpdf th{background:transparent;border-color:#eee}.cpdf table{background:transparent}
-.cpdf *{box-sizing:border-box}.cpdf .qpp{width:794px;height:1123px;position:relative;overflow:hidden;background:#fff;margin-bottom:20px}.cpdf .qcov{background:#07070a;color:#fff;padding:56px 56px 48px;display:flex;flex-direction:column}.cpdf .qcv-bg{position:absolute;left:-120px;bottom:-60px;width:760px;opacity:.07}.cpdf .qcv-bg svg{width:100%;fill:#ed1c24}.cpdf .qcv-stripe{position:absolute;top:0;right:0;width:340px;height:100%;background:linear-gradient(160deg,rgba(237,28,36,.26),rgba(237,28,36,0) 60%);clip-path:polygon(40% 0,100% 0,100% 100%,0 100%)}.cpdf .qcv-top{position:relative;display:flex;align-items:center;gap:16px}.cpdf .qcv-logo{width:84px;height:56px;display:block}.cpdf .qcv-logo svg{width:100%;height:100%;fill:#ed1c24;filter:drop-shadow(0 0 18px rgba(237,28,36,.6))}.cpdf .qcv-top b{display:block;font:700 26px "Chakra Petch",sans-serif;letter-spacing:4px}.cpdf .qcv-top b i{font-style:normal;color:#ed1c24}.cpdf .qcv-top small{color:#a1a1aa;font-size:14px}.cpdf .qcv-no{margin-inline-start:auto;font:600 13px "Chakra Petch",monospace;color:#a1a1aa;border:1px solid rgba(255,255,255,.2);padding:6px 12px}.cpdf .qcv-mid{position:relative;margin-top:120px}.cpdf .qcv-k{font:600 14px "Chakra Petch",monospace;letter-spacing:5px;color:#ed1c24}.cpdf .qcv-mid h1{margin:18px 0 0;font:800 64px/1.15 "Noto Kufi Arabic","IBM Plex Sans Arabic",sans-serif}.cpdf .qcv-mid h1 em{font-style:normal;color:#ed1c24}.cpdf .qcv-name{margin-top:36px;padding:18px 24px;border-right:6px solid #ed1c24;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06))}.cpdf .qcv-name span{display:block;color:#a1a1aa;font-size:15px}.cpdf .qcv-name b{font:800 40px "Noto Kufi Arabic",sans-serif}.cpdf .qcv-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.cpdf .qcv-chips span{padding:8px 16px;border:1px solid rgba(237,28,36,.6);background:rgba(237,28,36,.12);font-size:15px;font-weight:600}.cpdf .qcv-stats{position:relative;margin-top:auto;display:grid;grid-template-columns:repeat(6,1fr);border:1px solid rgba(255,255,255,.14)}.cpdf .qcv-stats div{padding:16px 10px;text-align:center;border-left:1px solid rgba(255,255,255,.1)}.cpdf .qcv-stats div:last-child{border-left:0}.cpdf .qcv-stats span{display:block;color:#a1a1aa;font-size:13px}.cpdf .qcv-stats b{display:block;margin-top:4px;font:700 26px "Chakra Petch",sans-serif}.cpdf .qcv-stats small{font-size:12px;color:#ed1c24;margin-inline-start:3px}.cpdf .qcv-foot{position:relative;display:flex;gap:0;margin-top:22px;background:#ed1c24}.cpdf .qcv-foot div{flex:1;padding:14px 18px;border-left:1px solid rgba(0,0,0,.2)}.cpdf .qcv-foot div:last-child{border:0}.cpdf .qcv-foot span{display:block;font-size:12.5px;opacity:.85}.cpdf .qcv-foot b{font-size:19px}.cpdf .qpg{padding:0 44px 70px}.cpdf .qph{display:flex;align-items:center;gap:14px;height:78px;margin:0 -44px 26px;padding:0 44px;background:#07070a;color:#fff;border-bottom:4px solid #ed1c24}.cpdf .qph .qlg{width:46px;height:31px}.cpdf .qph .qlg svg{width:100%;height:100%;fill:#ed1c24}.cpdf .qph b{font:700 17px "Chakra Petch",sans-serif;letter-spacing:2px}.cpdf .qph b i{font-style:normal;color:#ed1c24}.cpdf .qph .qpn{margin-inline-start:auto;text-align:left;font-size:13px;color:#d4d4d8}.cpdf .qph .qpn b{display:block;font:700 16px "IBM Plex Sans Arabic",sans-serif;letter-spacing:0;color:#fff}.cpdf .qpf{position:absolute;bottom:0;left:0;right:0;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 44px;border-top:1px solid #e5e5e5;font:600 12px "Chakra Petch",monospace;color:#8a8a8a;letter-spacing:1px}.cpdf .qpf b{color:#ed1c24}.cpdf .qsec-h{display:flex;align-items:center;gap:14px;margin:4px 0 18px}.cpdf .qsec-h span{width:54px;height:54px;display:grid;place-items:center;background:#ed1c24;color:#fff;font:700 22px "Chakra Petch",sans-serif;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}.cpdf .qsec-h b{display:block;font:800 28px "Noto Kufi Arabic",sans-serif}.cpdf .qsec-h small{font:600 12px "Chakra Petch",monospace;letter-spacing:4px;color:#ed1c24}.cpdf .qwarn{margin-bottom:16px;padding:12px 16px;background:#fff7ed;border:1px solid #fdba74;border-right:5px solid #f97316;font-size:14px;line-height:1.8}.cpdf .qday{margin-bottom:18px;border:1px solid #e4e4e7}.cpdf .qday-h{display:flex;align-items:center;gap:12px;padding:11px 16px;background:#111;color:#fff}.cpdf .qday-h .qdn{font:700 13px "Chakra Petch",monospace;letter-spacing:2px;background:#ed1c24;padding:4px 10px}.cpdf .qday-h b{font-size:18px}.cpdf .qday-h small{margin-inline-start:auto;color:#a1a1aa;font-size:13px}.cpdf table{width:100%;border-collapse:collapse;font-size:14px}.cpdf th{background:#f4f4f5;color:#52525b;font-weight:700;font-size:12.5px;padding:8px 10px;text-align:right;border-bottom:2px solid #ed1c24}.cpdf td{padding:9px 10px;border-bottom:1px solid #eee;vertical-align:middle}.cpdf tbody tr:nth-child(even) td{background:#fafafa}.cpdf td.qc1,.cpdf th.qc1{width:40px;text-align:center;color:#ed1c24;font:700 14px "Chakra Petch",sans-serif}.cpdf td.qnum{font:600 14px "Chakra Petch","IBM Plex Sans Arabic",sans-serif;text-align:center;white-space:nowrap}.cpdf th:nth-child(n+3){text-align:center;width:88px}.cpdf td.qexn b{display:block;font-size:14.5px}.cpdf td.qexn small{display:block;color:#71717a;font-size:12px;margin-top:2px}.cpdf .qbox{margin-bottom:16px;padding:14px 18px;border:1px solid #e4e4e7;border-right:5px solid #111}.cpdf .qbox.qred{border-right-color:#ed1c24;background:#fff5f5}.cpdf .qbox>b{font-size:16px}.cpdf .qbox p{margin:6px 0 0;font-size:14px;line-height:1.9;white-space:pre-wrap}.cpdf .qbox table{margin-top:10px}.cpdf .qmac{display:flex;gap:18px;margin-bottom:18px}.cpdf .qkc{width:200px;flex:none;padding:20px;background:#07070a;color:#fff;text-align:center;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)}.cpdf .qkc span{display:block;color:#a1a1aa;font-size:13px}.cpdf .qkc b{display:block;font:700 46px "Chakra Petch",sans-serif;color:#ed1c24;margin:6px 0}.cpdf .qkc small{color:#d4d4d8;font-size:13px}.cpdf .qmm{flex:1;display:grid;gap:12px;align-content:center}.cpdf .qml{display:flex;align-items:baseline;gap:8px;margin-bottom:5px}.cpdf .qml span{font-weight:700;font-size:14.5px}.cpdf .qml b{font:700 16px "Chakra Petch",sans-serif}.cpdf .qml small{margin-inline-start:auto;color:#71717a;font:600 13px "Chakra Petch",sans-serif}.cpdf .qmt{height:10px;background:#f1f1f1}.cpdf .qmt i{display:block;height:100%}.cpdf .qmw{font-size:14px;padding-top:4px}.cpdf .qmeal{margin-bottom:14px;border:1px solid #e4e4e7;break-inside:avoid}.cpdf .qmeal-h{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:2px solid #ed1c24}.cpdf .qmeal-h .qmt2{font:700 14px "Chakra Petch",sans-serif;background:#111;color:#fff;padding:5px 12px;min-width:66px;text-align:center}.cpdf .qmeal-h b{font-size:17px}.cpdf .qmeal-h small{margin-inline-start:auto;color:#a1a1aa;font-size:12.5px}.cpdf .qitems{display:grid;grid-template-columns:1fr 1fr}.cpdf .qitems div{display:flex;justify-content:space-between;gap:10px;padding:8px 14px;border-bottom:1px solid #f1f1f1;font-size:14px}.cpdf .qitems div:nth-child(odd){border-left:1px solid #f1f1f1}.cpdf .qitems b{color:#ed1c24;font-weight:700;white-space:nowrap}.cpdf .qst th:nth-child(n+2){width:auto}.cpdf .qsign{display:flex;gap:40px;margin-top:30px}.cpdf .qsign div{flex:1;text-align:center}.cpdf .qsign span{display:block;color:#71717a;font-size:13px}.cpdf .qsign i{display:block;height:60px;border-bottom:2px dashed #a1a1aa}.cpdf .qsign b{display:block;margin-top:8px;font-size:15px}
+.cpdf .qpg{color:#111}.cpdf td,.cpdf th,.cpdf p,.cpdf span,.cpdf b,.cpdf small,.cpdf i,.cpdf em,.cpdf h1,.cpdf h4,.cpdf strong,.cpdf li,.cpdf ul{color:inherit;text-shadow:none}.cpdf td,.cpdf th{background:transparent;border-color:#eee}.cpdf table{background:transparent}
+.cpdf *{box-sizing:border-box}
+${BMAP_CSS.replace(/\.bmap/g,'.cpdf .bmap')}
+.cpdf .qpp{width:794px;height:1123px;position:relative;overflow:hidden;background:#fff;margin-bottom:20px}
+.cpdf .qcov{background:radial-gradient(120% 60% at 100% 0,#2a0709 0,#07070a 55%);color:#fff;padding:48px 52px 40px;display:flex;flex-direction:column}
+.cpdf .qcv-bg{position:absolute;left:-140px;bottom:120px;width:720px;opacity:.05}.cpdf .qcv-bg svg{width:100%;fill:#ed1c24}
+.cpdf .qcv-stripe{position:absolute;top:0;right:0;width:300px;height:100%;background:linear-gradient(170deg,rgba(237,28,36,.22),rgba(237,28,36,0) 45%);clip-path:polygon(45% 0,100% 0,100% 100%,0 100%)}
+.cpdf .qcv-top{position:relative;display:flex;align-items:center;gap:16px}.cpdf .qcv-logo{width:78px;height:52px;display:block}.cpdf .qcv-logo svg{width:100%;height:100%;fill:#ed1c24;filter:drop-shadow(0 0 16px rgba(237,28,36,.6))}
+.cpdf .qcv-top b{display:block;font:700 24px "Chakra Petch",sans-serif;letter-spacing:4px}.cpdf .qcv-top b i{font-style:normal;color:#ed1c24}.cpdf .qcv-top small{color:#a1a1aa;font-size:14px}
+.cpdf .qcv-no{margin-inline-start:auto;font:600 13px "Chakra Petch",monospace;color:#a1a1aa;border:1px solid rgba(255,255,255,.2);padding:6px 12px}
+.cpdf .qcv-mid{position:relative;margin-top:44px}.cpdf .qcv-k{font:600 13px "Chakra Petch",monospace;letter-spacing:5px;color:#ed1c24}
+.cpdf .qcv-mid h1{margin:10px 0 0;font:800 58px/1.15 "Noto Kufi Arabic","IBM Plex Sans Arabic",sans-serif}.cpdf .qcv-mid h1 em{font-style:normal;color:#ed1c24}
+.cpdf .qcv-name{margin-top:20px;padding:12px 20px;border-right:6px solid #ed1c24;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07))}.cpdf .qcv-name span{display:block;color:#a1a1aa;font-size:14px}.cpdf .qcv-name b{font:800 34px "Noto Kufi Arabic",sans-serif}
+.cpdf .qcv-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.cpdf .qcv-chips span{padding:7px 14px;border:1px solid rgba(237,28,36,.6);background:rgba(237,28,36,.12);font-size:14px;font-weight:600}
+.cpdf .qwk{position:relative;margin-top:26px}.cpdf .qwk-h{display:flex;align-items:center;gap:12px;margin-bottom:12px}.cpdf .qwk-h b{font-size:18px}.cpdf .qwk-h i{flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.25),transparent)}.cpdf .qwk-h small{font:600 11px "Chakra Petch",monospace;letter-spacing:3px;color:#ed1c24}
+.cpdf .qwk-g{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cpdf .qwk-g.n1,.cpdf .qwk-g.n2,.cpdf .qwk-g.n4{grid-template-columns:repeat(2,1fr)}
+.cpdf .qwd{display:flex;align-items:center;gap:12px;padding:12px 12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.035)}
+.cpdf .qwd-map{width:104px;flex:none}.cpdf .qwd-map svg{width:100%;display:block}
+.cpdf .qwd-t{min-width:0}.cpdf .qwd-t span{display:inline-block;font:700 10.5px "Chakra Petch",monospace;letter-spacing:2px;background:#ed1c24;padding:2px 7px}.cpdf .qwd-t b{display:block;margin-top:5px;font-size:14.5px;line-height:1.35}.cpdf .qwd-t small{display:block;margin-top:3px;color:#a1a1aa;font-size:11.5px;line-height:1.5}
+.cpdf .qcv-stats{position:relative;margin-top:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));border:1px solid rgba(255,255,255,.14)}
+.cpdf .qcv-stats div{padding:12px 8px;text-align:center;border-left:1px solid rgba(255,255,255,.1)}.cpdf .qcv-stats div:last-child{border-left:0}
+.cpdf .qcv-stats span{display:block;color:#a1a1aa;font-size:12.5px}.cpdf .qcv-stats b{display:block;margin-top:3px;font:700 24px "Chakra Petch","IBM Plex Sans Arabic",sans-serif}.cpdf .qcv-stats b.sm{font:700 15px "IBM Plex Sans Arabic",sans-serif;margin-top:8px}.cpdf .qcv-stats small{font-size:11px;color:#ed1c24;margin-inline-start:3px}
+.cpdf .qcv-foot{position:relative;display:flex;margin-top:16px;background:#ed1c24}.cpdf .qcv-foot div{flex:1;padding:12px 18px;border-left:1px solid rgba(0,0,0,.2)}.cpdf .qcv-foot div:last-child{border:0}.cpdf .qcv-foot span{display:block;font-size:12px;opacity:.85}.cpdf .qcv-foot b{font-size:18px}
+.cpdf .qmac{position:relative;display:flex;align-items:center;gap:26px;margin-top:34px;padding:22px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
+.cpdf .qmac-d{width:250px;flex:none}.cpdf .qdonut{width:100%;display:block}.cpdf .qd-v{font:700 40px "Chakra Petch",sans-serif;fill:#fff}.cpdf .qd-u{font:600 14px "IBM Plex Sans Arabic",sans-serif;fill:#a1a1aa}
+.cpdf .qmac-l{flex:1;display:grid;gap:10px}.cpdf .qmk{display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
+.cpdf .qmk>i{width:12px;height:38px;flex:none;font-style:normal;display:grid;place-items:center}.cpdf .qmk.w>i{width:auto;background:none!important;font-size:20px}
+.cpdf .qmk>div{flex:1}.cpdf .qmk>div small{display:block;font:600 10px "Chakra Petch",monospace;letter-spacing:2px;color:#a1a1aa}.cpdf .qmk>div b{font-size:15px}
+.cpdf .qmk strong{font:700 26px "Chakra Petch",sans-serif}.cpdf .qmk strong small{font-size:12px;color:#a1a1aa;margin-inline-start:3px}.cpdf .qmk em{font-style:normal;min-width:52px;text-align:center;font:700 14px "Chakra Petch",sans-serif;color:#ed1c24}
+.cpdf .qpg{padding:0 44px 70px}
+.cpdf .qph{display:flex;align-items:center;gap:14px;height:72px;margin:0 -44px 24px;padding:0 44px;background:#07070a;color:#fff;border-bottom:4px solid #ed1c24}
+.cpdf .qlg{width:44px;height:30px}.cpdf .qlg svg{width:100%;height:100%;fill:#ed1c24}.cpdf .qph b{font:700 16px "Chakra Petch",sans-serif;letter-spacing:2px}.cpdf .qph b i{font-style:normal;color:#ed1c24}
+.cpdf .qpn{margin-inline-start:auto;text-align:left;font-size:12.5px;color:#d4d4d8}.cpdf .qpn b{display:block;font:700 15px "IBM Plex Sans Arabic",sans-serif;letter-spacing:0;color:#fff}
+.cpdf .qpf{position:absolute;bottom:0;left:0;right:0;height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 44px;border-top:1px solid #e5e5e5;font:600 11.5px "Chakra Petch",monospace;color:#8a8a8a;letter-spacing:1px}.cpdf .qpf b{color:#ed1c24}
+.cpdf .qsec-h{display:flex;align-items:center;gap:14px;margin:2px 0 16px}.cpdf .qsec-h span{width:50px;height:50px;display:grid;place-items:center;background:#ed1c24;color:#fff;font:700 20px "Chakra Petch",sans-serif;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+.cpdf .qsec-h b{display:block;font:800 26px "Noto Kufi Arabic",sans-serif}.cpdf .qsec-h small{font:600 11.5px "Chakra Petch",monospace;letter-spacing:4px;color:#ed1c24}
+.cpdf .qwarn{margin-bottom:16px;padding:11px 16px;background:#fff7ed;border:1px solid #fdba74;border-right:5px solid #f97316;font-size:13.5px;line-height:1.8}
+.cpdf .qday{margin-bottom:18px;border:1px solid #e4e4e7;overflow:hidden}
+.cpdf .qday-h{display:flex;align-items:center;gap:16px;padding:12px 16px;background:linear-gradient(110deg,#07070a 60%,#2a0709);color:#fff;position:relative}
+.cpdf .qday-h::after{content:"";position:absolute;inset:auto 0 0 0;height:3px;background:linear-gradient(90deg,transparent,#ed1c24)}
+.cpdf .qday-no{width:64px;flex:none;text-align:center;border-left:1px solid rgba(255,255,255,.15);padding-left:12px}.cpdf .qday-no small{display:block;font:700 10px "Chakra Petch",monospace;letter-spacing:3px;color:#ed1c24}.cpdf .qday-no b{font:700 38px/1 "Chakra Petch",sans-serif}
+.cpdf .qday-t{flex:1;min-width:0}.cpdf .qday-t>b{display:block;font:800 20px "Noto Kufi Arabic","IBM Plex Sans Arabic",sans-serif}.cpdf .qday-t>small{display:block;margin-top:6px;color:#a1a1aa;font-size:12px}
+.cpdf .qday-m{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}.cpdf .qmc{padding:2px 9px;font-size:12px;font-weight:700;background:rgba(237,28,36,.18);border:1px solid rgba(237,28,36,.55)}
+.cpdf .qday-map{width:118px;flex:none}.cpdf .qday-map svg{width:100%;display:block}
+.cpdf table{width:100%;border-collapse:collapse;font-size:14px}.cpdf th{background:#f4f4f5;color:#52525b;font-weight:700;font-size:12px;padding:8px 10px;text-align:right;border-bottom:2px solid #ed1c24}
+.cpdf td{padding:9px 10px;border-bottom:1px solid #eee;vertical-align:middle}.cpdf tbody tr:nth-child(even) td{background:#fafafa}
+.cpdf td.qc1,.cpdf th.qc1{width:46px;text-align:center;color:#ed1c24;font:700 14px "Chakra Petch",sans-serif}.cpdf td.qnum{font:600 14px "Chakra Petch","IBM Plex Sans Arabic",sans-serif;text-align:center;white-space:nowrap}.cpdf th:nth-child(n+3){text-align:center;width:88px}
+.cpdf .qset{display:inline-block;min-width:30px;padding:2px 8px;background:#111;color:#fff}.cpdf td.qrest{color:#71717a}
+.cpdf td.qexn b{display:block;font-size:14.5px}.cpdf td.qexn small{display:block;color:#71717a;font-size:12px;margin-top:2px}
+.cpdf .qbox{margin-bottom:16px;padding:14px 18px;border:1px solid #e4e4e7;border-right:5px solid #111}.cpdf .qbox.qred{border-right-color:#ed1c24;background:#fff5f5}.cpdf .qbox>b{font-size:16px}.cpdf .qbox p{margin:6px 0 0;font-size:14px;line-height:1.9;white-space:pre-wrap}.cpdf .qbox table{margin-top:10px}
+.cpdf .qst th:nth-child(n+2){width:auto}
+.cpdf .qml{display:flex;gap:0;position:relative;break-inside:avoid}
+.cpdf .qml-t{width:96px;flex:none;position:relative;padding:4px 0 18px;text-align:center}.cpdf .qml-t::before{content:"";position:absolute;top:66px;bottom:0;right:50%;width:2px;background:repeating-linear-gradient(#ed1c24 0 6px,transparent 6px 10px)}.cpdf .qml.qlast .qml-t::before{display:none}
+.cpdf .qml-t b{display:inline-block;min-width:74px;padding:8px 8px;background:#07070a;color:#fff;font:700 17px "Chakra Petch",sans-serif;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}.cpdf .qml-t span{display:block;margin-top:4px;color:#a1a1aa;font-size:11.5px}
+.cpdf .qml-c{flex:1;margin-bottom:14px;padding:12px 18px;border:1px solid #e4e4e7;border-top:3px solid #ed1c24;background:#fff}.cpdf .qml-c h4{margin:0 0 6px;font:800 18px "Noto Kufi Arabic","IBM Plex Sans Arabic",sans-serif}
+.cpdf .qml-c ul{margin:0;padding:0;list-style:none;display:grid;gap:4px}.cpdf .qml-c li{position:relative;padding-right:18px;font-size:14.5px;line-height:1.7}.cpdf .qml-c li::before{content:"";position:absolute;right:2px;top:11px;width:7px;height:7px;background:#ed1c24}
+.cpdf .qsign{display:flex;gap:40px;margin-top:26px}.cpdf .qsign div{flex:1;text-align:center}.cpdf .qsign span{display:block;color:#71717a;font-size:13px}.cpdf .qsign i{display:block;height:56px;border-bottom:2px dashed #a1a1aa}.cpdf .qsign b{display:block;margin-top:8px;font-size:15px}
 `;
-/* يبني الصفحات ويعرض معاينة: حفظ PDF (طباعة النظام، أوضح نسخة) أو تحميل ملف مباشر */
 const coFonts=()=>Promise.race([Promise.all(['400 14px "IBM Plex Sans Arabic"','700 14px "IBM Plex Sans Arabic"','800 28px "Noto Kufi Arabic"','700 14px "Chakra Petch"'].map(f=>document.fonts.load(f))),new Promise(r=>setTimeout(r,2500))]).catch(()=>{});
-function coBuildPages(p,c){
-  if(!document.getElementById('coPdfCss')){const st=document.createElement('style');st.id='coPdfCss';st.textContent=CO_PDF_CSS;document.head.appendChild(st)}
-  const {cover,blocks}=coPdfHTML(p,c);const root=document.createElement('div');root.className='cpdf';document.body.appendChild(root);
+function coBuildPages(p,c,kind){
+  let st=document.getElementById('coPdfCss');if(!st){st=document.createElement('style');st.id='coPdfCss';document.head.appendChild(st)}st.textContent=CO_PDF_CSS;
+  const {cover,blocks}=kind==='f'?coPdfF(p,c):coPdfW(p,c);const root=document.createElement('div');root.className='cpdf';document.body.appendChild(root);
   root.insertAdjacentHTML('beforeend',cover);
-  const secName={w:'البرنامج التدريبي',f:'البرنامج الغذائي',n:'تعليمات'};
-  const newPage=sec=>{const pg=document.createElement('div');pg.className='qpp qpg';pg.innerHTML=`<div class="qph"><span class="qlg">${PDZ}</span><b>AL<i>DZ</i>AZ GYM</b><div class="qpn"><b>${esc(c.name||'')}</b>${secName[sec]||''}</div></div><div class="qpc"></div><div class="qpf"><span>ALDZAZ GYM · <b>TRAINING</b></span><span class="qpnum"></span></div>`;root.appendChild(pg);return pg};
-  let pg=null,body=null;const LIM=1123-46-24;
-  for(const b of blocks){if(!pg||b.brk){pg=newPage(b.sec);body=pg.querySelector('.qpc')}
+  const secName=kind==='f'?'البرنامج الغذائي':'البرنامج التدريبي';
+  const newPage=()=>{const pg=document.createElement('div');pg.className='qpp qpg';pg.innerHTML=`<div class="qph"><span class="qlg">${PDZ}</span><b>AL<i>DZ</i>AZ GYM</b><div class="qpn"><b>${esc(c.name||'')}</b>${secName}</div></div><div class="qpc"></div><div class="qpf"><span>ALDZAZ GYM · <b>${kind==='f'?'NUTRITION':'TRAINING'}</b></span><span class="qpnum"></span></div>`;root.appendChild(pg);return pg};
+  let pg=null,body=null;const LIM=1123-44-22;
+  for(const b of blocks){if(!pg){pg=newPage();body=pg.querySelector('.qpc')}
     body.insertAdjacentHTML('beforeend',b.html);const el=body.lastElementChild;
-    if(el.offsetTop+el.offsetHeight>LIM&&body.children.length>1){el.remove();pg=newPage(b.sec);body=pg.querySelector('.qpc');body.insertAdjacentHTML('beforeend',b.html)}}
+    if(el.offsetTop+el.offsetHeight>LIM&&body.children.length>1){el.remove();pg=newPage();body=pg.querySelector('.qpc');body.insertAdjacentHTML('beforeend',b.html)}}
   const pages=[...root.querySelectorAll('.qpp')];pages.forEach((x,i)=>{const n=x.querySelector('.qpnum');if(n)n.textContent=`PAGE ${String(i+1).padStart(2,'0')} / ${String(pages.length).padStart(2,'0')}`});
   return root}
-const coFile=(p,c)=>`${String(c.name||'player').replace(/[\\/:*?"<>|]+/g,'').trim()} - ${String(p.title||'برنامج').replace(/[\\/:*?"<>|]+/g,'')}`;
-async function coPdf(id){const p=(id===CO.pid&&CO.draft)?Object.assign({},CO.draft,{id}):(S.programs||[]).find(x=>x.id===id);const c=p&&coClient(p.clientId);if(!p||!c)return toast('ما لكيت البرنامج','bad');return coPdfShow(p,c)}
-async function coPdfShow(p,c){
-  await coFonts();
-  const root=coBuildPages(p,c);const pages=[...root.querySelectorAll('.qpp')];
-  const ov=document.createElement('div');ov.id='coPrev';ov.innerHTML=`<div class="cpv-bar"><b>📄 ${esc(p.title||'البرنامج')}</b><small>${pages.length} صفحات • ${esc(c.name)}</small><span class="cpv-sp"></span>
-    <button type="button" class="btn primary" id="cpvPrint">🖨️ حفظ PDF / طباعة</button><button type="button" class="btn" id="cpvDl">⬇️ تحميل الملف</button><button type="button" class="btn ghost" id="cpvX">إغلاق</button></div>
-    <p class="cpv-tip">💡 «حفظ PDF» يطلع أوضح نسخة: بالحاسبة اختار <b>Save as PDF</b>، وبالآيفون اضغط مشاركة ← <b>حفظ في الملفات</b>.</p><div class="cpv-pages cpdf"></div>`;
-  document.body.appendChild(ov);document.body.classList.add('co-printing');
-  const wrap=ov.querySelector('.cpv-pages');
-  const fit=()=>{const k=Math.min(1,(wrap.clientWidth-8)/794);wrap.querySelectorAll('.cpv-pw').forEach(w=>{w.style.width=794*k+'px';w.style.height=1123*k+'px';w.firstChild.style.transform=`scale(${k})`})};
-  pages.forEach(pg=>{const w=document.createElement('div');w.className='cpv-pw';w.appendChild(pg);wrap.appendChild(w)});root.remove();fit();
+const coFile=(p,c,kind)=>`${kind==='f'?'تغذية':'تمارين'} - ${String(c.name||'player').replace(/[\\/:*?"<>|]+/g,'').trim()} - ${String(p.title||'برنامج').replace(/[\\/:*?"<>|]+/g,'')}`;
+async function coPdf(id,kind){const p=(id===CO.pid&&CO.draft)?Object.assign({},CO.draft,{id}):(S.programs||[]).find(x=>x.id===id);const c=p&&coClient(p.clientId);if(!p||!c)return toast('ما لكيت البرنامج','bad');return coPdfShow(p,c,kind||'w')}
+async function coPdfShow(p,c,kind){kind=kind||'w';await coFonts();
+  let ov=document.getElementById('coPrev');if(ov)ov.remove();
+  ov=document.createElement('div');ov.id='coPrev';document.body.appendChild(ov);document.body.classList.add('co-printing');
+  const draw=()=>{const root=coBuildPages(p,c,kind);const pages=[...root.querySelectorAll('.qpp')];
+    ov.innerHTML=`<div class="cpv-bar"><div class="cpv-tabs"><button type="button" data-k="w" aria-pressed="${kind==='w'}">🏋️ نموذج التمارين</button><button type="button" data-k="f" aria-pressed="${kind==='f'}">🥗 نموذج التغذية</button></div><small>${pages.length} صفحات • ${esc(c.name||'')}</small><span class="cpv-sp"></span>
+      <button type="button" class="btn primary" id="cpvPrint">🖨️ حفظ PDF</button><button type="button" class="btn" id="cpvDl">⬇️ تحميل الملف</button><button type="button" class="btn ghost" id="cpvX">إغلاق</button></div>
+      <p class="cpv-tip">💡 كل نموذج ملف لحاله. «حفظ PDF» يطلع أوضح نسخة: بالحاسبة اختار <b>Save as PDF</b>، وبالآيفون اضغط مشاركة ← <b>حفظ في الملفات</b>.</p><div class="cpv-pages cpdf"></div>`;
+    const wrap=ov.querySelector('.cpv-pages');pages.forEach(pg=>{const w=document.createElement('div');w.className='cpv-pw';w.appendChild(pg);wrap.appendChild(w)});root.remove();fit();
+    ov.querySelectorAll('.cpv-tabs [data-k]').forEach(b=>b.onclick=()=>{kind=b.dataset.k;draw();ov.scrollTop=0});
+    ov.querySelector('#cpvX').onclick=close;
+    ov.querySelector('#cpvPrint').onclick=()=>{document.title=coFile(p,c,kind);setTimeout(()=>{try{window.print()}catch(e){toast('المتصفح ما يدعم الطباعة، استخدم «تحميل الملف»','bad')}},60)};
+    ov.querySelector('#cpvDl').onclick=()=>coPdfFile(p,c,kind,ov.querySelector('#cpvDl'))};
+  const fit=()=>{const wrap=ov.querySelector('.cpv-pages');if(!wrap)return;const k=Math.min(1,(wrap.clientWidth-8)/794);wrap.querySelectorAll('.cpv-pw').forEach(w=>{w.style.width=794*k+'px';w.style.height=1123*k+'px';w.firstChild.style.transform=`scale(${k})`})};
   const onR=()=>fit();window.addEventListener('resize',onR);
   const close=()=>{window.removeEventListener('resize',onR);ov.remove();document.body.classList.remove('co-printing');document.title=BASE_TITLE};
-  ov.querySelector('#cpvX').onclick=close;
-  ov.querySelector('#cpvPrint').onclick=()=>{document.title=coFile(p,c);setTimeout(()=>{try{window.print()}catch(e){toast('المتصفح ما يدعم الطباعة، استخدم «تحميل الملف»','bad')}},60)};
   window.addEventListener('afterprint',()=>{if(document.getElementById('coPrev'))document.title=BASE_TITLE},{once:true});
-  ov.querySelector('#cpvDl').onclick=()=>coPdfFile(p,c,ov.querySelector('#cpvDl'))}
-async function coPdfFile(p,c,btn){const t0=btn.textContent;btn.disabled=true;btn.textContent='⏳ نحمّل الأدوات…';let root=null;
-  try{await coLibs();await coFonts();root=coBuildPages(p,c);const pages=[...root.querySelectorAll('.qpp')];
+  draw()}
+async function coPdfFile(p,c,kind,btn){const t0=btn.textContent;btn.disabled=true;btn.textContent='⏳ نحمّل الأدوات…';let root=null;
+  try{await coLibs();await coFonts();root=coBuildPages(p,c,kind);const pages=[...root.querySelectorAll('.qpp')];
     const {jsPDF}=window.jspdf;const pdf=new jsPDF({unit:'mm',format:'a4',orientation:'portrait',compress:true});
     for(let i=0;i<pages.length;i++){btn.textContent=`⏳ صفحة ${i+1} من ${pages.length}`;
       const cv=await window.html2canvas(pages[i],{scale:2,backgroundColor:i?'#ffffff':'#07070a',useCORS:true,logging:false,width:794,height:1123,windowWidth:1200});
       if(i)pdf.addPage();pdf.addImage(cv.toDataURL('image/jpeg',.9),'JPEG',0,0,210,297,undefined,'FAST')}
-    pdf.setProperties({title:coFile(p,c),author:'ALDZAZ GYM',creator:'DZ-OS'});
-    const fn=coFile(p,c)+'.pdf';const blob=pdf.output('blob');let shared=false;
+    pdf.setProperties({title:coFile(p,c,kind),author:'ALDZAZ GYM',creator:'DZ-OS'});
+    const fn=coFile(p,c,kind)+'.pdf';const blob=pdf.output('blob');let shared=false;
     try{const file=new File([blob],fn,{type:'application/pdf'});if(matchMedia('(pointer:coarse)').matches&&navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:fn});shared=true}}catch(e){if(e&&e.name==='AbortError')shared=true}
     if(!shared){const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=fn;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),60000)}
     toast('جاهز الـ PDF ✅');
-  }catch(e){console.error(e);toast(e&&e.message==='lib'?'ما كدرت أحمّل أداة الـ PDF، تأكد من الإنترنت أو استخدم «حفظ PDF»':'صار خطأ، استخدم «حفظ PDF / طباعة»','bad')}
+  }catch(e){console.error(e);toast(e&&e.message==='lib'?'ما كدرت أحمّل أداة الـ PDF، استخدم «حفظ PDF»':'صار خطأ، استخدم «حفظ PDF»','bad')}
   finally{if(root)root.remove();btn.disabled=false;btn.textContent=t0}}
 /* ---------- مساحة المدرب: تسليم الكورس للاعب عن طريق المتجر + واتساب + التذكيرات + التبليغات ---------- */
 const coPhone=ph=>{let d=String(ph||'').replace(/\D/g,'').replace(/^00/,'');if(d.startsWith('964'))d=d.slice(3);d=d.replace(/^0+/,'');return d.length>=9&&d.length<=11?d:''};
