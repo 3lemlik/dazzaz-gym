@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
 <meta charset="utf-8">
-<meta name="dz-build" content="67">
+<meta name="dz-build" content="69">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -1219,6 +1219,44 @@ body.store-on .app,body.store-on #sheetRoot,body.store-on .toasts{display:none!i
 .dzc-err{margin:0;color:#f87171;font-size:12.5px;font-weight:700}
 .dzc-note{margin:0;font-size:12px;color:#fbbf24}
 .dzc-perms{display:flex;flex-wrap:wrap;gap:5px}.dzc-perms i{font-style:normal;font-size:11.5px;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.07)}
+.dzr small{text-align:start;opacity:1;margin-top:0}.dzr b small,.dzr-bl span small{display:inline}
+.dzn{font-family:var(--tech,monospace);font-weight:700;color:#fff;letter-spacing:.2px;white-space:nowrap}
+.dzr{position:relative;margin:8px 0 2px;border-radius:16px;overflow:hidden;white-space:normal;background:linear-gradient(160deg,#15151c 0%,#0a0a0f 60%,#120709 100%);border:1px solid color-mix(in srgb,var(--cy) 45%,transparent);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 30px rgba(0,0,0,.35)}
+.dzr::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,transparent,var(--cy),transparent)}
+.dzr::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:22px 22px;mask:linear-gradient(180deg,#000,transparent 70%);-webkit-mask:linear-gradient(180deg,#000,transparent 70%)}
+.dzr>*{position:relative;z-index:1}
+.dzr-hd{display:flex;align-items:center;gap:10px;padding:12px 12px 10px;border-bottom:1px solid rgba(255,255,255,.07)}
+.dzr-ic{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-size:18px;flex:none;background:color-mix(in srgb,var(--cy) 18%,transparent);box-shadow:0 0 0 1px color-mix(in srgb,var(--cy) 45%,transparent),0 0 16px color-mix(in srgb,var(--cy) 30%,transparent)}
+.dzr-hd>div{flex:1;min-width:0;display:grid;line-height:1.35}.dzr-hd b{font-size:14.5px;color:#fff}.dzr-hd small{font:600 11px var(--tech,monospace);color:#a1a1aa;letter-spacing:.3px}
+.dzr-cp{width:32px;height:32px;flex:none;border-radius:9px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#d4d4d8;display:grid;place-items:center;cursor:pointer}
+.dzr-cp svg{width:15px;height:15px}.dzr-cp.ok{color:#4ade80;border-color:#4ade80}
+.dzr-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:10px 12px}
+.dzr-kpis.n1{grid-template-columns:1fr}.dzr-k.hi:first-child,.dzr-k.hi:first-child~.dzr-k:last-child:nth-child(even){grid-column:1/-1}
+.dzr-k{min-width:0;padding:10px 11px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);display:grid;gap:3px;align-content:start}
+.dzr-k.hi{background:linear-gradient(135deg,color-mix(in srgb,var(--cy) 26%,transparent),rgba(255,255,255,.02));border-color:color-mix(in srgb,var(--cy) 55%,transparent)}
+.dzr-k span{font-size:11.5px;color:#a1a1aa;font-weight:700}
+.dzr-k b{font:800 17px/1.2 var(--tech,monospace);color:#fff;white-space:nowrap}.dzr-k.hi b{font-size:24px;text-shadow:0 0 18px color-mix(in srgb,var(--cy) 50%,transparent)}
+.dzr-k b small,.dzr-bar b small,.dzr-row b small{font-size:.55em;font-weight:600;color:#a1a1aa;margin-inline-start:3px}
+.dzr-k i{justify-self:start;font-style:normal;font-size:11px;font-weight:800;padding:1px 7px;border-radius:999px;background:rgba(255,255,255,.07);color:#a1a1aa}
+.dzr-k i.up{background:rgba(34,197,94,.14);color:#4ade80}.dzr-k i.dn{background:rgba(244,63,94,.14);color:#fb7185}
+.dzr-k>small{font-size:11px;color:#8b8b95}
+.dzr-sec{padding:4px 12px 10px}
+.dzr-sec h5{margin:4px 0 8px;font-size:12px;color:#d4d4d8;display:flex;align-items:center;gap:8px}.dzr-sec h5::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.12),transparent)}
+.dzr-bar{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:8px;align-items:center;margin-bottom:8px}
+.dzr-bar em{font:700 10.5px var(--tech,monospace);font-style:normal;width:20px;height:20px;border-radius:6px;display:grid;place-items:center;background:rgba(255,255,255,.07);color:#a1a1aa}
+.dzr-bar:nth-child(2) em{background:linear-gradient(135deg,#fbbf24,#d97706);color:#1a1000}.dzr-bar:nth-child(3) em{background:linear-gradient(135deg,#e5e7eb,#9ca3af);color:#111}.dzr-bar:nth-child(4) em{background:linear-gradient(135deg,#f59e0b,#92400e);color:#fff}
+.dzr-bl{min-width:0;display:grid;gap:4px}.dzr-bl span{font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#e4e4e7}.dzr-bl span small{color:#8b8b95;margin-inline-start:6px;font-size:11px}
+.dzr-bt{height:6px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden}.dzr-bt i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,color-mix(in srgb,var(--cy) 50%,transparent),var(--cy));box-shadow:0 0 10px color-mix(in srgb,var(--cy) 60%,transparent);animation:hbIn .8s cubic-bezier(.2,.8,.2,1) both}
+.dzr-bar b{font:700 12.5px var(--tech,monospace);color:#fff;white-space:nowrap}
+.dzr-rows{display:grid;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.07)}
+.dzr-row{display:flex;justify-content:space-between;gap:10px;padding:8px 11px;font-size:12.5px;color:#d4d4d8}.dzr-row:nth-child(odd){background:rgba(255,255,255,.03)}
+.dzr-row b{font:700 12.5px var(--tech,monospace);color:#fff;white-space:nowrap}.dzr-row.bad b{color:#fb7185}.dzr-row.good b{color:#4ade80}
+.dzr-note{margin:2px 12px 10px;padding:9px 11px;border-radius:11px;font-size:12.5px;line-height:1.7;color:#fde68a;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25)}
+.dzr-ft{display:flex;justify-content:space-between;padding:7px 12px;border-top:1px solid rgba(255,255,255,.06);font:600 9.5px var(--tech,monospace);letter-spacing:1.5px;color:#5f5f69}
+.mtop .who .av-btn{border:0;cursor:pointer;font:inherit;font-weight:700;font-size:15px;padding:0}
+.acct{display:flex;align-items:center;gap:14px;margin:6px 0 18px}.acct b{display:block;font-size:18px}.acct small{color:var(--muted);font-size:13px}
+.av.big{width:56px;height:56px;font-size:22px}
+.btn.danger,.sheet .btn.danger{color:#fff!important;background:#dc2626!important;border-color:#dc2626;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn.danger svg{width:18px;height:18px}
 .dzi-ib{width:38px;height:38px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#e4e4e7;display:grid;place-items:center;cursor:pointer;flex:none}
 .dzi-ib svg{width:18px;height:18px}.dzi-ib:hover{border-color:var(--cy);color:#fff}
 .dzi-msgs{position:relative;flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 12px 8px;display:flex;flex-direction:column;gap:10px;overscroll-behavior:contain}
@@ -1346,7 +1384,7 @@ body.store-on .app,body.store-on #sheetRoot,body.store-on .toasts{display:none!i
     <div class="sfoot">
       <button class="gear bell" data-act="notif" aria-label="الإشعارات" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="bl">الإشعارات</span><b class="nbadge" hidden></b></button>
       <button class="gear" data-go="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>الإعدادات</span></button>
-      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 67</small></div>
+      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 69</small></div>
       <div class="sync" id="sync"><i></i><span>جاري الاتصال</span></div>
       <div class="who" id="who"></div>
     </div>
@@ -3983,6 +4021,7 @@ const initial=n=>esc(String(n||'?').trim().charAt(0)||'?');
 function renderWho(){
   ['#who','#whoM'].forEach(sel=>{const w=$(sel);if(!w)return;
   if(!CUR){w.innerHTML='';return}
+  if(sel==='#whoM'){w.innerHTML=`<button type="button" class="av av-btn" data-act="acct" aria-label="الحساب وتسجيل الخروج">${initial(CUR.name)}</button>`;return}
   w.innerHTML=`<span class="av">${initial(CUR.name)}</span><span class="wm"><b>${esc(CUR.name)}</b><small>${roleName(CUR)}</small></span><button class="icon-btn" data-act="logout" title="تسجيل خروج" aria-label="تسجيل خروج">${I.logout}</button>`;});
 }
 function gateWrap(inner){
@@ -4362,7 +4401,10 @@ document.addEventListener('click',e=>{
   if(need&&!can(need)){toast('ما عندك صلاحية لهذا الشي','bad');return}
   {const dc={'del-sale':'sales','del-purchase':'purchases','del-adj':'adjustments'}[a.dataset.act];if(dc&&!canDelRec(S[dc].find(x=>x.id===id))){toast(DAY_MSG,'bad');return}}
   ({
-    'logout':logout,
+    'logout':()=>{closeSheetIfAny();try{dziToggle(false)}catch(e){}logout()},
+    'acct':()=>openSheet(`<div class="acct"><span class="av big">${initial(CUR.name)}</span><div><b>${esc(CUR.name)}</b><small>${esc(roleName(CUR))}</small></div></div>
+      <div class="sheet-actions"><button type="button" class="btn primary danger" data-act="logout">${I.logout} تسجيل خروج</button><button type="button" class="btn ghost" data-act="acct-close">رجوع</button></div>`),
+    'acct-close':()=>closeSheet(),
     'ord-paste':pasteOrderSheet,
     'sold-open':()=>openSold(),
     'rep-tab':()=>{ui.rTab=id;render()},
@@ -6176,7 +6218,7 @@ function dziMount(){if(DZI.mounted)return;DZI.mounted=true;
   ta.addEventListener('focus',()=>{setTimeout(()=>{dziVV();const b=$('#dziMsgs');if(b)b.scrollTop=b.scrollHeight},350)});
   ta.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();dziSend(ta.value)}});
   $('#dziForm').onsubmit=e=>{e.preventDefault();dziSend(ta.value)};
-  $('#dziMsgs').addEventListener('click',dziClick);
+  $('#dziMsgs').addEventListener('click',dziClick);$('#dziMsgs').addEventListener('click',dziRepClick);
   $('#dziMsgs').addEventListener('input',e=>{const x=e.target.closest('.dzc-cust');if(!x)return;const m=DZI.hist[+x.dataset.i];if(m&&m.act){m.act.cust=x.value.slice(0,40);dziSave()}});
   $('#dziChips').addEventListener('click',e=>{const b=e.target.closest('button[data-q]');if(b)dziSend(b.dataset.q)});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&DZI.open&&!$('#sheetRoot').innerHTML)dziToggle(false)});
@@ -6227,6 +6269,7 @@ function dziChipsList(){const A=C(),L=[];
   return L}
 function dziMd(t){let s=esc(String(t||'').trim());
   s=s.replace(/^#{1,4}\s*(.+)$/gm,'<b class="dzi-h">$1</b>').replace(/\*\*([^*\n]+)\*\*/g,'<b>$1</b>').replace(/(^|\n)\s*[-*•]\s+/g,'$1• ');
+  s=s.split(/(<[^>]+>|&[#\w]+;)/).map(p=>/^(<|&)/.test(p)?p:p.replace(/(\d[\d,]*(?:\.\d+)?)(\s?(?:د\.ع|%|دينار|ألف|الف|مليون))?/g,'<span class="dzn">$1$2</span>')).join('');
   return s}
 function dziScroll(){const box=$('#dziMsgs');if(!box)return;
   const go=()=>{const last=box.querySelector('.dzi-m:last-child');
@@ -6246,7 +6289,7 @@ function dziLock(on){const b=document.body;
   else if(!on&&b.classList.contains('dzi-lock')){b.classList.remove('dzi-lock');b.style.top='';window.scrollTo(0,dziLockY)}}
 function dziPaint(keep){const box=$('#dziMsgs');if(!box)return;const sc0=box.scrollTop;
   const hi=`<div class="dzi-hello"><span class="dzi-big">${daziSvg()}</span><b>هلا ${esc(CUR?CUR.name:'')} 👔</b><p>آني <b>المساعد دازي</b>، مستشارك بالحسابات والتسويق. صنعني علي مالك ووظفني بالدزاز جم.<br>${C()?'عندك صلاحية كاملة: اسألني عن المبيعات، الأرباح، الكلف، الجرد، الموظفين، الطلبات، أو خليني أطلعلك خطة.'+'<br><span class="dzi-tip">💡 تكدر تكلي: «بيع 2 ماس فانيلا نقد» أو «ضيف موظف اسمه حسين بائع»</span>':'أجاوبك ضمن صلاحيات حسابك فقط 🔒، واسألني بعد عن نصايح البيع والتسويق.'+(can('sell')?'<br><span class="dzi-tip">💡 تكدر تكلي: «بيع 2 ماس فانيلا نقد» وأجهزلك البيعة</span>':'')}</p></div>`;
-  box.innerHTML=hi+DZI.hist.map((m,i)=>`<div class="dzi-m ${m.r==='u'?'u':'b'}${m.err?' dzi-err':''}" data-i="${i}">${m.r==='u'?'':`<span class="dzi-mav">${daziSvg('sm')}</span>`}<div class="dzi-bub${m.act?' wide':''}">${m.r==='u'?esc(m.t):dziMd(m.t)}${m.act?dziCard(m,i):''}<small>${new Date(m.at||Date.now()).toLocaleTimeString('ar-IQ',{hour:'numeric',minute:'2-digit'})}</small></div></div>`).join('')+(DZI.busy?`<div class="dzi-m b"><span class="dzi-mav">${daziSvg('sm think')}</span><div class="dzi-bub"><span class="dzi-typing"><i></i><i></i><i></i></span><small>دازي يحسب…</small></div></div>`:'');
+  box.innerHTML=hi+DZI.hist.map((m,i)=>`<div class="dzi-m ${m.r==='u'?'u':'b'}${m.err?' dzi-err':''}" data-i="${i}">${m.r==='u'?'':`<span class="dzi-mav">${daziSvg('sm')}</span>`}<div class="dzi-bub${m.act||m.rep?' wide':''}">${m.r==='u'?esc(m.t):dziMd(m.t)}${m.rep?dziRep(m.rep,i):''}${m.act?dziCard(m,i):''}<small>${new Date(m.at||Date.now()).toLocaleTimeString('ar-IQ',{hour:'numeric',minute:'2-digit'})}</small></div></div>`).join('')+(DZI.busy?`<div class="dzi-m b"><span class="dzi-mav">${daziSvg('sm think')}</span><div class="dzi-bub"><span class="dzi-typing"><i></i><i></i><i></i></span><small>دازي يحسب…</small></div></div>`:'');
   $('#dziChips').innerHTML=DZI.busy?'':dziChipsList().slice(0,DZI.hist.length?4:7).map(q=>`<button type="button" data-q="${esc(q)}">${esc(q)}</button>`).join('');
   $('#dziChips').hidden=DZI.busy;
   if(keep){box.scrollTop=sc0}else dziScroll();
@@ -6340,6 +6383,10 @@ function dziSys(deep){const A=C();
 - قارن بالفترات السابقة لما يفيد، وانتبه ان "هذا الشهر" لسه ما خلص (قارنه بنفس عدد الأيام من الشهر الماضي).
 - جاوب على قد السؤال: سؤال سريع = جواب قصير مباشر بالرقم وجملة تعليق. سؤال تحليل أو خطة = نقاط مرتبة وعناوين قصيرة بين ** **.
 - لا تستخدم جداول markdown. استخدم نقاط تبدأ بـ "-".
+- تقارير الأرقام (مهم): اذا جوابك بيه أرقام (مبيعات، أرباح، مقارنات، جرد، طلبات، موظفين، مشتريات)، حط الأرقام بكتلة تقرير بآخر الجواب بهذا الشكل بالضبط (JSON صحيح، الأرقام أرقام بدون فواصل):
+[[DZREP {"title":"عنوان قصير","period":"الفترة مثل 1/11 – 7/11/2026","kpis":[{"l":"المبيعات","v":250000,"u":"د.ع","d":12.5,"hi":true},{"l":"الفواتير","v":14}],"bars":{"t":"أكثر المنتجات مبيعاً","u":"د.ع","items":[{"l":"اسم المنتج","v":1000000,"s":"8 قطعة"}]},"rows":[{"l":"نقد","v":750000,"u":"د.ع"},{"l":"منتج نافد","v":"نافد","bad":true}],"note":"أهم استنتاج بسطر واحد"}]]
+  kpis من 2 الى 4 أرقام رئيسية (hi للأهم، d نسبة التغيير % عن الفترة السابقة اذا تعرفها). bars للترتيب والمقارنة (اختياري). rows للتفاصيل (اختياري، bad للسلبي و good للإيجابي). u: "د.ع" للفلوس، "%" للنسب، أو وحدة مثل "قطعة".
+  برا الكتلة اكتب بس تعليق وتحليل قصير ونصيحة، وبدون ما تكرر نفس الأرقام. الأسئلة اللي ما بيها أرقام لا تحط بيها تقرير.
 
 دورك كمستشار:
 - طلّع ملاحظات ذكية من الأرقام: منتجات نافدة أو قليلة لازم تنطلب (حسب سرعة البيع وكم يوم يكفي المخزون)، بضاعة راكدة، صلاحيات قريبة تنتهي، هوامش ربح ضعيفة، ديون آجل، أيام ضعيفة، موظف متميز.
@@ -6371,7 +6418,7 @@ ${can('users')?`- لإضافة موظف: [[DZACT {"t":"user","name":"الاسم"
 === بيانات النظام (محدّثة هسه) ===
 ${dziCtx()}
 === نهاية البيانات ===`}
-function dziTurns(){const out=[];for(const x of DZI.hist.filter(m=>!m.err).slice(-12)){const r=x.r==='u'?'user':'model';const tx=x.r==='u'?x.t:x.t.replace(/^اممم[^،,\n]*مبرمجي علي مالك[،,]?\s*/,'')+(x.act?`\n(كرت ${x.act.t==='sale'?'بيع':'موظف'} — الحالة: ${({pending:'بانتظار التأكيد',done:'تم التنفيذ',undone:'تم التراجع',cancel:'انلغى',cart:'انتقل لشاشة البيع',opened:'انفتحت النافذة'})[x.act.st]||x.act.st})`:'');
+function dziTurns(){const out=[];for(const x of DZI.hist.filter(m=>!m.err).slice(-12)){const r=x.r==='u'?'user':'model';const tx=x.r==='u'?x.t:x.t.replace(/^اممم[^،,\n]*علي مالك[،,]?\s*/,'')+(x.rep?'\n'+dziRepText(x.rep):'')+(x.act?`\n(كرت ${x.act.t==='sale'?'بيع':'موظف'} — الحالة: ${({pending:'بانتظار التأكيد',done:'تم التنفيذ',undone:'تم التراجع',cancel:'انلغى',cart:'انتقل لشاشة البيع',opened:'انفتحت النافذة'})[x.act.st]||x.act.st})`:'');
   if(out.length&&out[out.length-1].role===r)out[out.length-1].parts[0].text+='\n'+tx;else out.push({role:r,parts:[{text:tx}]})}
   while(out.length&&out[0].role!=='user')out.shift();return out}
 /* جواب محلي اذا العقل الذكي مو متاح (قبل النشر أو بدون مفتاح) */
@@ -6383,6 +6430,65 @@ function dziLocal(q){const A=C(),t=todayStr(),nf=n=>Math.round(N(n)).toLocaleStr
   if(/ربح|ارباح|أرباح|كلف|هامش/.test(q)){if(!A)return 'هاي المعلومة تحتاج صلاحية المدير 🔒';return `**${rl}:** صافي الربح ${nf(s.rev-s.cost)} من مبيعات ${nf(s.rev)} (هامش ${s.rev?((s.rev-s.cost)/s.rev*100).toFixed(1):0}%).`}
   if(/نواقص|نافد|ناقص|قليل|نطلب|اطلب/.test(q)&&(A||can('stock'))){const L=activeProducts().filter(p=>(INV[p.id]?.stock||0)<=N(p.minStock??3));return L.length?'**المنتجات النافدة أو القليلة:**\n'+L.slice(0,20).map(p=>`- ${p.name}${p.flavor?' '+p.flavor:''}: باقي ${INV[p.id]?.stock||0}`).join('\n'):'كل المنتجات مخزونها زين حالياً ✅'}
   if(/مبيع|بعت|بيع|دخل|شغل/.test(q))return `**مبيعات ${rl}${seeAll?'':' (مالتك)'}:** ${nf(s.rev)} من ${s.n} فاتورة و ${s.units} قطعة.${A?` صافي الربح ${nf(s.rev-s.cost)}.`:''}`;
+  return null}
+/* ---------- تقارير دازي: أي جواب بيه أرقام يطلع ككرت تقرير احترافي ---------- */
+function dziBlock(txt,tag){const k=txt.indexOf('[['+tag);if(k<0)return null;const st=txt.indexOf('{',k);if(st<0)return null;
+  let e=txt.indexOf(']]',st);while(e>0){const body=txt.slice(st,e).trim();try{const o=JSON.parse(body);return {o,raw:txt.slice(k,e+2)}}catch(_){}e=txt.indexOf(']]',e+2)}
+  return {o:null,raw:txt.slice(k,(txt.indexOf(']]',st)+2)||txt.length)}}
+const dzS=(v,n)=>String(v==null?'':v).slice(0,n);
+const dzNum=v=>{if(typeof v==='number'&&isFinite(v))return v;const s=String(v==null?'':v).replace(/[,،\s]/g,'').replace(/د\.?ع|%/g,'');return /^-?\d+(\.\d+)?$/.test(s)?+s:null};
+function dziRepClean(o){if(!o||typeof o!=='object')return null;
+  const r={title:dzS(o.title,70)||'تقرير',period:dzS(o.period,50),icon:dzS(o.icon,4)};
+  r.kpis=(Array.isArray(o.kpis)?o.kpis:[]).slice(0,6).map(k=>({l:dzS(k.l||k.label,34),v:dzNum(k.v)!==null?dzNum(k.v):dzS(k.v,24),u:dzS(k.u||k.unit,8),d:dzNum(k.d),s:dzS(k.s||k.sub,44),hi:!!k.hi})).filter(k=>k.l);
+  const b=o.bars&&typeof o.bars==='object'?o.bars:null;
+  r.bars=b&&Array.isArray(b.items)?{t:dzS(b.t||b.title,50),u:dzS(b.u,8),items:b.items.slice(0,10).map(x=>({l:dzS(x.l||x.label,50),v:dzNum(x.v)||0,s:dzS(x.s||x.sub,50)})).filter(x=>x.l)}:null;
+  if(r.bars&&!r.bars.items.length)r.bars=null;
+  r.rows=(Array.isArray(o.rows)?o.rows:[]).slice(0,14).map(x=>({l:dzS(x.l||x.label,50),v:dzNum(x.v)!==null?dzNum(x.v):dzS(x.v,50),u:dzS(x.u,8),bad:!!x.bad,good:!!x.good})).filter(x=>x.l);
+  r.note=dzS(o.note,400);
+  if(!r.kpis.length&&!r.bars&&!r.rows.length)return null;return r}
+const dziFv=(v,u)=>{if(typeof v!=='number')return esc(String(v));const a=Math.abs(v);
+  if(u==='%')return (Math.round(v*10)/10).toLocaleString('en-US')+'<small>%</small>';
+  const t=Math.round(v).toLocaleString('en-US');return u?`${t}<small>${esc(u)}</small>`:t};
+const dziFt=(v,u)=>typeof v!=='number'?String(v):(u==='%'?(Math.round(v*10)/10)+'%':Math.round(v).toLocaleString('en-US')+(u?' '+u:''));
+function dziRepIcon(r){if(r.icon)return esc(r.icon);const t=r.title;return /ربح|أرباح|ارباح|هامش/.test(t)?'💰':/جرد|مخزون|نواقص|نافد/.test(t)?'📦':/طلب|متجر/.test(t)?'🛒':/موظف/.test(t)?'👥':/شراء|مشتريات|مورد/.test(t)?'🚚':/خطة|هدف/.test(t)?'🎯':'📊'}
+function dziRep(r,i){
+  const k=r.kpis.map(x=>`<div class="dzr-k${x.hi?' hi':''}"><span>${esc(x.l)}</span><b>${dziFv(x.v,x.u)}</b>${x.d!==null&&x.d!==undefined?`<i class="${x.d>0?'up':x.d<0?'dn':''}">${x.d>0?'▲':x.d<0?'▼':'■'} ${Math.abs(Math.round(x.d*10)/10)}%</i>`:''}${x.s?`<small>${esc(x.s)}</small>`:''}</div>`).join('');
+  const mx=r.bars?Math.max(1,...r.bars.items.map(x=>Math.abs(x.v))):1;
+  const bars=r.bars?`<div class="dzr-sec"><h5>${esc(r.bars.t||'التوزيع')}</h5>${r.bars.items.map((x,j)=>`<div class="dzr-bar"><em>${j+1}</em><div class="dzr-bl"><span>${esc(x.l)}${x.s?`<small>${esc(x.s)}</small>`:''}</span><div class="dzr-bt"><i style="width:${Math.max(3,Math.abs(x.v)/mx*100).toFixed(1)}%"></i></div></div><b>${dziFv(x.v,r.bars.u)}</b></div>`).join('')}</div>`:'';
+  const rows=r.rows.length?`<div class="dzr-sec"><div class="dzr-rows">${r.rows.map(x=>`<div class="dzr-row${x.bad?' bad':x.good?' good':''}"><span>${esc(x.l)}</span><b>${dziFv(x.v,x.u)}</b></div>`).join('')}</div></div>`:'';
+  return `<div class="dzr"><div class="dzr-hd"><span class="dzr-ic">${dziRepIcon(r)}</span><div><b>${esc(r.title)}</b>${r.period?`<small>${esc(r.period)}</small>`:''}</div><button type="button" class="dzr-cp" data-dzr="copy" data-i="${i}" title="نسخ التقرير" aria-label="نسخ التقرير"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+   ${k?`<div class="dzr-kpis n${Math.min(r.kpis.length,4)}">${k}</div>`:''}${bars}${rows}${r.note?`<div class="dzr-note">💡 ${esc(r.note)}</div>`:''}
+   <div class="dzr-ft"><span>DZ · DAZI REPORT</span><span>${new Date().toLocaleDateString('en-GB')}</span></div></div>`}
+function dziRepText(r){const L=[`${dziRepIcon(r)} ${r.title}${r.period?' — '+r.period:''}`];
+  r.kpis.forEach(x=>L.push(`• ${x.l}: ${dziFt(x.v,x.u)}${x.d!=null?` (${x.d>0?'▲':'▼'} ${Math.abs(Math.round(x.d*10)/10)}%)`:''}`));
+  if(r.bars){L.push('',r.bars.t||'');r.bars.items.forEach((x,j)=>L.push(`${j+1}. ${x.l}: ${dziFt(x.v,r.bars.u)}`))}
+  if(r.rows.length){L.push('');r.rows.forEach(x=>L.push(`• ${x.l}: ${dziFt(x.v,x.u)}`))}
+  if(r.note)L.push('','💡 '+r.note);L.push('','— المساعد دازي · الدزاز جم');return L.join('\n')}
+function dziRepClick(e){const b=e.target.closest('[data-dzr="copy"]');if(!b)return;const m=DZI.hist[+b.dataset.i];if(!m||!m.rep)return;
+  const t=dziRepText(m.rep);const ok=()=>{toast('انسخ التقرير ✅ تكدر تلصقه بالواتساب');b.classList.add('ok');setTimeout(()=>b.classList.remove('ok'),1200)};
+  try{navigator.clipboard.writeText(t).then(ok,()=>{fallback()})}catch(_){fallback()}
+  function fallback(){const ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(_){}ta.remove()}}
+/* تقارير محلية (اذا العقل ما متاح) */
+function dziLocalRep(q){const A=C(),t=todayStr();const seeAll=A||can('reports');const base=S.sales.filter(x=>!x.sample&&(seeAll||x.byId===CUR.id));
+  const isY=/امس|أمس|البارحة/.test(q),isM=/شهر/.test(q),isW=/اسبوع|أسبوع|جمعة/.test(q);
+  const r=isY?[addDays(t,-1),addDays(t,-1)]:isM?[t.slice(0,8)+'01',t]:isW?rangeOf('week'):[t,t];
+  const n=daysBetween(r[0],r[1])+1,pr=[addDays(r[0],-n),addDays(r[0],-1)];
+  const rl=isY?'أمس':isM?'هذا الشهر':isW?'هذا الأسبوع':'اليوم';
+  const cur=base.filter(x=>inRange(x.date,r)),prev=base.filter(x=>inRange(x.date,pr));const s=statsOf(cur),p=statsOf(prev);
+  const dl=(a,b)=>b?((a-b)/Math.abs(b))*100:null;
+  const per=r[0]===r[1]?fmtDate(r[0]):`${fmtDate(r[0])} – ${fmtDate(r[1])}`;
+  const top={};cur.forEach(x=>{const k=x.productId;const o=top[k]||(top[k]={l:dn(prod(k)),v:0,u:0});o.v+=saleTot(x);o.u+=N(x.qty)});
+  const bars=Object.values(top).sort((a,b)=>b.v-a.v).slice(0,5).map(o=>({l:o.l,v:o.v,s:o.u+' قطعة'}));
+  if(/ربح|ارباح|أرباح|كلف|هامش/.test(q)){if(!A)return {t:'هاي المعلومة تحتاج صلاحية المدير 🔒'};
+    const pf=s.rev-s.cost,pp=p.rev-p.cost;
+    return {t:'',rep:dziRepClean({title:`تقرير الأرباح — ${rl}`,period:per,kpis:[{l:'صافي الربح',v:pf,u:'د.ع',d:dl(pf,pp),hi:true},{l:'المبيعات',v:s.rev,u:'د.ع',d:dl(s.rev,p.rev)},{l:'كلفة البضاعة',v:s.cost,u:'د.ع'},{l:'هامش الربح',v:s.rev?pf/s.rev*100:0,u:'%'}],bars:bars.length?{t:'أكثر المنتجات مبيعاً',u:'د.ع',items:bars}:null,note:'النسب مقارنة بنفس طول الفترة اللي قبلها.'})}}
+  if(/نواقص|نافد|ناقص|قليل|نطلب|اطلب/.test(q)&&(A||can('stock'))){const L=activeProducts().filter(p=>(INV[p.id]?.stock||0)<=N(p.minStock??3));
+    if(!L.length)return {t:'كل المنتجات مخزونها زين حالياً ✅'};
+    return {t:'',rep:dziRepClean({title:'تقرير النواقص',period:fmtDate(t),kpis:[{l:'نافد',v:L.filter(p=>(INV[p.id]?.stock||0)<=0).length,u:'منتج',hi:true},{l:'قليل',v:L.filter(p=>(INV[p.id]?.stock||0)>0).length,u:'منتج'}],rows:L.slice(0,14).map(p=>({l:[dn(p),p.flavor].filter(Boolean).join(' • '),v:(INV[p.id]?.stock||0)<=0?'نافد':'باقي '+(INV[p.id]?.stock||0),bad:(INV[p.id]?.stock||0)<=0}))})}}
+  if(/مبيع|بعت|بيع|دخل|شغل/.test(q)){const k=[{l:'المبيعات',v:s.rev,u:'د.ع',d:dl(s.rev,p.rev),hi:true},{l:'الفواتير',v:s.n,d:dl(s.n,p.n)},{l:'القطع',v:s.units,d:dl(s.units,p.units)}];
+    if(A)k.push({l:'صافي الربح',v:s.rev-s.cost,u:'د.ع',d:dl(s.rev-s.cost,p.rev-p.cost)});else k.push({l:'متوسط الفاتورة',v:s.n?s.rev/s.n:0,u:'د.ع'});
+    const by=Object.entries(s.by||{}).filter(([,v])=>v).map(([l,v])=>({l:'💳 '+l,v,u:'د.ع'}));
+    return {t:'',rep:dziRepClean({title:`تقرير المبيعات — ${rl}${seeAll?'':' (مبيعاتك)'}`,period:per,kpis:k,bars:bars.length?{t:'أكثر المنتجات',u:'د.ع',items:bars}:null,rows:by,note:'النسب مقارنة بنفس طول الفترة اللي قبلها.'})}}
   return null}
 /* ---------- دازي ينفّذ: يجهّز العملية بكرت تأكيد، وانت تضغط "نفّذ" ---------- */
 const dzN=s=>String(s||'').toLowerCase().replace(/[ً-ْٰـ]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/ؤ/g,'و').replace(/ئ/g,'ي')
@@ -6522,25 +6628,30 @@ async function dziSend(v){v=String(v||'').trim();if(!v||DZI.busy||!CUR)return;
     const intro=pc.text||(pc.act.t==='sale'?(pc.miss?'ما لكيت كل المنتجات، راجع الكرت 👇':'جهزتلك البيعة 👇 راجعها واضغط «نفّذ».'):'جهزتلك بيانات الموظف 👇 افتح النافذة وكمّل.');
     DZI.hist.push({r:'b',t:intro+note,at:Date.now(),act:pc.act||undefined});dziSave();dziPaint();
     try{if(c.snd!=='off')setTimeout(()=>sfxPlay(c.snd,'receive',c.sndVol),200)}catch(e){}return}
-  DZI.n++;const sig=DZI.n>=DZI.next;if(sig){DZI.n=0;DZI.next=dziRand()}
+  const deepQ=/(حلل|تحليل|خطه|خطة|اقترح|اقتراح|نصيح|استراتيج|قارن|مقارن|توقع|ليش|شلون (ازيد|أزيد|اكبر|أكبر|اطور|أطور|احسن|أحسن)|وين اكدر|وين أكدر|شنو رأيك|شنو رايك|قيّم|قيم)/.test(v);
   DZI.busy=true;dziPaint();dziSave();
-  let txt='',err=false,act=null;
-  if(canAI){try{txt=await Promise.race([window.dzAI({sys:dziSys(sig),turns:dziTurns(),key:c.aiKey,model:c.aiModel,max:A_MAXTOK(),temp:.6,ms:30000}),new Promise((_,j)=>setTimeout(()=>j({code:'timeout'}),45000))])}catch(e){txt=''}}
+  let txt='',err=false,act=null,rep=null;
+  if(canAI){try{txt=await Promise.race([window.dzAI({sys:dziSys(deepQ),turns:dziTurns(),key:c.aiKey,model:c.aiModel,max:A_MAXTOK(),temp:.6,ms:30000}),new Promise((_,j)=>setTimeout(()=>j({code:'timeout'}),45000))])}catch(e){txt=''}}
   txt=String(txt||'').trim();
-  const am=txt.match(/\[\[\s*DZACT\s*(\{[\s\S]*?\})\s*\]\]/);
-  if(am){try{act=dziActFromAI(JSON.parse(am[1]))}catch(e){act=null}txt=txt.replace(am[0],'').trim()}
-  txt=txt.replace(/\[\[[\s\S]*?\]\]/g,'').trim().replace(/^(اممم+[^\n]{0,40}مبرمجي[^،,\n]*[،,]?\s*)/,'');
+  const ab=dziBlock(txt,'DZACT');if(ab){act=ab.o?dziActFromAI(ab.o):null;txt=txt.replace(ab.raw,'').trim()}
+  const rb=dziBlock(txt,'DZREP');if(rb){rep=rb.o?dziRepClean(rb.o):null;txt=txt.replace(rb.raw,'').trim()}
+  txt=txt.replace(/\[\[[\s\S]*?\]\]/g,'').trim().replace(/^(اممم+[^\n]{0,60}علي مالك[،,]?\s*)/,'');
   if(act&&!txt)txt='جهزتلك العملية 👇 تأكد منها.';
+  if(rep&&!txt)txt='تفضل التقرير 👇';
   if(!txt&&pc&&pc.act){act=pc.act;txt='ما لكيت كل المنتجات، راجع الكرت 👇'}
-  if(!txt){const l=dziLocal(v);if(l)txt=l;else{err=true;txt=canAI?'صار عندي تعليق بسيط بالاتصال 😅 جرّب تسألني مرة ثانية بعد ثواني.':'عقلي الذكي يشتغل بالموقع المنشور بعد ما ينحط مفتاح الذكاء الاصطناعي من الإعدادات ← المتجر ← عقل دوزي. هسه أكدر أجاوبك بس على أسئلة بسيطة مثل: شكد مبيعات اليوم؟ شنو النواقص؟ أو أوامر مثل: بيع 2 ماس فانيلا نقد'}}
-  if(sig&&!err&&!act)txt='اممم… على حسب ما دربني مبرمجي علي مالك، '+txt;
-  DZI.busy=false;DZI.hist.push({r:'b',t:txt+note,at:Date.now(),err,act:act||undefined});dziSave();
+  if(!txt){const lr=dziLocalRep(v);if(lr){rep=lr.rep||null;txt=lr.t||'تفضل التقرير 👇'}else{err=true;txt=canAI?'صار عندي تعليق بسيط بالاتصال 😅 جرّب تسألني مرة ثانية بعد ثواني.':'عقلي الذكي يشتغل بالموقع المنشور بعد ما ينحط مفتاح الذكاء الاصطناعي من الإعدادات ← المتجر ← عقل دوزي. هسه أكدر أجاوبك بس على أسئلة بسيطة مثل: شكد مبيعات اليوم؟ شنو النواقص؟ أو أوامر مثل: بيع 2 ماس فانيلا نقد'}}
+  /* لازمة المدرّب: تطلع بس بالأجوبة الكبيرة والتحليلية، وبنسبة حجم الجواب، مو بعدد ثابت */
+  DZI.n=N(DZI.n)+1;
+  if(!err&&!act&&canAI){const sc=txt.length+(rep?260+rep.kpis.length*40:0)+(deepQ?320:0);
+    const ok=(sc>=1100&&DZI.n>=2)||(sc>=750&&DZI.n>=3&&Math.random()<Math.min(.9,(sc-600)/700));
+    if(ok){const P=['اممم… على حسب ما دربني مبرمجي علي مالك، ','اممم… حسب الخبرة اللي دربني عليها مبرمجي علي مالك، ','اممم… من اللي علمني إياه مبرمجي علي مالك، '];txt=P[Math.floor(Math.random()*P.length)]+txt;DZI.n=0}}
+  DZI.busy=false;DZI.hist.push({r:'b',t:txt+note,at:Date.now(),err,act:act||undefined,rep:rep||undefined});dziSave();
   if(DZI.open){dziPaint();try{if(c.snd!=='off')sfxPlay(c.snd,'receive',c.sndVol)}catch(e){}}
 }
 const A_MAXTOK=()=>C()?2600:1500;
 
 /* ---------- التحديث التلقائي: يفحص اذا نزلت نسخة جديدة على الموقع (حتى لو مضاف للشاشة الرئيسية) ---------- */
-const DZ_BUILD=67;
+const DZ_BUILD=69;
 const UPD={last:0,shown:0};
 try{if(/[?&]u=\d+/.test(location.search))history.replaceState(null,'',location.pathname+location.hash)}catch(e){}
 const updLive=()=>location.protocol==='https:'&&!/claude/i.test(location.hostname);
