@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
 <meta charset="utf-8">
-<meta name="dz-build" content="71">
+<meta name="dz-build" content="72">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -1354,6 +1354,23 @@ body.store-on .app,body.store-on #sheetRoot,body.store-on .toasts{display:none!i
  .co-set{grid-template-columns:1fr}
  .co-dh{flex-wrap:wrap}.co-dact{margin-inline-start:auto}.co-dh .co-dname{order:3;flex:1 1 100%}.co-dh .co-time{order:4;flex:1 1 100%;width:auto}
 }
+.co-badge{display:inline-block;justify-self:start;margin-top:4px;padding:3px 9px;font-size:12px;font-weight:700;border:1px solid var(--line-2);background:color-mix(in srgb,var(--ink) 5%,transparent)}.co-badge.ok{color:#22c55e;border-color:rgba(34,197,94,.45);background:rgba(34,197,94,.1)}.co-badge.rd{color:#3b82f6;border-color:rgba(59,130,246,.45);background:rgba(59,130,246,.1)}.co-badge.wt{color:#f59e0b;border-color:rgba(245,158,11,.45);background:rgba(245,158,11,.1)}
+.btn.wa{background:#16a34a!important;border-color:#16a34a!important;color:#fff!important;text-decoration:none}
+.co-ready{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:14px;padding:12px;border:1px solid var(--line);background:var(--surface)}.co-ready.on{border-color:rgba(34,197,94,.5);background:linear-gradient(90deg,rgba(34,197,94,.08),transparent)}
+.co-ready .btn{margin:0}.co-ready .co-badge{margin:0}
+.co-rt{display:flex;align-items:center;gap:12px;flex:1 1 280px;border:0;background:transparent;color:inherit;font:inherit;text-align:start;cursor:pointer;padding:0}
+.co-rt>i{width:46px;height:26px;flex:none;border-radius:999px;background:var(--line-2);position:relative;transition:background .2s}.co-rt>i::after{content:"";position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:right .2s}
+.co-ready.on .co-rt>i{background:#22c55e}.co-ready.on .co-rt>i::after{right:23px}
+.co-rt b{display:block;font-size:14.5px}.co-rt small{display:block;color:var(--muted);font-size:12.5px}
+.co-nph{color:#f59e0b;font-size:12.5px}
+.nt-wrap{display:grid;gap:10px;margin-bottom:16px}
+.nt{position:relative;display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-inline-start:4px solid var(--cy);background:linear-gradient(90deg,color-mix(in srgb,var(--cy) 10%,var(--surface)),var(--surface));transition:opacity .25s,transform .25s}
+.nt.bye{opacity:0;transform:translateY(-6px)}.nt.off{opacity:.55}
+.nt-imp{border-inline-start-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,.12),var(--surface))}.nt-good{border-inline-start-color:#22c55e;background:linear-gradient(90deg,rgba(34,197,94,.12),var(--surface))}.nt-train{border-inline-start-color:#3b82f6;background:linear-gradient(90deg,rgba(59,130,246,.12),var(--surface))}
+.nt-i{font-size:22px;line-height:1.2}.nt-b{flex:1;min-width:0}.nt-b b{display:block;font-size:15px}.nt-b p{margin:4px 0 0;font-size:13.5px;line-height:1.75;white-space:pre-wrap;color:var(--ink)}.nt-b small{display:block;margin-top:5px;font-size:11.5px;color:var(--muted)}
+.nt-x{width:30px;height:30px;flex:none;border:0;background:transparent;color:var(--muted);font-size:20px;cursor:pointer}.nt-x:hover{color:var(--ink)}
+.nt-list{display:grid;gap:10px}.nt-list .icon-btn{flex:none}
+body.store-on .dzi-fab,body.store-on .dzi-panel{display:none!important}
 /* performance dashboard */
 .app>*{min-width:0}
 .os.rate{padding-inline-end:46px}
@@ -1449,7 +1466,7 @@ body.store-on .app,body.store-on #sheetRoot,body.store-on .toasts{display:none!i
     <div class="sfoot">
       <button class="gear bell" data-act="notif" aria-label="الإشعارات" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="bl">الإشعارات</span><b class="nbadge" hidden></b></button>
       <button class="gear" data-go="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>الإعدادات</span></button>
-      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 71</small></div>
+      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 72</small></div>
       <div class="sync" id="sync"><i></i><span>جاري الاتصال</span></div>
       <div class="who" id="who"></div>
     </div>
@@ -2270,6 +2287,16 @@ body.intro-on .dzb{display:none}
 .pr-tx p{margin:0;color:#d8d8de;font-size:14px}
 .pr-dots{display:flex;justify-content:center;gap:6px;margin-top:10px}
 .pr-dots i{width:8px;height:8px;background:var(--line-2);cursor:pointer;transition:.2s}.pr-dots i.on{width:22px;background:var(--red)}
+.crs-btn .cart-lbl{display:inline}
+.crs{display:grid;gap:12px}.crs-hd{display:flex;gap:12px;align-items:center}.crs-ic{width:52px;height:52px;flex:none;display:grid;place-items:center;font-size:26px;background:var(--red,#ed1c24);clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px)}
+.crs-hd h3{margin:0}.crs-hd p{margin:4px 0 0;font-size:13.5px;opacity:.75;line-height:1.7}
+.crs-f span{display:block;font-size:13px;font-weight:700;margin-bottom:5px;opacity:.8}.crs-f input{width:100%;box-sizing:border-box;padding:13px 14px;font:inherit;font-size:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);color:inherit;outline:none}.crs-f input:focus{border-color:var(--red,#ed1c24)}
+.crs-lock{margin:0;font-size:12px;opacity:.55;text-align:center}
+.crs-r{padding:16px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);display:grid;gap:10px;animation:crsIn .35s cubic-bezier(.2,.9,.3,1.2)}
+.crs-r b.t{font-size:17px}.crs-r p{margin:0;font-size:14px;line-height:1.8;opacity:.85}
+.crs-r.ok{border-color:rgba(34,197,94,.5);background:linear-gradient(135deg,rgba(34,197,94,.14),transparent)}.crs-r.rd{border-color:var(--red,#ed1c24);background:linear-gradient(135deg,rgba(237,28,36,.18),transparent)}.crs-r.wt{border-color:rgba(245,158,11,.5);background:linear-gradient(135deg,rgba(245,158,11,.12),transparent)}.crs-r.no{border-color:rgba(255,255,255,.14)}
+.crs-big{font-size:34px;line-height:1}
+@keyframes crsIn{from{opacity:0;transform:translateY(8px)}}
 </style>
 
 <div class="app">
@@ -2280,6 +2307,7 @@ body.intro-on .dzb{display:none}
       <a class="dzlock live" href="#shop" aria-label="الدزاز جم"><svg class="dzmark" viewBox="0 0 272 180" aria-hidden="true"><path d="M50 5H168L98 88H142L95 175H25L91 53L5 86Z"/><path d="M186 5A84 85 0 0 1 186 175H115L213 68H162Z"/></svg><span class="dzw"><b class="dzname">AL<svg class="dzmini" viewBox="0 0 272 180" aria-hidden="true"><path d="M50 5H168L98 88H142L95 175H25L91 53L5 86Z"/><path d="M186 5A84 85 0 0 1 186 175H115L213 68H162Z"/></svg>ZAZ <em>GYM</em></b><small>متجر المكملات · Supplements</small></span></a>
       <span class="hsp"></span>
       <button class="hbtn owner-btn" id="ownerBtn" hidden aria-label="إدارة المتجر" title="إدارة المتجر"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
+      <button class="hbtn crs-btn" data-cact="open" aria-label="كورسي"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11"/></svg><span class="cart-lbl">كورسي</span></button>
       <button class="hbtn red" id="cartBtn" data-act="cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg><span class="cart-lbl">السلة</span><b class="badge" id="cartCount">0</b></button>
     </div>
   </header>
@@ -2456,7 +2484,7 @@ function renderTop(){
   $('#ann').innerHTML=CFG.ann?`<div class="wrap">${esc(CFG.ann)}</div>`:'';
   document.querySelectorAll('.perkDel').forEach(e=>e.textContent=`المثنى ${CFG.bag?fmt(CFG.bag)+' د.ع':''} • باقي المحافظات ${CFG.oth?fmt(CFG.oth)+' د.ع':''}`);
   $('#footWa').innerHTML=CFG.wa?`واتساب: <span class="tel">+${esc(CFG.wa)}</span>`:'';
-  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 58${hasOrd?' • sync':''}</small>`)}
+  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 72${hasOrd?' • sync':''}</small>`)}
   $('#catAt').textContent=DATA.at?'UPDATED '+new Date(DATA.at).toISOString().slice(0,10).replaceAll('-','.'):'';
   const ha=$('#heroArt');if(ha&&!ha.firstChild)ha.innerHTML=dzEmblem();
 }
@@ -2752,6 +2780,35 @@ async function doPublish(next,btn,show,label){
     const c=e&&e.code;show(c==='conflict'?'صار تحديث ثاني بنفس الوقت. الصفحة راح تتحدث، عيد المحاولة.':c==='not_writer'||c==='not_granted'?'ما عندك صلاحية تنشر هذا المتجر.':c==='consent_required'?'وافق على صلاحية النشر وجرّب مرة ثانية.':'ما انحفظ. تأكد من الاتصال وجرّب مرة ثانية.')}
 }
 
+
+/* ---------- كورسي: اللاعب يستلم كورسه من الكابتن ---------- */
+const crsHost=n=>{try{return window.parent!==window&&typeof window.parent[n]==='function'?window.parent[n]:null}catch(e){return null}};
+let CRS={name:'',ph:''};try{CRS=Object.assign(CRS,JSON.parse(localStorage.getItem('dzs-crs')||'null')||{})}catch(e){}
+function openCourse(){openSheet(`<div class="crs"><div class="crs-hd"><span class="crs-ic">🏋️</span><div><h3>كورسي</h3><p>اكتب اسمك ورقم موبايلك اللي سجلته عند الكابتن، ونطلعلك كورسك التدريبي والغذائي.</p></div></div>
+  <label class="crs-f"><span>اسمك</span><input id="crsN" value="${esc(CRS.name||'')}" placeholder="مثلاً: حسين علي" autocomplete="name"></label>
+  <label class="crs-f"><span>رقم الموبايل</span><input id="crsP" value="${esc(CRS.ph||'')}" placeholder="07xxxxxxxxx" inputmode="tel" dir="ltr" autocomplete="tel"></label>
+  <button class="btn red block" data-cact="find">🔎 ابحث عن كورسي</button><div id="crsOut"></div><p class="crs-lock">🔒 كورسك محمي برقم موبايلك، محد يكدر يشوفه غيرك.</p></div>`,'course')}
+let CRSR=null;
+function crsShow(r){const o=$('#crsOut');if(!o)return;CRSR=r;const nm=esc((r&&r.name)||CRS.name||'');
+  const M={badphone:['no','📵','رقم الموبايل مو صحيح','اكتبه مثل: 07801234567'],none:['no','🔍','ما لكينا كورس','تأكد من اسمك ورقم موبايلك مثل ما سجلتهم عند الكابتن، أو راجع الكابتن.'],nocourse:['no','🙋',`أهلاً ${nm}`,'إنت مسجل عدنا بس الكابتن بعده ما بلّش كورسك.'],nocfg:['no','⚙️','الخدمة مو متاحة هنا','افتح المتجر من الرابط الرسمي.'],err:['no','⚠️','ما كدرنا نوصل','تأكد من الإنترنت وجرّب مرة ثانية.'],perm:['no','⚙️','الخدمة بعدها ما مفعّلة','خبّر الكابتن حتى يفعلها.']};
+  if(M[r.st]){const [k,ic,t,p]=M[r.st];o.innerHTML=`<div class="crs-r ${k}"><span class="crs-big">${ic}</span><b class="t">${t}</b><p>${p}</p></div>`;return}
+  if(r.st==='ready')o.innerHTML=`<div class="crs-r rd"><span class="crs-big">🎉</span><b class="t">كورسك جاهز يا ${nm}!</b><p>«${esc(r.title||'')}»${r.coach?` من الكابتن ${esc(r.coach)}`:''}. حمّله وابدأ على بركة الله 💪</p><button class="btn red block" data-cact="get">⬇️ حمّل كورسك</button></div>`;
+  else if(r.st==='got')o.innerHTML=`<div class="crs-r ok"><span class="crs-big">✅</span><b class="t">استلمت الكورس مالتك</b><p>«${esc(r.title||'')}» استلمته ${r.at?'بتاريخ '+new Date(r.at).toLocaleDateString('en-GB'):''}. من يجهزلك الكابتن كورس جديد يطلعلك هنا.</p></div>`;
+  else if(r.st==='pending'){let done=false;try{done=Date.now()-Number(localStorage.getItem('dzs-crem-'+r.pid)||0)<6*36e5}catch(e){}
+    o.innerHTML=`<div class="crs-r wt"><span class="crs-big">⏳</span><b class="t">الكورس بعده ما كمله المدرب</b><p>كورسك «${esc(r.title||'')}» قيد الكتابة${r.coach?` عند الكابتن ${esc(r.coach)}`:''}. تكدر تذكّره حتى يكمله.</p><button class="btn ${done?'':'red'} block" data-cact="remind" ${done?'disabled':''}>${done?'✅ انرسل التذكير، الكابتن راح يشوفه':'🔔 ذكّر الكابتن'}</button></div>`}}
+document.addEventListener('click',async e=>{const a=e.target.closest('[data-cact]');if(!a)return;const k=a.dataset.cact;
+  if(k==='open')return openCourse();
+  if(k==='find'){const n=($('#crsN')||{}).value||'',p=($('#crsP')||{}).value||'';if(!n.trim()||!p.trim())return toast('اكتب اسمك ورقم موبايلك');
+    CRS={name:n.trim(),ph:p.trim()};try{localStorage.setItem('dzs-crs',JSON.stringify(CRS))}catch(x){}
+    const h=crsHost('dzCourseFind');if(!h)return crsShow({st:'nocfg'});a.disabled=true;const t0=a.textContent;a.textContent='⏳ جاري البحث…';
+    try{crsShow(await h(CRS.name,CRS.ph))}catch(x){crsShow({st:x&&x.code==='nocfg'?'nocfg':/permission/i.test(String(x&&(x.code||x.message)))?'perm':'err'})}
+    a.disabled=false;a.textContent=t0;return}
+  if(k==='get'){const h=crsHost('dzCourseOpen');if(!h)return;a.disabled=true;a.textContent='⏳ نجهز كورسك…';
+    try{await h(CRS.name,CRS.ph);crsShow(Object.assign({},CRSR,{st:'got',at:Date.now()}))}catch(x){a.disabled=false;a.textContent='⬇️ حمّل كورسك';toast('ما كدرنا نفتح الكورس، جرّب مرة ثانية')}return}
+  if(k==='remind'){const h=crsHost('dzCourseRemind');if(!h||!CRSR)return;a.disabled=true;a.textContent='⏳ نرسل…';
+    try{await h({key:CRSR.key,name:CRSR.name,title:CRSR.title,pid:CRSR.pid});try{localStorage.setItem('dzs-crem-'+CRSR.pid,String(Date.now()))}catch(x){}crsShow(CRSR);toast('انرسل التذكير للكابتن 🔔','ok')}
+    catch(x){a.disabled=false;a.textContent='🔔 ذكّر الكابتن';toast(/permission/i.test(String(x&&(x.code||x.message)))?'الخدمة بعدها ما مفعّلة، خبّر الكابتن':'ما انرسل، جرّب مرة ثانية')}return}});
+setTimeout(()=>{try{if(/course|كورس/i.test(decodeURIComponent(window.parent.location.hash||'')))openCourse()}catch(e){}},900);
 /* events */
 function toast(m,k){const t=document.createElement('div');t.className='toast'+(k?' '+k:'');t.textContent=m;$('#toasts').appendChild(t);setTimeout(()=>t.remove(),2800)}
 document.addEventListener('click',async e=>{
@@ -3871,7 +3928,7 @@ const VIEWS=[
  {id:'buy',label:'المشتريات',icon:I.buy},
  {id:'sales',label:'المبيعات',icon:I.sales},
  {id:'orders',label:'الطلبات',icon:I.orders},
- {id:'coach',label:'البرامج',icon:I.coach},
+ {id:'coach',label:'المدرب',icon:I.coach},
  {id:'reports',label:'التقارير',icon:I.report}
 ];
 const CATS=['بروتين','كرياتين','أحماض أمينية','ما قبل التمرين','غينر / زيادة وزن','حارق دهون','فيتامينات ومعادن','أوميغا 3','بارات وسناك','إكسسوارات','أخرى'];
@@ -3879,7 +3936,7 @@ const PAY=['نقد','تحويل','آجل'];
 const ADJ_REASONS=['عدّ فعلي','تالف','مفقود','عينة / هدية','انتهت صلاحيته','تصحيح خطأ'];
 
 /* ---------- state ---------- */
-const S={products:[],purchases:[],sales:[],adjustments:[],users:[],orders:[],audit:[],meta:[],clients:[],programs:[]};
+const S={products:[],purchases:[],sales:[],adjustments:[],users:[],orders:[],audit:[],meta:[],clients:[],programs:[],cpub:[],creminders:[],notices:[]};
 const COLLS=Object.keys(S);
 let db=null, mode='loading', loaded={}, navAnim=true;
 const THEMES=[
@@ -4616,6 +4673,7 @@ function render(){
   if(ui.view!=='settings'&&!allowed.includes(ui.view)){ui.view=allowed[0]||'settings';renderNav()}
   let html=({home:viewHome,sell:viewSell,stock:viewStock,buy:viewBuy,sales:viewSales,orders:viewOrders,reports:viewReports,coach:viewCoach,settings:viewSettings}[ui.view])();
   if(!can('home')&&ui.view===allowed[0])html=dashHero()+html;
+  try{if(ui.view!=='settings'&&!(ui.view==='coach'&&ui.co&&ui.co.pid))html=noticeStrip()+html}catch(e){}
   v.innerHTML=html;
   v.classList.toggle('anim',navAnim);navAnim=false;
   const dph=v.querySelector('#dhEm');if(dph){if(!HERO_EM){HERO_EM=document.createElement('div');HERO_EM.className='dh-em em-asm';HERO_EM.innerHTML='<span class="orb o1"><i></i></span><span class="orb o2"><i></i></span><span class="orb o3"><i></i></span>'+dzEmblem()}dph.replaceWith(HERO_EM)}
@@ -5465,7 +5523,9 @@ const FB_ERR={'auth/invalid-credential':'الإيميل أو الباسورد غ
 const fbMsg=e=>FB_ERR[(e&&e.code)||'']||((e&&e.message)?('خطأ: '+e.message):'صار خطأ غير معروف.');
 function listen(){
   COLLS.forEach(c=>{
-    db.collection(c).onSnapshot(snap=>{if(c==='orders'&&loaded[c]){try{snap.docChanges().forEach(ch=>{const d=ch.doc.data();if(ch.type==='added'&&d.src==='store'&&d.status==='new')alertNewOrder(d)})}catch(e){}}S[c]=snap.docs.map(x=>({id:x.id,...x.data()}));loaded[c]=true;schedule()},
+    db.collection(c).onSnapshot(snap=>{if(c==='orders'&&loaded[c]){try{snap.docChanges().forEach(ch=>{const d=ch.doc.data();if(ch.type==='added'&&d.src==='store'&&d.status==='new')alertNewOrder(d)})}catch(e){}}
+      if(c==='creminders'&&loaded[c]&&(can('orders')||can('coach'))){try{snap.docChanges().forEach(ch=>{const d=ch.doc.data();if(ch.type==='added'&&d.status==='new')remAlert(d)})}catch(e){}}
+      if(c==='notices'&&loaded[c]){try{snap.docChanges().forEach(ch=>{const d=ch.doc.data();if(ch.type==='added'&&CUR&&d.byId!==CUR.id)toast('📢 تبليغ جديد: '+(d.title||''))})}catch(e){}}S[c]=snap.docs.map(x=>({id:x.id,...x.data()}));loaded[c]=true;schedule()},
       err=>{if(err&&err.code==='revoked')return;if(BACKEND==='firebase'&&err&&err.code==='permission-denied'){FBERR=fbMsg(err);mode='fberr';lastGate='';render();return}toast('انقطع الاتصال بالبيانات، حدّث الصفحة','bad')});
   });
 }
@@ -5931,7 +5991,9 @@ function viewOrders(){
   const list=os.filter(o=>f==='all'?true:f==='open'?(o.status==='new'||o.status==='prep'):o.status===f);
   const online=activeProducts().filter(p=>p.online!==false).length;
   const adm=isAdmin(),sd=adm?storeDiff():null;
-  const otab=adm?`<div class="seg ostab" role="tablist"><button data-act="o-tab" data-id="orders" aria-pressed="${ui.oTab!=='store'}">الطلبات${cnt('new')?`<span class="cnt">${cnt('new')}</span>`:''}</button><button data-act="o-tab" data-id="store" aria-pressed="${ui.oTab==='store'}">التحكم بالمتجر${sd.total?`<span class="cnt">${sd.total}</span>`:''}</button></div>`:'';
+  const nRem=(S.creminders||[]).filter(r=>r.status==='new').length;
+  const otab=`<div class="seg ostab" role="tablist"><button data-act="o-tab" data-id="orders" aria-pressed="${ui.oTab!=='store'&&ui.oTab!=='remind'}">الطلبات${cnt('new')?`<span class="cnt">${cnt('new')}</span>`:''}</button><button data-act="o-tab" data-id="remind" aria-pressed="${ui.oTab==='remind'}">🔔 تذكيرات الكورسات${nRem?`<span class="cnt">${nRem}</span>`:''}</button>${adm?`<button data-act="o-tab" data-id="store" aria-pressed="${ui.oTab==='store'}">التحكم بالمتجر${sd.total?`<span class="cnt">${sd.total}</span>`:''}</button>`:''}</div>`;
+  if(ui.oTab==='remind')return head('تذكيرات الكورسات','اللاعبين اللي سألوا عن كورساتهم من المتجر.')+otab+remindView();
   if(adm&&ui.oTab==='store')return head('التحكم بالمتجر','المنتجات والأسعار والإعدادات والإعلانات توصل للمتجر وحدها.',`<button class="btn" data-act="go-store">عرض المتجر</button>`)+otab+viewStoreCtl();
   return `${head('الطلبات الأونلاين','طلبات الزبائن من المتجر توصلك على واتساب. الصق الرسالة هنا وتنضاف للنظام.',
     `<button class="btn primary" data-act="ord-paste">${I.plus} إضافة طلب من واتساب</button>${adm?`<button class="btn hd-sync" data-act="o-tab" data-id="store">المتجر${sd.total?` <span class="cnt">${sd.total}</span>`:''}</button>`:`<button class="btn" data-act="go-store">عرض المتجر</button>`}`)}${otab}
@@ -6061,7 +6123,7 @@ function wireImg(s,st){
 const pthumb=p=>p&&p.img?`<img class="pthumb" src="${esc(p.img)}" alt="">`:`<span class="pthumb ph" style="--c:${catColor(p?.category)}">${initial(dn(p))}</span>`;
 
 /* --- audit log --- */
-const ENT={products:'منتج',purchases:'فاتورة شراء',sales:'عملية بيع',adjustments:'تعديل جرد',orders:'طلب أونلاين',users:'مستخدم',clients:'لاعب',programs:'برنامج تدريبي'};
+const ENT={products:'منتج',purchases:'فاتورة شراء',sales:'عملية بيع',adjustments:'تعديل جرد',orders:'طلب أونلاين',users:'مستخدم',clients:'لاعب',programs:'برنامج تدريبي',notices:'تبليغ',creminders:'تذكير كورس',cpub:'كورس منشور'};
 const FLD={name:'الاسم',brand:'الماركة',category:'الصنف',flavor:'النكهة',size:'الحجم',sellPrice:'سعر البيع',minStock:'الحد الأدنى',barcode:'الباركود',desc:'الوصف',online:'يظهر بالمتجر',archived:'مخفي',img:'الصورة',status:'الحالة',role:'الدور',perms:'الصلاحيات',active:'فعّال',ph:'الباسورد',qty:'العدد',unitPrice:'السعر',unitCost:'الكلفة',discount:'الخصم',payment:'الدفع',customer:'الزبون',supplier:'المورّد',expiry:'الانتهاء',note:'الملاحظة',delivery:'التوصيل'};
 const AUD_SKIP=new Set(['salt','soldIds','doneAt','doneDate','doneBy','prepBy','cancelBy','updatedAt','createdAt','by','byId']);
 function recLabel(c,r){
@@ -6722,7 +6784,7 @@ async function dziSend(v){v=String(v||'').trim();if(!v||DZI.busy||!CUR)return;
 const A_MAXTOK=()=>C()?2600:1500;
 
 /* ---------- التحديث التلقائي: يفحص اذا نزلت نسخة جديدة على الموقع (حتى لو مضاف للشاشة الرئيسية) ---------- */
-const DZ_BUILD=71;
+const DZ_BUILD=72;
 const UPD={last:0,shown:0};
 try{if(/[?&]u=\d+/.test(location.search))history.replaceState(null,'',location.pathname+location.hash)}catch(e){}
 const updLive=()=>location.protocol==='https:'&&!/claude/i.test(location.hostname);
@@ -6806,11 +6868,11 @@ function viewCoach(){const U=ui.co;
   if(U.pid&&CO.pid!==U.pid){const p=(S.programs||[]).find(x=>x.id===U.pid);if(p){CO.draft=JSON.parse(JSON.stringify(p));CO.pid=p.id;CO.dirty=false}else{U.pid='';CO.pid=null}}
   if(U.pid&&CO.draft)return coEditor();
   if(U.cid&&coClient(U.cid))return coClientView(coClient(U.cid));
-  U.cid='';return coList()}
+  U.cid='';return coSpaceHead()+(U.sec==='notices'?coNoticesView():coList())}
+function coSpaceHead(){const n=ntActive().length;return `${head('مساحة المدرب','اللاعبين والكورسات، والتبليغات اللي تطلع لكل الموظفين.',ui.co.sec==='notices'?'':`<button class="btn primary" data-co="c-new">${I.plus||'+'} لاعب جديد</button>`)}<div class="seg big co-tabs">${[['players','👥 اللاعبين والكورسات'],['notices','📢 التبليغات'+(n?` <span class="cnt">${n}</span>`:'')]].map(([k,l])=>`<button type="button" data-co="sec" data-id="${k}" aria-pressed="${(ui.co.sec||'players')===k}" class="${(ui.co.sec||'players')===k?'on':''}">${l}</button>`).join('')}</div>`}
 function coList(){const L=coMine(),q=dzN(ui.co.q||'');const F=q?L.filter(c=>dzN([c.name,c.phone,c.goal].join(' ')).includes(q)):L;
   const act=(S.programs||[]).filter(p=>p.status!=='old'&&L.some(c=>c.id===p.clientId)).length;
-  return `${head('البرامج التدريبية','سجّل اللاعبين، واكتب لكل واحد كورس تمارين وكورس تغذية، وطلّعه PDF احترافي.',`<button class="btn primary" data-co="c-new">${I.plus||'+'} لاعب جديد</button>`)}
-   <div class="co-kpis"><div class="co-k"><span>اللاعبين</span><b>${L.length}</b></div><div class="co-k"><span>برامج فعّالة</span><b>${act}</b></div><div class="co-k"><span>كل البرامج</span><b>${(S.programs||[]).filter(p=>L.some(c=>c.id===p.clientId)).length}</b></div></div>
+  return `<div class="co-kpis"><div class="co-k"><span>اللاعبين</span><b>${L.length}</b></div><div class="co-k"><span>برامج فعّالة</span><b>${act}</b></div><div class="co-k"><span>كل البرامج</span><b>${(S.programs||[]).filter(p=>L.some(c=>c.id===p.clientId)).length}</b></div></div>
    ${L.length?`<div class="bar"><div class="search">${I.search}<input id="coQ" type="search" placeholder="ابحث باسم اللاعب أو رقمه أو هدفه" value="${esc(ui.co.q||'')}" autocomplete="off"></div></div>`:''}
    ${F.length?`<div class="co-grid">${F.sort((a,b)=>N(b.updatedAt||b.createdAt)-N(a.updatedAt||a.createdAt)).map(c=>{const ps=coProgs(c.id),cur=ps.find(p=>p.status!=='old');
      return `<button type="button" class="co-card" data-co="c-open" data-id="${esc(c.id)}"><span class="co-av">${initial(c.name)}</span><span class="co-ci"><b>${esc(c.name)}</b><small>${esc(c.goal||'بدون هدف')} • ${esc(c.level||'')}</small>
@@ -6823,8 +6885,8 @@ function coClientView(c){const ps=coProgs(c.id);const st=(l,v)=>`<div class="co-
    <div class="panel co-prof"><div class="co-stats">${st('العمر',coAge(c))}${st('الطول',c.height?c.height+' سم':'—')}${st('الوزن',c.weight?c.weight+' كغ':'—')}${st('BMI',bmi||'—')}${st('الهدف',esc(c.goal||'—'))}${st('المستوى',esc(c.level||'—'))}${st('الجنس',esc(c.gender||'—'))}${st('النشاط',esc((CO_ACT.find(a=>a[0]===c.activity)||['','—'])[1].split(' ')[0]))}</div>
     ${c.injuries?`<div class="co-warn">⚠️ إصابات / حالات صحية: ${esc(c.injuries)}</div>`:''}${c.notes?`<p class="co-note">${esc(c.notes)}</p>`:''}</div>
    <div class="panel"><h3>البرامج <span>${ps.length}</span></h3>
-    ${ps.length?`<div class="co-plist">${ps.map(p=>`<div class="co-p${p.status==='old'?' old':''}"><div class="co-pi"><b>${esc(p.title||'برنامج')}</b><small>${(p.w&&p.w.days||[]).length} أيام تمرين • ${(p.f&&p.f.meals||[]).length} وجبات${p.weeks?' • '+p.weeks+' أسابيع':''} • ${p.startDate?fmtDate(p.startDate):''}</small><small>آخر تعديل ${relTime(N(p.updatedAt||p.createdAt))}${p.status==='old'?' • منتهي':' • <b class="co-on">فعّال</b>'}</small></div>
-      <div class="co-pa"><button class="btn sm primary" data-co="p-open" data-id="${esc(p.id)}">فتح وتعديل</button><button class="btn sm" data-co="p-pdf" data-id="${esc(p.id)}">📄 PDF</button><button class="btn sm ghost" data-co="p-dup" data-id="${esc(p.id)}">نسخة جديدة</button><button class="btn sm ghost" data-co="p-old" data-id="${esc(p.id)}">${p.status==='old'?'تفعيل':'إنهاء'}</button><button class="icon-btn del" data-co="p-del" data-id="${esc(p.id)}" aria-label="حذف">${I.trash}</button></div></div>`).join('')}</div>`
+    ${ps.length?`<div class="co-plist">${ps.map(p=>`<div class="co-p${p.status==='old'?' old':''}"><div class="co-pi"><b>${esc(p.title||'برنامج')}</b><small>${(p.w&&p.w.days||[]).length} أيام تمرين • ${(p.f&&p.f.meals||[]).length} وجبات${p.weeks?' • '+p.weeks+' أسابيع':''} • ${p.startDate?fmtDate(p.startDate):''}</small><small>آخر تعديل ${relTime(N(p.updatedAt||p.createdAt))}${p.status==='old'?' • منتهي':' • <b class="co-on">فعّال</b>'}</small>${p.status==='old'?'':coDeliv(c,p)}</div>
+      <div class="co-pa"><button class="btn sm primary" data-co="p-open" data-id="${esc(p.id)}">فتح وتعديل</button>${p.ready&&p.status!=='old'&&coPhone(c.phone)?`<a class="btn sm wa" href="${esc(coWaLink(c,p))}" target="_blank" rel="noopener">💬 واتساب</a>`:''}<button class="btn sm" data-co="p-pdf" data-id="${esc(p.id)}">📄 PDF</button><button class="btn sm ghost" data-co="p-dup" data-id="${esc(p.id)}">نسخة جديدة</button><button class="btn sm ghost" data-co="p-old" data-id="${esc(p.id)}">${p.status==='old'?'تفعيل':'إنهاء'}</button><button class="icon-btn del" data-co="p-del" data-id="${esc(p.id)}" aria-label="حذف">${I.trash}</button></div></div>`).join('')}</div>`
       :`<div class="empty sm"><b>ما عنده برنامج بعد</b><span>اضغط «برنامج جديد» واختار قالب جاهز أو ابدأ من الصفر.</span></div>`}</div>
    <div class="co-danger"><button class="btn sm ghost" data-co="c-del" data-id="${esc(c.id)}">حذف اللاعب وكل برامجه</button></div>`}
 const coI=(id,path,val,ph,cls,type)=>`<input id="${id}" class="${cls||''}" data-cf="${path}" value="${esc(val==null?'':val)}" ${ph?`placeholder="${esc(ph)}"`:''} ${type?`type="${type}"`:''} autocomplete="off">`;
@@ -6833,6 +6895,8 @@ function coEditor(){const d=CO.draft,c=coClient(d.clientId)||{},T=ui.co.tab||'w'
   return `<div class="co-back"><button type="button" class="btn ghost sm" data-co="p-close">→ رجوع لـ ${esc(c.name||'اللاعب')}</button></div>
    <div class="co-ed-h"><div class="co-ed-t">${coI('cpTitle','title',d.title,'اسم البرنامج','co-title')}<small>${esc(c.name||'')} • ${esc(c.goal||'')}</small></div>
     <div class="co-ed-a"><span class="co-dirty ${CO.dirty?'on':''}" id="coDirty">${CO.dirty?'● تغييرات ما انحفظت':'✓ محفوظ'}</span><button class="btn primary" data-co="p-save" ${CO.saving?'disabled':''}>💾 حفظ</button><button class="btn" data-co="p-pdf" data-id="${esc(CO.pid)}">📄 PDF</button></div></div>
+   <div class="co-ready ${d.ready?'on':''}"><button type="button" class="co-rt" data-co="p-ready" aria-pressed="${!!d.ready}"><i></i><span><b>${d.ready?'✅ الكورس جاهز للتسليم':'✍️ الكورس قيد الكتابة'}</b><small>${d.ready?'اللاعب يكدر يحمله من المتجر بقسم «كورسي»':'لما تخلص فعّلها، وإذا اللاعب يسأل يطلعله «بعده ما كمله المدرب»'}</small></span></button>
+    ${d.ready&&!CO.dirty&&coPhone(c.phone)?`<a class="btn wa" href="${esc(coWaLink(c,d))}" target="_blank" rel="noopener">💬 إرسال للاعب عبر واتساب</a>`:d.ready&&!coPhone(c.phone)?'<small class="co-nph">⚠️ ما مسجل رقم موبايل للاعب، ضيفه حتى ترسل واتساب ويكدر يحمل كورسه</small>':d.ready&&CO.dirty?'<small class="co-nph">احفظ حتى يطلع زر الواتساب</small>':''}${coDeliv(c,d)}</div>
    <div class="seg big co-tabs">${tabs.map(([k,l])=>`<button type="button" data-co="tab" data-id="${k}" aria-pressed="${T===k}" class="${T===k?'on':''}">${l}</button>`).join('')}</div>
    ${T==='w'?coWork(d):T==='f'?coFood(d,c):coNotes(d)}
    <datalist id="coExL">${CO_EX.map(x=>`<option value="${esc(x)}">`).join('')}</datalist><datalist id="coFoodL">${CO_FOOD.map(x=>`<option value="${esc(x)}">`).join('')}</datalist>`}
@@ -6872,7 +6936,7 @@ function coPick(){const c=coClient(ui.co.cid);if(!c)return;
    <div class="co-tpls">${[['','📝 من الصفر','يوم واحد فارغ'],['full3','🔁 جسم كامل','3 أيام — مناسب للمبتدئ'],['ul4','↕️ علوي / سفلي','4 أيام — متوسط'],['ppl','🔀 دفع / سحب / أرجل','3 أيام (تتكرر مرتين)'],['bro5','💪 عضلة لكل يوم','5 أيام — متقدم']].map(([k,t,s])=>`<button type="button" class="co-tplb" data-co="p-create" data-id="${k}"><b>${t}</b><small>${s}</small></button>`).join('')}</div>`)}
 async function coCreate(k){const c=coClient(ui.co.cid);if(!c)return;closeSheet();const n=coNewProgram(c);n.w.days=coTpl(k||'x');
   if(k)n.title={full3:'جسم كامل 3 أيام',ul4:'علوي / سفلي 4 أيام',ppl:'دفع / سحب / أرجل',bro5:'تقسيم 5 أيام'}[k];
-  try{const id=await coPut('programs',null,n);ui.co.pid=id;CO.pid=id;CO.draft=Object.assign({id},n);CO.dirty=false;ui.co.tab='w';render();window.scrollTo({top:0});toast('انضاف البرنامج، عدّله واحفظ')}catch(e){dbErr(e)}}
+  try{const id=await coPut('programs',null,n);ui.co.pid=id;CO.pid=id;CO.draft=Object.assign({id},n);CO.dirty=false;ui.co.tab='w';render();coPub(c.id);window.scrollTo({top:0});toast('انضاف البرنامج، عدّله واحفظ')}catch(e){dbErr(e)}}
 function coClientSheet(c){const isNew=!c;c=c||{gender:'ذكر',activity:'mid',startDate:todayStr()};
   const sel=(id,v,opts)=>`<select id="${id}">${opts.map(o=>Array.isArray(o)?`<option value="${o[0]}" ${v===o[0]?'selected':''}>${o[1]}</option>`:`<option ${v===o?'selected':''}>${o}</option>`).join('')}</select>`;
   openSheet(`<h3>${isNew?'لاعب جديد':'تعديل: '+esc(c.name)}</h3><p class="sub">البيانات تنحسب منها السعرات والماكروز تلقائياً وتطلع بالـ PDF.</p>
@@ -6896,24 +6960,36 @@ function coClientSheet(c){const isNew=!c;c=c||{gender:'ذكر',activity:'mid',st
       if(!name){const e=s.querySelector('#coErr');e.hidden=false;e.textContent='اكتب اسم اللاعب.';return}
       const data=Object.assign({},isNew?{createdAt:Date.now(),coachId:CUR.id,coachName:CUR.name}:c,{name,phone:v('coPhone'),gender:v('coGender'),age:v('coAge'),height:v('coH'),weight:v('coW'),activity:v('coAct'),goal:v('coGoal'),level:v('coLvl'),startDate:v('coStart'),injuries:v('coInj'),notes:v('coNotes')});delete data.id;
       s.querySelector('#coSave').disabled=true;
-      try{const id=await coPut('clients',isNew?null:c.id,data);closeSheet();ui.co.cid=id;render();toast(isNew?'انضاف اللاعب ✅':'انحفظت البيانات')}catch(e){s.querySelector('#coSave').disabled=false;dbErr(e)}}})}
+      try{const id=await coPut('clients',isNew?null:c.id,data);closeSheet();ui.co.cid=id;render();setTimeout(()=>coPub(id),300);toast(isNew?'انضاف اللاعب ✅':'انحفظت البيانات')}catch(e){s.querySelector('#coSave').disabled=false;dbErr(e)}}})}
+async function ntPost(){const t=($('#ntT')||{}).value||'',bd=($('#ntB')||{}).value||'';if(!t.trim())return toast('اكتب عنوان التبليغ','bad');
+  const k=(document.querySelector('.nt-kinds .chip[aria-pressed="true"]')||{dataset:{k:'info'}}).dataset.k;const dd=N(($('#ntD')||{}).value);
+  const n={title:t.trim().slice(0,80),body:bd.trim().slice(0,600),kind:k,pin:!!($('#ntP')||{}).checked,until:dd?Date.now()+dd*864e5:0,by:CUR.name,byId:CUR.id,createdAt:Date.now()};
+  try{await coPut('notices',null,n);toast('انشر التبليغ 📢 يطلع لكل الموظفين');$('#ntT').value='';$('#ntB').value=''}catch(e){dbErr(e)}}
+document.addEventListener('click',e=>{const c=e.target.closest('.nt-kinds .chip');if(!c)return;c.parentElement.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',String(x===c)))});
 function coSetPath(o,path,val){const k=path.split('.');let x=o;for(let i=0;i<k.length-1;i++){x=x[k[i]];if(x==null)return}x[k[k.length-1]]=val}
 function coMark(){if(!CO.dirty){CO.dirty=true;const e=$('#coDirty');if(e){e.classList.add('on');e.textContent='● تغييرات ما انحفظت'}}}
 async function coSave(silent){if(!CO.draft||CO.saving)return;CO.saving=true;const d=JSON.parse(JSON.stringify(CO.draft));const id=d.id||CO.pid;delete d.id;
-  try{await coPut('programs',id,d);CO.dirty=false;if(!silent)toast('انحفظ البرنامج ✅')}catch(e){dbErr(e)}CO.saving=false;if(ui.view==='coach')render()}
+  try{await coPut('programs',id,d);CO.dirty=false;if(!silent)toast('انحفظ البرنامج ✅');await coPub(d.clientId)}catch(e){dbErr(e)}CO.saving=false;if(ui.view==='coach')render()}
 function coLeave(fn){if(!CO.dirty)return fn();confirmSheet('عندك تغييرات ما انحفظت','تريد تحفظها قبل لا تطلع؟','احفظ واطلع',async()=>{await coSave(true);fn()})}
 document.addEventListener('input',e=>{const t=e.target;if(t.id==='coQ'){ui.co.q=t.value;render();return}
   const p=t.dataset&&t.dataset.cf;if(!p||!CO.draft||ui.view!=='coach')return;coSetPath(CO.draft,p,t.value);coMark()});
 document.addEventListener('change',e=>{if(e.target.id==='coTplSel'&&e.target.value&&CO.draft){const k=e.target.value;const go=()=>{CO.draft.w.days=coTpl(k);coMark();render()};
   if(CO.draft.w.days.some(d=>d.ex.some(x=>x.n)))confirmSheet('استبدال التمارين','القالب راح يستبدل أيام التمرين الحالية.','استبدل',async()=>go());else go();e.target.value=''}});
-document.addEventListener('click',e=>{const b=e.target.closest('[data-co]');if(!b||!CUR)return;if(!can('coach'))return toast('ما عندك صلاحية لهذا الشي','bad');
+document.addEventListener('click',e=>{const b=e.target.closest('[data-co]');if(!b||!CUR)return;
+  {const k=b.dataset.co,id=b.dataset.id;
+   if(k==='n-dis'){const L=ntDis();L.push(id);try{localStorage.setItem('dz-ndis-'+CUR.id,JSON.stringify(L.slice(-80)))}catch(_){}const el=b.closest('.nt');if(el){el.classList.add('bye');setTimeout(render,250)}else render();return}
+   if(k.startsWith('r-')){if(!can('orders')&&!can('coach'))return toast('ما عندك صلاحية لهذا الشي','bad');const r=(S.creminders||[]).find(x=>x.id===id);if(!r)return;
+    if(k==='r-done'){const n=Object.assign({},r,{status:'done'});delete n.id;return coWrite('creminders',id,n).catch(dbErr)}
+    if(k==='r-del')return coDel('creminders',id).catch(dbErr);
+    if(k==='r-open'){const c=(S.clients||[]).find(x=>x.pk===r.key);if(!c||!can('coach'))return toast('افتحه من مساحة المدرب','bad');const p=coLatest(c.id);ui.co.cid=c.id;ui.co.pid=p?p.id:'';CO.pid=null;ui.co.sec='players';const n=Object.assign({},r,{status:'done'});delete n.id;coWrite('creminders',id,n).catch(()=>{});go('coach');return}}}
+  if(!can('coach'))return toast('ما عندك صلاحية لهذا الشي','bad');
   const k=b.dataset.co,id=b.dataset.id,i=+b.dataset.i,j=+b.dataset.j,d=CO.draft;const re=()=>{coMark();render()};
   const mv=(a,x,y)=>{if(y<0||y>=a.length)return;const t=a[x];a[x]=a[y];a[y]=t};
   switch(k){
    case 'c-new':return coClientSheet();
    case 'c-open':ui.co.cid=id;ui.co.pid='';render();return window.scrollTo({top:0});
    case 'c-edit':return coClientSheet(coClient(id));
-   case 'c-del':{const c=coClient(id);return confirmSheet('حذف اللاعب',`راح ينحذف "${esc(c.name)}" وكل برامجه (${coProgs(id).length}).`,'احذف',async()=>{for(const p of coProgs(id))await coDel('programs',p.id);await coDel('clients',id);ui.co.cid='';render()})}
+   case 'c-del':{const c=coClient(id);return confirmSheet('حذف اللاعب',`راح ينحذف "${esc(c.name)}" وكل برامجه (${coProgs(id).length}).`,'احذف',async()=>{for(const p of coProgs(id))await coDel('programs',p.id);if(c.pk){try{await coDel('cpub',c.pk)}catch(e){}}await coDel('clients',id);ui.co.cid='';render()})}
    case 'back':ui.co.cid='';render();return window.scrollTo({top:0});
    case 'p-new':return coPick();
    case 'p-create':return coCreate(id);
@@ -6921,9 +6997,13 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-co]');if(!
    case 'p-close':return coLeave(()=>{ui.co.pid='';CO.pid=null;CO.draft=null;CO.dirty=false;render();window.scrollTo({top:0})});
    case 'p-save':return coSave();
    case 'p-pdf':{const run=()=>coPdf(id||CO.pid);if(CO.pid===id&&CO.dirty)return coSave(true).then(run);return run()}
-   case 'p-dup':{const p=(S.programs||[]).find(x=>x.id===id),c=coClient(p&&p.clientId);if(!p||!c)return;const n=coNewProgram(c,p);return coPut('programs',null,n).then(nid=>{toast('انعملت نسخة جديدة');ui.co.pid=nid;CO.pid=null;render()}).catch(dbErr)}
-   case 'p-old':{const p=(S.programs||[]).find(x=>x.id===id);if(!p)return;const n=Object.assign({},p,{status:p.status==='old'?'active':'old'});delete n.id;return coPut('programs',id,n).catch(dbErr)}
-   case 'p-del':return confirmSheet('حذف البرنامج','راح ينحذف البرنامج نهائياً.','احذف',()=>coDel('programs',id));
+   case 'p-dup':{const p=(S.programs||[]).find(x=>x.id===id),c=coClient(p&&p.clientId);if(!p||!c)return;const n=coNewProgram(c,p);n.ready=false;return coPut('programs',null,n).then(nid=>{toast('انعملت نسخة جديدة');ui.co.pid=nid;CO.pid=null;render();coPub(c.id)}).catch(dbErr)}
+   case 'p-old':{const p=(S.programs||[]).find(x=>x.id===id);if(!p)return;const n=Object.assign({},p,{status:p.status==='old'?'active':'old'});delete n.id;return coPut('programs',id,n).then(()=>coPub(p.clientId)).catch(dbErr)}
+   case 'p-del':{const cid=((S.programs||[]).find(x=>x.id===id)||{}).clientId;return confirmSheet('حذف البرنامج','راح ينحذف البرنامج نهائياً.','احذف',async()=>{await coDel('programs',id);await coPub(cid)})}
+   case 'p-ready':if(!d)return;d.ready=!d.ready;coMark();render();return coSave(true).then(()=>toast(d.ready?'✅ صار الكورس جاهز، اللاعب يكدر يحمله':'رجع الكورس قيد الكتابة'));
+   case 'sec':ui.co.sec=id;render();return;
+   case 'n-post':return ntPost();
+   case 'n-del':return confirmSheet('حذف التبليغ','راح ينحذف التبليغ من عند الكل.','احذف',()=>coDel('notices',id));
    case 'tab':ui.co.tab=id;render();return;
   }
   if(!d)return;const D=d.w.days,M=d.f.meals;
@@ -7010,7 +7090,8 @@ function coBuildPages(p,c){
   const pages=[...root.querySelectorAll('.qpp')];pages.forEach((x,i)=>{const n=x.querySelector('.qpnum');if(n)n.textContent=`PAGE ${String(i+1).padStart(2,'0')} / ${String(pages.length).padStart(2,'0')}`});
   return root}
 const coFile=(p,c)=>`${String(c.name||'player').replace(/[\\/:*?"<>|]+/g,'').trim()} - ${String(p.title||'برنامج').replace(/[\\/:*?"<>|]+/g,'')}`;
-async function coPdf(id){const p=(id===CO.pid&&CO.draft)?Object.assign({},CO.draft,{id}):(S.programs||[]).find(x=>x.id===id);const c=p&&coClient(p.clientId);if(!p||!c)return toast('ما لكيت البرنامج','bad');
+async function coPdf(id){const p=(id===CO.pid&&CO.draft)?Object.assign({},CO.draft,{id}):(S.programs||[]).find(x=>x.id===id);const c=p&&coClient(p.clientId);if(!p||!c)return toast('ما لكيت البرنامج','bad');return coPdfShow(p,c)}
+async function coPdfShow(p,c){
   await coFonts();
   const root=coBuildPages(p,c);const pages=[...root.querySelectorAll('.qpp')];
   const ov=document.createElement('div');ov.id='coPrev';ov.innerHTML=`<div class="cpv-bar"><b>📄 ${esc(p.title||'البرنامج')}</b><small>${pages.length} صفحات • ${esc(c.name)}</small><span class="cpv-sp"></span>
@@ -7039,6 +7120,72 @@ async function coPdfFile(p,c,btn){const t0=btn.textContent;btn.disabled=true;btn
     toast('جاهز الـ PDF ✅');
   }catch(e){console.error(e);toast(e&&e.message==='lib'?'ما كدرت أحمّل أداة الـ PDF، تأكد من الإنترنت أو استخدم «حفظ PDF»':'صار خطأ، استخدم «حفظ PDF / طباعة»','bad')}
   finally{if(root)root.remove();btn.disabled=false;btn.textContent=t0}}
+/* ---------- مساحة المدرب: تسليم الكورس للاعب عن طريق المتجر + واتساب + التذكيرات + التبليغات ---------- */
+const coPhone=ph=>{let d=String(ph||'').replace(/\D/g,'').replace(/^00/,'');if(d.startsWith('964'))d=d.slice(3);d=d.replace(/^0+/,'');return d.length>=9&&d.length<=11?d:''};
+async function cpubKey(ph){const d=coPhone(ph);if(!d||!(window.crypto&&crypto.subtle))return '';const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('dzc|'+d));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('').slice(0,40)}
+const coLatest=cid=>coProgs(cid).filter(p=>p.status!=='old').sort((a,b)=>N(b.createdAt)-N(a.createdAt))[0]||null;
+const coPubOf=c=>c&&c.pk?(S.cpub||[]).find(x=>x.id===c.pk):null;
+async function coWrite(c,id,data){if(mode==='db')await db.collection(c).doc(id).set(data);else{S[c]=(S[c]||[]).filter(r=>r.id!==id);S[c].push({id,...data});saveLocal();render()}}
+/* ينشر آخر كورس للاعب بمكان عام محمي برقم موبايله (ما ينكدر يتصفح) */
+async function coPub(cid){try{const c=coClient(cid);if(!c)return;const key=await cpubKey(c.phone);
+  if(c.pk&&c.pk!==key){try{await coDel('cpub',c.pk)}catch(e){}}
+  if(c.pk!==key){const n=Object.assign({},c,{pk:key});delete n.id;await coPut('clients',c.id,n)}
+  if(!key)return;const p=coLatest(cid);const old=(S.cpub||[]).find(x=>x.id===key)||{};
+  const cur=p?{pid:p.id,title:p.title||'برنامج',ready:!!p.ready,coach:p.coachName||'',at:N(p.updatedAt||p.createdAt)}:null;
+  if(cur&&p.ready){cur.p={title:p.title||'',startDate:p.startDate||'',weeks:p.weeks||'',coachName:p.coachName||'',notes:p.notes||'',w:p.w,f:p.f};cur.c={name:c.name,age:c.age||'',height:c.height||'',weight:c.weight||'',goal:c.goal||'',level:c.level||'',gender:c.gender||'',injuries:c.injuries||''}}
+  await coWrite('cpub',key,{name:c.name,cur,got:old.got||{},upd:Date.now()})}catch(e){console.warn('cpub',e)}}
+function coWaLink(c,p){const d=coPhone(c.phone);if(!d)return '';const url=location.origin+location.pathname+'#course';
+  const t=`هلا ${c.name} 💪\nكورسك من الدزاز جم جاهز: «${p.title||'البرنامج التدريبي'}» 🏋️\n\nحمّله من هنا 👇\n${url}\n\nبالمتجر اضغط «كورسي» واكتب اسمك ورقم موبايلك.\nبالتوفيق يا بطل 🔥`;
+  return `https://wa.me/964${d}?text=${encodeURIComponent(t)}`}
+function coDeliv(c,p){const pub=coPubOf(c);const got=pub&&pub.got&&pub.got[p.id];
+  if(got)return `<span class="co-badge ok">📥 استلمه اللاعب ${relTime(N(got))}</span>`;
+  if(p.ready)return `<span class="co-badge rd">✅ جاهز — بانتظار ما يحمله اللاعب</span>`;
+  return `<span class="co-badge wt">✍️ قيد الكتابة</span>`}
+/* --- التبليغات داخل النظام --- */
+const NOTICE_K={info:['📢','عام'],imp:['⚠️','مهم'],good:['🎉','تهنئة'],train:['🏋️','تدريب']};
+const ntDis=()=>{try{return JSON.parse(localStorage.getItem('dz-ndis-'+(CUR&&CUR.id))||'[]')}catch(e){return []}};
+const ntActive=()=>(S.notices||[]).filter(n=>!n.until||N(n.until)>Date.now()).sort((a,b)=>(b.pin?1:0)-(a.pin?1:0)||N(b.createdAt)-N(a.createdAt));
+function noticeStrip(){if(!CUR)return '';const dis=ntDis();const L=ntActive().filter(n=>!dis.includes(n.id)).slice(0,3);if(!L.length)return '';
+  return `<div class="nt-wrap">${L.map(n=>{const k=NOTICE_K[n.kind]||NOTICE_K.info;return `<div class="nt nt-${esc(n.kind||'info')}"><span class="nt-i">${k[0]}</span><div class="nt-b"><b>${esc(n.title||'')}</b>${n.body?`<p>${esc(n.body)}</p>`:''}<small>${esc(n.by||'')} • ${relTime(N(n.createdAt))}${n.pin?' • 📌 مثبّت':''}</small></div><button type="button" class="nt-x" data-co="n-dis" data-id="${esc(n.id)}" aria-label="إخفاء">×</button></div>`}).join('')}</div>`}
+function coNoticesView(){const L=[...(S.notices||[])].sort((a,b)=>N(b.createdAt)-N(a.createdAt));const act=ntActive().map(n=>n.id);
+  return `<div class="panel"><h3>📢 نشر تبليغ جديد</h3><p class="sub" style="margin-top:-6px">التبليغ يطلع لكل الموظفين بأعلى النظام لحد ما ينتهي أو يخفوه.</p>
+   <div class="form"><div class="fld full"><label for="ntT">العنوان</label><input id="ntT" maxlength="80" placeholder="مثلاً: اجتماع الكباتن يوم الخميس"></div>
+    <div class="fld full"><label for="ntB">التفاصيل</label><textarea id="ntB" maxlength="600" class="co-ta" style="min-height:80px" placeholder="اكتب التبليغ…"></textarea></div>
+    <div class="fld"><label>النوع</label><div class="chips nt-kinds" style="box-shadow:none">${Object.entries(NOTICE_K).map(([k,v],i)=>`<button type="button" class="chip" data-k="${k}" aria-pressed="${i===0}">${v[0]} ${v[1]}</button>`).join('')}</div></div>
+    <div class="fld"><label for="ntD">يبقى ظاهر</label><select id="ntD"><option value="1">يوم واحد</option><option value="3">3 أيام</option><option value="7" selected>أسبوع</option><option value="30">شهر</option><option value="0">دائماً</option></select></div>
+    <label class="perm full"><input type="checkbox" id="ntP"><span>📌 تثبيت بالأعلى</span></label></div>
+   <div class="sheet-actions"><button type="button" class="btn primary" data-co="n-post">نشر التبليغ</button></div></div>
+   <div class="panel"><h3>التبليغات <span>${L.length}</span></h3>${L.length?`<div class="nt-list">${L.map(n=>{const k=NOTICE_K[n.kind]||NOTICE_K.info;const on=act.includes(n.id);return `<div class="nt nt-${esc(n.kind||'info')}${on?'':' off'}"><span class="nt-i">${k[0]}</span><div class="nt-b"><b>${esc(n.title||'')}</b>${n.body?`<p>${esc(n.body)}</p>`:''}<small>${esc(n.by||'')} • ${relTime(N(n.createdAt))} • ${on?(n.until?'ينتهي '+fmtDate(new Date(N(n.until)).toISOString().slice(0,10)):'دائم'):'منتهي'}</small></div>${isAdmin()||n.byId===CUR.id?`<button type="button" class="icon-btn del" data-co="n-del" data-id="${esc(n.id)}" aria-label="حذف">${I.trash}</button>`:''}</div>`}).join('')}</div>`:'<div class="empty sm"><b>ماكو تبليغات</b></div>'}</div>`}
+/* --- تذكيرات الكورسات (توصل من المتجر) --- */
+function remindView(){const L=[...(S.creminders||[])].sort((a,b)=>N(b.at)-N(a.at));
+  return `<div class="panel"><h3>🔔 تذكيرات الكورسات <span>${L.filter(r=>r.status==='new').length} جديد</span></h3>
+   <p class="sub" style="margin-top:-6px">لاعب دخل المتجر وكورسه بعده ما جاهز، فضغط «ذكّر الكابتن».</p>
+   ${L.length?`<div class="co-plist">${L.map(r=>{const c=(S.clients||[]).find(x=>x.pk&&x.pk===r.key);return `<div class="co-p${r.status==='new'?'':' old'}"><div class="co-pi"><b>${esc(r.name||'')}${c?'':' <small>(ما مربوط بلاعب)</small>'}</b><small>كورس: ${esc(r.title||'—')} • ${relTime(N(r.at))}</small></div>
+     <div class="co-pa">${c?`<button class="btn sm primary" data-co="r-open" data-id="${esc(r.id)}">فتح الكورس</button>`:''}${r.status==='new'?`<button class="btn sm" data-co="r-done" data-id="${esc(r.id)}">✓ تم</button>`:'<span class="co-badge ok">تم</span>'}<button class="icon-btn del" data-co="r-del" data-id="${esc(r.id)}" aria-label="حذف">${I.trash}</button></div></div>`}).join('')}</div>`:'<div class="empty sm"><b>ماكو تذكيرات</b><span>من يضغط لاعب «ذكّر الكابتن» بالمتجر يطلع هنا ويوصلك إشعار وتلغرام.</span></div>'}</div>`}
+function remAlert(d){toast(`🔔 تذكير كورس: ${d.name||''} ينتظر كورسه`);try{sfxPlay('discord','receive',85);setTimeout(()=>sfxPlay('discord','receive',85),350)}catch(e){}try{navigator.vibrate&&navigator.vibrate([120,60,120])}catch(e){}
+  try{if('Notification' in window&&Notification.permission==='granted'){const t='🔔 تذكير كورس',o={body:`${d.name||''} يسأل عن كورسه «${d.title||''}»`,tag:'crem'+N(d.at),icon:'icon-192.png'};
+    if(navigator.serviceWorker&&navigator.serviceWorker.getRegistration)navigator.serviceWorker.getRegistration().then(r=>r?r.showNotification(t,o):new Notification(t,o)).catch(()=>{try{new Notification(t,o)}catch(e){}});else new Notification(t,o)}}catch(e){}}
+/* --- واجهة المتجر (اللاعب) --- */
+const dzNameOk=(a,b)=>{const t=s=>dzN(s).split(' ').filter(x=>x.length>1);const A=t(a),B=t(b);return A.length&&B.length&&A.some(x=>B.includes(x))};
+window.dzCourseFind=async function(name,phone){if(!CAN_FB||!fbCfg())throw {code:'nocfg'};await fbStart(fbCfg());
+  const key=await cpubKey(phone);if(!key)return {st:'badphone'};
+  let snap;try{snap=await FB.fs.collection('cpub').doc(key).get()}catch(e){throw e}
+  if(!snap.exists)return {st:'none'};const d=snap.data();if(!dzNameOk(name,d.name))return {st:'none'};
+  const cur=d.cur;if(!cur)return {st:'nocourse',name:d.name};
+  if(!cur.ready)return {st:'pending',name:d.name,title:cur.title,pid:cur.pid,coach:cur.coach,key};
+  if(d.got&&d.got[cur.pid])return {st:'got',name:d.name,title:cur.title,at:d.got[cur.pid]};
+  return {st:'ready',name:d.name,title:cur.title,pid:cur.pid,coach:cur.coach,key}};
+window.dzCourseOpen=async function(name,phone){const key=await cpubKey(phone);const snap=await FB.fs.collection('cpub').doc(key).get();if(!snap.exists)throw {code:'none'};
+  const d=snap.data(),cur=d.cur;if(!cur||!cur.ready||!cur.p||!dzNameOk(name,d.name))throw {code:'none'};
+  const p=Object.assign({id:cur.pid},JSON.parse(JSON.stringify(cur.p)));const c=JSON.parse(JSON.stringify(cur.c||{name:d.name}));
+  coPdfShow(p,c);
+  try{await FB.fs.collection('cpub').doc(key).update({['got.'+cur.pid]:Date.now()})}catch(e){console.warn('got',e)}
+  return true};
+window.dzCourseRemind=async function(r){if(!CAN_FB||!fbCfg())throw {code:'nocfg'};await fbStart(fbCfg());
+  const x=JSON.parse(JSON.stringify(r||{}));const doc={src:'store',status:'new',key:String(x.key||'').slice(0,40),name:String(x.name||'').slice(0,80),title:String(x.title||'').slice(0,120),pid:String(x.pid||'').slice(0,40),at:Date.now()};
+  await FB.fs.collection('creminders').doc().set(doc);
+  try{const src=(!adminBooted&&FBSTORE)?FBSTORE:null;let c=(src&&src.cfg)||{};if(!c.tgTok&&adminBooted)try{c=stCfgSaved()}catch(e){}if(c.tgTok&&c.tgChat)dzTg(c.tgTok,c.tgChat,`🔔 تذكير كورس\nاللاعب: ${doc.name}\nالكورس: ${doc.title||'—'}\nينتظر الكابتن يكمّل كورسه 🏋️`)}catch(e){}
+  return true};
 /* ---------- performance dashboard (reports) ---------- */
 const dayN=(a,b)=>Math.round((Date.parse(b+'T12:00:00')-Date.parse(a+'T12:00:00'))/864e5)+1;
 const oDate=o=>{const t=N(o.placedAt)||N(o.createdAt);if(!t)return '';const d=new Date(t);return new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10)};
