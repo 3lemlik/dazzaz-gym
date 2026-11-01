@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
 <meta charset="utf-8">
-<meta name="dz-build" content="69">
+<meta name="dz-build" content="70">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -1298,14 +1298,14 @@ body.store-on .app,body.store-on #sheetRoot,body.store-on .toasts{display:none!i
 @media (max-width:760px){.dkpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .dkpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:18px}
 @media (max-width:760px){.dkpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
-.dk{position:relative;overflow:hidden;padding:16px 18px;border-radius:var(--r);border:1px solid var(--line);background:linear-gradient(160deg,color-mix(in srgb,var(--surface) 92%,var(--cy)),var(--surface));box-shadow:var(--shadow-1);min-width:0}
-.dk::after{content:"";position:absolute;inset:auto -30% -60% auto;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--cy) 22%,transparent),transparent 70%);pointer-events:none}
-.dk.hero{background:linear-gradient(140deg,color-mix(in srgb,var(--cy) 30%,var(--surface)),var(--surface) 70%);border-color:color-mix(in srgb,var(--cy) 55%,transparent)}
+.dkc{position:relative;overflow:hidden;padding:16px 18px;border-radius:var(--r);border:1px solid var(--line);background:linear-gradient(160deg,color-mix(in srgb,var(--surface) 92%,var(--cy)),var(--surface));box-shadow:var(--shadow-1);min-width:0}
+.dkc::after{content:"";position:absolute;inset:auto -30% -60% auto;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--cy) 22%,transparent),transparent 70%);pointer-events:none}
+.dkc.hero{background:linear-gradient(140deg,color-mix(in srgb,var(--cy) 30%,var(--surface)),var(--surface) 70%);border-color:color-mix(in srgb,var(--cy) 55%,transparent)}
 .dk-h{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12.5px;font-weight:700}
 .dk-i{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:color-mix(in srgb,var(--cy) 14%,transparent);font-size:14px}
-.dk b{display:block;margin-top:10px;font:800 clamp(20px,2.2vw,28px)/1.15 var(--tech);letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dk b small{font-size:.5em;color:var(--muted);font-weight:600}
-.dk small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.dkc b{display:block;margin-top:10px;font:800 clamp(20px,2.2vw,28px)/1.15 var(--tech);letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dkc b small{font-size:.5em;color:var(--muted);font-weight:600}
+.dkc small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
 .dl{display:inline-flex;align-items:center;gap:4px;margin-top:6px;font-style:normal;font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px;background:color-mix(in srgb,var(--ink) 7%,transparent);color:var(--muted)}
 .dl small{display:inline;margin:0;font-weight:500;opacity:.8}
 .dl.up{color:#22c55e;background:rgba(34,197,94,.12)}.dl.dn{color:#f43f5e;background:rgba(244,63,94,.12)}
@@ -1384,7 +1384,7 @@ body.store-on .app,body.store-on #sheetRoot,body.store-on .toasts{display:none!i
     <div class="sfoot">
       <button class="gear bell" data-act="notif" aria-label="الإشعارات" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="bl">الإشعارات</span><b class="nbadge" hidden></b></button>
       <button class="gear" data-go="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>الإعدادات</span></button>
-      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 69</small></div>
+      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 70</small></div>
       <div class="sync" id="sync"><i></i><span>جاري الاتصال</span></div>
       <div class="who" id="who"></div>
     </div>
@@ -6651,7 +6651,7 @@ async function dziSend(v){v=String(v||'').trim();if(!v||DZI.busy||!CUR)return;
 const A_MAXTOK=()=>C()?2600:1500;
 
 /* ---------- التحديث التلقائي: يفحص اذا نزلت نسخة جديدة على الموقع (حتى لو مضاف للشاشة الرئيسية) ---------- */
-const DZ_BUILD=69;
+const DZ_BUILD=70;
 const UPD={last:0,shown:0};
 try{if(/[?&]u=\d+/.test(location.search))history.replaceState(null,'',location.pathname+location.hash)}catch(e){}
 const updLive=()=>location.protocol==='https:'&&!/claude/i.test(location.hostname);
@@ -6741,7 +6741,7 @@ function dashView(){
   const provs=Object.entries(prov).sort((x,y)=>y[1]-x[1]).slice(0,6).map(([l,v])=>({l,v}));
   const rsn={};canc.forEach(o=>{const r=o.cancelReason||'بدون سبب';rsn[r]=(rsn[r]||0)+1});
   const rsns=Object.entries(rsn).sort((x,y)=>y[1]-x[1]).slice(0,5);
-  const kpi=(cls,label,val,sub,dl,icon)=>`<div class="dk ${cls}"><div class="dk-h"><span class="dk-i">${icon}</span><span>${label}</span></div><b>${val}</b>${dl}${sub?`<small>${sub}</small>`:''}</div>`;
+  const kpi=(cls,label,val,sub,dl,icon)=>`<div class="dkc ${cls}"><div class="dk-h"><span class="dk-i">${icon}</span><span>${label}</span></div><b>${val}</b>${dl}${sub?`<small>${sub}</small>`:''}</div>`;
   return `${chips('rep',ui.rRange,ui.rFrom,ui.rTo)}
   <div class="dkpis">
    ${kpi('hero','إجمالي المبيعات',money(st.rev),`${st.n} فاتورة`,delta(st.rev,ps.rev,showDelta),'💰')}
