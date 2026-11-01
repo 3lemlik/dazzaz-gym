@@ -1195,7 +1195,7 @@ body.store-on .app,body.store-on #sheetRoot,body.store-on .toasts{display:none!i
     <div class="sfoot">
       <button class="gear bell" data-act="notif" aria-label="الإشعارات" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="bl">الإشعارات</span><b class="nbadge" hidden></b></button>
       <button class="gear" data-go="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>الإعدادات</span></button>
-      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 58</small></div>
+      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 59</small></div>
       <div class="sync" id="sync"><i></i><span>جاري الاتصال</span></div>
       <div class="who" id="who"></div>
     </div>
@@ -3788,21 +3788,27 @@ SES=null;try{localStorage.removeItem('dz-ses')}catch(e){}try{sessionStorage.remo
 /* after the page republishes itself for the store, the manager comes back logged in (2-minute window, this tab only) */
 let RESUME=null;try{RESUME=JSON.parse(sessionStorage.getItem('dz-resume')||'null');sessionStorage.removeItem('dz-resume')}catch(e){}
 if(RESUME&&!(RESUME.exp>Date.now()&&RESUME.uid&&RESUME.ph))RESUME=null;
+/* refreshing the page keeps you logged in (same tab, while active within 15 minutes). Closing the tab/app still asks for the password */
+const TAB_KEY='dz-tab';
+if(!RESUME){try{const t=JSON.parse(sessionStorage.getItem(TAB_KEY)||'null');if(t&&t.uid&&t.ph&&Date.now()-N(t.last)<15*60*1000)RESUME={uid:t.uid,ph:t.ph,view:t.view,oTab:t.oTab,exp:Date.now()+60000}}catch(e){}}
+let tabSaveT=0;
+function tabSave(){try{if(!SES){sessionStorage.removeItem(TAB_KEY);return}sessionStorage.setItem(TAB_KEY,JSON.stringify({uid:SES.uid,ph:SES.ph,view:(typeof ui!=='undefined'&&ui.view)||'',oTab:(typeof ui!=='undefined'&&ui.oTab)||'',last:Date.now()}))}catch(e){}}
+addEventListener('pagehide',tabSave);addEventListener('beforeunload',tabSave);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')tabSave()});
 if(RESUME){SES={uid:RESUME.uid,ph:RESUME.ph};if(RESUME.view)ui.view=RESUME.view;setTimeout(bumpIdle,0)}
 function resolveUser(){CUR=SES?S.users.find(u=>u.id===SES.uid&&u.active!==false&&u.ph===SES.ph)||null:null}
 const can=p=>!!CUR&&(CUR.role==='admin'||(CUR.perms||[]).includes(p));
 const C=()=>!!CUR&&CUR.role==='admin'; // الأرباح والكلف للمدير فقط
 function remembered(){return false}
 function setSession(u,remember){
-  SES={uid:u.id,ph:u.ph};
+  SES={uid:u.id,ph:u.ph};setTimeout(tabSave,0);
   try{localStorage.removeItem('dz-ses')}catch(e){}try{sessionStorage.removeItem('dz-ses')}catch(e){}
   setTimeout(bumpIdle,0);
 }
 let idleT=0;const IDLE_MS=15*60*1000;
-function bumpIdle(){clearTimeout(idleT);if(CUR||SES)idleT=setTimeout(()=>{if(SES){SES=null;CUR=null;closeSheetIfAny();lastGate='';render();toast('النظام انقفل لأن ما صار استخدام 15 دقيقة، سجّل دخول من جديد')}},IDLE_MS)}
+function bumpIdle(){clearTimeout(idleT);if(SES&&Date.now()-tabSaveT>20000){tabSaveT=Date.now();tabSave()}if(CUR||SES)idleT=setTimeout(()=>{if(SES){SES=null;CUR=null;try{sessionStorage.removeItem(TAB_KEY)}catch(e){}closeSheetIfAny();lastGate='';render();toast('النظام انقفل لأن ما صار استخدام 15 دقيقة، سجّل دخول من جديد')}},IDLE_MS)}
 ['pointerdown','keydown','touchstart','wheel'].forEach(ev=>document.addEventListener(ev,bumpIdle,{passive:true}));
 function logout(){
-  SES=null;CUR=null;
+  SES=null;CUR=null;try{sessionStorage.removeItem(TAB_KEY)}catch(e){}
   try{localStorage.removeItem('dz-ses')}catch(e){}try{sessionStorage.removeItem('dz-ses')}catch(e){}
   closeSheet();lastGate='';render();toast('سجلت خروج');
 }
