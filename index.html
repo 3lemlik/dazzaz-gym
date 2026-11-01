@@ -2,6 +2,10 @@
 <html lang="ar">
 <head>
 <meta charset="utf-8">
+<meta name="dz-build" content="64">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#060609">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -12,7 +16,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" href="icon-192.png">
 <style>html,body{margin:0;padding:0;background:#060609}img{max-width:100%}[hidden]{display:none!important}</style>
-<script>if('serviceWorker' in navigator&&location.protocol==='https:')window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));</script>
+<script>if('serviceWorker' in navigator&&location.protocol==='https:')window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{}));</script>
 </head>
 <body><title>الدزاز جم</title>
 <meta charset="utf-8">
@@ -1211,6 +1215,11 @@ body.store-on .app,body.store-on #sheetRoot,body.store-on .toasts{display:none!i
 .dzi-in textarea:focus{border-color:var(--cy);box-shadow:0 0 0 3px color-mix(in srgb,var(--cy) 20%,transparent)}
 .dzi-send{width:46px;height:46px;flex:none;border-radius:50%;border:0;background:var(--cy);color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 0 16px color-mix(in srgb,var(--cy) 55%,transparent)}
 .dzi-send svg{width:20px;height:20px}
+#dzUpd{position:fixed;z-index:96;top:calc(10px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);width:min(94vw,460px);display:flex;align-items:center;gap:8px;padding:8px 8px 8px 14px;border-radius:16px;direction:rtl;background:linear-gradient(135deg,#16161d,#060609);border:1px solid #ed1c24;box-shadow:0 12px 40px rgba(0,0,0,.6),0 0 24px rgba(237,28,36,.35);color:#fff;font-size:13.5px;animation:updIn .35s cubic-bezier(.2,.9,.3,1.3)}
+#dzUpd span{flex:1;min-width:0}#dzUpd small{opacity:.6;font-size:11px;margin-inline-start:4px}
+#dzUpd button{border:0;border-radius:11px;background:#ed1c24;color:#fff;font:inherit;font-weight:700;padding:8px 14px;cursor:pointer;white-space:nowrap}
+#dzUpd button.x{background:rgba(255,255,255,.08);padding:8px 11px}
+@keyframes updIn{from{opacity:0;transform:translate(-50%,-14px)}}
 /* performance dashboard */
 .app>*{min-width:0}
 .os.rate{padding-inline-end:46px}
@@ -1306,7 +1315,7 @@ body.store-on .app,body.store-on #sheetRoot,body.store-on .toasts{display:none!i
     <div class="sfoot">
       <button class="gear bell" data-act="notif" aria-label="الإشعارات" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="bl">الإشعارات</span><b class="nbadge" hidden></b></button>
       <button class="gear" data-go="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>الإعدادات</span></button>
-      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 63</small></div>
+      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 64</small></div>
       <div class="sync" id="sync"><i></i><span>جاري الاتصال</span></div>
       <div class="who" id="who"></div>
     </div>
@@ -6307,6 +6316,40 @@ async function dziSend(v){v=String(v||'').trim();if(!v||DZI.busy||!CUR)return;
 }
 const A_MAXTOK=()=>C()?2600:1500;
 
+/* ---------- التحديث التلقائي: يفحص اذا نزلت نسخة جديدة على الموقع (حتى لو مضاف للشاشة الرئيسية) ---------- */
+const DZ_BUILD=64;
+const UPD={last:0,shown:0};
+try{if(/[?&]u=\d+/.test(location.search))history.replaceState(null,'',location.pathname+location.hash)}catch(e){}
+const updLive=()=>location.protocol==='https:'&&!/claude/i.test(location.hostname);
+function updSafe(){try{
+  if(document.getElementById('dzStore'))return true; /* واجهة الزبون: السلة محفوظة بالجهاز */
+  if($('#sheetRoot')&&$('#sheetRoot').innerHTML)return false;
+  if(ui&&ui.cart&&ui.cart.length)return false;
+  if(typeof DZI!=='undefined'&&(DZI.busy||(DZI.open&&$('#dziTxt')&&$('#dziTxt').value)))return false;
+  const a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return false;
+  return true}catch(e){return false}}
+function updGo(nb){try{sessionStorage.setItem('dz-upd-try',String(nb))}catch(e){}
+  location.replace(location.pathname+'?u='+nb+'-'+Date.now().toString(36)+location.hash)}
+function updBar(nb){if(UPD.shown===nb)return;UPD.shown=nb;let b=document.getElementById('dzUpd');
+  if(!b){b=document.createElement('div');b.id='dzUpd';document.body.appendChild(b)}
+  b.innerHTML=`<span>🔄 نزل تحديث جديد للنظام <small dir="ltr">build ${nb}</small></span><button type="button">حدّث هسه</button><button type="button" class="x" aria-label="لاحقاً">×</button>`;
+  b.querySelector('button').onclick=()=>updGo(nb);b.querySelector('.x').onclick=()=>b.remove()}
+async function updCheck(auto){
+  if(!updLive()||document.hidden)return;
+  if(Date.now()-UPD.last<45000)return;UPD.last=Date.now();
+  try{const r=await fetch(location.pathname+'?v='+Date.now(),{cache:'no-store',headers:{Range:'bytes=0-4095'}});
+    const t=(await r.text()).slice(0,300000);const m=t.match(/name="dz-build" content="(\d+)"/);if(!m)return;
+    const nb=+m[1];if(!(nb>DZ_BUILD))return;
+    let tried='';try{tried=sessionStorage.getItem('dz-upd-try')||''}catch(e){}
+    if(auto&&tried!==String(nb)&&updSafe())return updGo(nb);
+    updBar(nb);
+  }catch(e){}}
+if(updLive()){
+  setTimeout(()=>updCheck(true),2500);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden){UPD.last=0;updCheck(true);try{navigator.serviceWorker&&navigator.serviceWorker.getRegistration().then(r=>r&&r.update()).catch(()=>{})}catch(e){}}});
+  window.addEventListener('pageshow',e=>{if(e.persisted){UPD.last=0;updCheck(true)}});
+  setInterval(()=>updCheck(false),5*60*1000);
+}
 /* ---------- performance dashboard (reports) ---------- */
 const dayN=(a,b)=>Math.round((Date.parse(b+'T12:00:00')-Date.parse(a+'T12:00:00'))/864e5)+1;
 const oDate=o=>{const t=N(o.placedAt)||N(o.createdAt);if(!t)return '';const d=new Date(t);return new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10)};
