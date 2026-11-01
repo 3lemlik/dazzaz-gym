@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
 <meta charset="utf-8">
-<meta name="dz-build" content="73">
+<meta name="dz-build" content="75">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -1495,7 +1495,7 @@ body.store-on .dzi-fab,body.store-on .dzi-panel{display:none!important}
     <div class="sfoot">
       <button class="gear bell" data-act="notif" aria-label="الإشعارات" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="bl">الإشعارات</span><b class="nbadge" hidden></b></button>
       <button class="gear" data-go="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>الإعدادات</span></button>
-      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 73</small></div>
+      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 75</small></div>
       <div class="sync" id="sync"><i></i><span>جاري الاتصال</span></div>
       <div class="who" id="who"></div>
     </div>
@@ -2326,6 +2326,16 @@ body.intro-on .dzb{display:none}
 .crs-r.ok{border-color:rgba(34,197,94,.5);background:linear-gradient(135deg,rgba(34,197,94,.14),transparent)}.crs-r.rd{border-color:var(--red,#ed1c24);background:linear-gradient(135deg,rgba(237,28,36,.18),transparent)}.crs-r.wt{border-color:rgba(245,158,11,.5);background:linear-gradient(135deg,rgba(245,158,11,.12),transparent)}.crs-r.no{border-color:rgba(255,255,255,.14)}
 .crs-big{font-size:34px;line-height:1}
 @keyframes crsIn{from{opacity:0;transform:translateY(8px)}}
+.hero-off .hero *,.hero-off .hero{animation-play-state:paused!important}
+@media (max-width:420px){.hdr .dzlock{min-width:0;gap:6px}.hdr .dzmark{width:36px!important}.hdr .dzname{font-size:13px!important;letter-spacing:1px!important}.hdr .dzw small{display:none}.hdr .hbtn{padding-inline:10px}}
+@media (max-width:380px){.crs-btn .cart-lbl{display:none}}
+.hdr .dzw{flex:none}
+/* fixes: build 75 */
+.dzmini{width:1.39em!important;height:.92em!important;flex:none;display:inline-block}
+#q,#sort,input[type=search]{font-size:16px!important}
+.sheet .qs button{width:38px!important;height:38px!important;font-size:19px!important}
+.sheet .qs span{min-width:26px!important;font-size:15px!important}
+.sheet .rm{padding:8px 6px;margin:-4px -6px}
 </style>
 
 <div class="app">
@@ -2513,7 +2523,7 @@ function renderTop(){
   $('#ann').innerHTML=CFG.ann?`<div class="wrap">${esc(CFG.ann)}</div>`:'';
   document.querySelectorAll('.perkDel').forEach(e=>e.textContent=`المثنى ${CFG.bag?fmt(CFG.bag)+' د.ع':''} • باقي المحافظات ${CFG.oth?fmt(CFG.oth)+' د.ع':''}`);
   $('#footWa').innerHTML=CFG.wa?`واتساب: <span class="tel">+${esc(CFG.wa)}</span>`:'';
-  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 73${hasOrd?' • sync':''}</small>`)}
+  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 75${hasOrd?' • sync':''}</small>`)}
   $('#catAt').textContent=DATA.at?'UPDATED '+new Date(DATA.at).toISOString().slice(0,10).replaceAll('-','.'):'';
   const ha=$('#heroArt');if(ha&&!ha.firstChild)ha.innerHTML=dzEmblem();
 }
@@ -2810,6 +2820,9 @@ async function doPublish(next,btn,show,label){
 }
 
 
+
+/* smoother scrolling: pause the hero animations while the hero is off screen */
+try{const hb=document.querySelector('.hero');if(hb&&'IntersectionObserver' in window)new IntersectionObserver(es=>{es.forEach(e=>document.body.classList.toggle('hero-off',!e.isIntersecting))},{rootMargin:'80px'}).observe(hb)}catch(e){}
 /* ---------- كورسي: اللاعب يستلم كورسه من الكابتن ---------- */
 const crsHost=n=>{try{return window.parent!==window&&typeof window.parent[n]==='function'?window.parent[n]:null}catch(e){return null}};
 let CRS={name:'',ph:''};try{CRS=Object.assign(CRS,JSON.parse(localStorage.getItem('dzs-crs')||'null')||{})}catch(e){}
@@ -3890,8 +3903,10 @@ function greet(){
   later(1500,()=>{st.classList.remove('fly-in');svg.classList.remove('jeton');setPose(svg,'land')});
   later(1900,()=>{setPose(svg,'wave');showHello()});
   let t=3800;
-  for(const m of ['curl','squat','jacks','press','flex']){later(t,()=>perform(m));t+=MOVES[m].ms+250}
+  for(const m of ['curl','flex']){later(t,()=>perform(m));t+=MOVES[m].ms+250}
   later(t,()=>{setPose(svg,'');$('#dzrTag').classList.remove('on');busyMove=false;st.classList.add('idle')});
+  later(t+2500,()=>{if(!open)flyHome()});
+  const sc=()=>{if(scrollY>140){removeEventListener('scroll',sc);if(!$('#dzrStage').hidden)flyHome()}};addEventListener('scroll',sc,{passive:true});
 }
 function showHello(){
   const h=$('#dzbHello'),p=$('#dzbHelloTxt');h.hidden=false;p.textContent='';
@@ -6813,7 +6828,7 @@ async function dziSend(v){v=String(v||'').trim();if(!v||DZI.busy||!CUR)return;
 const A_MAXTOK=()=>C()?2600:1500;
 
 /* ---------- التحديث التلقائي: يفحص اذا نزلت نسخة جديدة على الموقع (حتى لو مضاف للشاشة الرئيسية) ---------- */
-const DZ_BUILD=73;
+const DZ_BUILD=75;
 const UPD={last:0,shown:0};
 try{if(/[?&]u=\d+/.test(location.search))history.replaceState(null,'',location.pathname+location.hash)}catch(e){}
 const updLive=()=>location.protocol==='https:'&&!/claude/i.test(location.hostname);
@@ -7278,6 +7293,7 @@ ${BMAP_CSS.replace(/\.bmap/g,'.cpdf .bmap')}
 `;
 const coFonts=()=>Promise.race([Promise.all(['400 14px "IBM Plex Sans Arabic"','700 14px "IBM Plex Sans Arabic"','800 28px "Noto Kufi Arabic"','700 14px "Chakra Petch"'].map(f=>document.fonts.load(f))),new Promise(r=>setTimeout(r,2500))]).catch(()=>{});
 function coBuildPages(p,c,kind){
+  if(kind==='all'){const a=coBuildPages(p,c,'w'),b=coBuildPages(p,c,'f');[...b.children].forEach(x=>a.appendChild(x));b.remove();return a}
   let st=document.getElementById('coPdfCss');if(!st){st=document.createElement('style');st.id='coPdfCss';document.head.appendChild(st)}st.textContent=CO_PDF_CSS;
   const {cover,blocks}=kind==='f'?coPdfF(p,c):coPdfW(p,c);const root=document.createElement('div');root.className='cpdf';document.body.appendChild(root);
   root.insertAdjacentHTML('beforeend',cover);
@@ -7289,13 +7305,13 @@ function coBuildPages(p,c,kind){
     if(el.offsetTop+el.offsetHeight>LIM&&body.children.length>1){el.remove();pg=newPage();body=pg.querySelector('.qpc');body.insertAdjacentHTML('beforeend',b.html)}}
   const pages=[...root.querySelectorAll('.qpp')];pages.forEach((x,i)=>{const n=x.querySelector('.qpnum');if(n)n.textContent=`PAGE ${String(i+1).padStart(2,'0')} / ${String(pages.length).padStart(2,'0')}`});
   return root}
-const coFile=(p,c,kind)=>`${kind==='f'?'تغذية':'تمارين'} - ${String(c.name||'player').replace(/[\\/:*?"<>|]+/g,'').trim()} - ${String(p.title||'برنامج').replace(/[\\/:*?"<>|]+/g,'')}`;
+const coFile=(p,c,kind)=>`${kind==='all'?'كورس':kind==='f'?'تغذية':'تمارين'} - ${String(c.name||'player').replace(/[\\/:*?"<>|]+/g,'').trim()} - ${String(p.title||'برنامج').replace(/[\\/:*?"<>|]+/g,'')}`;
 async function coPdf(id,kind){const p=(id===CO.pid&&CO.draft)?Object.assign({},CO.draft,{id}):(S.programs||[]).find(x=>x.id===id);const c=p&&coClient(p.clientId);if(!p||!c)return toast('ما لكيت البرنامج','bad');return coPdfShow(p,c,kind||'w')}
-async function coPdfShow(p,c,kind){kind=kind||'w';await coFonts();
+async function coPdfShow(p,c,kind,player){kind=player?'all':(kind||'w');await coFonts();
   let ov=document.getElementById('coPrev');if(ov)ov.remove();
   ov=document.createElement('div');ov.id='coPrev';document.body.appendChild(ov);document.body.classList.add('co-printing');
   const draw=()=>{const root=coBuildPages(p,c,kind);const pages=[...root.querySelectorAll('.qpp')];
-    ov.innerHTML=`<div class="cpv-bar"><div class="cpv-tabs"><button type="button" data-k="w" aria-pressed="${kind==='w'}">🏋️ نموذج التمارين</button><button type="button" data-k="f" aria-pressed="${kind==='f'}">🥗 نموذج التغذية</button></div><small>${pages.length} صفحات • ${esc(c.name||'')}</small><span class="cpv-sp"></span>
+    ov.innerHTML=player?`<div class="cpv-bar"><b>🏋️ كورسك من الدزاز جم</b><span class="cpv-sp"></span><button type="button" class="btn primary" id="cpvPrint">🖨️ حفظ PDF</button><button type="button" class="btn" id="cpvDl">⬇️ تحميل</button><button type="button" class="btn ghost" id="cpvX">إغلاق</button></div><div class="cpv-pages cpdf"></div>`:`<div class="cpv-bar"><div class="cpv-tabs"><button type="button" data-k="w" aria-pressed="${kind==='w'}">🏋️ نموذج التمارين</button><button type="button" data-k="f" aria-pressed="${kind==='f'}">🥗 نموذج التغذية</button></div><small>${pages.length} صفحات • ${esc(c.name||'')}</small><span class="cpv-sp"></span>
       <button type="button" class="btn primary" id="cpvPrint">🖨️ حفظ PDF</button><button type="button" class="btn" id="cpvDl">⬇️ تحميل الملف</button><button type="button" class="btn ghost" id="cpvX">إغلاق</button></div>
       <p class="cpv-tip">💡 كل نموذج ملف لحاله. «حفظ PDF» يطلع أوضح نسخة: بالحاسبة اختار <b>Save as PDF</b>، وبالآيفون اضغط مشاركة ← <b>حفظ في الملفات</b>.</p><div class="cpv-pages cpdf"></div>`;
     const wrap=ov.querySelector('.cpv-pages');pages.forEach(pg=>{const w=document.createElement('div');w.className='cpv-pw';w.appendChild(pg);wrap.appendChild(w)});root.remove();fit();
@@ -7379,7 +7395,7 @@ window.dzCourseFind=async function(name,phone){if(!CAN_FB||!fbCfg())throw {code:
 window.dzCourseOpen=async function(name,phone){const key=await cpubKey(phone);const snap=await FB.fs.collection('cpub').doc(key).get();if(!snap.exists)throw {code:'none'};
   const d=snap.data(),cur=d.cur;if(!cur||!cur.ready||!cur.p||!dzNameOk(name,d.name))throw {code:'none'};
   const p=Object.assign({id:cur.pid},JSON.parse(JSON.stringify(cur.p)));const c=JSON.parse(JSON.stringify(cur.c||{name:d.name}));
-  coPdfShow(p,c);
+  coPdfShow(p,c,'all',true);
   try{await FB.fs.collection('cpub').doc(key).update({['got.'+cur.pid]:Date.now()})}catch(e){console.warn('got',e)}
   return true};
 window.dzCourseRemind=async function(r){if(!CAN_FB||!fbCfg())throw {code:'nocfg'};await fbStart(fbCfg());
