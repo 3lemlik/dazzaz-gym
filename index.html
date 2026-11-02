@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
 <meta charset="utf-8">
-<meta name="dz-build" content="79">
+<meta name="dz-build" content="80">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -1421,6 +1421,7 @@ body.store-on .dzi-fab,body.store-on .dzi-panel{display:none!important}
  .stk .rowact .sk-price{width:auto;padding:0 12px;gap:6px;display:inline-flex;align-items:center;border:1px solid var(--cy);color:var(--ink)}
  .stk .rowact .sk-price span{display:inline;font-size:13px;font-weight:700}
 }
+.co-kind{margin-bottom:12px}.co-kl{color:var(--cy);font-weight:700}
 /* performance dashboard */
 .app>*{min-width:0}
 .os.rate{padding-inline-end:46px}
@@ -1516,7 +1517,7 @@ body.store-on .dzi-fab,body.store-on .dzi-panel{display:none!important}
     <div class="sfoot">
       <button class="gear bell" data-act="notif" aria-label="الإشعارات" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="bl">الإشعارات</span><b class="nbadge" hidden></b></button>
       <button class="gear" data-go="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>الإعدادات</span></button>
-      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 79</small></div>
+      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 80</small></div>
       <div class="sync" id="sync"><i></i><span>جاري الاتصال</span></div>
       <div class="who" id="who"></div>
     </div>
@@ -2562,7 +2563,7 @@ function renderTop(){
   $('#ann').innerHTML=CFG.ann?`<div class="wrap">${esc(CFG.ann)}</div>`:'';
   document.querySelectorAll('.perkDel').forEach(e=>e.textContent=`المثنى ${CFG.bag?fmt(CFG.bag)+' د.ع':''} • باقي المحافظات ${CFG.oth?fmt(CFG.oth)+' د.ع':''}`);
   $('#footWa').innerHTML=CFG.wa?`واتساب: <span class="tel">+${esc(CFG.wa)}</span>`:'';
-  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 79${hasOrd?' • sync':''}</small>`)}
+  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 80${hasOrd?' • sync':''}</small>`)}
   $('#catAt').textContent=DATA.at?'UPDATED '+new Date(DATA.at).toISOString().slice(0,10).replaceAll('-','.'):'';
   const ha=$('#heroArt');if(ha&&!ha.firstChild)ha.innerHTML=dzEmblem();
 }
@@ -6901,7 +6902,7 @@ async function dziSend(v){v=String(v||'').trim();if(!v||DZI.busy||!CUR)return;
 const A_MAXTOK=()=>C()?2600:1500;
 
 /* ---------- التحديث التلقائي: يفحص اذا نزلت نسخة جديدة على الموقع (حتى لو مضاف للشاشة الرئيسية) ---------- */
-const DZ_BUILD=79;
+const DZ_BUILD=80;
 const UPD={last:0,shown:0};
 try{if(/[?&]u=\d+/.test(location.search))history.replaceState(null,'',location.pathname+location.hash)}catch(e){}
 const updLive=()=>location.protocol==='https:'&&!/claude/i.test(location.hostname);
@@ -7031,34 +7032,45 @@ function coClientView(c){const ps=coProgs(c.id);const st=(l,v)=>`<div class="co-
    <div class="panel co-prof"><div class="co-stats">${st('العمر',coAge(c))}${st('الطول',c.height?c.height+' سم':'—')}${st('الوزن',c.weight?c.weight+' كغ':'—')}${st('BMI',bmi||'—')}${st('الهدف',esc(c.goal||'—'))}${st('المستوى',esc(c.level||'—'))}${st('الجنس',esc(c.gender||'—'))}${st('النشاط',esc((CO_ACT.find(a=>a[0]===c.activity)||['','—'])[1].split(' ')[0]))}</div>
     ${c.injuries?`<div class="co-warn">⚠️ إصابات / حالات صحية: ${esc(c.injuries)}</div>`:''}${c.notes?`<p class="co-note">${esc(c.notes)}</p>`:''}</div>
    <div class="panel"><h3>البرامج <span>${ps.length}</span></h3>
-    ${ps.length?`<div class="co-plist">${ps.map(p=>`<div class="co-p${p.status==='old'?' old':''}"><div class="co-pi"><b>${esc(p.title||'برنامج')}</b><small>${(p.w&&p.w.days||[]).length} أيام تمرين • ${(p.f&&p.f.meals||[]).length} وجبات${p.weeks?' • '+p.weeks+' أسابيع':''} • ${p.startDate?fmtDate(p.startDate):''}</small><small>آخر تعديل ${relTime(N(p.updatedAt||p.createdAt))}${p.status==='old'?' • منتهي':' • <b class="co-on">فعّال</b>'}</small>${p.status==='old'?'':coDeliv(c,p)}</div>
-      <div class="co-pa"><button class="btn sm primary" data-co="p-open" data-id="${esc(p.id)}">فتح وتعديل</button>${p.ready&&p.status!=='old'&&coPhone(c.phone)?`<a class="btn sm wa" href="${esc(coWaLink(c,p))}" target="_blank" rel="noopener">💬 واتساب</a>`:''}<button class="btn sm" data-co="p-pdf" data-k="w" data-id="${esc(p.id)}">📄 تمارين</button><button class="btn sm" data-co="p-pdf" data-k="f" data-id="${esc(p.id)}">📄 تغذية</button><button class="btn sm ghost" data-co="p-dup" data-id="${esc(p.id)}">نسخة جديدة</button><button class="btn sm ghost" data-co="p-old" data-id="${esc(p.id)}">${p.status==='old'?'تفعيل':'إنهاء'}</button><button class="icon-btn del" data-co="p-del" data-id="${esc(p.id)}" aria-label="حذف">${I.trash}</button></div></div>`).join('')}</div>`
+    ${ps.length?`<div class="co-plist">${ps.map(p=>`<div class="co-p${p.status==='old'?' old':''}"><div class="co-pi"><b>${esc(p.title||'برنامج')}</b><small><b class="co-kl">${coKLbl(p)}</b>${hasW(p)?' • '+(p.w&&p.w.days||[]).length+' أيام تمرين':''}${hasF(p)?' • '+(p.f&&p.f.meals||[]).length+' وجبات':''}${p.weeks?' • '+p.weeks+' أسابيع':''} • ${p.startDate?fmtDate(p.startDate):''}</small><small>آخر تعديل ${relTime(N(p.updatedAt||p.createdAt))}${p.status==='old'?' • منتهي':' • <b class="co-on">فعّال</b>'}</small>${p.status==='old'?'':coDeliv(c,p)}</div>
+      <div class="co-pa"><button class="btn sm primary" data-co="p-open" data-id="${esc(p.id)}">فتح وتعديل</button>${p.ready&&p.status!=='old'&&coPhone(c.phone)?`<a class="btn sm wa" href="${esc(coWaLink(c,p))}" target="_blank" rel="noopener">💬 واتساب</a>`:''}${hasW(p)?`<button class="btn sm" data-co="p-pdf" data-k="w" data-id="${esc(p.id)}">📄 تمارين</button>`:''}${hasF(p)?`<button class="btn sm" data-co="p-pdf" data-k="f" data-id="${esc(p.id)}">📄 تغذية</button>`:''}<button class="btn sm ghost" data-co="p-dup" data-id="${esc(p.id)}">نسخة جديدة</button><button class="btn sm ghost" data-co="p-old" data-id="${esc(p.id)}">${p.status==='old'?'تفعيل':'إنهاء'}</button><button class="icon-btn del" data-co="p-del" data-id="${esc(p.id)}" aria-label="حذف">${I.trash}</button></div></div>`).join('')}</div>`
       :`<div class="empty sm"><b>ما عنده برنامج بعد</b><span>اضغط «برنامج جديد» واختار قالب جاهز أو ابدأ من الصفر.</span></div>`}</div>
    <div class="co-danger"><button class="btn sm ghost" data-co="c-del" data-id="${esc(c.id)}">حذف اللاعب وكل برامجه</button></div>`}
 const coI=(id,path,val,ph,cls,type)=>`<input id="${id}" class="${cls||''}" data-cf="${path}" value="${esc(val==null?'':val)}" ${ph?`placeholder="${esc(ph)}"`:''} ${type?`type="${type}"`:''} autocomplete="off">`;
-function coEditor(){const d=CO.draft,c=coClient(d.clientId)||{},T=ui.co.tab||'w';
-  const tabs=[['w','🏋️ التمارين'],['f','🥗 التغذية'],['n','📝 ملاحظات وإعدادات']];
+function coEditor(){const d=CO.draft,c=coClient(d.clientId)||{};
+  const tabs=[['w','🏋️ التمارين'],['f','🥗 التغذية'],['n','📝 ملاحظات وإعدادات']].filter(([k])=>k==='n'||(k==='w'?hasW(d):hasF(d)));
+  if(!tabs.some(t=>t[0]===ui.co.tab))ui.co.tab=tabs[0][0];const T=ui.co.tab;
   return `<div class="co-back"><button type="button" class="btn ghost sm" data-co="p-close">→ رجوع لـ ${esc(c.name||'اللاعب')}</button></div>
-   <div class="co-ed-h"><div class="co-ed-t">${coI('cpTitle','title',d.title,'اسم البرنامج','co-title')}<small>${esc(c.name||'')} • ${esc(c.goal||'')}</small></div>
-    <div class="co-ed-a"><span class="co-dirty ${CO.dirty?'on':''}" id="coDirty">${CO.dirty?'● تغييرات ما انحفظت':'✓ محفوظ'}</span><button class="btn primary" data-co="p-save" ${CO.saving?'disabled':''}>💾 حفظ</button><button class="btn" data-co="p-pdf" data-k="w" data-id="${esc(CO.pid)}">📄 PDF التمارين</button><button class="btn" data-co="p-pdf" data-k="f" data-id="${esc(CO.pid)}">📄 PDF التغذية</button></div></div>
+   <div class="co-ed-h"><div class="co-ed-t">${coI('cpTitle','title',d.title,'اسم البرنامج','co-title')}<small>${esc(c.name||'')} • ${esc(c.goal||'')} • <b class="co-kl">${coKLbl(d)}</b></small></div>
+    <div class="co-ed-a"><span class="co-dirty ${CO.dirty?'on':''}" id="coDirty">${CO.dirty?'● تغييرات ما انحفظت':'✓ محفوظ'}</span><button class="btn primary" data-co="p-save" ${CO.saving?'disabled':''}>💾 حفظ</button>${hasW(d)?`<button class="btn" data-co="p-pdf" data-k="w" data-id="${esc(CO.pid)}">📄 PDF التمارين</button>`:''}${hasF(d)?`<button class="btn" data-co="p-pdf" data-k="f" data-id="${esc(CO.pid)}">📄 PDF التغذية</button>`:''}</div></div>
    <div class="co-ready ${d.ready?'on':''}"><button type="button" class="co-rt" data-co="p-ready" aria-pressed="${!!d.ready}"><i></i><span><b>${d.ready?'✅ الكورس جاهز للتسليم':'✍️ الكورس قيد الكتابة'}</b><small>${d.ready?'اللاعب يكدر يحمله من المتجر بقسم «كورسي»':'لما تخلص فعّلها، وإذا اللاعب يسأل يطلعله «بعده ما كمله المدرب»'}</small></span></button>
     ${d.ready&&!CO.dirty&&coPhone(c.phone)?`<a class="btn wa" href="${esc(coWaLink(c,d))}" target="_blank" rel="noopener">💬 إرسال للاعب عبر واتساب</a>`:d.ready&&!coPhone(c.phone)?'<small class="co-nph">⚠️ ما مسجل رقم موبايل للاعب، ضيفه حتى ترسل واتساب ويكدر يحمل كورسه</small>':d.ready&&CO.dirty?'<small class="co-nph">احفظ حتى يطلع زر الواتساب</small>':''}${coDeliv(c,d)}</div>
    <div class="seg big co-tabs">${tabs.map(([k,l])=>`<button type="button" data-co="tab" data-id="${k}" aria-pressed="${T===k}" class="${T===k?'on':''}">${l}</button>`).join('')}</div>
    ${T==='w'?coWork(d):T==='f'?coFood(d,c):coNotes(d)}
    <datalist id="coExL">${exAll().map(x=>`<option value="${esc(x.n)}">`).join('')}</datalist>`}
-function coNotes(d){return `<div class="panel"><h3>إعدادات البرنامج</h3><div class="co-set">
+function coNotes(d){return `<div class="panel"><h3>نوع الكورس</h3><div class="seg co-kind">${CO_KINDS.map(([k,l])=>`<button type="button" data-co="p-kind" data-id="${k}" aria-pressed="${coK(d)===k}">${l}</button>`).join('')}</div><small class="co-mh">إذا شلت جزء، كلامه يبقى محفوظ بس ما يطلع بالـ PDF ولا للاعب. ترجعه وقت ما تريد.</small></div>
+   <div class="panel"><h3>إعدادات البرنامج</h3><div class="co-set">
    <label><span>تاريخ البداية</span>${coI('cpStart','startDate',d.startDate,'','','date')}</label><label><span>المدة (أسابيع)</span>${coI('cpWeeks','weeks',d.weeks,'8','','text')}</label><label><span>اسم المدرب</span>${coI('cpCoach','coachName',d.coachName,'اسم المدرب')}</label></div></div>
    <div class="panel"><h3>ملاحظات وتعليمات للاعب</h3><textarea id="cpNotes" data-cf="notes" class="co-ta" placeholder="مثلاً: نوم 8 ساعات، ماء 4 لتر، زيد الأوزان تدريجياً كل أسبوع، يوم راحة بعد كل يومين…">${esc(d.notes||'')}</textarea></div>
-   <div class="panel"><h3>ملاحظات التغذية</h3><textarea id="cpFNotes" data-cf="f.notes" class="co-ta" placeholder="مثلاً: يوم الراحة قلل الرز للنص، وجبة حرة مرة بالأسبوع…">${esc(d.f.notes||'')}</textarea></div>`}
-function coNewProgram(c,base){const n={clientId:c.id,title:base?base.title+' (نسخة)':'برنامج '+(coProgs(c.id).length+1),status:'active',startDate:todayStr(),weeks:'8',coachName:CUR.name,coachId:CUR.id,notes:base?base.notes||'':'',
+   ${hasF(d)?`<div class="panel"><h3>ملاحظات التغذية</h3><textarea id="cpFNotes" data-cf="f.notes" class="co-ta" placeholder="مثلاً: يوم الراحة قلل الرز للنص، وجبة حرة مرة بالأسبوع…">${esc(d.f.notes||'')}</textarea></div>`:''}`}
+function coNewProgram(c,base){const n={kind:base?coK(base):'both',clientId:c.id,title:base?base.title+' (نسخة)':'برنامج '+(coProgs(c.id).length+1),status:'active',startDate:todayStr(),weeks:'8',coachName:CUR.name,coachId:CUR.id,notes:base?base.notes||'':'',
    w:base?JSON.parse(JSON.stringify(base.w)):{days:[],cardio:''},f:base?coFixMeals(JSON.parse(JSON.stringify(base.f))):Object.assign({kcal:'',p:'',c:'',fa:'',water:'',meals:coMeals(),supps:[{n:'بروتين واي',d:'1 سكوب',t:'بعد التمرين'},{n:'كرياتين',d:'5 غ',t:'يومياً'}],notes:''},coCalc(c)||{}),createdAt:Date.now()};
   return n}
-function coPick(){const c=coClient(ui.co.cid);if(!c)return;
+const CO_KINDS=[['both','🏋️+🥗 تدريب وتغذية'],['w','🏋️ تدريب فقط'],['f','🥗 تغذية فقط']];
+const coK=p=>p&&['w','f'].includes(p.kind)?p.kind:'both';const hasW=p=>coK(p)!=='f',hasF=p=>coK(p)!=='w';
+const coKLbl=p=>({both:'تدريب + تغذية',w:'تدريب فقط',f:'تغذية فقط'})[coK(p)];
+function coPick(){const c=coClient(ui.co.cid);if(!c)return;let kind='both';
+  const tpl=()=>kind==='f'?`<div class="co-tpls"><button type="button" class="co-tplb" data-co="p-create" data-id="" data-kind="f"><b>🥗 إنشاء برنامج التغذية</b><small>وجبات جاهزة كبداية، وسعرات وماكروز محسوبة من بيانات اللاعب</small></button></div>`
+   :`<div class="co-tpls">${[['','📝 من الصفر','يوم واحد فارغ'],['full3','🔁 جسم كامل','3 أيام — مناسب للمبتدئ'],['ul4','↕️ علوي / سفلي','4 أيام — متوسط'],['ppl','🔀 دفع / سحب / أرجل','3 أيام (تتكرر مرتين)'],['bro5','💪 عضلة لكل يوم','5 أيام — متقدم']].map(([k,t,s])=>`<button type="button" class="co-tplb" data-co="p-create" data-id="${k}" data-kind="${kind}"><b>${t}</b><small>${s}</small></button>`).join('')}</div>`;
+  openSheet(`<h3>برنامج جديد لـ ${esc(c.name)}</h3><p class="sub">اختار نوع الكورس ونقطة البداية، وبعدين تعدل كلشي براحتك.</p>
+   <div class="seg co-kind">${CO_KINDS.map(([k,l])=>`<button type="button" data-kd="${k}" aria-pressed="${k===kind}">${l}</button>`).join('')}</div><div id="coTplBox">${tpl()}</div>`,s=>{
+   s.querySelector('.co-kind').addEventListener('click',e=>{const b=e.target.closest('[data-kd]');if(!b)return;kind=b.dataset.kd;s.querySelectorAll('.co-kind [data-kd]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));s.querySelector('#coTplBox').innerHTML=tpl()})})}
+function coPick_old(){const c=coClient(ui.co.cid);if(!c)return;
   openSheet(`<h3>برنامج جديد لـ ${esc(c.name)}</h3><p class="sub">اختار نقطة البداية، وبعدين تعدل كلشي براحتك.</p>
    <div class="co-tpls">${[['','📝 من الصفر','يوم واحد فارغ'],['full3','🔁 جسم كامل','3 أيام — مناسب للمبتدئ'],['ul4','↕️ علوي / سفلي','4 أيام — متوسط'],['ppl','🔀 دفع / سحب / أرجل','3 أيام (تتكرر مرتين)'],['bro5','💪 عضلة لكل يوم','5 أيام — متقدم']].map(([k,t,s])=>`<button type="button" class="co-tplb" data-co="p-create" data-id="${k}"><b>${t}</b><small>${s}</small></button>`).join('')}</div>`)}
-async function coCreate(k){const c=coClient(ui.co.cid);if(!c)return;closeSheet();const n=coNewProgram(c);n.w.days=coTpl(k||'x');
-  if(k)n.title={full3:'جسم كامل 3 أيام',ul4:'علوي / سفلي 4 أيام',ppl:'دفع / سحب / أرجل',bro5:'تقسيم 5 أيام'}[k];
-  try{const id=await coPut('programs',null,n);ui.co.pid=id;CO.pid=id;CO.draft=Object.assign({id},n);CO.dirty=false;ui.co.tab='w';render();coPub(c.id);window.scrollTo({top:0});toast('انضاف البرنامج، عدّله واحفظ')}catch(e){dbErr(e)}}
+async function coCreate(k,kind){const c=coClient(ui.co.cid);if(!c)return;closeSheet();const n=coNewProgram(c);n.kind=kind||'both';n.w.days=n.kind==='f'?[]:coTpl(k||'x');
+  if(n.kind==='f')n.title='برنامج تغذية';else if(k)n.title={full3:'جسم كامل 3 أيام',ul4:'علوي / سفلي 4 أيام',ppl:'دفع / سحب / أرجل',bro5:'تقسيم 5 أيام'}[k];
+  try{const id=await coPut('programs',null,n);ui.co.pid=id;CO.pid=id;CO.draft=Object.assign({id},n);CO.dirty=false;ui.co.tab=n.kind==='f'?'f':'w';render();coPub(c.id);window.scrollTo({top:0});toast('انضاف البرنامج، عدّله واحفظ')}catch(e){dbErr(e)}}
 function coClientSheet(c){const isNew=!c;c=c||{gender:'ذكر',activity:'mid',startDate:todayStr()};
   const sel=(id,v,opts)=>`<select id="${id}">${opts.map(o=>Array.isArray(o)?`<option value="${o[0]}" ${v===o[0]?'selected':''}>${o[1]}</option>`:`<option ${v===o?'selected':''}>${o}</option>`).join('')}</select>`;
   openSheet(`<h3>${isNew?'لاعب جديد':'تعديل: '+esc(c.name)}</h3><p class="sub">البيانات تنحسب منها السعرات والماكروز تلقائياً وتطلع بالـ PDF.</p>
@@ -7114,7 +7126,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-co]');if(!
    case 'c-del':{const c=coClient(id);return confirmSheet('حذف اللاعب',`راح ينحذف "${esc(c.name)}" وكل برامجه (${coProgs(id).length}).`,'احذف',async()=>{for(const p of coProgs(id))await coDel('programs',p.id);if(c.pk){try{await coDel('cpub',c.pk)}catch(e){}}await coDel('clients',id);ui.co.cid='';render()})}
    case 'back':ui.co.cid='';render();return window.scrollTo({top:0});
    case 'p-new':return coPick();
-   case 'p-create':return coCreate(id);
+   case 'p-create':return coCreate(id,b.dataset.kind||'both');
    case 'p-open':ui.co.pid=id;CO.pid=null;ui.co.tab='w';render();return window.scrollTo({top:0});
    case 'p-close':return coLeave(()=>{ui.co.pid='';CO.pid=null;CO.draft=null;CO.dirty=false;render();window.scrollTo({top:0})});
    case 'p-save':return coSave();
@@ -7122,6 +7134,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-co]');if(!
    case 'p-dup':{const p=(S.programs||[]).find(x=>x.id===id),c=coClient(p&&p.clientId);if(!p||!c)return;const n=coNewProgram(c,p);n.ready=false;return coPut('programs',null,n).then(nid=>{toast('انعملت نسخة جديدة');ui.co.pid=nid;CO.pid=null;render();coPub(c.id)}).catch(dbErr)}
    case 'p-old':{const p=(S.programs||[]).find(x=>x.id===id);if(!p)return;const n=Object.assign({},p,{status:p.status==='old'?'active':'old'});delete n.id;return coPut('programs',id,n).then(()=>coPub(p.clientId)).catch(dbErr)}
    case 'p-del':{const cid=((S.programs||[]).find(x=>x.id===id)||{}).clientId;return confirmSheet('حذف البرنامج','راح ينحذف البرنامج نهائياً.','احذف',async()=>{await coDel('programs',id);await coPub(cid)})}
+   case 'p-kind':if(!d)return;d.kind=id;coMark();render();return;
    case 'p-ready':if(!d)return;d.ready=!d.ready;coMark();render();return coSave(true).then(()=>toast(d.ready?'✅ صار الكورس جاهز، اللاعب يكدر يحمله':'رجع الكورس قيد الكتابة'));
    case 'sec':ui.co.sec=id;render();return;
    case 'n-post':return ntPost();
@@ -7366,6 +7379,7 @@ ${BMAP_CSS.replace(/\.bmap/g,'.cpdf .bmap')}
 `;
 const coFonts=()=>Promise.race([Promise.all(['400 14px "IBM Plex Sans Arabic"','700 14px "IBM Plex Sans Arabic"','800 28px "Noto Kufi Arabic"','700 14px "Chakra Petch"'].map(f=>document.fonts.load(f))),new Promise(r=>setTimeout(r,2500))]).catch(()=>{});
 function coBuildPages(p,c,kind){
+  if(kind==='all'&&!hasF(p))kind='w';if(kind==='all'&&!hasW(p))kind='f';
   if(kind==='all'){const a=coBuildPages(p,c,'w'),b=coBuildPages(p,c,'f');[...b.children].forEach(x=>a.appendChild(x));b.remove();return a}
   let st=document.getElementById('coPdfCss');if(!st){st=document.createElement('style');st.id='coPdfCss';document.head.appendChild(st)}st.textContent=CO_PDF_CSS;
   const {cover,blocks}=kind==='f'?coPdfF(p,c):coPdfW(p,c);const root=document.createElement('div');root.className='cpdf';document.body.appendChild(root);
@@ -7380,11 +7394,11 @@ function coBuildPages(p,c,kind){
   return root}
 const coFile=(p,c,kind)=>`${kind==='all'?'كورس':kind==='f'?'تغذية':'تمارين'} - ${String(c.name||'player').replace(/[\\/:*?"<>|]+/g,'').trim()} - ${String(p.title||'برنامج').replace(/[\\/:*?"<>|]+/g,'')}`;
 async function coPdf(id,kind){const p=(id===CO.pid&&CO.draft)?Object.assign({},CO.draft,{id}):(S.programs||[]).find(x=>x.id===id);const c=p&&coClient(p.clientId);if(!p||!c)return toast('ما لكيت البرنامج','bad');return coPdfShow(p,c,kind||'w')}
-async function coPdfShow(p,c,kind,player){kind=player?'all':(kind||'w');await coFonts();
+async function coPdfShow(p,c,kind,player){kind=player?'all':(kind||'w');if(kind==='w'&&!hasW(p))kind='f';if(kind==='f'&&!hasF(p))kind='w';await coFonts();
   let ov=document.getElementById('coPrev');if(ov)ov.remove();
   ov=document.createElement('div');ov.id='coPrev';document.body.appendChild(ov);document.body.classList.add('co-printing');
   const draw=()=>{const root=coBuildPages(p,c,kind);const pages=[...root.querySelectorAll('.qpp')];
-    ov.innerHTML=player?`<div class="cpv-bar"><b>🏋️ كورسك من الدزاز جم</b><span class="cpv-sp"></span><button type="button" class="btn primary" id="cpvPrint">🖨️ حفظ PDF</button><button type="button" class="btn" id="cpvDl">⬇️ تحميل</button><button type="button" class="btn ghost" id="cpvX">إغلاق</button></div><div class="cpv-pages cpdf"></div>`:`<div class="cpv-bar"><div class="cpv-tabs"><button type="button" data-k="w" aria-pressed="${kind==='w'}">🏋️ نموذج التمارين</button><button type="button" data-k="f" aria-pressed="${kind==='f'}">🥗 نموذج التغذية</button></div><small>${pages.length} صفحات • ${esc(c.name||'')}</small><span class="cpv-sp"></span>
+    const tabsOn=hasW(p)&&hasF(p);ov.innerHTML=player?`<div class="cpv-bar"><b>🏋️ كورسك من الدزاز جم</b><span class="cpv-sp"></span><button type="button" class="btn primary" id="cpvPrint">🖨️ حفظ PDF</button><button type="button" class="btn" id="cpvDl">⬇️ تحميل</button><button type="button" class="btn ghost" id="cpvX">إغلاق</button></div><div class="cpv-pages cpdf"></div>`:`<div class="cpv-bar"><div class="cpv-tabs" ${tabsOn?'':'hidden'}><button type="button" data-k="w" aria-pressed="${kind==='w'}">🏋️ نموذج التمارين</button><button type="button" data-k="f" aria-pressed="${kind==='f'}">🥗 نموذج التغذية</button></div><small>${pages.length} صفحات • ${esc(c.name||'')}</small><span class="cpv-sp"></span>
       <button type="button" class="btn primary" id="cpvPrint">🖨️ حفظ PDF</button><button type="button" class="btn" id="cpvDl">⬇️ تحميل الملف</button><button type="button" class="btn ghost" id="cpvX">إغلاق</button></div>
       <p class="cpv-tip">💡 كل نموذج ملف لحاله. «حفظ PDF» يطلع أوضح نسخة: بالحاسبة اختار <b>Save as PDF</b>، وبالآيفون اضغط مشاركة ← <b>حفظ في الملفات</b>.</p><div class="cpv-pages cpdf"></div>`;
     const wrap=ov.querySelector('.cpv-pages');pages.forEach(pg=>{const w=document.createElement('div');w.className='cpv-pw';w.appendChild(pg);wrap.appendChild(w)});root.remove();fit();
@@ -7422,10 +7436,10 @@ async function coPub(cid){try{const c=coClient(cid);if(!c)return;const key=await
   if(c.pk!==key){const n=Object.assign({},c,{pk:key});delete n.id;await coPut('clients',c.id,n)}
   if(!key)return;const p=coLatest(cid);const old=(S.cpub||[]).find(x=>x.id===key)||{};
   const cur=p?{pid:p.id,title:p.title||'برنامج',ready:!!p.ready,coach:p.coachName||'',at:N(p.updatedAt||p.createdAt)}:null;
-  if(cur&&p.ready){cur.p={title:p.title||'',startDate:p.startDate||'',weeks:p.weeks||'',coachName:p.coachName||'',notes:p.notes||'',w:p.w,f:p.f};cur.c={name:c.name,age:c.age||'',height:c.height||'',weight:c.weight||'',goal:c.goal||'',level:c.level||'',gender:c.gender||'',injuries:c.injuries||''}}
+  if(cur&&p.ready){cur.p={kind:coK(p),title:p.title||'',startDate:p.startDate||'',weeks:p.weeks||'',coachName:p.coachName||'',notes:p.notes||'',w:p.w,f:p.f};cur.c={name:c.name,age:c.age||'',height:c.height||'',weight:c.weight||'',goal:c.goal||'',level:c.level||'',gender:c.gender||'',injuries:c.injuries||''}}
   await coWrite('cpub',key,{name:c.name,cur,got:old.got||{},upd:Date.now()})}catch(e){console.warn('cpub',e)}}
 function coWaLink(c,p){const d=coPhone(c.phone);if(!d)return '';const url=location.origin+location.pathname+'#course';
-  const t=`هلا ${c.name} 💪\nكورسك من الدزاز جم جاهز: «${p.title||'البرنامج التدريبي'}» 🏋️\n\nحمّله من هنا 👇\n${url}\n\nبالمتجر اضغط «كورسي» واكتب اسمك ورقم موبايلك.\nبالتوفيق يا بطل 🔥`;
+  const t=`هلا ${c.name} 💪\n${coK(p)==='f'?'برنامجك الغذائي':coK(p)==='w'?'برنامجك التدريبي':'كورسك'} من الدزاز جم جاهز: «${p.title||'البرنامج'}» ${coK(p)==='f'?'🥗':'🏋️'}\n\nحمّله من هنا 👇\n${url}\n\nبالمتجر اضغط «كورسي» واكتب اسمك ورقم موبايلك.\nبالتوفيق يا بطل 🔥`;
   return `https://wa.me/964${d}?text=${encodeURIComponent(t)}`}
 function coDeliv(c,p){const pub=coPubOf(c);const got=pub&&pub.got&&pub.got[p.id];
   if(got)return `<span class="co-badge ok">📥 استلمه اللاعب ${relTime(N(got))}</span>`;
