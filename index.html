@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
 <meta charset="utf-8">
-<meta name="dz-build" content="77">
+<meta name="dz-build" content="79">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -1405,6 +1405,22 @@ body.store-on .dzi-fab,body.store-on .dzi-panel{display:none!important}
 .flvpick .flv[aria-pressed="true"],.flvq .flv[aria-pressed="true"]{background:var(--cy);border-color:var(--cy);color:#fff}
 .flv-new{display:inline-flex;gap:4px}.flv-new input{width:130px;padding:7px 10px;font:inherit;font-size:16px;background:var(--surface-2,var(--surface));border:1px solid var(--line-2);color:var(--ink)}
 .flq{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin:8px 0}.flq label span{display:block;font-size:12px;color:var(--muted);margin-bottom:3px}.flq input{width:100%;padding:8px;font:inherit;font-size:16px;background:var(--surface-2,var(--surface));border:1px solid var(--line-2);color:var(--ink)}
+/* الجرد بالموبايل: كروت بدل الجدول حتى تبين الأزرار */
+.sk-price span{display:none}
+@media (max-width:760px){
+ .stkw{overflow:visible;margin:0!important;padding:0!important}.stk{min-width:0!important}.stk,.stk tbody{display:block;width:100%}.stk thead{display:none}
+ .stk tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px;padding:14px 4px;border-bottom:1px solid var(--line)}
+ .stk td{display:block;padding:0!important;border:0!important;min-width:0!important;text-align:start!important}
+ .stk td:first-child{grid-column:1/-1}
+ .stk td.sk-cat{display:none}
+ .stk td[data-l]::before{content:attr(data-l);display:block;font-size:11.5px;color:var(--muted);font-weight:600;margin-bottom:2px}
+ .stk td.sk-st{grid-column:1/-1}
+ .stk td:last-child{grid-column:1/-1}
+ .stk .rowact{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-start}
+ .stk .rowact .icon-btn{width:42px;height:42px}
+ .stk .rowact .sk-price{width:auto;padding:0 12px;gap:6px;display:inline-flex;align-items:center;border:1px solid var(--cy);color:var(--ink)}
+ .stk .rowact .sk-price span{display:inline;font-size:13px;font-weight:700}
+}
 /* performance dashboard */
 .app>*{min-width:0}
 .os.rate{padding-inline-end:46px}
@@ -1500,7 +1516,7 @@ body.store-on .dzi-fab,body.store-on .dzi-panel{display:none!important}
     <div class="sfoot">
       <button class="gear bell" data-act="notif" aria-label="الإشعارات" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="bl">الإشعارات</span><b class="nbadge" hidden></b></button>
       <button class="gear" data-go="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>الإعدادات</span></button>
-      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 77</small></div>
+      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 79</small></div>
       <div class="sync" id="sync"><i></i><span>جاري الاتصال</span></div>
       <div class="who" id="who"></div>
     </div>
@@ -2346,11 +2362,12 @@ body.intro-on .dzb{display:none}
 .fchip.out{opacity:.45;text-decoration:line-through}
 .pd-fl{margin:10px 0 4px}.pd-fl b{display:block;font-size:13px;margin-bottom:4px;opacity:.85}.pd-fl .fchip{min-height:38px;font-size:13.5px;padding:7px 14px}
 /* Dozy product suggestions: swipe sideways to see all */
-.dzb-cards{display:flex!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory!important;gap:8px!important;margin:10px -10px 2px!important;padding:2px 10px 6px!important;touch-action:pan-x pan-y;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.dzb-cards{display:flex!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:none!important;gap:8px!important;margin:10px -10px 2px!important;padding:2px 10px 6px!important;touch-action:pan-x pan-y;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .dzb-cards::-webkit-scrollbar{display:none}
-.dzb-cards .dzb-card,.dzb-cards .dzb-card.more{display:grid!important;flex:0 0 min(236px,80%)!important;scroll-snap-align:start;animation:none}
+.dzb-cards .dzb-card,.dzb-cards .dzb-card.more{display:grid!important;flex:0 0 min(236px,80%)!important;scroll-snap-align:none!important;animation:none}
 .dzb-cards .dzb-morec{display:none!important}
-.dzb-swipe{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px;font-size:11.5px;opacity:.7}
+.dzb-swipe{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px;font-size:11.5px}.dzb-swipe>span{opacity:.7}
+.dzb-swipe button{width:34px;height:34px;flex:none;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;font-size:18px;line-height:1;display:grid;place-items:center;cursor:pointer;touch-action:manipulation}.dzb-swipe button:disabled{opacity:.25}
 .dzb-swipe i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .2s,width .2s}.dzb-swipe i.on{background:#ed1c24;width:16px;border-radius:3px}
 /* fixes: build 75 */
 .dzmini{width:1.39em!important;height:.92em!important;flex:none;display:inline-block}
@@ -2545,7 +2562,7 @@ function renderTop(){
   $('#ann').innerHTML=CFG.ann?`<div class="wrap">${esc(CFG.ann)}</div>`:'';
   document.querySelectorAll('.perkDel').forEach(e=>e.textContent=`المثنى ${CFG.bag?fmt(CFG.bag)+' د.ع':''} • باقي المحافظات ${CFG.oth?fmt(CFG.oth)+' د.ع':''}`);
   $('#footWa').innerHTML=CFG.wa?`واتساب: <span class="tel">+${esc(CFG.wa)}</span>`:'';
-  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 77${hasOrd?' • sync':''}</small>`)}
+  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 79${hasOrd?' • sync':''}</small>`)}
   $('#catAt').textContent=DATA.at?'UPDATED '+new Date(DATA.at).toISOString().slice(0,10).replaceAll('-','.'):'';
   const ha=$('#heroArt');if(ha&&!ha.firstChild)ha.innerHTML=dzEmblem();
 }
@@ -2855,9 +2872,15 @@ async function doPublish(next,btn,show,label){
 
 
 /* Dozy suggestions: dots + "swipe" hint under each product carousel */
-(function(){const mk=c=>{if(c.dataset.sw||c.children.length<2)return;const n=[...c.children].filter(x=>x.classList.contains('dzb-card')).length;if(n<2)return;c.dataset.sw=1;
-  const h=document.createElement('div');h.className='dzb-swipe';h.innerHTML=`<span>⇠ اسحب وشوف ${n} منتجات</span>`+Array.from({length:n},(_,i)=>`<i class="${i?'':'on'}"></i>`).join('');c.after(h);
-  c.addEventListener('scroll',()=>{const w=c.firstElementChild?c.firstElementChild.offsetWidth+8:1;const i=Math.round(Math.abs(c.scrollLeft)/w);h.querySelectorAll('i').forEach((d,j)=>d.classList.toggle('on',j===i))},{passive:true})};
+(function(){const WS=new WeakSet();const mk=c=>{if(WS.has(c))return;const n=[...c.children].filter(x=>x.classList.contains('dzb-card')).length;if(n<2)return;WS.add(c);const old=c.nextElementSibling;if(old&&old.classList.contains('dzb-swipe'))old.remove();
+  const h=document.createElement('div');h.className='dzb-swipe';h.innerHTML=`<button type="button" data-d="-1" aria-label="السابق">›</button><span>${n} منتجات</span>`+Array.from({length:n},(_,i)=>`<i class="${i?'':'on'}"></i>`).join('')+`<button type="button" data-d="1" aria-label="التالي">‹</button>`;c.after(h);
+  const rtl=getComputedStyle(c).direction==='rtl';const W=()=>c.firstElementChild?c.firstElementChild.offsetWidth+8:200;
+  const idx=()=>Math.round(Math.abs(c.scrollLeft)/W());
+  const upd=()=>{const i=idx();h.querySelectorAll('i').forEach((d,j)=>d.classList.toggle('on',j===i));const [p,nx]=h.querySelectorAll('button');p.disabled=i<=0;nx.disabled=i>=n-1};
+  const goTo=i=>{i=Math.max(0,Math.min(n-1,i));const x=i*W()*(rtl?-1:1);try{c.scrollTo({left:x,behavior:'smooth'})}catch(e){c.scrollLeft=x}setTimeout(upd,350)};
+  h.addEventListener('click',e=>{const b=e.target.closest('button[data-d]');if(!b)return;e.stopPropagation();goTo(idx()+Number(b.dataset.d))});
+  h.querySelectorAll('i').forEach((d,j)=>d.addEventListener('click',()=>goTo(j)));
+  c.addEventListener('scroll',upd,{passive:true});upd()};
  const run=()=>document.querySelectorAll('.dzb-cards').forEach(mk);
  const go=()=>{const m=document.getElementById('dzbMsgs');if(!m)return setTimeout(go,800);run();new MutationObserver(run).observe(m,{childList:true,subtree:true})};go()})();
 /* in-page links (#shop…): the store lives in an iframe, so a plain #link would reload the whole site. Scroll instead. */
@@ -4617,6 +4640,7 @@ document.addEventListener('click',e=>{
   if(need&&!can(need)){toast('ما عندك صلاحية لهذا الشي','bad');return}
   {const dc={'del-sale':'sales','del-purchase':'purchases','del-adj':'adjustments'}[a.dataset.act];if(dc&&!canDelRec(S[dc].find(x=>x.id===id))){toast(DAY_MSG,'bad');return}}
   ({
+    'price-edit':()=>priceSheet(id),
     'logout':()=>{closeSheetIfAny();try{dziToggle(false)}catch(e){}logout()},
     'acct':()=>openSheet(`<div class="acct"><span class="av big">${initial(CUR.name)}</span><div><b>${esc(CUR.name)}</b><small>${esc(roleName(CUR))}</small></div></div>
       <div class="sheet-actions"><button type="button" class="btn primary danger" data-act="logout">${I.logout} تسجيل خروج</button><button type="button" class="btn ghost" data-act="acct-close">رجوع</button></div>`),
@@ -6877,7 +6901,7 @@ async function dziSend(v){v=String(v||'').trim();if(!v||DZI.busy||!CUR)return;
 const A_MAXTOK=()=>C()?2600:1500;
 
 /* ---------- التحديث التلقائي: يفحص اذا نزلت نسخة جديدة على الموقع (حتى لو مضاف للشاشة الرئيسية) ---------- */
-const DZ_BUILD=77;
+const DZ_BUILD=79;
 const UPD={last:0,shown:0};
 try{if(/[?&]u=\d+/.test(location.search))history.replaceState(null,'',location.pathname+location.hash)}catch(e){}
 const updLive=()=>location.protocol==='https:'&&!/claude/i.test(location.hostname);
@@ -7680,6 +7704,37 @@ function meter(p,stock){const cap=Math.max(N(p.minStock??3)*3,1);const pct=Math.
 function renderResults(){const r=$('#results');if(!r)return;r.innerHTML=ui.view==='sell'?sellCards():stockTable()}
 
 /* STOCK */
+/* --- تعديل سعر البيع وكلفة المخزون من الجرد --- */
+function liveBatches(pid){const ev=[];
+  S.purchases.filter(x=>x.productId===pid).forEach(x=>ev.push({k:'in',id:x.id,q:N(x.qty),d:x.date||'',t:x.createdAt||0}));
+  S.adjustments.filter(x=>x.productId===pid).forEach(x=>ev.push({k:N(x.delta)>=0?'adj+':'out',q:Math.abs(N(x.delta)),d:x.date||'',t:x.createdAt||0}));
+  S.sales.filter(x=>x.productId===pid).forEach(x=>ev.push({k:'out',q:N(x.qty),d:x.date||'',t:x.createdAt||0}));
+  ev.sort((a,b)=>a.d===b.d?a.t-b.t:(a.d<b.d?-1:1));const B=[];
+  for(const e of ev){if(e.k==='in')B.push({id:e.id,q:e.q});else if(e.k==='adj+')B.push({id:null,q:e.q});else{let n=e.q;for(const b of B){if(n<=0)break;const t=Math.min(b.q,n);b.q-=t;n-=t}}}
+  return B.filter(b=>b.q>0)}
+function priceSheet(pid){const p=prod(pid);if(!p)return;const canP=can('products'),canC=C();if(!canP&&!canC)return toast('ما عندك صلاحية لهذا الشي','bad');
+  const m=INV[pid]||{stock:0,avg:0};const sib=activeProducts().filter(x=>x.id!==pid&&groupKey(x)===groupKey(p));
+  openSheet(`<h3>💲 تعديل السعر والكلفة</h3><p class="sub">${esc(dn(p))}${p.flavor?' • '+esc(p.flavor):''}${p.size?' • '+esc(p.size):''} — بالمخزن ${m.stock} قطعة</p>
+   <form class="form" id="prf" novalidate>
+    ${canP?fld('prSell','سعر البيع للقطعة (د.ع)',inp('prSell','number',N(p.sellPrice)||'','inputmode="numeric" min="0" step="250"'),'','يتغير بنقطة البيع والمتجر فوراً'):''}
+    ${canC?fld('prCost','كلفة القطعة (د.ع)',inp('prCost','number',m.stock>0?Math.round(m.avg||0):'','inputmode="numeric" min="0" step="250" '+(m.stock>0?'':'disabled placeholder="ماكو قطع بالمخزن"')),'',m.stock>0?`تتعدل كلفة الـ ${m.stock} قطعة الموجودة هسه. المبيعات القديمة تبقى بكلفتها وأرباحها ما تتغير.`:'الكلفة تنكتب وكت تسجيل المشتريات'):''}
+    ${sib.length?`<label class="perm full"><input type="checkbox" id="prAll"><span>طبّق على كل نكهات هذا المنتج (${sib.length+1} نكهات)</span></label>`:''}
+    <div class="summary full" id="prSum"></div><div id="prErr" class="err" hidden></div></form>
+   <div class="sheet-actions"><button class="btn primary" id="prSave">حفظ</button><button class="btn ghost" id="prNo">إلغاء</button></div>`,s=>{
+    const v=id=>{const e=s.querySelector('#'+id);return e?e.value.trim():''};
+    const sum=()=>{const sp=canP?N(v('prSell')):N(p.sellPrice),cs=canC&&m.stock>0?N(v('prCost')):(m.avg||0);const mg=sp-cs;
+      s.querySelector('#prSum').innerHTML=`<div><span>سعر البيع</span><span class="num">${moneyT(sp)}${canP&&sp!==N(p.sellPrice)?` <small style="opacity:.6">(كان ${moneyT(N(p.sellPrice))})</small>`:''}</span></div>`+(canC?`<div><span>الكلفة</span><span class="num">${cs?moneyT(cs):'—'}</span></div><div class="total"><span>ربح القطعة</span><span class="num ${mg>=0?'pos':'neg'}">${cs?moneyT(mg)+' • '+(sp?Math.round(mg/sp*100):0)+'%':'—'}</span></div>`+(m.stock>0&&cs?`<div><span>ربح المخزون الحالي إذا انباع</span><span class="num">${moneyT(mg*m.stock)}</span></div>`:''):'')};
+    s.addEventListener('input',sum);sum();s.querySelector('#prNo').onclick=closeSheet;
+    s.querySelector('#prSave').onclick=async()=>{const err=s.querySelector('#prErr');const show=t=>{err.hidden=false;err.textContent=t};
+      const sp=canP?N(v('prSell')):null,cs=canC&&m.stock>0&&v('prCost')!==''?N(v('prCost')):null;
+      if(canP&&!(sp>0))return show('اكتب سعر بيع صحيح.');if(cs!==null&&!(cs>0))return show('اكتب كلفة صحيحة.');
+      const all=!!(s.querySelector('#prAll')||{}).checked;const targets=[p,...(all?sib:[])];
+      const btn=s.querySelector('#prSave');btn.disabled=true;let nPrice=0,nCost=0;
+      try{for(const t of targets){
+          if(sp!==null&&N(t.sellPrice)!==sp){await updDoc('products',t.id,{sellPrice:sp});nPrice++}
+          if(cs!==null){for(const b of liveBatches(t.id)){if(!b.id)continue;const pu=S.purchases.find(x=>x.id===b.id);if(pu&&N(pu.unitCost)!==cs){await updDoc('purchases',b.id,{unitCost:cs});nCost++}}}}
+        closeSheet();toast(nPrice||nCost?`انحفظ ✅${nPrice?` السعر (${nPrice})`:''}${nCost?` • الكلفة (${nCost} وجبة شراء)`:''}`:'ما تغير شي');
+      }catch(e){btn.disabled=false;dbErr(e)}}})}
 function viewStock(){
   const ps=activeProducts();
   const val=ps.reduce((s,p)=>s+(INV[p.id]?.value||0),0);
@@ -7705,15 +7760,16 @@ function stockTable(){
   if(f!=='all')ps=ps.filter(p=>{const st=status(p).map(s=>s[0]).join(' ');return f==='out'?/نافد/.test(st):f==='low'?/قليل/.test(st):f==='exp'?/ينتهي|منتهي/.test(st):/متوفر/.test(st)});
   if(!S.products.length)return `<div class="empty"><b>المخزن فارغ</b>أضف منتجاتك وحدة وحدة، وتقدر تكتب الكمية الأولية وسعر شرائها بنفس الخطوة.<br>${can('products')?`<button class="btn primary" data-act="new-product">${I.plus} أضف منتج</button>`:''}</div>`;
   if(!ps.length)return `<div class="empty"><b>ماكو منتجات تطابق الفلتر</b>غيّر البحث أو الحالة.</div>`;
-  return `<div class="tbl-wrap"><table><thead><tr><th>المنتج</th><th>الصنف</th><th>بالمخزن</th>${C()?'<th>متوسط الكلفة</th>':''}<th>سعر البيع</th>${C()?'<th>الربح بالقطعة</th>':''}<th>أقرب انتهاء</th><th>الحالة</th><th></th></tr></thead><tbody>
+  return `<div class="tbl-wrap stkw"><table class="stk"><thead><tr><th>المنتج</th><th>الصنف</th><th>بالمخزن</th>${C()?'<th>متوسط الكلفة</th>':''}<th>سعر البيع</th>${C()?'<th>الربح بالقطعة</th>':''}<th>أقرب انتهاء</th><th>الحالة</th><th></th></tr></thead><tbody>
   ${ps.map(p=>{const m=INV[p.id]||{stock:0,avg:0,nextExp:''};const pr=N(p.sellPrice)-(m.avg||0);
     return `<tr><td><div class="pcell">${pthumb(p)}<div><b>${esc(dn(p))}</b> ${p.sample?'<span class="tag">مثال</span>':''}<span class="sub">${esc([p.brand,pdesc(p)].filter(Boolean).join(' • '))}</span></div></div></td>
-    <td><span class="tag">${esc(p.category||'—')}</span></td>
-    <td class="n" style="min-width:90px"><b>${m.stock}</b> <span class="sub" style="display:inline">قطعة</span>${meter(p,m.stock)}</td>
-    ${C()?`<td class="n">${m.avg?moneyT(m.avg):'—'}</td>`:''}<td class="n">${moneyT(N(p.sellPrice))}</td>
-    ${C()?`<td class="n ${pr>=0?'pos':'neg'}">${m.avg?moneyT(pr):'—'}</td>`:''}
-    <td class="n">${fmtDate(m.nextExp)}</td><td>${pills(status(p))}</td>
+    <td class="sk-cat"><span class="tag">${esc(p.category||'—')}</span></td>
+    <td class="n sk-q" data-l="بالمخزن" style="min-width:90px"><b>${m.stock}</b> <span class="sub" style="display:inline">قطعة</span>${meter(p,m.stock)}</td>
+    ${C()?`<td class="n" data-l="الكلفة">${m.avg?moneyT(m.avg):'—'}</td>`:''}<td class="n" data-l="سعر البيع">${moneyT(N(p.sellPrice))}</td>
+    ${C()?`<td class="n ${pr>=0?'pos':'neg'}" data-l="ربح القطعة">${m.avg?moneyT(pr):'—'}</td>`:''}
+    <td class="n" data-l="أقرب انتهاء">${fmtDate(m.nextExp)}</td><td class="sk-st">${pills(status(p))}</td>
     <td><div class="rowact">
+      ${can('products')||C()?`<button class="icon-btn sk-price" title="تعديل السعر والكلفة" aria-label="تعديل السعر والكلفة" data-act="price-edit" data-id="${p.id}">💲<span>السعر${C()?' والكلفة':''}</span></button>`:''}
       ${can('sell')?`<button class="icon-btn" title="بيع" aria-label="بيع" data-act="sell" data-id="${p.id}" ${m.stock<=0?'disabled':''}>${I.sell}</button>`:''}
       ${can('buy')?`<button class="icon-btn" title="شراء / إضافة كمية" aria-label="شراء" data-act="buy" data-id="${p.id}">${I.buy}</button>`:''}
       ${can('count')?`<button class="icon-btn" title="جرد وتعديل الكمية" aria-label="جرد" data-act="count" data-id="${p.id}">${I.count}</button>`:''}
@@ -7811,7 +7867,7 @@ function wireFlv(root,id,onChange){const box=root.querySelector('#'+id);if(!box)
 const flvSel=(root,id)=>[...root.querySelectorAll('#'+id+' .flv[data-f][aria-pressed="true"]')].map(b=>b.dataset.f);
 function productSheet(p){
   const isNew=!p;p=p||{minStock:3,category:CATS[0]};
-  openSheet(`<h3>${isNew?'منتج جديد':'تعديل المنتج'}</h3><p class="sub">كل نكهة أو حجم يتسجّل كمنتج مستقل، لأن البيع بالقطعة.</p>
+  openSheet(`<h3>${isNew?'منتج جديد':'تعديل المنتج'}</h3><p class="sub">كل نكهة أو حجم يتسجّل كمنتج مستقل، لأن البيع بالقطعة.</p>${!isNew&&C()?`<button type="button" class="btn sm" data-act="price-edit" data-id="${p.id}" style="margin:-4px 0 10px">💲 تعديل سعر البيع والكلفة</button>`:''}
   <form class="form" id="pf" novalidate>
    ${fld('pName','اسم المنتج *',inp('pName','text',p.name,'required placeholder="مثلاً: واي بروتين جولد ستاندرد"'),'full')}
    ${fld('pBrand','الماركة',inp('pBrand','text',p.brand,'placeholder="Optimum Nutrition"'))}
