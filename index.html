@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
 <meta charset="utf-8">
-<meta name="dz-build" content="76">
+<meta name="dz-build" content="77">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -1400,6 +1400,11 @@ body.store-on .dzi-fab,body.store-on .dzi-panel{display:none!important}
 .ex-list{display:grid;gap:6px}.ex-it{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--line)}.ex-m{flex:none;min-width:74px;text-align:center;padding:3px 6px;font-size:11.5px;font-weight:800;color:var(--cy);border:1px solid color-mix(in srgb,var(--cy) 45%,transparent)}
 .ex-i{flex:1;min-width:0}.ex-i b{display:block;font-size:14px}.ex-i small{color:var(--muted);font-size:12px}
 @media (max-width:760px){.co-dtop{flex-direction:column-reverse}.co-dmap{width:100%;max-width:260px;align-self:center}.ex-form{grid-template-columns:1fr 1fr 1fr}.ex-form #exN,.ex-form #exM,.ex-form .ex-note,.ex-form .btn{grid-column:1/-1}.pk-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.flvpick,.flvq{display:flex;flex-wrap:wrap;gap:6px}.flvq{margin-top:8px}
+.flvpick .flv,.flvq .flv{border:1px solid var(--line-2);background:var(--surface-2,var(--surface));color:var(--ink);padding:7px 12px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.flvpick .flv[aria-pressed="true"],.flvq .flv[aria-pressed="true"]{background:var(--cy);border-color:var(--cy);color:#fff}
+.flv-new{display:inline-flex;gap:4px}.flv-new input{width:130px;padding:7px 10px;font:inherit;font-size:16px;background:var(--surface-2,var(--surface));border:1px solid var(--line-2);color:var(--ink)}
+.flq{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin:8px 0}.flq label span{display:block;font-size:12px;color:var(--muted);margin-bottom:3px}.flq input{width:100%;padding:8px;font:inherit;font-size:16px;background:var(--surface-2,var(--surface));border:1px solid var(--line-2);color:var(--ink)}
 /* performance dashboard */
 .app>*{min-width:0}
 .os.rate{padding-inline-end:46px}
@@ -1495,7 +1500,7 @@ body.store-on .dzi-fab,body.store-on .dzi-panel{display:none!important}
     <div class="sfoot">
       <button class="gear bell" data-act="notif" aria-label="الإشعارات" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="bl">الإشعارات</span><b class="nbadge" hidden></b></button>
       <button class="gear" data-go="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>الإعدادات</span></button>
-      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 76</small></div>
+      <div class="clock"><span id="clk">--:--:--</span><small>SYS · UTC+3 · build 77</small></div>
       <div class="sync" id="sync"><i></i><span>جاري الاتصال</span></div>
       <div class="who" id="who"></div>
     </div>
@@ -2330,7 +2335,24 @@ body.intro-on .dzb{display:none}
 @media (max-width:420px){.hdr .dzlock{min-width:0;gap:6px}.hdr .dzmark{width:36px!important}.hdr .dzname{font-size:13px!important;letter-spacing:1px!important}.hdr .dzw small{display:none}.hdr .hbtn{padding-inline:10px}}
 @media (max-width:380px){.crs-btn .cart-lbl{display:none}}
 .hdr .dzw{flex:none}
-/* fixes: build 76 */
+.dzb-cards{display:grid!important;grid-template-columns:1fr;overflow:visible!important;scroll-snap-type:none!important;margin:10px 0 2px!important;padding:0!important}
+.dzb-card{flex:none!important;width:auto!important}
+.dzb-cards .dzb-card.more{display:none!important}.dzb-cards.all .dzb-card.more{display:grid!important;animation:up .25s ease-out}
+.dzb-morec{border:1px dashed rgba(237,28,36,.55);background:rgba(237,28,36,.08);color:#fff;font:inherit;font-size:13px;font-weight:700;padding:9px;border-radius:12px;cursor:pointer}
+.dzb-cards.all .dzb-morec{display:none}
+.flvs{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 2px}
+.fchip{border:1px solid var(--line-2);background:rgba(255,255,255,.03);color:var(--ink);padding:5px 10px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;min-height:32px;transition:background .15s,border-color .15s}
+.fchip.on{background:var(--c,var(--red));border-color:var(--c,var(--red));color:#fff;box-shadow:0 0 12px color-mix(in srgb,var(--c,var(--red)) 45%,transparent)}
+.fchip.out{opacity:.45;text-decoration:line-through}
+.pd-fl{margin:10px 0 4px}.pd-fl b{display:block;font-size:13px;margin-bottom:4px;opacity:.85}.pd-fl .fchip{min-height:38px;font-size:13.5px;padding:7px 14px}
+/* Dozy product suggestions: swipe sideways to see all */
+.dzb-cards{display:flex!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory!important;gap:8px!important;margin:10px -10px 2px!important;padding:2px 10px 6px!important;touch-action:pan-x pan-y;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.dzb-cards::-webkit-scrollbar{display:none}
+.dzb-cards .dzb-card,.dzb-cards .dzb-card.more{display:grid!important;flex:0 0 min(236px,80%)!important;scroll-snap-align:start;animation:none}
+.dzb-cards .dzb-morec{display:none!important}
+.dzb-swipe{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px;font-size:11.5px;opacity:.7}
+.dzb-swipe i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .2s,width .2s}.dzb-swipe i.on{background:#ed1c24;width:16px;border-radius:3px}
+/* fixes: build 75 */
 .dzmini{width:1.39em!important;height:.92em!important;flex:none;display:inline-block}
 #q,#sort,input[type=search]{font-size:16px!important}
 .sheet .qs button{width:38px!important;height:38px!important;font-size:19px!important}
@@ -2523,29 +2545,37 @@ function renderTop(){
   $('#ann').innerHTML=CFG.ann?`<div class="wrap">${esc(CFG.ann)}</div>`:'';
   document.querySelectorAll('.perkDel').forEach(e=>e.textContent=`المثنى ${CFG.bag?fmt(CFG.bag)+' د.ع':''} • باقي المحافظات ${CFG.oth?fmt(CFG.oth)+' د.ع':''}`);
   $('#footWa').innerHTML=CFG.wa?`واتساب: <span class="tel">+${esc(CFG.wa)}</span>`:'';
-  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 76${hasOrd?' • sync':''}</small>`)}
+  {let hasOrd=false;try{hasOrd=window.parent!==window&&typeof window.parent.dzOrder==='function'}catch(e){}const fw=$('#footWa');if(fw)fw.insertAdjacentHTML('beforeend',`<small style="display:block;opacity:.35;font-size:10px;margin-top:4px;direction:ltr">build 77${hasOrd?' • sync':''}</small>`)}
   $('#catAt').textContent=DATA.at?'UPDATED '+new Date(DATA.at).toISOString().slice(0,10).replaceAll('-','.'):'';
   const ha=$('#heroArt');if(ha&&!ha.firstChild)ha.innerHTML=dzEmblem();
 }
 function renderCats(){
-  const counts={};DATA.cat.forEach(p=>counts[p.c]=(counts[p.c]||0)+1);
+  const counts={};{const gs=new Set();DATA.cat.forEach(p=>{const k=gKey(p);if(gs.has(k))return;gs.add(k);counts[p.c]=(counts[p.c]||0)+1})}
   const cats=CAT_ORDER.filter(c=>counts[c]).concat(Object.keys(counts).filter(c=>!CAT_ORDER.includes(c)));
   $('#cats').innerHTML=[['','الكل',DATA.cat.length],...cats.map(c=>[c,c,counts[c]])].map(([k,l,n])=>`<button class="cat" data-act="cat" data-id="${esc(k)}" aria-pressed="${ui.cat===k}" style="--c:${k?color(k):'var(--red)'}"><i></i>${esc(l)}<b>${n}</b></button>`).join('');
 }
+/* النكهات: كل نكهة منتج بالنظام، بس بالمتجر تطلع كخيارات على نفس الكارت */
+const gKey=p=>[String(p.n||'').trim(),String(p.b||'').trim(),String(p.s||'').trim()].join('|');
+const FSEL={};
+function variants(p){const k=gKey(p);return DATA.cat.filter(x=>gKey(x)===k).sort((a,b)=>(maxQ(b)>0)-(maxQ(a)>0)||String(a.f||'').localeCompare(String(b.f||''),'ar'))}
+function pickVar(k,vs){const s=FSEL[k]&&vs.find(x=>x.id===FSEL[k]);if(s)return s;const inC=vs.find(x=>cart.some(l=>l.id===x.id));return inC||vs.find(x=>maxQ(x)>0)||vs[0]}
+function flvChips(vs,cur,act){if(vs.length<2)return '';return `<div class="flvs" role="radiogroup" aria-label="النكهة">${vs.map(v=>`<button type="button" class="fchip${v.id===cur.id?' on':''}${maxQ(v)<=0?' out':''}" data-act="${act}" data-id="${esc(v.id)}" aria-pressed="${v.id===cur.id}" title="${maxQ(v)<=0?'نفدت':''}">${esc(v.f||'بدون نكهة')}</button>`).join('')}</div>`}
 function list(){
   const q=ui.q.trim().toLowerCase();
-  let ps=DATA.cat.filter(p=>(!ui.cat||p.c===ui.cat)&&(!q||[p.n,p.b,p.c,p.f,p.s].join(' ').toLowerCase().includes(q)));
+  let ps0=DATA.cat.filter(p=>(!ui.cat||p.c===ui.cat)&&(!q||[p.n,p.b,p.c,p.f,p.s].join(' ').toLowerCase().includes(q)));
+  const seen=new Set(),ps=[];ps0.forEach(p=>{const k=gKey(p);if(seen.has(k))return;seen.add(k);ps.push(pickVar(k,variants(p)))});
   if(ui.sort==='low')ps.sort((a,b)=>a.p-b.p);else if(ui.sort==='high')ps.sort((a,b)=>b.p-a.p);else if(ui.sort==='name')ps.sort((a,b)=>String(a.n).localeCompare(String(b.n),'ar'));
   return ps.sort((a,b)=>(maxQ(b)>0)-(maxQ(a)>0));
 }
 function cardHtml(p){
-  const c=color(p.c),[sc,st]=stockTag(p),inC=cart.find(l=>l.id===p.id),out=maxQ(p)<=0;
+  const vs=variants(p);const c=color(p.c),[sc,st]=stockTag(p),inC=cart.find(l=>l.id===p.id),out=maxQ(p)<=0;
   return `<article class="card${out?' out':''}" style="--c:${c}">
     <button class="art" data-act="view" data-id="${esc(p.id)}" aria-label="تفاصيل ${esc(p.n)}">${art(p)}<span class="ccat"><i></i>${esc(p.c||'أخرى')}</span><span class="st ${sc}">${st}</span></button>
     <div class="body">
       <h3 class="name" data-act="view" data-id="${esc(p.id)}">${esc(p.n)}</h3>
       <div class="brand">${esc(p.b||'')}</div>
-      <div class="attrs">${p.f?`<span class="attr fl">${esc(p.f)}</span>`:''}${p.s?`<span class="attr">${esc(p.s)}</span>`:''}</div>
+      <div class="attrs">${vs.length<2&&p.f?`<span class="attr fl">${esc(p.f)}</span>`:''}${vs.length>1?`<span class="attr fl">${vs.length} نكهات</span>`:''}${p.s?`<span class="attr">${esc(p.s)}</span>`:''}</div>
+      ${flvChips(vs,p,'flv')}
       <div class="foot"><span class="price">${fmt(p.p)}<small>د.ع</small></span>
         ${inC?`<span class="qs"><button data-act="dec" data-id="${esc(p.id)}" aria-label="نقص">−</button><span>${inC.qty}</span><button data-act="inc" data-id="${esc(p.id)}" aria-label="زيد" ${inC.qty>=maxQ(p)?'disabled':''}>+</button></span>`
         :`<button class="add" data-act="add" data-id="${esc(p.id)}" aria-label="أضف للسلة" ${out?'disabled':''}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>`}
@@ -2594,7 +2624,8 @@ function openView(id,keep){
   const html=`<div class="art pd-art" style="--c:${c}">${art(p)}<span class="ccat" style="--c:${c}"><i></i>${esc(p.c||'')}</span><span class="st ${sc}">${st}</span></div>
    <div class="eyebrow" style="--red:${c}"><b>${esc(p.b||'DZ')}</b><i></i></div>
    <h3>${esc(p.n)}</h3>
-   <div class="pd-meta">${p.f?`<span class="attr fl" style="--c:${c}">النكهة: ${esc(p.f)}</span>`:''}${p.s?`<span class="attr">${esc(p.s)}</span>`:''}</div>
+   <div class="pd-meta">${p.f&&variants(p).length<2?`<span class="attr fl" style="--c:${c}">النكهة: ${esc(p.f)}</span>`:''}${p.s?`<span class="attr">${esc(p.s)}</span>`:''}</div>
+   ${variants(p).length>1?`<div class="pd-fl"><b>اختار النكهة:</b>${flvChips(variants(p),p,'vflv')}</div>`:''}
    ${p.d?`<p class="pd-desc">${esc(p.d)}</p>`:''}
    <div class="pd-row"><span class="price">${fmt(p.p)}<small>د.ع</small></span>
     ${l?`<div class="big-qs"><button data-act="dec" data-id="${esc(id)}">−</button><span>${l.qty}</span><button data-act="inc" data-id="${esc(id)}" ${l.qty>=maxQ(p)?'disabled':''}>+</button></div>`:''}</div>
@@ -2822,8 +2853,18 @@ async function doPublish(next,btn,show,label){
 
 
 
+
+/* Dozy suggestions: dots + "swipe" hint under each product carousel */
+(function(){const mk=c=>{if(c.dataset.sw||c.children.length<2)return;const n=[...c.children].filter(x=>x.classList.contains('dzb-card')).length;if(n<2)return;c.dataset.sw=1;
+  const h=document.createElement('div');h.className='dzb-swipe';h.innerHTML=`<span>⇠ اسحب وشوف ${n} منتجات</span>`+Array.from({length:n},(_,i)=>`<i class="${i?'':'on'}"></i>`).join('');c.after(h);
+  c.addEventListener('scroll',()=>{const w=c.firstElementChild?c.firstElementChild.offsetWidth+8:1;const i=Math.round(Math.abs(c.scrollLeft)/w);h.querySelectorAll('i').forEach((d,j)=>d.classList.toggle('on',j===i))},{passive:true})};
+ const run=()=>document.querySelectorAll('.dzb-cards').forEach(mk);
+ const go=()=>{const m=document.getElementById('dzbMsgs');if(!m)return setTimeout(go,800);run();new MutationObserver(run).observe(m,{childList:true,subtree:true})};go()})();
 /* in-page links (#shop…): the store lives in an iframe, so a plain #link would reload the whole site. Scroll instead. */
 document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a||a.closest('.hdr .dzlock'))return;e.preventDefault();const id=decodeURIComponent(a.getAttribute('href').slice(1));const t=id&&document.getElementById(id);if(t){const y=t.getBoundingClientRect().top+scrollY-((document.querySelector('.hdr')||{}).offsetHeight||0)-8;scrollTo({top:Math.max(0,y),behavior:'smooth'})}},true);
+
+/* كابتن دوزي: اقتراحات المنتجات تطلع كقائمة، وزر يفتح الباقي */
+document.addEventListener('click',e=>{const b=e.target.closest('.dzb-morec');if(!b)return;const c=b.closest('.dzb-cards');if(c){c.classList.add('all');try{saveChat()}catch(x){}}});
 /* smoother scrolling: pause the hero animations while the hero is off screen */
 try{const hb=document.querySelector('.hero');if(hb&&'IntersectionObserver' in window)new IntersectionObserver(es=>{es.forEach(e=>document.body.classList.toggle('hero-off',!e.isIntersecting))},{rootMargin:'80px'}).observe(hb)}catch(e){}
 /* ---------- كورسي: اللاعب يستلم كورسه من الكابتن ---------- */
@@ -2865,6 +2906,8 @@ document.addEventListener('click',async e=>{
     case 'dec':dec(id);break;
     case 'rm':cart=cart.filter(x=>x.id!==id);save();refresh();break;
     case 'view':openView(id);break;
+    case 'flv':{const v=P(id);if(v){FSEL[gKey(v)]=id;renderGrid()}break}
+    case 'vflv':{const v=P(id);if(v){FSEL[gKey(v)]=id;const sh=$('#sheetRoot .sheet');if(sh)sh.dataset.id=id;openView(id,true);renderGrid()}break}
     case 'cart':openCart();break;
     case 'checkout':openCheckout();break;
     case 'place':place();break;
@@ -3887,7 +3930,7 @@ function chips(list){$('#dzbChips').innerHTML=(list||[]).map(c=>`<button type="b
 function say(r){
   busy=true;chips([]);
   const t=push('bot','<span class="dzb-typing"><i></i><i></i><i></i></span>');
-  setTimeout(()=>{t.classList.remove('typing');t.classList.remove('in');void t.offsetWidth;t.classList.add('in');t.querySelector('.dzb-t').innerHTML=md(r.t)+(r.wa&&r.wa.href?`<a class="dzb-wa" href="${esc(r.wa.href)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>راسل ${esc(r.wa.n)} على واتساب</a>`:'')+(r.cards&&r.cards.length?`<div class="dzb-cards">${r.cards.map(card).join('')}</div>`:'');setMode(0);sfx('receive');document.querySelectorAll('#dzbMsgs .me .tk:not(.seen)').forEach(x=>x.classList.add('seen'));saveChat();chips(r.chips);busy=false;requestAnimationFrame(()=>revealBot(t));speak(r.t,()=>{if(voiceMode&&FLOW&&SR&&open)setTimeout(()=>{if(!listening&&open)listen()},350)})},r.fast?120:Math.min(1300,450+r.t.length*4));
+  setTimeout(()=>{t.classList.remove('typing');t.classList.remove('in');void t.offsetWidth;t.classList.add('in');t.querySelector('.dzb-t').innerHTML=md(r.t)+(r.wa&&r.wa.href?`<a class="dzb-wa" href="${esc(r.wa.href)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>راسل ${esc(r.wa.n)} على واتساب</a>`:'')+(r.cards&&r.cards.length?`<div class="dzb-cards">${r.cards.map((p,i)=>i<3?card(p):card(p).replace('class="dzb-card"','class="dzb-card more"')).join('')}${r.cards.length>3?`<button type="button" class="dzb-morec" data-n="${r.cards.length-3}">عرض ${r.cards.length-3} منتجات ثانية ⌄</button>`:''}</div>`:'');setMode(0);sfx('receive');document.querySelectorAll('#dzbMsgs .me .tk:not(.seen)').forEach(x=>x.classList.add('seen'));saveChat();chips(r.chips);busy=false;requestAnimationFrame(()=>revealBot(t));speak(r.t,()=>{if(voiceMode&&FLOW&&SR&&open)setTimeout(()=>{if(!listening&&open)listen()},350)})},r.fast?120:Math.min(1300,450+r.t.length*4));
 }
 function ask(v){sfx('send');const qt=REPLY;REPLY=null;if($('#dzbReply'))$('#dzbReply').hidden=true;const mm=push('me',esc(v).replace(/\n/g,'<br>'),{quote:qt});if(qt)mm.dataset.q=JSON.stringify(qt);if(qt)v=v;let r;try{r=reply(v)}catch(e){r={t:'صار خلل بسيط، جرّب تسأل بطريقة ثانية.'}}HIST.push({r:'u',t:(qt?`(رداً على: «${qt.t.slice(0,100)}») `:'')+String(v).slice(0,600)});if(HIST.length>30)HIST=HIST.slice(-30);if(r&&r.ai){aiReply(v,r.fb);return}if(r&&!r.wa&&fitTopic(AR(v),r))r=coachTail(r);HIST.push({r:'m',t:plain(r.t)});say(r)}
 /* choreography */
@@ -6247,7 +6290,7 @@ function purchaseSheet(pid){
       body.innerHTML=`<form class="form" id="bf" novalidate>
         ${fld('bGroup','المنتج',`<select id="bGroup">${groups.map(x=>`<option value="${esc(x.k)}" ${x.k===g.k?'selected':''}>${esc(dn(x.p))}${x.p.size?' — '+esc(x.p.size):''}${x.p.brand?' — '+esc(x.p.brand):''}</option>`).join('')}</select>`,'full')}
         <div class="fld full"><label>النكهات المتوفرة</label><div class="flvs">${g.ps.map(p=>`<button type="button" class="flv" data-pid="${p.id}" aria-pressed="${!st.addFl&&p.id===st.pid}">${esc(p.flavor||'بدون نكهة')}<b>${stockOf(p.id)}</b></button>`).join('')}<button type="button" class="flv add" data-pid="__new" aria-pressed="${st.addFl}">＋ نكهة جديدة</button></div>
-          ${st.addFl?`<input id="bNewFl" type="text" placeholder="اسم النكهة الجديدة، مثلاً: كراميل" style="margin-top:8px">`:''}</div>
+          ${st.addFl?`<input id="bNewFl" type="text" placeholder="اسم النكهة الجديدة، مثلاً: كراميل" style="margin-top:8px"><div class="flvq">${FLAVORS.filter(f=>!g.ps.some(p=>String(p.flavor||'').trim()===f)).map(f=>`<button type="button" class="flv" data-q="${esc(f)}">${esc(f)}</button>`).join('')}</div>`:''}</div>
         ${fld('bQty','العدد (قطعة)',inp('bQty','number','','inputmode="numeric" min="1" placeholder="12"'))}
         ${fld('bCost','كلفة القطعة (د.ع)',inp('bCost','number',INV[st.pid]?.lastCost||'','inputmode="numeric" min="0" step="250"'))}
         ${common()}
@@ -6255,7 +6298,8 @@ function purchaseSheet(pid){
       const sum=()=>{const q=N(val('bQty')),c=N(val('bCost'));const mg=cur?N(cur.sellPrice)-c:0;
         s.querySelector('#bSum').innerHTML=`<div><span>سعر البيع</span><span class="num">${cur?moneyT(N(cur.sellPrice)):'—'}</span></div>${C()?`<div><span>ربح القطعة المتوقع</span><span class="num ${mg>=0?'pos':'neg'}">${c?moneyT(mg):'—'}</span></div>`:''}<div class="total"><span>إجمالي الفاتورة</span><span class="num">${moneyT(q*c)}</span></div>`};
       body.querySelector('#bGroup').onchange=e=>{st.gk=e.target.value;st.pid='';st.addFl=false;drawOld()};
-      body.querySelectorAll('.flv').forEach(b=>b.onclick=()=>{if(b.dataset.pid==='__new'){st.addFl=true}else{st.addFl=false;st.pid=b.dataset.pid}drawOld();setTimeout(()=>s.querySelector(st.addFl?'#bNewFl':'#bQty')?.focus(),30)});
+      body.querySelectorAll('.flvq .flv').forEach(b=>b.onclick=e=>{e.stopPropagation();const i=s.querySelector('#bNewFl');if(i)i.value=b.dataset.q;body.querySelectorAll('.flvq .flv').forEach(x=>x.setAttribute('aria-pressed',String(x===b)))});
+      body.querySelectorAll('.flvs > .flv').forEach(b=>b.onclick=()=>{if(b.dataset.pid==='__new'){st.addFl=true}else{st.addFl=false;st.pid=b.dataset.pid}drawOld();setTimeout(()=>s.querySelector(st.addFl?'#bNewFl':'#bQty')?.focus(),30)});
       body.addEventListener('input',sum);sum();
     };
     const drawRows=()=>{
@@ -6272,12 +6316,14 @@ function purchaseSheet(pid){
         ${fld('nSize','الحجم / الوزن',inp('nSize','text','','placeholder="2.27 كغ • 74 حصة"'))}
         ${fld('nPrice','سعر البيع للقطعة (د.ع) *',inp('nPrice','number','','inputmode="numeric" min="0" step="250"'))}
         ${imgPicker('')}
-        <div class="fld full"><label>النكهات المتوفرة والكميات</label><div class="frow head"><span>النكهة</span><span>العدد</span><span>كلفة القطعة</span><span></span></div><div id="bRows"></div>
+        <div class="fld full"><label>اختار النكهات</label>${flvPicker('bFl',st.rows.map(r=>r.f).filter(Boolean),true)}</div>
+        <div class="fld full"><label>الكميات والكلفة لكل نكهة</label><div class="frow head"><span>النكهة</span><span>العدد</span><span>كلفة القطعة</span><span></span></div><div id="bRows"></div>
           <button type="button" class="btn sm" id="bAddRow">${I.plus} إضافة نكهة</button><div class="hint">إذا المنتج بدون نكهات، اترك اسم النكهة فارغ بسطر واحد.</div></div>
         ${fld('nMin','الحد الأدنى للتنبيه',inp('nMin','number',3,'inputmode="numeric" min="0"'))}
         ${common()}
         <div class="summary" id="bSum"></div></form>`;
       wireImg(s,st.img);drawRows();sumNew();
+      wireFlv(s,'bFl',()=>{const L=flvSel(s,'bFl');const keep=st.rows.filter(r=>!r.f?false:L.includes(r.f));L.forEach(f=>{if(!keep.some(r=>r.f===f))keep.push({f,q:'',c:(st.rows.find(r=>r.c)||{}).c||''})});st.rows=keep.length?keep:[{f:'',q:'',c:''}];drawRows();sumNew()});
       body.querySelector('#bAddRow').onclick=()=>{st.rows.push({f:'',q:'',c:st.rows[st.rows.length-1]?.c||''});drawRows();sumNew();setTimeout(()=>s.querySelector(`#rf-${st.rows.length-1}`)?.focus(),30)};
       body.addEventListener('input',e=>{const t=e.target;if(t.dataset&&t.dataset.i!==undefined){st.rows[+t.dataset.i][t.dataset.k]=t.value;sumNew()}});
     };
@@ -6831,7 +6877,7 @@ async function dziSend(v){v=String(v||'').trim();if(!v||DZI.busy||!CUR)return;
 const A_MAXTOK=()=>C()?2600:1500;
 
 /* ---------- التحديث التلقائي: يفحص اذا نزلت نسخة جديدة على الموقع (حتى لو مضاف للشاشة الرئيسية) ---------- */
-const DZ_BUILD=76;
+const DZ_BUILD=77;
 const UPD={last:0,shown:0};
 try{if(/[?&]u=\d+/.test(location.search))history.replaceState(null,'',location.pathname+location.hash)}catch(e){}
 const updLive=()=>location.protocol==='https:'&&!/claude/i.test(location.hostname);
@@ -7750,6 +7796,19 @@ const fld=(id,label,input,cls='',hint='')=>`<div class="fld ${cls}"><label for="
 const inp=(id,type='text',val='',attrs='')=>`<input id="${id}" type="${type}" value="${esc(val)}" ${attrs}>`;
 const productOptions=sel=>activeProducts().map(p=>`<option value="${p.id}" ${p.id===sel?'selected':''}>${esc(p.name)}${pdesc(p)?' — '+esc(pdesc(p)):''} (${INV[p.id]?.stock||0})</option>`).join('');
 
+/* --- النكهات كخيارات (يختار وحدة أو أكثر) --- */
+const FLAVORS=['شوكولاتة','فانيلا','فراولة','كوكيز آند كريم','موز','كراميل','شوكولاتة بالفستق','قهوة / موكا','شوكولاتة نعناع','بلو بيري','توت مشكل','فواكه استوائية','مانجو','بطيخ','ليمون','تفاح أخضر','عنب','علكة','بدون نكهة'];
+function flvPicker(id,sel,multi,exclude){sel=(sel||[]).filter(Boolean);const ex=new Set(exclude||[]);
+  const all=[...new Set([...FLAVORS,...S.products.map(p=>String(p.flavor||'').trim()).filter(Boolean),...sel])].filter(f=>!ex.has(f));
+  return `<div class="flvpick" id="${id}" data-multi="${multi?1:0}">${all.map(f=>`<button type="button" class="flv" data-f="${esc(f)}" aria-pressed="${sel.includes(f)}">${esc(f)}</button>`).join('')}<span class="flv-new"><input type="text" placeholder="نكهة ثانية…" maxlength="40"><button type="button" class="flv add" aria-label="إضافة نكهة">＋</button></span></div>`}
+function wireFlv(root,id,onChange){const box=root.querySelector('#'+id);if(!box)return;const multi=box.dataset.multi==='1';
+  const add=()=>{const i=box.querySelector('.flv-new input');const v=i.value.trim();if(!v)return;let b=[...box.querySelectorAll('.flv[data-f]')].find(x=>x.dataset.f===v);
+    if(!b){b=document.createElement('button');b.type='button';b.className='flv';b.dataset.f=v;b.textContent=v;box.insertBefore(b,box.querySelector('.flv-new'))}
+    if(!multi)box.querySelectorAll('.flv[data-f]').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');i.value='';onChange&&onChange()};
+  box.addEventListener('click',e=>{const b=e.target.closest('.flv');if(!b)return;if(b.classList.contains('add'))return add();
+    const on=b.getAttribute('aria-pressed')==='true';if(!multi)box.querySelectorAll('.flv[data-f]').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed',String(!on||!multi));onChange&&onChange()});
+  box.querySelector('.flv-new input').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();add()}})}
+const flvSel=(root,id)=>[...root.querySelectorAll('#'+id+' .flv[data-f][aria-pressed="true"]')].map(b=>b.dataset.f);
 function productSheet(p){
   const isNew=!p;p=p||{minStock:3,category:CATS[0]};
   openSheet(`<h3>${isNew?'منتج جديد':'تعديل المنتج'}</h3><p class="sub">كل نكهة أو حجم يتسجّل كمنتج مستقل، لأن البيع بالقطعة.</p>
@@ -7757,7 +7816,7 @@ function productSheet(p){
    ${fld('pName','اسم المنتج *',inp('pName','text',p.name,'required placeholder="مثلاً: واي بروتين جولد ستاندرد"'),'full')}
    ${fld('pBrand','الماركة',inp('pBrand','text',p.brand,'placeholder="Optimum Nutrition"'))}
    ${fld('pCat','الصنف',`<select id="pCat">${CATS.map(c=>`<option ${p.category===c?'selected':''}>${c}</option>`).join('')}</select>`)}
-   ${fld('pFlavor','النكهة',inp('pFlavor','text',p.flavor,'placeholder="شوكولاتة"'))}
+   <div class="fld full"><label>${isNew?'النكهات — اختار وحدة أو أكثر (كل نكهة تنحفظ كمنتج وتطلع للزبون كخيارات)':'النكهة'}</label>${flvPicker('pFl',p.flavor?[p.flavor]:[],isNew)}</div>
    ${fld('pSize','الحجم / الوزن',inp('pSize','text',p.size,'placeholder="2.27 كغ (5 باوند) • 74 حصة"'))}
    ${fld('pPrice','سعر البيع للقطعة (د.ع) *',inp('pPrice','number',p.sellPrice,'inputmode="numeric" min="0" step="250" required'))}
    ${fld('pMin','الحد الأدنى للتنبيه',inp('pMin','number',p.minStock??3,'inputmode="numeric" min="0"'),'','ينبهك لمن يوصل المخزون لهذا العدد')}
@@ -7765,8 +7824,8 @@ function productSheet(p){
    ${imgPicker(p.img||'')}
    ${fld('pDesc','وصف للمتجر (اختياري)',`<textarea id="pDesc" rows="3" style="width:100%;min-height:80px" placeholder="مثلاً: 24 غرام بروتين بكل حصة، مناسب بعد التمرين">${esc(p.desc||'')}</textarea>`,'full','يطلع للزبون لمن يفتح المنتج بالمتجر')}
    <label class="perm full"><input type="checkbox" id="pOnline" ${p.online!==false?'checked':''}><span>يظهر بالمتجر الأونلاين</span></label>
-   ${isNew?`<div class="summary"><b>الكمية الحالية بالمخزن (اختياري)</b><div class="form" style="grid-template-columns:repeat(3,1fr)">
-     ${fld('iQty','العدد',inp('iQty','number','','inputmode="numeric" min="0" placeholder="0"'))}
+   ${isNew?`<div class="summary"><b>الكمية الحالية بالمخزن (اختياري)</b><div id="iFlQ"></div><div class="form" style="grid-template-columns:repeat(3,1fr)">
+     <div id="iQtyBox">${fld('iQty','العدد',inp('iQty','number','','inputmode="numeric" min="0" placeholder="0"'))}</div>
      ${fld('iCost','كلفة القطعة',inp('iCost','number','','inputmode="numeric" min="0" step="250"'))}
      ${fld('iExp','تاريخ الانتهاء',inp('iExp','date',''))}</div></div>`:''}
    <div id="pErr" class="err" hidden></div>
@@ -7774,21 +7833,26 @@ function productSheet(p){
   <div class="sheet-actions"><button class="btn primary" id="pSave">${isNew?'حفظ المنتج':'حفظ التعديلات'}</button><button class="btn ghost" id="pCancel">إلغاء</button></div>`,s=>{
     s.querySelector('#pCancel').onclick=closeSheet;
     const imgSt={v:p.img||''};wireImg(s,imgSt);
+    const fq={};const drawFq=()=>{const box=s.querySelector('#iFlQ');if(!box)return;const L=flvSel(s,'pFl');const one=L.length<=1;s.querySelector('#iQtyBox').hidden=!one;
+      box.innerHTML=one?'':`<div class="flq">${L.map((f,i)=>`<label><span>${esc(f)}</span><input type="number" inputmode="numeric" min="0" data-fq="${esc(f)}" value="${esc(fq[f]||'')}" placeholder="العدد"></label>`).join('')}</div>`};
+    wireFlv(s,'pFl',drawFq);drawFq();s.addEventListener('input',e=>{const t=e.target;if(t.dataset&&t.dataset.fq!==undefined)fq[t.dataset.fq]=t.value});
     const save=async()=>{
       const v=id=>s.querySelector('#'+id)?.value.trim()||'';
       const err=s.querySelector('#pErr');
       if(!v('pName')){err.hidden=false;err.textContent='اكتب اسم المنتج.';return}
       if(!(N(v('pPrice'))>0)){err.hidden=false;err.textContent='اكتب سعر البيع للقطعة.';return}
-      const iq=N(v('iQty'));
+      const fls=flvSel(s,'pFl');const iq=fls.length>1?fls.reduce((a,f)=>a+N(fq[f]),0):N(v('iQty'));
       if(isNew&&iq>0&&!(N(v('iCost'))>0)){err.hidden=false;err.textContent='اكتب كلفة القطعة حتى ينحسب الربح صح.';return}
-      const data={name:v('pName'),brand:v('pBrand'),category:v('pCat'),flavor:v('pFlavor'),size:v('pSize'),sellPrice:N(v('pPrice')),minStock:N(v('pMin')),barcode:v('pCode'),desc:v('pDesc').slice(0,400),online:!!s.querySelector('#pOnline')?.checked,img:imgSt.v||''};
+      const data={name:v('pName'),brand:v('pBrand'),category:v('pCat'),flavor:fls[0]||'',size:v('pSize'),sellPrice:N(v('pPrice')),minStock:N(v('pMin')),barcode:v('pCode'),desc:v('pDesc').slice(0,400),online:!!s.querySelector('#pOnline')?.checked,img:imgSt.v||''};
       const btn=s.querySelector('#pSave');btn.disabled=true;
       try{
         if(isNew){
-          if(mode==='db'){const ref=db.collection('products').doc();await ref.set({...data,createdAt:Date.now()});
-            if(iq>0)await addDoc('purchases',{productId:ref.id,qty:iq,unitCost:N(v('iCost')),expiry:v('iExp'),date:todayStr(),supplier:'',note:'رصيد أولي'});}
-          else{const id=uid();S.products.push({id,...data,createdAt:Date.now()});if(iq>0)S.purchases.push({id:uid(),productId:id,qty:iq,unitCost:N(v('iCost')),expiry:v('iExp'),date:todayStr(),supplier:'',note:'رصيد أولي',createdAt:Date.now()});saveLocal();render()}
-          toast('انضاف المنتج');
+          const list=fls.length?fls:[''];
+          for(const fl of list){const d2={...data,flavor:fl};const q2=list.length>1?Math.floor(N(fq[fl])):iq;
+            if(mode==='db'){const ref=db.collection('products').doc();await ref.set({...d2,createdAt:Date.now()});
+              if(q2>0)await addDoc('purchases',{productId:ref.id,qty:q2,unitCost:N(v('iCost')),expiry:v('iExp'),date:todayStr(),supplier:'',note:'رصيد أولي'});}
+            else{const id=uid();S.products.push({id,...d2,createdAt:Date.now()});if(q2>0)S.purchases.push({id:uid(),productId:id,qty:q2,unitCost:N(v('iCost')),expiry:v('iExp'),date:todayStr(),supplier:'',note:'رصيد أولي',createdAt:Date.now()});saveLocal();render()}}
+          toast(list.length>1?`انضاف المنتج بـ ${list.length} نكهات`:'انضاف المنتج');
         }else{await updDoc('products',p.id,data);toast('انحفظ التعديل')}
         closeSheet();
       }catch(e){btn.disabled=false;dbErr(e)}
